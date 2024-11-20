@@ -44,7 +44,7 @@ export default function Component() {
                           <h3 className="text-sm font-medium text-[#888]">DX Platform</h3>
                           <div className="space-y-4">
                             <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                              <Link href="/products" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
                                 <div className="mt-1">
                                   <Layout className="h-5 w-5" />
                                 </div>
@@ -445,7 +445,7 @@ export default function Component() {
               <Link href="#" className="text-sm text-[#888] hover:text-white">
                 Status
               </Link>
-              <Link href="#" className="text-sm text-[#888] hover:text-white">
+              <Link href="/changelog" className="text-sm text-[#888] hover:text-white">
                 Changelog
               </Link>
             </div>
