@@ -20,7 +20,7 @@ export default function Component() {
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
       <header className="sticky top-0 z-50 w-full border-b border-[#333] bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60">
-        <div className="container flex h-16 items-center justify-between mx-auto">
+        <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center space-x-8">
             <Link className="flex items-center space-x-2" href="/">
               <svg className="h-5 w-5" viewBox="0 0 76 65" fill="currentColor">
@@ -43,6 +43,71 @@ export default function Component() {
                     <div className="w-[750px] p-6 bg-black border border-[#333]">
                       <div className="grid grid-cols-3 gap-6">
                         <div className="space-y-4">
+                          <h3 className="text-sm font-medium text-[#888]">DX Platform</h3>
+                          <div className="space-y-4">
+                            <NavigationMenuLink asChild>
+                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                                <div className="mt-1">
+                                  <Layout className="h-5 w-5" />
+                                </div>
+                                <div>
+                                  <div className="font-medium">Previews</div>
+                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Helping teams ship 6× faster</div>
+                                </div>
+                              </Link>
+                            </NavigationMenuLink>
+                            <NavigationMenuLink asChild>
+                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                                <div className="mt-1">
+                                  <Code2 className="h-5 w-5" />
+                                </div>
+                                <div>
+                                  <div className="font-medium">AI</div>
+                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Powering breakthroughs</div>
+                                </div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </div>
+                        </div>
+                        <div className="space-y-4">
+                          <h3 className="text-sm font-medium text-[#888]">Managed Infrastructure</h3>
+                          <div className="space-y-4">
+                            <NavigationMenuLink asChild>
+                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                                <div className="mt-1">
+                                  <Activity className="h-5 w-5" />
+                                </div>
+                                <div>
+                                  <div className="font-medium">Rendering</div>
+                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Fast, scalable, and reliable</div>
+                                </div>
+                              </Link>
+                            </NavigationMenuLink>
+                            <NavigationMenuLink asChild>
+                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                                <div className="mt-1">
+                                  <BarChart className="h-5 w-5" />
+                                </div>
+                                <div>
+                                  <div className="font-medium">Observability</div>
+                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Trace every step</div>
+                                </div>
+                              </Link>
+                            </NavigationMenuLink>
+                            <NavigationMenuLink asChild>
+                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                                <div className="mt-1">
+                                  <Shield className="h-5 w-5" />
+                                </div>
+                                <div>
+                                  <div className="font-medium">Security</div>
+                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Scale without compromising</div>
+                                </div>
+                              </Link>
+                            </NavigationMenuLink>
+                          </div>
+                        </div>
+                        <div className="space-y-4">
                           <h3 className="text-sm font-medium text-[#888]">Open Source</h3>
                           <div className="space-y-4">
                             <NavigationMenuLink asChild>
@@ -62,7 +127,7 @@ export default function Component() {
                                   <GitBranch className="h-5 w-5" />
                                 </div>
                                 <div>
-                                  <div className="font-medium">Turborepo</div>
+                                  <div className="font-medium">Turborep</div>
                                   <div className="text-sm text-[#888] group-hover:text-[#ccc]">Speed with Enterprise scale</div>
                                 </div>
                               </Link>
@@ -119,7 +184,7 @@ export default function Component() {
             </div>
           </div>
 
-          <div className="container relative mx-auto">
+          <div className="container relative">
             <div className="flex flex-col items-center justify-center space-y-4 py-20 text-center md:py-32">
               <div className="rounded-full bg-[#333] px-4 py-1.5 text-sm">
                 <span className="text-[#0070F3] font-medium">New</span>
@@ -133,7 +198,8 @@ export default function Component() {
                 Your complete platform for the web.
               </h1>
               <p className="max-w-[700px] text-xl text-[#888]">
-                Vercel provides the developer tools and cloud infrastructure to build, scale, and secure a faster, more personalized web.
+                Vercel provides the developer tools and cloud infrastructure to build, scale, and secure a faster, more
+                personalized web.
               </p>
               <div className="flex flex-col gap-4 min-[400px]:flex-row">
                 <Button size="lg" className="h-12 px-8 bg-white text-black hover:bg-gray-200">
@@ -164,7 +230,7 @@ export default function Component() {
 
         {/* v1 Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container mx-auto">
+          <div className="container">
             <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
               <div className="space-y-8">
                 <h2 className="text-4xl font-bold">Go ahead, deploy on Friday.</h2>
@@ -203,7 +269,7 @@ export default function Component() {
                 </div>
               </div>
               <div className="space-y-8">
-                <h2 className="text-4xl font-bold">Move fast, don&apos;t break things.</h2>
+                <h2 className="text-4xl font-bold">Move fast, dont break things.</h2>
                 <p className="text-2xl text-[#888]">Keep quality high while maintaining velocity with Enterprise Monorepos.</p>
                 <div className="rounded-lg bg-[#111] p-6 space-y-6 border border-[#333]">
                   <div className="flex items-center justify-between">
@@ -249,32 +315,57 @@ export default function Component() {
 
         {/* v2 Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container mx-auto">
-            <div className="space-y-8">
-              <h2 className="text-4xl font-bold">Ship with confidence.</h2>
-              <p className="text-2xl text-[#888]">Automated CI/CD pipeline for seamless deployments.</p>
-              <div className="rounded-lg bg-[#111] p-6 space-y-6 border border-[#333]">
-                <div className="flex items-center justify-between">
-                  <div className="text-lg">Deployment Status</div>
-                  <div className="flex items-center space-x-2">
-                    <div className="text-[#888]">Production</div>
-                    <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">
-                      <CheckCircle2 className="h-5 w-5" />
+          <div className="container">
+            <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
+              <div className="space-y-8">
+                <h2 className="text-4xl font-bold">Develop with confidence.</h2>
+                <p className="text-2xl text-[#888]">Preview changes instantly with zero configuration.</p>
+                <div className="space-y-4">
+                  <div className="rounded-lg bg-[#111] p-4 border border-[#333]">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-4">
+                        <Eye className="h-5 w-5 text-[#888]" />
+                        <div>
+                          <div className="text-sm">Preview Deployment</div>
+                          <div className="text-xs text-[#888]">feature/new-landing-page</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="text-sm text-[#888]">5m ago</div>
+                        <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-black font-medium">
+                          <CheckCircle2 className="h-5 w-5" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="space-y-4">
+              </div>
+              <div className="space-y-8">
+                <h2 className="text-4xl font-bold">Ship with confidence.</h2>
+                <p className="text-2xl text-[#888]">Automated CI/CD pipeline for seamless deployments.</p>
+                <div className="rounded-lg bg-[#111] p-6 space-y-6 border border-[#333]">
                   <div className="flex items-center justify-between">
-                    <div className="text-sm">Build Time</div>
-                    <div className="text-sm text-[#888]">45s</div>
+                    <div className="text-lg">Deployment Status</div>
+                    <div className="flex items-center space-x-2">
+                      <div className="text-[#888]">Production</div>
+                      <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">
+                        <CheckCircle2 className="h-5 w-5" />
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm">First Contentful Paint</div>
-                    <div className="text-sm text-[#888]">0.8s</div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm">Time to Interactive</div>
-                    <div className="text-sm text-[#888]">1.2s</div>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm">Build Time</div>
+                      <div className="text-sm text-[#888]">45s</div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm">First Contentful Paint</div>
+                      <div className="text-sm text-[#888]">0.8s</div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="text-sm">Time to Interactive</div>
+                      <div className="text-sm text-[#888]">1.2s</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -284,7 +375,7 @@ export default function Component() {
 
         {/* CTA Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container mx-auto">
+          <div className="container">
             <div className="flex flex-col items-center text-center space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 Start building on Vercel
@@ -306,7 +397,7 @@ export default function Component() {
       </main>
 
       <footer className="border-t border-[#333] py-12">
-        <div className="container mx-auto">
+        <div className="container">
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div className="space-y-4">
               <h4 className="font-semibold">Products</h4>
