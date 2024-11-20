@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from "next/link"
-// import Image from "next/image" // Uncomment if you plan to use Image
+import Image from "next/image" // Uncomment if you plan to use Image
 import { Button } from "@/components/ui/button"
 import {
   NavigationMenu,
@@ -20,12 +20,10 @@ export default function Component() {
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
       <header className="sticky top-0 z-50 w-full border-b border-[#333] bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex h-16 items-center justify-between max-w-full px-4">
           <div className="flex items-center space-x-8">
             <Link className="flex items-center space-x-2" href="/">
-              <svg className="h-5 w-5" viewBox="0 0 76 65" fill="currentColor">
-                <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
-              </svg>
+              <Image src="/logo.png" alt="Your Logo" width={40} height={40} className="h-5 w-auto" />
               <span className="font-bold">Graycommit</span>
             </Link>
             <NavigationMenu>
@@ -155,7 +153,7 @@ export default function Component() {
           </div>
           <div className="flex items-center space-x-4">
             <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333]">Contact</Button>
-            <Button variant="outline" className="border-[#333] text-white hover:bg-[#333]">Log In</Button>
+            <Button variant="outline" className="border-[#333] text-black hover:bg-[#333]">Log In</Button>
             <Button className="bg-white text-black hover:bg-gray-200">Sign Up</Button>
           </div>
         </div>
@@ -184,7 +182,7 @@ export default function Component() {
             </div>
           </div>
 
-          <div className="container relative">
+          <div className="container relative max-w-full px-4">
             <div className="flex flex-col items-center justify-center space-y-4 py-20 text-center md:py-32">
               <div className="rounded-full bg-[#333] px-4 py-1.5 text-sm">
                 <span className="text-[#0070F3] font-medium">New</span>
@@ -205,7 +203,7 @@ export default function Component() {
                 <Button size="lg" className="h-12 px-8 bg-white text-black hover:bg-gray-200">
                   Start Deploying
                 </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-white hover:bg-[#333]">
+                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-black hover:bg-[#333]">
                   Get a Demo
                 </Button>
               </div>
@@ -230,7 +228,7 @@ export default function Component() {
 
         {/* v1 Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container">
+          <div className="container max-w-full px-4">
             <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
               <div className="space-y-8">
                 <h2 className="text-4xl font-bold">Go ahead, deploy on Friday.</h2>
@@ -315,7 +313,7 @@ export default function Component() {
 
         {/* v2 Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container">
+          <div className="container max-w-full px-4">
             <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
               <div className="space-y-8">
                 <h2 className="text-4xl font-bold">Develop with confidence.</h2>
@@ -375,7 +373,7 @@ export default function Component() {
 
         {/* CTA Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container">
+          <div className="container max-w-full px-4">
             <div className="flex flex-col items-center text-center space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 Start building on Vercel
@@ -397,7 +395,7 @@ export default function Component() {
       </main>
 
       <footer className="border-t border-[#333] py-12">
-        <div className="container">
+        <div className="container max-w-full px-4">
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
             <div className="space-y-4">
               <h4 className="font-semibold">Products</h4>
