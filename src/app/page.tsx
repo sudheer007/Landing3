@@ -12,6 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
+import { telgraf } from "@/app/fonts/fonts"
 import { ArrowRight, CheckCircle2, Layout, GitBranch, Eye, Shield, Box, Activity, BarChart, Code2 } from 'lucide-react'
 
 export default function Component() {
@@ -24,7 +25,7 @@ export default function Component() {
           <div className="flex items-center space-x-8">
             <Link className="flex items-center space-x-2" href="/">
               <Image src="/logo.png" alt="Your Logo" width={40} height={40} className="h-5 w-auto" />
-              <span className="font-bold">Graycommit</span>
+              <span className={`${telgraf.className}`} >Graycommit</span>
             </Link>
             <NavigationMenu>
               <NavigationMenuList>

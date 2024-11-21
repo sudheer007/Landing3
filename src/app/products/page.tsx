@@ -235,7 +235,7 @@ export default function PreviewsPage() {
                 <div className="space-y-4">
                   <h2 className="text-3xl font-bold">Push to preview.</h2>
                   <p className="text-xl text-[#888]">
-                    Setting up staging shouldn't be a separate step. With Vercel's DX Platform, every PR gets its own, fully-functional, evergreen environment.
+                    Setting up staging shouldn&apos;t be a separate step. With Vercel&apos;s DX Platform, every PR gets its own, fully-functional, evergreen environment.
                   </p>
                 </div>
 
@@ -443,8 +443,8 @@ export default function PreviewsPage() {
                   </div>
                 </div>
                 <p className="mt-4 text-[#888]">
-                  "Preview deployments have completely transformed our development workflow. We can now iterate faster and get
-                  immediate feedback from our team."
+                &quot;Preview deployments have completely transformed our development workflow. We can now iterate faster and get
+                  immediate feedback from our team.&quot;
                 </p>
               </div>
               <div className="rounded-lg border border-[#333] bg-[#111] p-8">
@@ -462,8 +462,8 @@ export default function PreviewsPage() {
                   </div>
                 </div>
                 <p className="mt-4 text-[#888]">
-                  "The ability to preview changes before they go live has significantly reduced our QA time and improved our
-                  deployment confidence."
+                &quot;The ability to preview changes before they go live has significantly reduced our QA time and improved our
+                  deployment confidence.&quot;
                 </p>
               </div>
             </div>

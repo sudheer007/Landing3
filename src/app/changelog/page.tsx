@@ -15,7 +15,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 //import { ArrowRight, Search, Rss, ExternalLink, User, Zap, Sparkles, Rocket, Gift, Terminal } from 'lucide-react'
-import { ArrowRight, Search, Rss, Layout, User, GitBranch, Eye, Shield, Box, Activity, BarChart, Code2 } from 'lucide-react'
+import { Search, Rss, Layout, User, GitBranch, Eye, Shield, Box, Activity, BarChart, Code2 } from 'lucide-react'
 
 
 interface ChangelogEntry {
@@ -369,7 +369,7 @@ export default function ChangelogPage() {
           <div className="relative before:absolute before:left-0 before:top-2 before:bottom-0 before:w-0.5 before:bg-[#333]">
             {filteredEntries.map((entry) => (
               <article key={entry.id} className="relative pl-8 pb-24">
-                <div className="absolute left-[-5px] top-2 h-4 w-4 rounded-full bg-blue-500 border-4 border-black"></div>
+                <div className="absolute left-0 top-2 h-4 w-4 rounded-full bg-blue-500 border-4 border-black -translate-x-1/2" style={{ left: '1px' }} ></div>
                 <div className="text-sm text-[#888] mb-4">{highlightText(entry.date, searchQuery)}</div>
                 
                 <h2 className="text-3xl font-bold mb-4">
