@@ -4,163 +4,15 @@ import { useState } from 'react'
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
+
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowRight, CheckCircle2, Layout, GitBranch, Eye, Shield, Box, Activity, BarChart, Code2, Globe, Terminal, Zap } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Layout, GitBranch, Eye, Globe, Terminal, Zap } from 'lucide-react'
 
 export default function PreviewsPage() {
-  const [activeNav, setActiveNav] = useState<string | null>(null)
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
-      {/* Reuse the same header from homepage */}
-      <header className="sticky top-0 z-50 w-full border-b border-[#333] bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60">
-        <div className="container flex h-16 items-center justify-between max-w-full px-4">
-          <div className="flex items-center space-x-8">
-            <Link className="flex items-center space-x-2" href="/">
-              <Image src="/logo.png" alt="Your Logo" width={40} height={40} className="h-5 w-auto" />
-              <span className="font-bold">Graycommit</span>
-            </Link>
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger 
-                    className={`bg-transparent text-[#888] hover:text-white hover:bg-[#333] ${
-                      activeNav === 'products' ? 'bg-[#333] text-white' : ''
-                    }`}
-                    onClick={() => setActiveNav(activeNav === 'products' ? null : 'products')}
-                  >
-                    Products
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-[750px] p-6 bg-black border border-[#333]">
-                      <div className="grid grid-cols-3 gap-6">
-                        <div className="space-y-4">
-                          <h3 className="text-sm font-medium text-[#888]">DX Platform</h3>
-                          <div className="space-y-4">
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Layout className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Previews</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Helping teams ship 6× faster</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Code2 className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">AI</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Powering breakthroughs</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </div>
-                        </div>
-                        <div className="space-y-4">
-                          <h3 className="text-sm font-medium text-[#888]">Managed Infrastructure</h3>
-                          <div className="space-y-4">
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Activity className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Rendering</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Fast, scalable, and reliable</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <BarChart className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Observability</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Trace every step</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Shield className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Security</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Scale without compromising</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </div>
-                        </div>
-                        <div className="space-y-4">
-                          <h3 className="text-sm font-medium text-[#888]">Open Source</h3>
-                          <div className="space-y-4">
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Box className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Next.js</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">The native Next.js platform</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <GitBranch className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Turborep</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Speed with Enterprise scale</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Eye className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">AI SDK</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">The AI Toolkit for TypeScript</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                {/* Similar structure for Solutions, Resources, etc. */}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333]">Contact</Button>
-            <Button variant="outline" className="border-[#333] text-black hover:bg-[#333]">Log In</Button>
-            <Button className="bg-white text-black hover:bg-gray-200">Sign Up</Button>
-          </div>
-        </div>
-      </header>
-
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
@@ -178,7 +30,7 @@ export default function PreviewsPage() {
             </div>
           </div>
 
-          <div className="container relative max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="flex flex-col items-center justify-center space-y-6 py-20 text-center md:py-32">
               <div className="flex items-center space-x-2">
                 <Layout className="h-6 w-6" />
@@ -224,7 +76,7 @@ export default function PreviewsPage() {
 
         {/* Preview Interface Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="grid md:grid-cols-[1px,1fr] gap-12">
               <div className="hidden md:block w-px bg-red-500 relative">
                 <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 size-12 rounded-full border-4 border-black bg-red-500 flex items-center justify-center">
@@ -312,7 +164,7 @@ export default function PreviewsPage() {
 
         {/* Features Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="grid gap-12 md:grid-cols-3">
               <div className="space-y-4">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#111] border border-[#333]">
@@ -347,7 +199,7 @@ export default function PreviewsPage() {
 
         {/* Deployment Preview Section */}
         <section className="py-24 relative border-t border-[#333] bg-[#111]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="grid gap-12 md:grid-cols-2 items-center">
               <div className="space-y-6">
                 <h2 className="text-3xl font-bold md:text-4xl">Preview every pull request</h2>
@@ -426,7 +278,7 @@ export default function PreviewsPage() {
 
         {/* Testimonials Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="rounded-lg border border-[#333] bg-[#111] p-8">
                 <div className="flex items-center gap-4">
@@ -472,7 +324,7 @@ export default function PreviewsPage() {
 
         {/* CTA Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="flex flex-col items-center text-center space-y-6">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 Start previewing your deployments
@@ -484,7 +336,7 @@ export default function PreviewsPage() {
                 <Button size="lg" className="h-12 px-8 bg-white text-black hover:bg-gray-200">
                   Start Deploying
                 </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-white hover:bg-[#333]">
+                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-black hover:bg-[#333]">
                   Contact Sales
                 </Button>
               </div>
@@ -492,11 +344,6 @@ export default function PreviewsPage() {
           </div>
         </section>
       </main>
-
-      {/* Reuse the same footer from homepage */}
-      <footer className="border-t border-[#333] py-12">
-        {/* Footer content */}
-      </footer>
     </div>
   )
 }

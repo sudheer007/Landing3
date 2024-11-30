@@ -1,164 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+
 import Link from "next/link"
-import Image from "next/image" // Uncomment if you plan to use Image
+
 import { Button } from "@/components/ui/button"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-import { telgraf } from "@/app/fonts/fonts"
-import { ArrowRight, CheckCircle2, Layout, GitBranch, Eye, Shield, Box, Activity, BarChart, Code2 } from 'lucide-react'
+
+import { ArrowRight, CheckCircle2,  GitBranch, Eye } from 'lucide-react'
 
 export default function Component() {
-  const [activeNav, setActiveNav] = useState<string | null>(null)
+  
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
-      <header className="sticky top-0 z-50 w-full border-b border-[#333] bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60">
-        <div className="container flex h-16 items-center justify-between max-w-full px-4">
-          <div className="flex items-center space-x-8">
-            <Link className="flex items-center space-x-2" href="/">
-              <Image src="/logo.png" alt="Your Logo" width={40} height={40} className="h-5 w-auto" />
-              <span className={`${telgraf.className}`} >Graycommit</span>
-            </Link>
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger 
-                    className={`bg-transparent text-[#888] hover:text-white hover:bg-[#333] ${
-                      activeNav === 'products' ? 'bg-[#333] text-white' : ''
-                    }`}
-                    onClick={() => setActiveNav(activeNav === 'products' ? null : 'products')}
-                  >
-                    Products
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-[750px] p-6 bg-black border border-[#333]">
-                      <div className="grid grid-cols-3 gap-6">
-                        <div className="space-y-4">
-                          <h3 className="text-sm font-medium text-[#888]">DX Platform</h3>
-                          <div className="space-y-4">
-                            <NavigationMenuLink asChild>
-                              <Link href="/products" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Layout className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Previews</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Helping teams ship 6× faster</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Code2 className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">AI</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Powering breakthroughs</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </div>
-                        </div>
-                        <div className="space-y-4">
-                          <h3 className="text-sm font-medium text-[#888]">Managed Infrastructure</h3>
-                          <div className="space-y-4">
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Activity className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Rendering</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Fast, scalable, and reliable</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <BarChart className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Observability</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Trace every step</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Shield className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Security</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Scale without compromising</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </div>
-                        </div>
-                        <div className="space-y-4">
-                          <h3 className="text-sm font-medium text-[#888]">Open Source</h3>
-                          <div className="space-y-4">
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Box className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Next.js</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">The native Next.js platform</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <GitBranch className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Turborep</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Speed with Enterprise scale</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Eye className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">AI SDK</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">The AI Toolkit for TypeScript</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                {/* Similar structure for Solutions, Resources, etc. */}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333]">Contact</Button>
-            <Button variant="outline" className="border-[#333] text-black hover:bg-[#333]">Log In</Button>
-            <Button className="bg-white text-black hover:bg-gray-200">Sign Up</Button>
-          </div>
-        </div>
-      </header>
+      
 
       <main className="flex-grow">
         <section className="relative overflow-hidden">
@@ -227,95 +81,267 @@ export default function Component() {
           </div>
         </section>
 
-        {/* v1 Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-full px-4">
-            <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
+          {/* Changed from max-w-full to max-w-7xl and centered with mx-auto */}
+          <div className="container mx-auto max-w-7xl px-6 sm:px-8">
+            {/* Feature 1 - Image on left */}
+            <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center mb-32">
+              {/* Left: Image/Demo */}
+              <div className="relative">
+                <div className="aspect-square rounded-xl overflow-hidden bg-[#111] border border-[#333] relative">
+                  {/* ... existing image container code ... */}
+                </div>
+              </div>
+              
+              {/* Right: Content */}
               <div className="space-y-8">
-                <h2 className="text-4xl font-bold">Go ahead, deploy on Friday.</h2>
-                <p className="text-2xl text-[#888]">Instantly rollback to a working deployment.</p>
+                <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-4 py-1.5">
+                  <span className="text-sm font-medium text-[#888]">New Feature</span>
+                </div>
+                <h2 className="text-4xl font-bold tracking-tight">
+                  Build with unmatched speed
+                </h2>
+                <p className="text-xl text-[#888] leading-relaxed">
+                  Experience lightning-fast development with our cutting-edge infrastructure. 
+                  Deploy instantly and scale seamlessly as your needs grow.
+                </p>
                 <div className="space-y-4">
-                  <div className="rounded-lg bg-[#111] p-4 border border-[#333]">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <GitBranch className="h-5 w-5 text-[#888]" />
-                        <div>
-                          <div className="text-sm">vercel-site/jvjb4ynna</div>
-                          <div className="text-xs text-[#888]">ba5f55f Update bento box design</div>
-                        </div>
+                  {/* Feature points */}
+                  {[
+                    'Instant deployments with zero config',
+                    'Auto-scaling infrastructure',
+                    'Global edge network',
+                  ].map((point, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="h-6 w-6 rounded-full bg-[#111] border border-[#333] flex items-center justify-center">
+                        <CheckCircle2 className="h-4 w-4 text-[#0070F3]" />
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="text-sm text-[#888]">1d ago</div>
-                        <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">90</div>
-                      </div>
+                      <span className="text-[#888]">{point}</span>
                     </div>
-                  </div>
-                  <div className="rounded-lg bg-[#111] p-4 border border-[#333]">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <GitBranch className="h-5 w-5 text-[#888]" />
-                        <div>
-                          <div className="text-sm">vercel-site/gjgj178pv</div>
-                          <div className="text-xs text-[#888]">bx012mm Fix ESLint error on query</div>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="text-sm text-[#888]">10m ago</div>
-                        <div className="h-8 w-8 rounded-full bg-red-500 flex items-center justify-center text-black font-medium">55</div>
-                      </div>
+                  ))}
+                </div>
+                <div className="pt-4">
+                  <Button variant="outline" className="bg-white text-black hover:bg-gray-200">
+                    Learn more
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature 2 - Image on right */}
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              {/* Left: Content */}
+              <div className="space-y-8">
+                <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-4 py-1.5">
+                  <span className="text-sm font-medium text-[#888]">Enterprise Ready</span>
+                </div>
+                <h2 className="text-4xl font-bold tracking-tight">
+                  Scale with confidence
+                </h2>
+                <p className="text-xl text-[#888] leading-relaxed">
+                  Built for enterprise-grade performance and reliability. 
+                  Handle millions of requests with automated failover and zero downtime.
+                </p>
+                <div className="space-y-6">
+                  {/* Stats */}
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="rounded-lg bg-[#111] border border-[#333] p-4">
+                      <div className="text-3xl font-bold">99.99%</div>
+                      <div className="text-sm text-[#888]">Uptime SLA</div>
+                    </div>
+                    <div className="rounded-lg bg-[#111] border border-[#333] p-4">
+                      <div className="text-3xl font-bold">≤ 50ms</div>
+                      <div className="text-sm text-[#888]">Global Latency</div>
                     </div>
                   </div>
                 </div>
+                <div className="pt-4">
+                  <Button variant="outline" className="bg-white text-black hover:bg-gray-200">
+                    View documentation
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
               </div>
-              <div className="space-y-8">
-                <h2 className="text-4xl font-bold">Move fast, dont break things.</h2>
-                <p className="text-2xl text-[#888]">Keep quality high while maintaining velocity with Enterprise Monorepos.</p>
-                <div className="rounded-lg bg-[#111] p-6 space-y-6 border border-[#333]">
-                  <div className="flex items-center justify-between">
-                    <div className="text-lg">Conformance</div>
-                    <div className="flex items-center space-x-2">
-                      <div className="text-[#888]">Excellent</div>
-                      <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">9.5</div>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <div className="text-sm text-[#888]">Total Issues</div>
-                      <div className="text-2xl font-bold">34</div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="text-sm text-[#888]">Major Issues</div>
-                      <div className="text-2xl font-bold">12</div>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm">@vercel/design</div>
-                      <div className="flex -space-x-2">
-                        {[1, 2, 3].map((i) => (
-                          <div key={i} className="h-8 w-8 rounded-full bg-[#333] border-2 border-black" />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm">@vercel/eng</div>
-                      <div className="flex -space-x-2">
-                        {[1, 2, 3, 4].map((i) => (
-                          <div key={i} className="h-8 w-8 rounded-full bg-[#333] border-2 border-black" />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+              
+              {/* Right: Image/Demo */}
+              <div className="relative">
+                <div className="aspect-square rounded-xl overflow-hidden bg-[#111] border border-[#333] relative">
+                  {/* ... existing image container code ... */}
                 </div>
               </div>
             </div>
           </div>
         </section>
 
+
+
+        <section className="relative py-24 border-t border-[#333]">
+          <div className="absolute inset-0">
+            {/* Vertical lines */}
+            {[...Array(40)].map((_, i) => (
+              <div
+                key={`v-${i}`}
+                className="absolute top-0 bottom-0 w-[1px]"
+                style={{ 
+                  left: `${(i + 1) * 2.5}%`,
+                  background: 'linear-gradient(to bottom, transparent, rgba(51, 51, 51, 0.5) 80%, transparent)',
+                  opacity: '1'
+                }}
+              />
+            ))}
+            {/* Horizontal lines */}
+            {[...Array(40)].map((_, i) => (
+              <div
+                key={`h-${i}`}
+                className="absolute left-0 right-0 h-px"
+                style={{ 
+                  top: `${(i + 1) * 2.5}%`,
+                  background: 'linear-gradient(to right, transparent, rgba(51, 51, 51, 0.5) 50%, transparent)',
+                  opacity: '0.5'
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="container relative max-w-full px-4">
+            <h2 className="text-3xl font-bold text-center mb-16">Trusted by</h2>
+            <div className="grid grid-cols-3 gap-12 md:gap-24">
+              {/* Row 1 */}
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">groq</div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">Chroma</div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">Pika</div>
+              </div>
+              
+              {/* Row 2 */}
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">Suno</div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">LangChain</div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">Modal</div>
+              </div>
+              
+              {/* Row 3 */}
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">cohere</div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">Pinecone</div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">replicate</div>
+              </div>
+              
+              {/* Row 4 */}
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">runway</div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">stability.ai</div>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="text-2xl font-bold">OpenAI</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* v1 Section */}
+        <section className="py-24 relative border-t border-[#333]">
+            <div className="container mx-auto max-w-7xl px-4"> {/* Updated container */}
+              <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
+                <div className="space-y-8">
+                  <h2 className="text-4xl font-bold">Go ahead, deploy on Friday.</h2>
+                  <p className="text-2xl text-[#888]">Instantly rollback to a working deployment.</p>
+                  <div className="space-y-4">
+                    <div className="rounded-lg bg-[#111] p-4 border border-[#333]">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4">
+                          <GitBranch className="h-5 w-5 text-[#888]" />
+                          <div>
+                            <div className="text-sm">vercel-site/jvjb4ynna</div>
+                            <div className="text-xs text-[#888]">ba5f55f Update bento box design</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <div className="text-sm text-[#888]">1d ago</div>
+                          <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">90</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="rounded-lg bg-[#111] p-4 border border-[#333]">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4">
+                          <GitBranch className="h-5 w-5 text-[#888]" />
+                          <div>
+                            <div className="text-sm">vercel-site/gjgj178pv</div>
+                            <div className="text-xs text-[#888]">bx012mm Fix ESLint error on query</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <div className="text-sm text-[#888]">10m ago</div>
+                          <div className="h-8 w-8 rounded-full bg-red-500 flex items-center justify-center text-black font-medium">55</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-8">
+                  <h2 className="text-4xl font-bold">Move fast, dont break things.</h2>
+                  <p className="text-2xl text-[#888]">Keep quality high while maintaining velocity with Enterprise Monorepos.</p>
+                  <div className="rounded-lg bg-[#111] p-6 space-y-6 border border-[#333]">
+                    <div className="flex items-center justify-between">
+                      <div className="text-lg">Conformance</div>
+                      <div className="flex items-center space-x-2">
+                        <div className="text-[#888]">Excellent</div>
+                        <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">9.5</div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <div className="text-sm text-[#888]">Total Issues</div>
+                        <div className="text-2xl font-bold">34</div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="text-sm text-[#888]">Major Issues</div>
+                        <div className="text-2xl font-bold">12</div>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div className="text-sm">@vercel/design</div>
+                        <div className="flex -space-x-2">
+                          {[1, 2, 3].map((i) => (
+                            <div key={i} className="h-8 w-8 rounded-full bg-[#333] border-2 border-black" />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="text-sm">@vercel/eng</div>
+                        <div className="flex -space-x-2">
+                          {[1, 2, 3, 4].map((i) => (
+                            <div key={i} className="h-8 w-8 rounded-full bg-[#333] border-2 border-black" />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section> 
+
         {/* v2 Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-full px-4">
-            <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
+            <div className="container mx-auto max-w-7xl px-4"> {/* Updated container */}
+              <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
               <div className="space-y-8">
                 <h2 className="text-4xl font-bold">Develop with confidence.</h2>
                 <p className="text-2xl text-[#888]">Preview changes instantly with zero configuration.</p>
@@ -395,64 +421,7 @@ export default function Component() {
         </section>
       </main>
 
-      <footer className="border-t border-[#333] py-12">
-        <div className="container max-w-full px-4">
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-            <div className="space-y-4">
-              <h4 className="font-semibold">Products</h4>
-              <ul className="space-y-2 text-sm text-[#888]">
-                <li><Link href="#" className="hover:text-white">Infrastructure</Link></li>
-                <li><Link href="#" className="hover:text-white">Preview Deployments</Link></li>
-                <li><Link href="#" className="hover:text-white">Analytics</Link></li>
-                <li><Link href="#" className="hover:text-white">Next.js</Link></li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-semibold">Resources</h4>
-              <ul className="space-y-2 text-sm text-[#888]">
-                <li><Link href="#" className="hover:text-white">Documentation</Link></li>
-                <li><Link href="#" className="hover:text-white">Guides</Link></li>
-                <li><Link href="#" className="hover:text-white">Support</Link></li>
-                <li><Link href="#" className="hover:text-white">API Reference</Link></li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-semibold">Company</h4>
-              <ul className="space-y-2 text-sm text-[#888]">
-                <li><Link href="#" className="hover:text-white">About</Link></li>
-                <li><Link href="#" className="hover:text-white">Blog</Link></li>
-                <li><Link href="#" className="hover:text-white">Careers</Link></li>
-                <li><Link href="#" className="hover:text-white">Contact Sales</Link></li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h4 className="font-semibold">Legal</h4>
-              <ul className="space-y-2 text-sm text-[#888]">
-                <li><Link href="#" className="hover:text-white">Privacy Policy</Link></li>
-                <li><Link href="#" className="hover:text-white">Terms of Service</Link></li>
-                <li><Link href="#" className="hover:text-white">Trademark Policy</Link></li>
-                <li><Link href="#" className="hover:text-white">Inactivity Policy</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#333] pt-8 sm:flex-row">
-            <div className="flex items-center space-x-2">
-              <svg className="h-5 w-5" viewBox="0 0 76 65" fill="currentColor">
-                <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
-              </svg>
-              <span className="text-sm">© 2024 Vercel Inc.</span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link href="#" className="text-sm text-[#888] hover:text-white">
-                Status
-              </Link>
-              <Link href="/changelog" className="text-sm text-[#888] hover:text-white">
-                Changelog
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   )
 }

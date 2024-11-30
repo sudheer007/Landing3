@@ -2,20 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Link from "next/link"
-import Image from "next/image"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-//import { ArrowRight, Search, Rss, ExternalLink, User, Zap, Sparkles, Rocket, Gift, Terminal } from 'lucide-react'
-import { Search, Rss, Layout, User, GitBranch, Eye, Shield, Box, Activity, BarChart, Code2 } from 'lucide-react'
+
+import { Search, Rss, User } from 'lucide-react'
 
 
 interface ChangelogEntry {
@@ -176,145 +168,6 @@ export default function ChangelogPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
-      <header className="sticky top-0 z-50 w-full border-b border-[#333] bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60">
-        <div className="container flex h-16 items-center justify-between max-w-full px-4">
-          <div className="flex items-center space-x-8">
-            <Link className="flex items-center space-x-2" href="/">
-              <Image src="/logo.png" alt="Your Logo" width={40} height={40} className="h-5 w-auto" />
-              <span className="font-bold">Graycommit</span>
-            </Link>
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger 
-                    className={`bg-transparent text-[#888] hover:text-white hover:bg-[#333] ${
-                      activeNav === 'products' ? 'bg-[#333] text-white' : ''
-                    }`}
-                    onClick={() => setActiveNav(activeNav === 'products' ? null : 'products')}
-                  >
-                    Products
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-[750px] p-6 bg-black border border-[#333]">
-                      <div className="grid grid-cols-3 gap-6">
-                        <div className="space-y-4">
-                          <h3 className="text-sm font-medium text-[#888]">DX Platform</h3>
-                          <div className="space-y-4">
-                            <NavigationMenuLink asChild>
-                              <Link href="/products" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Layout className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Previews</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Helping teams ship 6× faster</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Code2 className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">AI</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Powering breakthroughs</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </div>
-                        </div>
-                        <div className="space-y-4">
-                          <h3 className="text-sm font-medium text-[#888]">Managed Infrastructure</h3>
-                          <div className="space-y-4">
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Activity className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Rendering</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Fast, scalable, and reliable</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <BarChart className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Observability</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Trace every step</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Shield className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Security</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Scale without compromising</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </div>
-                        </div>
-                        <div className="space-y-4">
-                          <h3 className="text-sm font-medium text-[#888]">Open Source</h3>
-                          <div className="space-y-4">
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Box className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Next.js</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">The native Next.js platform</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <GitBranch className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">Turborep</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">Speed with Enterprise scale</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                            <NavigationMenuLink asChild>
-                              <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                                <div className="mt-1">
-                                  <Eye className="h-5 w-5" />
-                                </div>
-                                <div>
-                                  <div className="font-medium">AI SDK</div>
-                                  <div className="text-sm text-[#888] group-hover:text-[#ccc]">The AI Toolkit for TypeScript</div>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                {/* Similar structure for Solutions, Resources, etc. */}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333]">Contact</Button>
-            <Button variant="outline" className="border-[#333] text-black hover:bg-[#333]">Log In</Button>
-            <Button className="bg-white text-black hover:bg-gray-200">Sign Up</Button>
-          </div>
-        </div>
-      </header>
 
       <div className="flex flex-col items-center justify-center py-6 bg-[#111] border-b border-[#333]">
         <Link 
@@ -330,7 +183,7 @@ export default function ChangelogPage() {
       </div>
 
       <nav className="border-b border-[#333] bg-black">
-        <div className="container flex items-center justify-between py-4">
+        <div className="container max-w-7xl mx-auto flex items-center justify-between py-4 px-8">
           <div className="flex items-center space-x-8">
             {categories.map((category) => (
               <button
@@ -364,11 +217,11 @@ export default function ChangelogPage() {
         </div>
       </nav>
 
-      <main className="flex-grow container py-12">
+      <main className="flex-grow container max-w-7xl mx-auto py-12 px-8">
         <div className="max-w-4xl mx-auto">
           <div className="relative before:absolute before:left-0 before:top-2 before:bottom-0 before:w-0.5 before:bg-[#333]">
             {filteredEntries.map((entry) => (
-              <article key={entry.id} className="relative pl-8 pb-24">
+              <article key={entry.id} className="relative pl-12 pb-24">
                 <div className="absolute left-0 top-2 h-4 w-4 rounded-full bg-blue-500 border-4 border-black -translate-x-1/2" style={{ left: '1px' }} ></div>
                 <div className="text-sm text-[#888] mb-4">{highlightText(entry.date, searchQuery)}</div>
                 
@@ -397,22 +250,7 @@ export default function ChangelogPage() {
         </div>
       </main>
 
-      <footer className="border-t border-[#333] py-12">
-        <div className="container">
-          <div className="flex items-center justify-between text-sm text-[#888]">
-            <div className="flex items-center space-x-2">
-              <svg className="h-5 w-5" viewBox="0 0 76 65" fill="currentColor">
-                <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
-              </svg>
-              <span>© 2024 Vercel Inc.</span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link href="#" className="hover:text-white">Status</Link>
-              <Link href="#" className="hover:text-white">Changelog</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+
     </div>
   )
 }
