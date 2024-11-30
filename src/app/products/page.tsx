@@ -10,13 +10,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ArrowRight, CheckCircle2, Layout, GitBranch, Eye, Globe, Terminal, Zap } from 'lucide-react'
 
 export default function PreviewsPage() {
-  const [_activeNav, _setActiveNav] = useState<string | null>(null)
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
-      {/* Reuse the same header from homepage */}
-      
-
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
@@ -34,7 +30,7 @@ export default function PreviewsPage() {
             </div>
           </div>
 
-          <div className="container relative max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="flex flex-col items-center justify-center space-y-6 py-20 text-center md:py-32">
               <div className="flex items-center space-x-2">
                 <Layout className="h-6 w-6" />
@@ -80,7 +76,7 @@ export default function PreviewsPage() {
 
         {/* Preview Interface Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="grid md:grid-cols-[1px,1fr] gap-12">
               <div className="hidden md:block w-px bg-red-500 relative">
                 <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 size-12 rounded-full border-4 border-black bg-red-500 flex items-center justify-center">
@@ -168,7 +164,7 @@ export default function PreviewsPage() {
 
         {/* Features Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="grid gap-12 md:grid-cols-3">
               <div className="space-y-4">
                 <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#111] border border-[#333]">
@@ -203,7 +199,7 @@ export default function PreviewsPage() {
 
         {/* Deployment Preview Section */}
         <section className="py-24 relative border-t border-[#333] bg-[#111]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="grid gap-12 md:grid-cols-2 items-center">
               <div className="space-y-6">
                 <h2 className="text-3xl font-bold md:text-4xl">Preview every pull request</h2>
@@ -282,7 +278,7 @@ export default function PreviewsPage() {
 
         {/* Testimonials Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="rounded-lg border border-[#333] bg-[#111] p-8">
                 <div className="flex items-center gap-4">
@@ -328,7 +324,7 @@ export default function PreviewsPage() {
 
         {/* CTA Section */}
         <section className="py-24 relative border-t border-[#333]">
-          <div className="container max-w-[1200px] px-4">
+          <div className="max-w-7xl mx-auto px-8">
             <div className="flex flex-col items-center text-center space-y-6">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                 Start previewing your deployments
@@ -340,7 +336,7 @@ export default function PreviewsPage() {
                 <Button size="lg" className="h-12 px-8 bg-white text-black hover:bg-gray-200">
                   Start Deploying
                 </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-white hover:bg-[#333]">
+                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-black hover:bg-[#333]">
                   Contact Sales
                 </Button>
               </div>
@@ -348,8 +344,6 @@ export default function PreviewsPage() {
           </div>
         </section>
       </main>
-
-
     </div>
   )
 }

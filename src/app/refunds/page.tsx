@@ -24,7 +24,7 @@ export default function RefundPolicy() {
               {/* Payment Terms */}
               <div className="space-y-4">
                 <p className="text-[#888]">
-                  You agree that the Company may charge to Your credit card or other payment mechanism selected by You and approved by the Company ("Your Account") all amounts due and owing for the Services, including taxes and service fees, set up fees, subscription fees, or any other fee or charge associated with Your Account.
+                  You agree that the Company may charge to Your credit card or other payment mechanism selected by You and approved by the Company (&ldquo;Your Account&rdquo;) all amounts due and owing for the Services, including taxes and service fees, set up fees, subscription fees, or any other fee or charge associated with Your Account.
                 </p>
                 <p className="text-[#888]">
                   Unless stated otherwise, all prices and fees shown by the Company are exclusive of taxes and regulatory fees, service, service fees, set up fees, subscription fees, or any other fee or charge associated with Your Account. Where applicable, taxes and regulatory fees will be charged on the invoices issued by the Company in accordance with local laws and regulations.
