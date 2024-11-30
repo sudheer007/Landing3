@@ -168,7 +168,7 @@ export function Header() {
             </Button>
           </Link>
           <Link href="https://apps.graycommit.com/signup">
-            <Button className="text-black bg-white hover:bg-gray-200">
+            <Button className="text-black bg-white hover:bg-gray-200 hidden sm:inline-flex">
               Sign Up
             </Button>
           </Link>
