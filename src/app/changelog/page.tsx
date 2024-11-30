@@ -397,22 +397,7 @@ export default function ChangelogPage() {
         </div>
       </main>
 
-      <footer className="border-t border-[#333] py-12">
-        <div className="container">
-          <div className="flex items-center justify-between text-sm text-[#888]">
-            <div className="flex items-center space-x-2">
-              <svg className="h-5 w-5" viewBox="0 0 76 65" fill="currentColor">
-                <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
-              </svg>
-              <span>© 2024 Vercel Inc.</span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link href="#" className="hover:text-white">Status</Link>
-              <Link href="#" className="hover:text-white">Changelog</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+
     </div>
   )
 }
