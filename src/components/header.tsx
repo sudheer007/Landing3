@@ -46,109 +46,63 @@ export function Header() {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="w-[750px] p-6 bg-black border border-[#333]">
-                    <div className="grid grid-cols-3 gap-6">
+                    <div className="grid grid-cols-2 gap-6">
+                      {/* Sales Intelligence Platform */}
                       <div className="space-y-4">
-                        <h3 className="text-sm font-medium text-[#888]">DX Platform</h3>
+                        <h3 className="text-sm font-medium text-[#888]">Revenue Intelligence</h3>
                         <div className="space-y-4">
                           <NavigationMenuLink asChild>
                             <Link href="/products" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
                               <div className="mt-1">
-                                <Layout className="h-5 w-5" />
+                                <Activity className="h-5 w-5 text-[#0f81fb]" />
                               </div>
                               <div>
-                                <div className="font-medium">Previews</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Helping teams ship 6× faster</div>
+                                <div className="font-medium">Real-time AI Coach</div>
+                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">
+                                  Live deal guidance, competitive intel, and objection handling during calls
+                                </div>
                               </div>
                             </Link>
                           </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <Code2 className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">AI</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Powering breakthroughs</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
+                          
                         </div>
                       </div>
+
+                      {/* Sales Enablement Suite */}
                       <div className="space-y-4">
-                        <h3 className="text-sm font-medium text-[#888]">Managed Infrastructure</h3>
+                        <h3 className="text-sm font-medium text-[#888]">Sales Excellence</h3>
                         <div className="space-y-4">
                           <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                            <Link href="/products/sales-enablement" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
                               <div className="mt-1">
-                                <Activity className="h-5 w-5" />
+                                <Layout className="h-5 w-5 text-[#0f81fb]" />
                               </div>
                               <div>
-                                <div className="font-medium">Rendering</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Fast, scalable, and reliable</div>
+                                <div className="font-medium">Playbook Automation</div>
+                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">
+                                  AI-powered playbooks that adapt to each deal context
+                                </div>
                               </div>
                             </Link>
                           </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <BarChart className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">Observability</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Trace every step</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <Shield className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">Security</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Scale without compromising</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
+                          
                         </div>
                       </div>
-                      <div className="space-y-4">
-                        <h3 className="text-sm font-medium text-[#888]">Open Source</h3>
-                        <div className="space-y-4">
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <Box className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">Next.js</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">The native Next.js platform</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <GitBranch className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">Turborep</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Speed with Enterprise scale</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <Eye className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">AI SDK</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">The AI Toolkit for TypeScript</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
+                    </div>
+
+                    {/* Bottom Banner */}
+                    <div className="mt-6 p-4 bg-[#111] rounded-lg border border-[#333]">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <Shield className="h-5 w-5 text-[#0f81fb]" />
+                          <div>
+                            <div className="font-medium text-white">Enterprise Ready</div>
+                            <div className="text-sm text-[#888]">SOC 2 Type II, GDPR, and HIPAA compliant</div>
+                          </div>
                         </div>
+                        <Button variant="ghost" className="text-[#0f81fb] hover:text-white hover:bg-[#333]">
+                          Learn More →
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -159,6 +113,11 @@ export function Header() {
           </NavigationMenu>
         </div>
         <div className="flex items-center space-x-2 sm:space-x-4">
+          <Link href="/pricing">
+            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
+              Pricing
+            </Button>
+          </Link>
           <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
             Contact
           </Button>
