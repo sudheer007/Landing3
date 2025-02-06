@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { Menu, X } from 'lucide-react'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,6 +17,7 @@ import { telgraf } from "@/app/fonts/fonts"
 import { Layout, GitBranch, Eye, Shield, Box, Activity, BarChart, Code2 } from 'lucide-react'
 
 export function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeNav, setActiveNav] = useState<string | null>(null)
 
   return (
@@ -37,7 +39,7 @@ export function Header() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger 
-                  className={`bg-transparent text-[#888] hover:text-white hover:bg-[#333] ${
+                  className={`bg-transparent text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex ${
                     activeNav === 'products' ? 'bg-[#333] text-white' : ''
                   }`}
                   onClick={() => setActiveNav(activeNav === 'products' ? null : 'products')}
@@ -45,109 +47,115 @@ export function Header() {
                   Products
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="w-[750px] p-6 bg-black border border-[#333]">
-                    <div className="grid grid-cols-3 gap-6">
+                  {/* Desktop View (md and above) */}
+                  <div className="hidden md:block w-[750px] p-6 bg-black border border-[#333]">
+                    <div className="grid grid-cols-2 gap-6">
+                      {/* Revenue Intelligence */}
                       <div className="space-y-4">
-                        <h3 className="text-sm font-medium text-[#888]">DX Platform</h3>
+                        <h3 className="text-sm font-medium text-[#888]">Revenue Intelligence</h3>
                         <div className="space-y-4">
                           <NavigationMenuLink asChild>
                             <Link href="/products" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
                               <div className="mt-1">
-                                <Layout className="h-5 w-5" />
+                                <Activity className="h-5 w-5 text-[#0f81fb]" />
                               </div>
                               <div>
-                                <div className="font-medium">Previews</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Helping teams ship 6× faster</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <Code2 className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">AI</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Powering breakthroughs</div>
+                                <div className="font-medium">Real-time AI Coach</div>
+                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">
+                                  Live deal guidance, competitive intel, and objection handling during calls
+                                </div>
                               </div>
                             </Link>
                           </NavigationMenuLink>
                         </div>
                       </div>
+
+                      {/* Sales Excellence */}
                       <div className="space-y-4">
-                        <h3 className="text-sm font-medium text-[#888]">Managed Infrastructure</h3>
+                        <h3 className="text-sm font-medium text-[#888]">Sales Excellence</h3>
                         <div className="space-y-4">
                           <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                            <Link href="/products/sales-enablement" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
                               <div className="mt-1">
-                                <Activity className="h-5 w-5" />
+                                <Layout className="h-5 w-5 text-[#0f81fb]" />
                               </div>
                               <div>
-                                <div className="font-medium">Rendering</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Fast, scalable, and reliable</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <BarChart className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">Observability</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Trace every step</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <Shield className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">Security</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Scale without compromising</div>
+                                <div className="font-medium">Playbook Automation</div>
+                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">
+                                  AI-powered playbooks that adapt to each deal context
+                                </div>
                               </div>
                             </Link>
                           </NavigationMenuLink>
                         </div>
                       </div>
-                      <div className="space-y-4">
-                        <h3 className="text-sm font-medium text-[#888]">Open Source</h3>
-                        <div className="space-y-4">
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <Box className="h-5 w-5" />
+                    </div>
+
+                    {/* Bottom Banner */}
+                    <div className="mt-6 p-4 bg-[#111] rounded-lg border border-[#333]">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <Shield className="h-5 w-5 text-[#0f81fb]" />
+                          <div>
+                            <div className="font-medium text-white">Enterprise Ready</div>
+                            <div className="text-sm text-[#888]">SOC 2 Type II, GDPR, and HIPAA compliant</div>
+                          </div>
+                        </div>
+                        <Button variant="ghost" className="text-[#0f81fb] hover:text-white hover:bg-[#333]">
+                          Learn More →
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Mobile View (smaller than md) */}
+                  <div className="md:hidden w-screen bg-black border border-[#333] p-4">
+                    <div className="space-y-6">
+                      {/* Revenue Intelligence */}
+                      <div className="space-y-3">
+                        <h3 className="text-sm font-medium text-[#888]">Revenue Intelligence</h3>
+                        <NavigationMenuLink asChild>
+                          <Link href="/products" className="group flex items-start gap-3 rounded-lg p-3 hover:bg-[#111] text-white">
+                            <Activity className="h-5 w-5 text-[#0f81fb] shrink-0 mt-0.5" />
+                            <div>
+                              <div className="font-medium">Real-time AI Coach</div>
+                              <div className="text-sm text-[#888] group-hover:text-[#ccc] line-clamp-2">
+                                Live deal guidance and coaching
                               </div>
-                              <div>
-                                <div className="font-medium">Next.js</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">The native Next.js platform</div>
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+                      </div>
+
+                      {/* Sales Excellence */}
+                      <div className="space-y-3">
+                        <h3 className="text-sm font-medium text-[#888]">Sales Excellence</h3>
+                        <NavigationMenuLink asChild>
+                          <Link href="/products/sales-enablement" className="group flex items-start gap-3 rounded-lg p-3 hover:bg-[#111] text-white">
+                            <Layout className="h-5 w-5 text-[#0f81fb] shrink-0 mt-0.5" />
+                            <div>
+                              <div className="font-medium">Playbook Automation</div>
+                              <div className="text-sm text-[#888] group-hover:text-[#ccc] line-clamp-2">
+                                AI-powered playbooks
                               </div>
-                            </Link>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <GitBranch className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">Turborep</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">Speed with Enterprise scale</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
-                          <NavigationMenuLink asChild>
-                            <Link href="#" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
-                              <div className="mt-1">
-                                <Eye className="h-5 w-5" />
-                              </div>
-                              <div>
-                                <div className="font-medium">AI SDK</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">The AI Toolkit for TypeScript</div>
-                              </div>
-                            </Link>
-                          </NavigationMenuLink>
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+                      </div>
+
+                      {/* Mobile Bottom Banner */}
+                      <div className="mt-4 p-3 bg-[#111] rounded-lg border border-[#333]">
+                        <div className="flex flex-col gap-3">
+                          <div className="flex items-center gap-3">
+                            <Shield className="h-5 w-5 text-[#0f81fb] shrink-0" />
+                            <div>
+                              <div className="font-medium text-white">Enterprise Ready</div>
+                              <div className="text-sm text-[#888]">SOC 2 Type II Certified</div>
+                            </div>
+                          </div>
+                          <Button variant="ghost" className="w-full text-[#0f81fb] hover:text-white hover:bg-[#333]">
+                            Learn More →
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -159,6 +167,11 @@ export function Header() {
           </NavigationMenu>
         </div>
         <div className="flex items-center space-x-2 sm:space-x-4">
+          <Link href="/pricing">
+            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
+              Pricing
+            </Button>
+          </Link>
           <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
             Contact
           </Button>
@@ -168,12 +181,88 @@ export function Header() {
             </Button>
           </Link>
           <Link href="https://apps.graycommit.com/signup">
-            <Button className="text-black bg-white hover:bg-gray-200">
+            <Button className="text-black bg-white hover:bg-gray-200 hidden sm:inline-flex">
               Sign Up
             </Button>
           </Link>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 text-[#888] hover:text-white"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
+        </button>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden border-t border-[#333] bg-black">
+          <div className="container py-4 px-4 space-y-4">
+            <div className="space-y-4">
+              <div className="font-medium text-[#888]">Products</div>
+              <div className="pl-4 space-y-3">
+                <Link 
+                  href="/products"
+                  className="flex items-center gap-3 p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Activity className="h-5 w-5 text-[#0f81fb]" />
+                  <span>Real-time AI Coach</span>
+                </Link>
+                <Link 
+                  href="/products/sales-enablement"
+                  className="flex items-center gap-3 p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Layout className="h-5 w-5 text-[#0f81fb]" />
+                  <span>Playbook Automation</span>
+                </Link>
+              </div>
+            </div>
+            
+            <Link 
+              href="/pricing"
+              className="block p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Pricing
+            </Link>
+            
+            <Link 
+              href="/contact"
+              className="block p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
+
+            <div className="pt-4 space-y-4">
+              <Link 
+                href="https://apps.graycommit.com/"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Button variant="outline" className="w-full text-black bg-white hover:bg-gray-200">
+                  Log In
+                </Button>
+              </Link>
+              <Link 
+                href="https://apps.graycommit.com/signup"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Button className="w-full text-black bg-white hover:bg-gray-200 mt-2">
+                  Sign Up
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   )
 }
