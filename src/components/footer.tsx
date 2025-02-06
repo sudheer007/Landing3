@@ -10,26 +10,25 @@ export function Footer() {
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Products</h4>
               <ul className="space-y-2 text-sm text-[#888]">
-                <li><Link href="#" className="hover:text-white">Infrastructure</Link></li>
-                <li><Link href="#" className="hover:text-white">Preview Deployments</Link></li>
-                <li><Link href="#" className="hover:text-white">Analytics</Link></li>
-                <li><Link href="#" className="hover:text-white">Next.js</Link></li>
+                <li><Link href="#" className="hover:text-white">Sales Agentic system</Link></li>
+                <li><Link href="#" className="hover:text-white">Sales AI agents </Link></li>
+                <li><Link href="#" className="hover:text-white">Voice Analytics</Link></li>
               </ul>
             </div>
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Resources</h4>
               <ul className="space-y-2 text-sm text-[#888]">
-                <li><Link href="#" className="hover:text-white">Documentation</Link></li>
-                <li><Link href="#" className="hover:text-white">Guides</Link></li>
-                <li><Link href="#" className="hover:text-white">Support</Link></li>
-                <li><Link href="#" className="hover:text-white">API Reference</Link></li>
+                <li><Link href="https://docs.graycommit.com" className="hover:text-white">Documentation</Link></li>
+                <li><Link href="https://docs.graycommit.com/SalesKnowledge" className="hover:text-white">Guides</Link></li>
+                <li><Link href="https://discord.gg/ChY6C4nkRp" className="hover:text-white">Support</Link></li>
+                
               </ul>
             </div>
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-[#888]">
                 <li><Link href="#" className="hover:text-white">About</Link></li>
-                <li><Link href="#" className="hover:text-white">Blog</Link></li>
+                <li><Link href="https://www.graycommit.com/blogs" className="hover:text-white">Blog</Link></li>
                 <li><Link href="#" className="hover:text-white">Careers</Link></li>
                 <li><Link href="#" className="hover:text-white">Contact Sales</Link></li>
               </ul>
@@ -47,24 +46,14 @@ export function Footer() {
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Social</h4>
               <ul className="space-y-2 text-sm text-[#888]">
-                <li>
-                  <Link href="https://github.com/graycommit" className="flex items-center hover:text-white">
-                    
-                    GitHub
-                  </Link>
-                </li>
+                
                 <li>
                   <Link href="https://linkedin.com/company/graycommit" className="flex items-center hover:text-white">
                     
                     LinkedIn
                   </Link>
                 </li>
-                <li>
-                  <Link href="https://twitter.com/graycommit" className="flex items-center hover:text-white">
-                    
-                    Twitter
-                  </Link>
-                </li>
+                
                 <li>
                   <Link href="https://youtube.com/@graycommit" className="flex items-center hover:text-white">
                     

@@ -1,14 +1,31 @@
 'use client'
 
-
 import Link from "next/link"
+import { useState, useMemo } from 'react'
 
 import { Button } from "@/components/ui/button"
 
 import { ArrowRight, CheckCircle2,  Eye } from 'lucide-react'
 
 export default function Component() {
-  
+  // Generate deterministic positions for fireflies
+  const fireflies = useMemo(() => {
+    return Array(30).fill(0).map((_, i) => ({
+      top: `${(i * 3.33) % 100}%`,
+      left: `${(i * 7.77) % 100}%`,
+      delay: `${i * 0.1}s`,
+      duration: `${4 + (i % 4)}s`
+    }))
+  }, [])
+
+  // Update the firefly animation CSS to be more deterministic
+  const fireflyStyles = `
+    @keyframes firefly {
+      0% { transform: translate(0, 0); opacity: 0; }
+      50% { opacity: 0.3; }
+      100% { transform: translate(100px, -100px); opacity: 0; }
+    }
+  `
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
@@ -470,7 +487,7 @@ export default function Component() {
                         </div>
                         <div className="flex items-center space-x-2">
                           <div className="text-sm text-[#888]">2h ago</div>
-                          <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">$85K</div>
+                          <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium text-xs">$85K</div>
                         </div>
                       </div>
                     </div>
@@ -808,18 +825,18 @@ export default function Component() {
 
         {/* CTA Section */}
         <section className="py-32 relative border-t border-[#333] overflow-hidden">
-          {/* Subtle animated background */}
+          {/* Firefly section */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0f81fb_0%,_transparent_35%)] opacity-10" />
-            {[...Array(30)].map((_, i) => (
+            {fireflies.map((fly, i) => (
               <div
                 key={i}
                 className="absolute h-1 w-1 bg-white rounded-full animate-firefly"
                 style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 2}s`,
-                  animationDuration: `${4 + Math.random() * 4}s`
+                  top: fly.top,
+                  left: fly.left,
+                  animationDelay: fly.delay,
+                  animationDuration: fly.duration
                 }}
               />
             ))}
@@ -858,29 +875,8 @@ export default function Component() {
                   </span>
                 </Button>
 
-                <div className="flex items-center gap-4 text-sm text-[#888]">
-                  <div className="flex -space-x-2">
-                    {[
-                      '/founders/founder1.jpg',  // Replace with actual founder image paths
-                      '/founders/founder2.jpg',
-                      '/founders/founder3.jpg'
-                    ].map((src, i) => (
-                      <div 
-                        key={i}
-                        className="h-8 w-8 rounded-full border-2 border-black overflow-hidden"
-                        style={{
-                          backgroundImage: `url(${src})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center'
-                        }}
-                      >
-                        {/* Fallback if image fails to load */}
-                        <div className="h-full w-full bg-gradient-to-br from-[#333] to-[#222] flex items-center justify-center text-xs text-white">
-                          {String.fromCharCode(65 + i)}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                <div className="flex items-center text-sm text-[#888]">
+                  
                   <span>Join 100+ startups</span>
                 </div>
               </div>
@@ -902,16 +898,7 @@ export default function Component() {
             </div>
           </div>
 
-          <style jsx>{`
-            @keyframes firefly {
-              0% { transform: translate(0, 0); opacity: 0; }
-              50% { opacity: 0.3; }
-              100% { transform: translate(100px, -100px); opacity: 0; }
-            }
-            .animate-firefly {
-              animation: firefly linear infinite;
-            }
-          `}</style>
+          <style jsx>{fireflyStyles}</style>
         </section>
       </main>
 
