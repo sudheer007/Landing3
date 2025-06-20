@@ -83,16 +83,15 @@ export default function Component() {
 
             <div className="relative mx-auto aspect-video w-full max-w-6xl">
               <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D4D] via-[#F9CB28] to-[#4ADE80] opacity-20 blur-3xl" />
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#000,transparent_20%,transparent_80%,#000)]" />
-              <div className="absolute inset-0">
-                <div className="grid h-full w-full grid-cols-[repeat(auto-fit,minmax(2px,1fr))]">
-                  {[...Array(100)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="h-full w-[2px] bg-gradient-to-b from-transparent via-[#333] to-transparent"
-                    />
-                  ))}
-                </div>
+              <div className="relative w-full h-full rounded-xl overflow-hidden border border-[#333] bg-black">
+                <iframe
+                  src="https://www.youtube.com/embed/kn8zgAbxa94?si=ol0ZpqbaVExXz6Wm&rel=0&modestbranding=1&showinfo=0"
+                  title="Graycommit Demo Video"
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               </div>
             </div>
           </div>
@@ -110,37 +109,37 @@ export default function Component() {
                   <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] to-[#111]">
                     {/* Main speaker video frame */}
                     <div className="absolute inset-4 rounded-lg bg-[#222] overflow-hidden">
-                      {/* Background gradient for depth */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A]" />
-                      
-                      {/* Meeting grid layout - you can replace these with actual images */}
-                      <div className="absolute inset-4 grid grid-cols-2 grid-rows-2 gap-2">
-                        <div className="rounded-lg bg-[#333] overflow-hidden" />
-                        <div className="rounded-lg bg-[#333] overflow-hidden" />
-                        <div className="rounded-lg bg-[#333] overflow-hidden" />
-                        <div className="rounded-lg bg-[#333] overflow-hidden" />
+                      {/* Canva embed */}
+                      <div className="absolute inset-0 w-full h-full rounded-lg overflow-hidden">
+                        <iframe 
+                          loading="lazy" 
+                          className="absolute w-full h-full top-0 left-0 border-none rounded-lg"
+                          src="https://www.canva.com/design/DAGq42i25wk/pYnEoK4m2bbyPkJFPWuJKw/view?embed" 
+                          allowFullScreen
+                          allow="fullscreen">
+                        </iframe>
                       </div>
 
                       {/* Keep your existing suggestion cards */}
                       <div className="absolute right-6 top-1/2 -translate-y-1/2 w-80 space-y-3 z-10">
-                        {/* Active suggestion */}
+                        {/* Active playbook */}
                         <div className="bg-black/95 backdrop-blur rounded-lg border border-[#0070F3] p-4 shadow-lg shadow-[#0070F3]/20 animate-pulse">
                           <div className="flex items-center space-x-2 mb-2">
                             <div className="h-2 w-2 rounded-full bg-[#0070F3] animate-pulse" />
-                            <span className="text-[#0070F3] text-sm font-medium">Live Intelligence</span>
+                            <span className="text-[#0070F3] text-sm font-medium">Active Playbook</span>
                           </div>
-                          <p className="text-white text-sm font-medium mb-1">Competitive Edge:</p>
-                          <p className="text-[#888] text-sm">"Their solution requires manual setup. Highlight our zero-config automation and 60% faster deployment."</p>
+                          <p className="text-white text-sm font-medium mb-1">Enterprise Demo Track:</p>
+                          <p className="text-[#888] text-sm">"Start with ROI discussion, then showcase security features. Next: address integration concerns."</p>
                         </div>
 
-                        {/* Previous suggestion (fading out) */}
+                        {/* Previous playbook suggestion */}
                         <div className="bg-black/70 backdrop-blur rounded-lg border border-[#333] p-4 opacity-60">
                           <div className="flex items-center space-x-2 mb-2">
                             <div className="h-2 w-2 rounded-full bg-green-500" />
-                            <span className="text-green-500 text-sm font-medium">ICP Match</span>
+                            <span className="text-green-500 text-sm font-medium">Discovery Track</span>
                           </div>
-                          <p className="text-white text-sm font-medium mb-1">Success Story:</p>
-                          <p className="text-[#888] text-sm">"Similar enterprise client achieved 40% higher conversion rates within 3 months"</p>
+                          <p className="text-white text-sm font-medium mb-1">Goal Achieved:</p>
+                          <p className="text-[#888] text-sm">"Pain points identified. Ready to switch to solution presentation playbook."</p>
                         </div>
                       </div>
                     </div>
@@ -169,22 +168,22 @@ export default function Component() {
               {/* Right: Content */}
               <div className="space-y-8">
                 <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-4 py-1.5">
-                  <span className="text-sm font-medium text-[#888]">Real-time Intelligence</span>
+                  <span className="text-sm font-medium text-[#888]">Realtime Playbook</span>
                 </div>
                 <h2 className="text-4xl font-bold tracking-tight">
                   Never miss a selling opportunity
                 </h2>
                 <p className="text-xl text-[#888] leading-relaxed">
-                  Get real-time competitive insights, objection handlers, and success stories 
-                  tailored to your prospect's industry and pain points.
+                  Transform your meetings into guided experiences with intelligent playbooks. 
+                  Switch between custom talk tracks tailored to each prospect and meeting goal.
                 </p>
                 <div className="space-y-4">
                   {/* Feature points */}
                   {[
-                    'Live competitive advantage prompts',
-                    'Industry-specific success stories',
-                    'Real-time objection handling',
-                    'Personalized value propositions'
+                    'Custom playbooks for each company & team',
+                    'Intelligent talk track switching during calls',
+                    'Goal-oriented meeting guidance',
+                    'Post-meeting conversation analysis & deepdive'
                   ].map((point, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <div className="h-6 w-6 rounded-full bg-[#111] border border-[#333] flex items-center justify-center">
@@ -208,25 +207,25 @@ export default function Component() {
               {/* Left: Content */}
               <div className="space-y-8">
                 <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-4 py-1.5">
-                  <span className="text-sm font-medium text-[#888]">ICP Intelligence</span>
+                  <span className="text-sm font-medium text-[#888]">Talk Track Creation</span>
                 </div>
                 <h2 className="text-4xl font-bold tracking-tight">
                   Build winning sales pipelines
                 </h2>
                 <p className="text-xl text-[#888] leading-relaxed">
-                  Generate targeted ICP stories and personalized outreach campaigns that resonate 
-                  with your ideal customers.
+                  Create dynamic playbooks that adapt to every prospect. Design custom talk tracks 
+                  for different companies, teams, and meeting objectives with intelligent guidance.
                 </p>
                 <div className="space-y-6">
                   {/* Stats */}
                   <div className="grid grid-cols-2 gap-6">
                     <div className="rounded-lg bg-[#111] border border-[#333] p-4">
-                      <div className="text-3xl font-bold">3.5x</div>
-                      <div className="text-sm text-[#888]">Higher Response Rate</div>
+                      <div className="text-3xl font-bold">12+</div>
+                      <div className="text-sm text-[#888]">Custom Playbooks</div>
                     </div>
                     <div className="rounded-lg bg-[#111] border border-[#333] p-4">
-                      <div className="text-3xl font-bold">60%</div>
-                      <div className="text-sm text-[#888]">Faster Deal Closure</div>
+                      <div className="text-3xl font-bold">85%</div>
+                      <div className="text-sm text-[#888]">Meeting Goals Achieved</div>
                     </div>
                   </div>
                 </div>
@@ -248,29 +247,29 @@ export default function Component() {
                       {/* Speaker silhouette */}
                       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[90%] bg-[#333] rounded-t-full" />
                       
-                      {/* Live suggestions floating panel */}
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 w-72 bg-black/90 backdrop-blur rounded-lg border border-[#333] p-4 animate-pulse">
+                      {/* Playbook selector floating panel */}
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 w-72 bg-black/90 backdrop-blur rounded-lg border border-[#0070F3] p-4 animate-pulse">
                         <div className="flex items-center space-x-2 mb-3">
-                          <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                          <span className="text-xs text-[#888]">Live Suggestion</span>
+                          <div className="h-2 w-2 rounded-full bg-[#0070F3] animate-pulse" />
+                          <span className="text-xs text-[#888]">Playbook Switch</span>
                         </div>
                         
                         <div className="space-y-2 text-sm">
-                          <p className="text-white font-medium">Recommended talking point:</p>
-                          <p className="text-[#888]">"Mention our 99.9% uptime guarantee and global CDN coverage"</p>
+                          <p className="text-white font-medium">Switching to: Technical Deep Dive</p>
+                          <p className="text-[#888]">"CTO joined the call. Activating technical discussion playbook with architecture focus."</p>
                         </div>
                       </div>
 
-                      {/* Previous suggestion fading out */}
+                      {/* Previous playbook */}
                       <div className="absolute right-4 top-[20%] w-72 bg-black/50 backdrop-blur rounded-lg border border-[#333] p-4 opacity-40">
                         <div className="flex items-center space-x-2 mb-3">
-                          <div className="h-2 w-2 rounded-full bg-blue-500" />
-                          <span className="text-xs text-[#888]">Previous Point</span>
+                          <div className="h-2 w-2 rounded-full bg-green-500" />
+                          <span className="text-xs text-[#888]">Previous Playbook</span>
                         </div>
                         
                         <div className="space-y-2 text-sm">
-                          <p className="text-white font-medium">Customer objection:</p>
-                          <p className="text-[#888]">"Address pricing concerns with enterprise value props"</p>
+                          <p className="text-white font-medium">Business Value Complete:</p>
+                          <p className="text-[#888]">"ROI discussion finished successfully. Ready for technical validation."</p>
                         </div>
                       </div>
                     </div>

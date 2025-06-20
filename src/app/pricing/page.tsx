@@ -11,65 +11,60 @@ export default function PricingPage() {
   const tiers = [
     {
       name: "Free",
-      description: "Perfect for startups exploring AI sales tools",
+      description: "Perfect for trying out the platform",
       price: {
         monthly: "$0",
         annual: "$0",
       },
       features: [
-        "AI Sales Coach (5 calls/month)",
-        "Basic competitive intelligence",
-        "Single user license",
+        "3 meetings per month",
+        "Multiple tabs for LLMs",
+        "Basic LLM access",
+        "LLM switching",
+        "3 pre-built meeting playbooks",
         "Email support",
-        "Deal risk analysis",
-        "Basic analytics dashboard",
+      ],
+      cta: "Get Started",
+      popular: false,
+    },
+    {
+      name: "Starter",
+      description: "Ideal for individuals and small teams",
+      price: {
+        monthly: "$5",
+        annual: "$42",
+      },
+      features: [
+        "30 meetings per month",
+        "10GB recording storage (6 months)",
+        "All Premium LLM access",
+        "10 playbook templates + custom creation",
+        "Basic transcription & meeting notes",
+        "24/7 support",
       ],
       cta: "Get Started",
       popular: false,
     },
     {
       name: "Pro",
-      description: "For growing teams ready to scale",
+      description: "Professional teams and businesses",
       price: {
-        monthly: "$99",
-        annual: "$79",
+        monthly: "$20",
+        annual: "$168",
       },
       features: [
-        "Unlimited AI coaching calls",
-        "Real-time battle cards",
-        "Advanced competitive intel",
-        "Up to 10 team members",
-        "Priority support",
-        "Custom playbooks",
-        "Advanced analytics",
-        "API access",
-        "Salesforce integration",
-        "Team performance tracking",
+        "Unlimited meetings",
+        "100GB recording storage",
+        "All premium LLMs (GPT-4, Claude Sonnet)",
+        "Advanced playbook builder with AI",
+        "Real-time transcription + speaker ID",
+        "AI meeting insights & action items",
+        "Meeting analytics dashboard",
+        "Priority support (chat + email)",
+        "Team collaboration features",
       ],
-      cta: "Start Free Trial",
+      cta: "Get Started",
       popular: true,
-    },
-    {
-      name: "Enterprise",
-      description: "Custom solutions for large teams",
-      price: {
-        monthly: "Custom",
-        annual: "Custom",
-      },
-      features: [
-        "Everything in Pro, plus:",
-        "Unlimited team members",
-        "Custom AI model training",
-        "24/7 dedicated support",
-        "Custom integrations",
-        "Advanced security features",
-        "SOC 2 Type II compliance",
-        "Custom reporting",
-        "Dedicated success manager",
-        "Enterprise SLA",
-      ],
-      cta: "Contact Sales",
-      popular: false,
     },
   ]
 
@@ -130,7 +125,7 @@ export default function PricingPage() {
                   }`}
                 >
                   Annual
-                  <span className="ml-1 text-xs text-[#0f81fb]">Save 20%</span>
+                  <span className="ml-1 text-xs text-[#0f81fb]">Save 30%</span>
                 </button>
               </div>
             </div>
@@ -198,59 +193,66 @@ export default function PricingPage() {
                 </div>
               ))}
             </div>
-
-            {/* Trust Indicators */}
-            <div className="mt-16 text-center space-y-8">
-              <div className="flex justify-center items-center gap-8 text-sm text-[#888]">
-                <div className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-[#0f81fb]" />
-                  <span>SOC 2 Type II</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-[#0f81fb]" />
-                  <span>GDPR Compliant</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-[#0f81fb]" />
-                  <span>99.9% Uptime</span>
-                </div>
-              </div>
-
-              <p className="text-[#888] max-w-2xl mx-auto">
-                Join over 100+ startups already growing with Graycommit's AI-powered sales intelligence platform.
-              </p>
-            </div>
           </div>
         </section>
 
         {/* FAQ Section */}
         <section className="py-24 border-t border-[#333]">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="text-center space-y-4 mb-16">
+              <h2 className="text-4xl font-bold">Frequently Asked Questions</h2>
+              <p className="text-xl text-[#888] max-w-2xl mx-auto">
+                Everything you need to know about our pricing and plans.
+              </p>
+            </div>
+
+            <div className="max-w-3xl mx-auto space-y-8">
               {[
                 {
-                  q: "How does the 14-day trial work?",
-                  a: "Start with full access to all Pro features. No credit card required. Cancel anytime during the trial period."
+                  q: "Can I switch plans anytime?",
+                  a: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately for upgrades and at the end of your billing cycle for downgrades."
                 },
                 {
-                  q: "Can I change plans later?",
-                  a: "Yes, upgrade, downgrade, or cancel anytime. We'll prorate any payments automatically."
+                  q: "Is there a free trial?",
+                  a: "All paid plans come with a 14-day free trial. No credit card required to get started."
                 },
                 {
-                  q: "What kind of support is included?",
-                  a: "All plans include support. Free tier via email, Pro with priority support, and Enterprise with 24/7 dedicated support."
+                  q: "What happens if I exceed my plan limits?",
+                  a: "We'll notify you when you're approaching your limits. You can upgrade your plan or purchase additional capacity as needed."
                 },
                 {
-                  q: "Is there a limit to AI coaching calls?",
-                  a: "Free tier includes 5 calls/month. Pro and Enterprise have unlimited AI coaching calls."
-                },
+                  q: "Do you offer refunds?",
+                  a: "Yes, we offer a 30-day money-back guarantee for all annual plans. Monthly plans can be cancelled anytime."
+                }
               ].map((faq, i) => (
-                <div key={i} className="space-y-2">
-                  <h3 className="font-medium">{faq.q}</h3>
+                <div key={i} className="border border-[#333] rounded-lg p-6 hover:border-[#444] transition-colors">
+                  <h3 className="text-xl font-semibold mb-3">{faq.q}</h3>
                   <p className="text-[#888]">{faq.a}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-24 border-t border-[#333]">
+          <div className="container mx-auto px-4">
+            <div className="text-center space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-4xl font-bold">Ready to close more deals?</h2>
+                <p className="text-xl text-[#888] max-w-2xl mx-auto">
+                  Join thousands of sales teams already using Graycommit to boost their conversion rates.
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90">
+                  Start Free Trial
+                </Button>
+                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-white hover:bg-[#333]">
+                  Schedule Demo
+                </Button>
+              </div>
             </div>
           </div>
         </section>
