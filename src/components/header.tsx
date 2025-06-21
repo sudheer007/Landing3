@@ -101,9 +101,11 @@ export function Header() {
                             <div className="text-sm text-[#888]">SOC 2 Type II, GDPR, and HIPAA compliant</div>
                           </div>
                         </div>
-                        <Button variant="ghost" className="text-[#0f81fb] hover:text-white hover:bg-[#333]">
-                          Learn More →
-                        </Button>
+                        <Link href="/products">
+                          <Button variant="ghost" className="text-[#0f81fb] hover:text-white hover:bg-[#333]">
+                            Learn More →
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -153,9 +155,11 @@ export function Header() {
                               <div className="text-sm text-[#888]">SOC 2 Type II Certified</div>
                             </div>
                           </div>
-                          <Button variant="ghost" className="w-full text-[#0f81fb] hover:text-white hover:bg-[#333]">
-                            Learn More →
-                          </Button>
+                          <Link href="/products">
+                            <Button variant="ghost" className="w-full text-[#0f81fb] hover:text-white hover:bg-[#333]">
+                              Learn More →
+                            </Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -172,15 +176,17 @@ export function Header() {
               Pricing
             </Button>
           </Link>
-          <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
-            Contact
-          </Button>
-          <Link href="https://apps.graycommit.com/">
+          <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
+              Contact
+            </Button>
+          </Link>
+          <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" className="text-black bg-white hover:bg-gray-200">
               Log In
             </Button>
           </Link>
-          <Link href="https://apps.graycommit.com/signup">
+          <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
             <Button className="text-black bg-white hover:bg-gray-200 hidden sm:inline-flex">
               Sign Up
             </Button>
@@ -235,7 +241,9 @@ export function Header() {
             </Link>
             
             <Link 
-              href="/contact"
+              href="https://tidycal.com/sudheer.sandu/problemoverview"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -244,7 +252,9 @@ export function Header() {
 
             <div className="pt-4 space-y-4">
               <Link 
-                href="https://apps.graycommit.com/"
+                href="https://app.graycommit.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <Button variant="outline" className="w-full text-black bg-white hover:bg-gray-200">
@@ -252,7 +262,9 @@ export function Header() {
                 </Button>
               </Link>
               <Link 
-                href="https://apps.graycommit.com/signup"
+                href="https://app.graycommit.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <Button className="w-full text-black bg-white hover:bg-gray-200 mt-2">

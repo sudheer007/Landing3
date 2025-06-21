@@ -27,10 +27,10 @@ export function Footer() {
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-[#888]">
-                <li><Link href="#" className="hover:text-white">About</Link></li>
+                <li><Link href="/about" className="hover:text-white">About</Link></li>
                 <li><Link href="https://www.graycommit.com/blogs" className="hover:text-white">Blog</Link></li>
-                <li><Link href="#" className="hover:text-white">Careers</Link></li>
-                <li><Link href="#" className="hover:text-white">Contact Sales</Link></li>
+                <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
+                <li><Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer" className="hover:text-white">Contact Sales</Link></li>
               </ul>
             </div>
             <div className="space-y-4">
@@ -39,7 +39,7 @@ export function Footer() {
                 <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
                 <li><Link href="/termsofservice" className="hover:text-white">Terms of Service</Link></li>
                 <li><Link href="/refunds" className="hover:text-white">Refunds Policy</Link></li>
-                <li><Link href="#" className="hover:text-white">Inactivity Policy</Link></li>
+                <li><Link href="/inactivity" className="hover:text-white">Inactivity Policy</Link></li>
               </ul>
             </div>
             {/* New Social Column */}
@@ -76,7 +76,7 @@ export function Footer() {
               <span className="text-sm">© 2024 Graycommit Inc.</span>
             </div>
             <div className="flex items-center space-x-4">
-              <Link href="#" className="text-sm text-[#888] hover:text-white">
+              <Link href="/status" className="text-sm text-[#888] hover:text-white">
                 Status
               </Link>
               <Link href="/changelog" className="text-sm text-[#888] hover:text-white">

@@ -43,7 +43,7 @@ export default function ProductsPage() {
             ))}
           </div>
 
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 relative z-10">
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
               <div className="inline-flex items-center space-x-2 rounded-full bg-[#111] px-4 py-1.5 text-sm">
                 <span className="text-[#0f81fb]">New</span>
@@ -58,14 +58,30 @@ export default function ProductsPage() {
                 Close more enterprise deals with real-time coaching, competitive intelligence, and predictive analytics.
               </p>
 
-              <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Button size="lg" className="h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90">
-                  Get Started Free
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-white hover:bg-[#333]">
-                  View Demo
-                </Button>
+              <div className="flex flex-col gap-4 min-[400px]:flex-row relative z-20">
+                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    size="lg" 
+                    className="group relative h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
+                  >
+                    <span className="relative z-10 flex items-center">
+                      Get Started Free
+                      <svg 
+                        className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </Button>
+                </Link>
+                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="outline" className="h-12 px-8 border-[#0f81fb] text-[#0f81fb] hover:bg-[#0f81fb] hover:text-white">
+                    Book a Demo
+                  </Button>
+                </Link>
               </div>
 
               <div className="flex items-center gap-4 text-sm text-[#888]">
@@ -237,10 +253,23 @@ export default function ProductsPage() {
                   </div>
                 </div>
 
-                <Button className="bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90">
-                  Learn More
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                <div className="pt-8">
+                  <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                    <Button className="group relative bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300">
+                      <span className="relative z-10 flex items-center">
+                        Get Started Free
+                        <svg 
+                          className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </span>
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -306,7 +335,7 @@ export default function ProductsPage() {
 
         {/* AI-Powered Sales Excellence Section - Updated */}
         <section className="py-24 border-t border-[#333] bg-[#0A0A0A] relative overflow-hidden">
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 pointer-events-none">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#0f81fb,_transparent_50%)] opacity-10" />
           </div>
           
@@ -398,9 +427,21 @@ export default function ProductsPage() {
                               <div className="h-2 w-2 rounded-full bg-green-500" />
                               <span className="text-sm text-[#888]">Start Free - No Credit Card</span>
                             </div>
-                            <Button variant="ghost" className="text-[#0f81fb] hover:bg-[#0f81fb]/10">
-                              Get Started →
-                            </Button>
+                            <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                              <Button variant="ghost" className="group text-[#0f81fb] hover:bg-[#0f81fb]/10 transition-all duration-300">
+                                <span className="flex items-center">
+                                  Get Started Free
+                                  <svg 
+                                    className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                  </svg>
+                                </span>
+                              </Button>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -464,9 +505,21 @@ export default function ProductsPage() {
                               <div className="h-2 w-2 rounded-full bg-green-500" />
                               <span className="text-sm text-[#888]">14-Day Free Trial</span>
                             </div>
-                            <Button variant="ghost" className="text-[#0f81fb] hover:bg-[#0f81fb]/10">
-                              Start Trial →
-                            </Button>
+                            <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                              <Button variant="ghost" className="group text-[#0f81fb] hover:bg-[#0f81fb]/10 transition-all duration-300">
+                                <span className="flex items-center">
+                                  Get Started Free
+                                  <svg 
+                                    className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                  </svg>
+                                </span>
+                              </Button>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -530,9 +583,11 @@ export default function ProductsPage() {
                               <div className="h-2 w-2 rounded-full bg-green-500" />
                               <span className="text-sm text-[#888]">Live Demo Available</span>
                             </div>
-                            <Button variant="ghost" className="text-[#0f81fb] hover:bg-[#0f81fb]/10">
-                              See it in action →
-                            </Button>
+                            <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
+                              <Button variant="ghost" className="text-[#0f81fb] hover:bg-[#0f81fb]/10">
+                                See it in action →
+                              </Button>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -616,9 +671,21 @@ export default function ProductsPage() {
                           <div className="flex-grow">
                             <div className="h-8 w-full rounded bg-[#222] animate-pulse" />
                           </div>
-                          <Button size="sm" className="bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90">
-                            Ask AI Coach
-                          </Button>
+                          <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                            <Button size="sm" className="group bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300">
+                              <span className="flex items-center">
+                                Get Started Free
+                                <svg 
+                                  className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                                  fill="none" 
+                                  stroke="currentColor" 
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                              </span>
+                            </Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -648,13 +715,29 @@ export default function ProductsPage() {
               </p>
 
               <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Button size="lg" className="h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-white hover:bg-[#333]">
-                  Schedule Demo
-                </Button>
+                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    size="lg" 
+                    className="group relative h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
+                  >
+                    <span className="relative z-10 flex items-center">
+                      Get Started Free
+                      <svg 
+                        className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </Button>
+                </Link>
+                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="outline" className="h-12 px-8 border-[#0f81fb] text-[#0f81fb] hover:bg-[#0f81fb] hover:text-white">
+                    Schedule Demo
+                  </Button>
+                </Link>
               </div>
 
               <div className="pt-8 flex items-center gap-8 text-sm text-[#666]">

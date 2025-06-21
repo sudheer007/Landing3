@@ -1,0 +1,87 @@
+{
+  "id": "security-compliance-update",
+  "type": "changelog",
+  "category": "Security Update",
+  "date": "2024-01-05",
+  "version": "v1.7.2",
+  "title": "Enhanced Security & Compliance Features",
+  "slug": "enhanced-security-compliance-features",
+  "badge": "Security",
+  "excerpt": "Major security enhancements including SOC 2 Type II certification, advanced encryption, and comprehensive audit logging for enterprise customers.",
+  "content": [
+    {
+      "type": "text",
+      "content": "We've significantly strengthened our security posture with comprehensive updates across our entire platform. These improvements ensure enterprise-grade security and compliance for all customer data."
+    },
+    {
+      "type": "heading",
+      "level": "h3",
+      "content": "🔒 Security Enhancements"
+    },
+    {
+      "type": "feature",
+      "title": "SOC 2 Type II Certification",
+      "description": "Achieved SOC 2 Type II compliance with comprehensive security controls and third-party auditing.",
+      "impact": "Enterprise-ready security framework"
+    },
+    {
+      "type": "feature",
+      "title": "Advanced Encryption",
+      "description": "Implemented AES-256 encryption for data at rest and TLS 1.3 for data in transit.",
+      "impact": "Bank-level security for all customer data"
+    },
+    {
+      "type": "feature",
+      "title": "Comprehensive Audit Logging",
+      "description": "Detailed audit trails for all user actions and system events with tamper-proof logging.",
+      "impact": "Full compliance with enterprise audit requirements"
+    },
+    {
+      "type": "heading",
+      "level": "h3",
+      "content": "🛡️ Compliance Updates"
+    },
+    {
+      "type": "list",
+      "items": [
+        "GDPR compliance improvements with enhanced data subject rights",
+        "HIPAA compliance features for healthcare customers",
+        "Enhanced data retention and deletion policies",
+        "Improved privacy controls and consent management"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": "h3",
+      "content": "🔧 Security Fixes"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Strengthened authentication mechanisms",
+        "Enhanced session management",
+        "Improved API security with rate limiting",
+        "Updated security headers and CORS policies"
+      ]
+    }
+  ],
+  "author": {
+    "name": "Security Team",
+    "role": "Graycommit Security",
+    "avatar": "/avatars/security-team.png"
+  },
+  "tags": ["Security", "Compliance", "SOC 2", "GDPR", "HIPAA"],
+  "featured": true,
+  "impacts": [
+    {
+      "metric": "Security Score",
+      "improvement": "A+",
+      "description": "Industry-leading security rating"
+    },
+    {
+      "metric": "Compliance",
+      "improvement": "100%",
+      "description": "SOC 2 Type II certified"
+    }
+  ]
+} 

@@ -1,0 +1,19 @@
+{
+  "id": "engineering-1",
+  "type": "blog",
+  "category": "Engineering",
+  "date": "Dec 5, 2024",
+  "title": "Building Scalable AI Infrastructure: Lessons from Production",
+  "slug": "scalable-ai-infrastructure-lessons",
+  "badge": {
+    "text": "Engineering Deep Dive",
+    "variant": "secondary",
+    "className": "bg-gradient-to-r from-blue-400 to-purple-600 text-white"
+  },
+  "excerpt": "How we scaled our AI infrastructure to handle millions of sales calls while maintaining sub-100ms response times.",
+  "content": "<p>At Graycommit, we process thousands of sales calls daily, providing real-time AI coaching and insights. Here's how we built an infrastructure that scales seamlessly.</p><h3 class=\"text-xl font-semibold mt-4 mb-2\">The Challenge</h3><p>Our AI models need to process audio streams, analyze conversation context, and deliver actionable insights in real-time. The technical challenges were:</p><ul class=\"list-disc pl-5 space-y-2\"><li>Sub-100ms latency requirements for real-time coaching</li><li>Processing multiple concurrent audio streams</li><li>Maintaining conversation context across long sales calls</li><li>Scaling horizontally during peak usage hours</li></ul><h3 class=\"text-xl font-semibold mt-4 mb-2\">Our Solution</h3><p>We implemented a microservices architecture with the following components:</p><ul class=\"list-disc pl-5 space-y-2\"><li><strong>Real-time Audio Processing:</strong> WebRTC for low-latency audio streaming</li><li><strong>AI Inference Pipeline:</strong> GPU-optimized containers with model caching</li><li><strong>Context Management:</strong> Redis-based session storage for conversation history</li><li><strong>Auto-scaling:</strong> Kubernetes HPA based on custom metrics</li></ul>",
+  "author": "Sudheer Sandu",
+  "readTime": "8 min read",
+  "tags": ["AI", "Infrastructure", "Scaling", "Real-time"],
+  "featured": true
+} 

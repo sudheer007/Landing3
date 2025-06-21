@@ -1,0 +1,73 @@
+{
+  "id": "playbook-automation",
+  "type": "changelog",
+  "category": "Feature Release",
+  "date": "2024-01-10",
+  "version": "v1.8.0",
+  "title": "Intelligent Playbook Automation",
+  "slug": "intelligent-playbook-automation",
+  "badge": "New Feature",
+  "excerpt": "Introducing smart playbook switching and AI-powered talk track recommendations that adapt to your conversation flow in real-time.",
+  "content": [
+    {
+      "type": "text",
+      "content": "Our new Playbook Automation system revolutionizes how sales teams navigate complex enterprise conversations. The AI now intelligently switches between playbooks based on conversation context and stakeholder changes."
+    },
+    {
+      "type": "heading",
+      "level": "h3",
+      "content": "✨ New Features"
+    },
+    {
+      "type": "feature",
+      "title": "Smart Playbook Switching",
+      "description": "AI automatically detects conversation shifts and recommends the most relevant playbook.",
+      "impact": "38% reduction in manual playbook management"
+    },
+    {
+      "type": "feature",
+      "title": "Context-Aware Talk Tracks",
+      "description": "Dynamic talk track suggestions based on stakeholder role and conversation history.",
+      "impact": "52% improvement in stakeholder engagement"
+    },
+    {
+      "type": "feature",
+      "title": "Meeting Goal Tracking",
+      "description": "Automated progress tracking against predefined meeting objectives.",
+      "impact": "67% higher meeting goal achievement rate"
+    },
+    {
+      "type": "heading",
+      "level": "h3",
+      "content": "🔧 Enhancements"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Improved playbook editor with drag-and-drop functionality",
+        "Enhanced team collaboration features",
+        "Better integration with calendar systems",
+        "Advanced analytics for playbook performance"
+      ]
+    }
+  ],
+  "author": {
+    "name": "Engineering Team",
+    "role": "Graycommit Engineering",
+    "avatar": "/avatars/engineering-team.png"
+  },
+  "tags": ["Playbook", "Automation", "AI", "Talk Tracks"],
+  "featured": false,
+  "impacts": [
+    {
+      "metric": "Playbook Management",
+      "improvement": "-38%",
+      "description": "Reduction in manual switching"
+    },
+    {
+      "metric": "Stakeholder Engagement",
+      "improvement": "+52%",
+      "description": "Better conversation relevance"
+    }
+  ]
+} 

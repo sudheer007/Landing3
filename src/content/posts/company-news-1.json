@@ -1,0 +1,19 @@
+{
+  "id": "company-1",
+  "type": "blog",
+  "category": "Company News",
+  "date": "Dec 1, 2024",
+  "title": "Graycommit Raises $15M Series A to Democratize Enterprise Sales for Technical Founders",
+  "slug": "graycommit-series-a-funding-announcement",
+  "badge": {
+    "text": "Funding Announcement",
+    "variant": "default",
+    "className": "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+  },
+  "excerpt": "Led by Sequoia Capital, this funding will accelerate our mission to help technical founders close enterprise deals with AI-powered sales intelligence.",
+  "content": "<p>We're thrilled to announce that Graycommit has raised $15 million in Series A funding, led by Sequoia Capital with participation from Andreessen Horowitz, Y Combinator, and several prominent angel investors.</p><h3 class=\"text-xl font-semibold mt-4 mb-2\">Our Mission</h3><p>At Graycommit, we believe that the best products are built by technical founders who deeply understand the problems they're solving. However, many struggle to communicate their vision to enterprise customers, leading to incredible innovations going unnoticed.</p><h3 class=\"text-xl font-semibold mt-4 mb-2\">The Problem We're Solving</h3><ul class=\"list-disc pl-5 space-y-2\"><li>70% of technical founders struggle with enterprise sales</li><li>Average sales cycle for B2B startups is 18+ months</li><li>$2.3 trillion in startup value lost due to poor go-to-market execution</li><li>Technical teams often hire expensive sales leaders too early</li></ul><h3 class=\"text-xl font-semibold mt-4 mb-2\">What's Next</h3><p>This funding will enable us to:</p><ul class=\"list-disc pl-5 space-y-2\"><li>Expand our AI research team to improve real-time coaching</li><li>Build industry-specific sales playbooks</li><li>Scale our platform to support 10,000+ technical founders</li><li>Launch our enterprise marketplace for sales resources</li></ul>",
+  "author": "Sudheer Sandu, CEO",
+  "readTime": "6 min read",
+  "tags": ["Funding", "Series A", "Company Growth", "AI"],
+  "featured": true
+} 

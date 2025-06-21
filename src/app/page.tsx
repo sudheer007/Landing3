@@ -1,31 +1,13 @@
 'use client'
 
 import Link from "next/link"
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 
 import { Button } from "@/components/ui/button"
 
 import { ArrowRight, CheckCircle2,  Eye } from 'lucide-react'
 
 export default function Component() {
-  // Generate deterministic positions for fireflies
-  const fireflies = useMemo(() => {
-    return Array(30).fill(0).map((_, i) => ({
-      top: `${(i * 3.33) % 100}%`,
-      left: `${(i * 7.77) % 100}%`,
-      delay: `${i * 0.1}s`,
-      duration: `${4 + (i % 4)}s`
-    }))
-  }, [])
-
-  // Update the firefly animation CSS to be more deterministic
-  const fireflyStyles = `
-    @keyframes firefly {
-      0% { transform: translate(0, 0); opacity: 0; }
-      50% { opacity: 0.3; }
-      100% { transform: translate(100px, -100px); opacity: 0; }
-    }
-  `
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
@@ -59,7 +41,7 @@ export default function Component() {
               <div className="rounded-full bg-[#333] px-4 py-1.5 text-sm">
                 <span className="text-[#0070F3] font-medium">New</span>
                 {" Real-time AI Sales Coach - Your competitive edge "}
-                <Link href="#" className="inline-flex items-center font-medium text-white hover:text-[#0070F3]">
+                <Link href="https://app.graycommit.com" className="inline-flex items-center font-medium text-white hover:text-[#0070F3]">
                   See it in action
                   <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
@@ -72,12 +54,29 @@ export default function Component() {
                 competitive advantages, and personalized talking points during live calls.
               </p>
               <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Button size="lg" className="h-12 px-8 bg-white text-black hover:bg-gray-200">
-                  Book a Demo
-                </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-white hover:bg-[#333]">
-                  View Success Stories
-                </Button>
+                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="h-12 px-8 bg-white text-black hover:bg-gray-200">
+                    Book a Demo
+                  </Button>
+                </Link>
+                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    size="lg" 
+                    className="group relative h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
+                  >
+                    <span className="relative z-10 flex items-center">
+                      Get Started Free
+                      <svg 
+                        className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -194,10 +193,12 @@ export default function Component() {
                   ))}
                 </div>
                 <div className="pt-4">
-                  <Button variant="outline" className="bg-white text-black hover:bg-gray-200">
-                    Learn more
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <Link href="/products">
+                    <Button variant="outline" className="bg-white text-black hover:bg-gray-200">
+                      Learn more
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -230,10 +231,21 @@ export default function Component() {
                   </div>
                 </div>
                 <div className="pt-4">
-                  <Button variant="outline" className="bg-white text-black hover:bg-gray-200">
-                    View documentation
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                    <Button className="group relative bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300">
+                      <span className="relative z-10 flex items-center">
+                        Get Started Free
+                        <svg 
+                          className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </span>
+                    </Button>
+                  </Link>
                 </div>
               </div>
               
@@ -824,18 +836,31 @@ export default function Component() {
 
         {/* CTA Section */}
         <section className="py-32 relative border-t border-[#333] overflow-hidden">
-          {/* Firefly section */}
+          {/* Theme gradient background */}
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0f81fb_0%,_transparent_35%)] opacity-10" />
-            {fireflies.map((fly, i) => (
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0f81fb_0%,_transparent_35%)] opacity-20" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#0f81fb_0%,_transparent_40%)] opacity-10" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_#0f81fb_0%,_transparent_40%)] opacity-10" />
+            {/* Grid overlay for consistency with other sections */}
+            {[...Array(20)].map((_, i) => (
               <div
-                key={i}
-                className="absolute h-1 w-1 bg-white rounded-full animate-firefly"
-                style={{
-                  top: fly.top,
-                  left: fly.left,
-                  animationDelay: fly.delay,
-                  animationDuration: fly.duration
+                key={`v-${i}`}
+                className="absolute top-0 bottom-0 w-[1px]"
+                style={{ 
+                  left: `${(i + 1) * 5}%`,
+                  background: 'linear-gradient(to bottom, transparent, rgba(15, 129, 251, 0.1) 50%, transparent)',
+                  opacity: '0.3'
+                }}
+              />
+            ))}
+            {[...Array(15)].map((_, i) => (
+              <div
+                key={`h-${i}`}
+                className="absolute left-0 right-0 h-px"
+                style={{ 
+                  top: `${(i + 1) * 6.67}%`,
+                  background: 'linear-gradient(to right, transparent, rgba(15, 129, 251, 0.1) 50%, transparent)',
+                  opacity: '0.2'
                 }}
               />
             ))}
@@ -857,22 +882,24 @@ export default function Component() {
               </p>
 
               <div className="flex flex-col gap-6 min-[400px]:flex-row items-center">
-                <Button 
-                  size="lg" 
-                  className="group relative h-14 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
-                >
-                  <span className="relative z-10 flex items-center">
-                    Get Started Free
-                    <svg 
-                      className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </span>
-                </Button>
+                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    size="lg" 
+                    className="group relative h-14 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
+                  >
+                    <span className="relative z-10 flex items-center">
+                      Get Started Free
+                      <svg 
+                        className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </Button>
+                </Link>
 
                 <div className="flex items-center text-sm text-[#888]">
                   
@@ -897,7 +924,6 @@ export default function Component() {
             </div>
           </div>
 
-          <style jsx>{fireflyStyles}</style>
         </section>
       </main>
 

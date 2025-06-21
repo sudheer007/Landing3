@@ -1,0 +1,19 @@
+{
+  "id": "community-1",
+  "type": "blog",
+  "category": "Community",
+  "date": "Dec 3, 2024",
+  "title": "From Technical Founder to Sales Leader: A Community Success Story",
+  "slug": "technical-founder-sales-leader-success",
+  "badge": {
+    "text": "Success Story",
+    "variant": "outline",
+    "className": "border-green-400 text-green-400"
+  },
+  "excerpt": "Meet Sarah Chen, a technical founder who used Graycommit to transform her sales approach and land her first $1M ARR.",
+  "content": "<p>Sarah Chen, founder of MLOps Insights, went from struggling with enterprise sales to closing million-dollar deals in just 6 months. Here's her incredible journey.</p><h3 class=\"text-xl font-semibold mt-4 mb-2\">The Challenge</h3><p>As a former ML engineer at Google, Sarah could build incredible AI products but struggled to communicate their business value to enterprise customers:</p><ul class=\"list-disc pl-5 space-y-2\"><li>Technical jargon alienated C-suite executives</li><li>Difficulty articulating ROI and business impact</li><li>Lost deals to less technical but more sales-savvy competitors</li><li>Imposter syndrome in sales situations</li></ul><h3 class=\"text-xl font-semibold mt-4 mb-2\">The Transformation</h3><p>With Graycommit's AI sales coach, Sarah learned to:</p><ul class=\"list-disc pl-5 space-y-2\"><li>Translate technical features into business outcomes</li><li>Handle objections with confidence using real-time battle cards</li><li>Build relationships with multiple stakeholders</li><li>Structure discovery calls for maximum impact</li></ul><blockquote class=\"border-l-4 border-blue-500 pl-4 italic text-gray-300 my-6\">\"Graycommit didn't just teach me sales techniques—it gave me the confidence to be myself while selling. I'm still the technical founder, but now I can speak the language of business.\" - Sarah Chen</blockquote>",
+  "author": "Community Team",
+  "readTime": "5 min read",
+  "tags": ["Success Story", "Technical Founders", "Sales Transformation"],
+  "featured": false
+} 

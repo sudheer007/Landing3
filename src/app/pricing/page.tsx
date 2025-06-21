@@ -168,16 +168,27 @@ export default function PricingPage() {
                       )}
                     </div>
 
-                    <Button 
-                      className={`w-full h-12 ${
-                        tier.popular
-                          ? 'bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90'
-                          : 'bg-white text-black hover:bg-gray-200'
-                      }`}
-                    >
-                      {tier.cta}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer" className="w-full">
+                      <Button 
+                        className={`group relative w-full h-12 transition-all duration-300 ${
+                          tier.popular
+                            ? 'bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90'
+                            : 'bg-white text-black hover:bg-gray-200'
+                        }`}
+                      >
+                        <span className="relative z-10 flex items-center justify-center">
+                          Get Started Free
+                          <svg 
+                            className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </span>
+                      </Button>
+                    </Link>
 
                     <div className="space-y-4 pt-6">
                       {tier.features.map((feature, i) => (
@@ -246,12 +257,29 @@ export default function PricingPage() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90">
-                  Start Free Trial
-                </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 border-[#333] text-white hover:bg-[#333]">
-                  Schedule Demo
-                </Button>
+                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    size="lg" 
+                    className="group relative h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
+                  >
+                    <span className="relative z-10 flex items-center">
+                      Get Started Free
+                      <svg 
+                        className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </span>
+                  </Button>
+                </Link>
+                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="outline" className="h-12 px-8 border-[#0f81fb] text-[#0f81fb] hover:bg-[#0f81fb] hover:text-white">
+                    Schedule Demo
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

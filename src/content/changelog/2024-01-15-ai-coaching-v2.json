@@ -1,0 +1,92 @@
+{
+  "id": "ai-coaching-v2",
+  "type": "changelog",
+  "category": "Major Release",
+  "date": "2024-01-15",
+  "version": "v2.0.0",
+  "title": "AI Coaching v2.0: Advanced Real-time Intelligence",
+  "slug": "ai-coaching-v2-advanced-real-time-intelligence",
+  "badge": "Major Release",
+  "excerpt": "Revolutionary upgrade to our AI coaching engine with enhanced competitive intelligence, real-time battle cards, and advanced deal scoring algorithms.",
+  "content": [
+    {
+      "type": "text",
+      "content": "We're excited to announce the release of AI Coaching v2.0, our most significant update yet. This release introduces groundbreaking features that will transform how your sales team approaches enterprise deals."
+    },
+    {
+      "type": "heading",
+      "level": "h3",
+      "content": "🚀 What's New"
+    },
+    {
+      "type": "feature",
+      "title": "Enhanced Competitive Intelligence",
+      "description": "Real-time battle cards with dynamic competitor analysis and positioning strategies.",
+      "impact": "45% higher win rates against enterprise competitors"
+    },
+    {
+      "type": "feature",
+      "title": "Advanced Deal Scoring",
+      "description": "AI-powered deal risk assessment with predictive close probability.",
+      "impact": "92% forecast accuracy achieved in beta testing"
+    },
+    {
+      "type": "feature",
+      "title": "Multi-stakeholder Tracking",
+      "description": "Intelligent stakeholder mapping and influence analysis for complex enterprise deals.",
+      "impact": "60% improvement in multi-threading success"
+    },
+    {
+      "type": "heading",
+      "level": "h3",
+      "content": "🔧 Improvements"
+    },
+    {
+      "type": "list",
+      "items": [
+        "50% faster response time for real-time suggestions",
+        "Enhanced integration with Salesforce and HubSpot",
+        "Improved mobile app performance",
+        "Advanced analytics dashboard with custom reporting"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": "h3",
+      "content": "🐛 Bug Fixes"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Fixed audio sync issues in call recordings",
+        "Resolved playbook switching delays",
+        "Improved call quality detection",
+        "Enhanced security for enterprise customers"
+      ]
+    }
+  ],
+  "author": {
+    "name": "Product Team",
+    "role": "Graycommit Product",
+    "avatar": "/avatars/product-team.png"
+  },
+  "tags": ["AI Coaching", "Competitive Intelligence", "Enterprise", "Real-time"],
+  "featured": true,
+  "impacts": [
+    {
+      "metric": "Win Rate",
+      "improvement": "+45%",
+      "description": "Against enterprise competitors"
+    },
+    {
+      "metric": "Forecast Accuracy",
+      "improvement": "92%",
+      "description": "Deal close prediction"
+    },
+    {
+      "metric": "Response Time",
+      "improvement": "50% faster",
+      "description": "Real-time AI suggestions"
+    }
+  ]
+} 
