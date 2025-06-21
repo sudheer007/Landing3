@@ -83,7 +83,6 @@ export default function ChangelogPage() {
 
   const renderContentItem = (item: ContentItem) => {
     const badgeStyle = getBadgeVariant(item.badge)
-    const renderedContent = renderContentBlocks(item.content)
     
     return (
       <article key={item.id} className="border-b border-[#333] py-8 last:border-b-0">
@@ -110,33 +109,31 @@ export default function ChangelogPage() {
                 </div>
               )}
             </div>
-            <Badge className={badgeStyle.className}>
+            <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${badgeStyle.className}`}>
               {typeof item.badge === 'string' ? item.badge : 'Update'}
-            </Badge>
+            </span>
           </div>
 
           {/* Title */}
-          <h2 className="text-2xl font-bold text-white">
-            {highlightText(item.title || '', searchQuery)}
-          </h2>
+          <Link href={`/blog/${item.slug}`} className="group">
+            <h2 className="text-2xl font-bold text-white group-hover:text-[#0f81fb] transition-colors cursor-pointer">
+              {highlightText(item.title || '', searchQuery)}
+            </h2>
+          </Link>
 
           {/* Excerpt */}
           <p className="text-lg text-[#888] leading-relaxed">
             {highlightText(item.excerpt || '', searchQuery)}
           </p>
 
-          {/* Content */}
-          <div 
-            className="prose prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ 
-              __html: searchQuery ? 
-                renderedContent.replace(
-                  new RegExp(searchQuery, 'gi'),
-                  match => `<mark class="bg-yellow-200 text-black">${match}</mark>`
-                ) : 
-                renderedContent
-            }}
-          />
+          {/* Read More Button */}
+          <div className="mt-4">
+            <Link href={`/blog/${item.slug}`}>
+              <Button variant="outline" size="sm" className="border-[#0f81fb] text-[#0f81fb] hover:bg-[#0f81fb] hover:text-white">
+                Read Full Article →
+              </Button>
+            </Link>
+          </div>
 
           {/* Impacts (for changelog entries) */}
           {item.impacts && Array.isArray(item.impacts) && item.impacts.length > 0 && (

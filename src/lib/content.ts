@@ -92,13 +92,20 @@ export function searchContent(query: string): ContentItem[] {
   const allContent = getAllContent()
   const lowercaseQuery = query.toLowerCase()
   
-  return allContent.filter(item =>
-    item.title.toLowerCase().includes(lowercaseQuery) ||
-    item.excerpt.toLowerCase().includes(lowercaseQuery) ||
-    item.author.name.toLowerCase().includes(lowercaseQuery) ||
-    item.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery)) ||
-    item.category.toLowerCase().includes(lowercaseQuery)
-  )
+  return allContent.filter(item => {
+    // Safely check each field with fallbacks
+    const title = (item.title || '').toLowerCase().includes(lowercaseQuery)
+    const excerpt = (item.excerpt || '').toLowerCase().includes(lowercaseQuery)
+    const authorName = (item.author?.name || '').toLowerCase().includes(lowercaseQuery)
+    const category = (item.category || '').toLowerCase().includes(lowercaseQuery)
+    
+    // Safely check tags array
+    const tags = Array.isArray(item.tags) 
+      ? item.tags.some(tag => typeof tag === 'string' && tag.toLowerCase().includes(lowercaseQuery))
+      : false
+    
+    return title || excerpt || authorName || tags || category
+  })
 }
 
 export function getContentBySlug(slug: string): ContentItem | null {
