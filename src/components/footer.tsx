@@ -10,9 +10,9 @@ export function Footer() {
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Products</h4>
               <ul className="space-y-2 text-sm text-[#888]">
-                <li><Link href="#" className="hover:text-white">Sales Agentic system</Link></li>
-                <li><Link href="#" className="hover:text-white">Sales AI agents </Link></li>
-                <li><Link href="#" className="hover:text-white">Voice Analytics</Link></li>
+                <li><Link href="#" className="hover:text-white">Realtime Playbook</Link></li>
+                <li><Link href="#" className="hover:text-white">Deepsearch  (Chat with any AI) </Link></li>
+                
               </ul>
             </div>
             <div className="space-y-4">
@@ -28,7 +28,7 @@ export function Footer() {
               <h4 className="font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-[#888]">
                 <li><Link href="/about" className="hover:text-white">About</Link></li>
-                <li><Link href="https://www.graycommit.com/blogs" className="hover:text-white">Blog</Link></li>
+                <li><Link href="/changelog" className="hover:text-white">Blog</Link></li>
                 <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
                 <li><Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer" className="hover:text-white">Contact Sales</Link></li>
               </ul>
@@ -36,10 +36,10 @@ export function Footer() {
             <div className="space-y-4">
               <h4 className="font-semibold text-white">Legal</h4>
               <ul className="space-y-2 text-sm text-[#888]">
+                <li><Link href="/security" className="hover:text-white">Security</Link></li>
                 <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
                 <li><Link href="/termsofservice" className="hover:text-white">Terms of Service</Link></li>
                 <li><Link href="/refunds" className="hover:text-white">Refunds Policy</Link></li>
-                <li><Link href="/inactivity" className="hover:text-white">Inactivity Policy</Link></li>
               </ul>
             </div>
             {/* New Social Column */}

@@ -44,7 +44,7 @@ export function Header() {
                   }`}
                   onClick={() => setActiveNav(activeNav === 'products' ? null : 'products')}
                 >
-                  Products
+                  Features
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   {/* Desktop View (md and above) */}
@@ -60,9 +60,9 @@ export function Header() {
                                 <Activity className="h-5 w-5 text-[#0f81fb]" />
                               </div>
                               <div>
-                                <div className="font-medium">Real-time AI Coach</div>
+                                <div className="font-medium">Realtime Playbook for meetings</div>
                                 <div className="text-sm text-[#888] group-hover:text-[#ccc]">
-                                  Live deal guidance, competitive intel, and objection handling during calls
+                                  Create Playbooks for each company and for any stage of the sales process, Load your research onto Playbooks and use it during meetings.
                                 </div>
                               </div>
                             </Link>
@@ -75,14 +75,14 @@ export function Header() {
                         <h3 className="text-sm font-medium text-[#888]">Sales Excellence</h3>
                         <div className="space-y-4">
                           <NavigationMenuLink asChild>
-                            <Link href="/products/sales-enablement" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                            <Link href="/products/deepsearch" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
                               <div className="mt-1">
                                 <Layout className="h-5 w-5 text-[#0f81fb]" />
                               </div>
                               <div>
-                                <div className="font-medium">Playbook Automation</div>
+                                <div className="font-medium">DeepSearch</div>
                                 <div className="text-sm text-[#888] group-hover:text-[#ccc]">
-                                  AI-powered playbooks that adapt to each deal context
+                                  Ask questions to any LLM and get intelligent responses
                                 </div>
                               </div>
                             </Link>
@@ -120,7 +120,7 @@ export function Header() {
                           <Link href="/products" className="group flex items-start gap-3 rounded-lg p-3 hover:bg-[#111] text-white">
                             <Activity className="h-5 w-5 text-[#0f81fb] shrink-0 mt-0.5" />
                             <div>
-                              <div className="font-medium">Real-time AI Coach</div>
+                              <div className="font-medium">Realtime Playbook for meetings</div>
                               <div className="text-sm text-[#888] group-hover:text-[#ccc] line-clamp-2">
                                 Live deal guidance and coaching
                               </div>
@@ -133,12 +133,12 @@ export function Header() {
                       <div className="space-y-3">
                         <h3 className="text-sm font-medium text-[#888]">Sales Excellence</h3>
                         <NavigationMenuLink asChild>
-                          <Link href="/products/sales-enablement" className="group flex items-start gap-3 rounded-lg p-3 hover:bg-[#111] text-white">
+                          <Link href="/products/deepsearch" className="group flex items-start gap-3 rounded-lg p-3 hover:bg-[#111] text-white">
                             <Layout className="h-5 w-5 text-[#0f81fb] shrink-0 mt-0.5" />
                             <div>
-                              <div className="font-medium">Playbook Automation</div>
+                              <div className="font-medium">DeepSearch</div>
                               <div className="text-sm text-[#888] group-hover:text-[#ccc] line-clamp-2">
-                                AI-powered playbooks
+                                Ask questions to any LLM
                               </div>
                             </div>
                           </Link>

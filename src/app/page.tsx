@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle2,  Eye } from 'lucide-react'
 
 export default function Component() {
+  const [activeStage, setActiveStage] = useState<number | null>(null)
 
   return (
     <div className="flex min-h-screen flex-col bg-black text-white">
@@ -36,38 +37,39 @@ export default function Component() {
             </div>
           </div>
 
-          <div className="container relative max-w-full px-4">
-            <div className="flex flex-col items-center justify-center space-y-4 py-20 text-center md:py-32">
-              <div className="rounded-full bg-[#333] px-4 py-1.5 text-sm">
+          <div className="container relative max-w-full px-4 sm:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 py-16 sm:py-20 text-center md:py-32">
+              <div className="rounded-full bg-[#333] px-3 sm:px-4 py-1.5 text-xs sm:text-sm">
                 <span className="text-[#0070F3] font-medium">New</span>
-                {" Real-time AI Sales Coach - Your competitive edge "}
+                <span className="hidden sm:inline">{" Real-time AI Sales Coach - Your competitive edge "}</span>
+                <span className="sm:hidden">{" AI Sales Coach "}</span>
                 <Link href="https://app.graycommit.com" className="inline-flex items-center font-medium text-white hover:text-[#0070F3]">
                   See it in action
-                  <ArrowRight className="ml-1 h-4 w-4" />
+                  <ArrowRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
                 </Link>
               </div>
-              <h1 className="max-w-4xl text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="max-w-4xl text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl xl:text-7xl">
                 Close more deals with AI-powered sales intelligence.
               </h1>
-              <p className="max-w-[700px] text-xl text-[#888]">
-                Graycommit's real-time suggestion engine empowers your sales team with contextual insights, 
-                competitive advantages, and personalized talking points during live calls.
+              <p className="max-w-[700px] text-base sm:text-lg md:text-xl text-[#888] px-4">
+                Graycommit's real-time playbook engine empowers your sales team with the right playbook for every deal, 
+                create talk tracks and analyze every sales conversation.
               </p>
-              <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" className="h-12 px-8 bg-white text-black hover:bg-gray-200">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-md sm:max-w-none justify-center">
+                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 bg-white text-black hover:bg-gray-200">
                     Book a Demo
                   </Button>
                 </Link>
-                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                   <Button 
                     size="lg" 
-                    className="group relative h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
+                    className="group relative w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
                   >
-                    <span className="relative z-10 flex items-center">
+                    <span className="relative z-10 flex items-center justify-center">
                       Get Started Free
                       <svg 
-                        className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
+                        className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
@@ -80,9 +82,9 @@ export default function Component() {
               </div>
             </div>
 
-            <div className="relative mx-auto aspect-video w-full max-w-6xl">
+            <div className="relative mx-auto aspect-video w-full max-w-6xl mb-8 sm:mb-0">
               <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D4D] via-[#F9CB28] to-[#4ADE80] opacity-20 blur-3xl" />
-              <div className="relative w-full h-full rounded-xl overflow-hidden border border-[#333] bg-black">
+              <div className="relative w-full h-full rounded-lg sm:rounded-xl overflow-hidden border border-[#333] bg-black">
                 <iframe
                   src="https://www.youtube.com/embed/kn8zgAbxa94?si=ol0ZpqbaVExXz6Wm&rel=0&modestbranding=1&showinfo=0"
                   title="Graycommit Demo Video"
@@ -96,87 +98,45 @@ export default function Component() {
           </div>
         </section>
 
-        <section className="py-24 relative border-t border-[#333]">
-          {/* Changed from max-w-full to max-w-7xl and centered with mx-auto */}
-          <div className="container mx-auto max-w-7xl px-6 sm:px-8">
+        <section className="py-16 sm:py-20 lg:py-24 relative border-t border-[#333]">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Feature 1 - Image on left */}
-            <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center mb-32">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-24 items-center mb-20 sm:mb-24 lg:mb-32">
               {/* Left: Image/Demo */}
-              <div className="relative">
-                <div className="aspect-square rounded-xl overflow-hidden bg-[#111] border border-[#333] relative">
-                  {/* Video call main frame */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] to-[#111]">
-                    {/* Main speaker video frame */}
-                    <div className="absolute inset-4 rounded-lg bg-[#222] overflow-hidden">
-                      {/* Canva embed */}
-                      <div className="absolute inset-0 w-full h-full rounded-lg overflow-hidden">
-                        <iframe 
-                          loading="lazy" 
-                          className="absolute w-full h-full top-0 left-0 border-none rounded-lg"
-                          src="https://www.canva.com/design/DAGq42i25wk/pYnEoK4m2bbyPkJFPWuJKw/view?embed" 
-                          allowFullScreen
-                          allow="fullscreen">
-                        </iframe>
-                      </div>
-
-                      {/* Keep your existing suggestion cards */}
-                      <div className="absolute right-6 top-1/2 -translate-y-1/2 w-80 space-y-3 z-10">
-                        {/* Active playbook */}
-                        <div className="bg-black/95 backdrop-blur rounded-lg border border-[#0070F3] p-4 shadow-lg shadow-[#0070F3]/20 animate-pulse">
-                          <div className="flex items-center space-x-2 mb-2">
-                            <div className="h-2 w-2 rounded-full bg-[#0070F3] animate-pulse" />
-                            <span className="text-[#0070F3] text-sm font-medium">Active Playbook</span>
-                          </div>
-                          <p className="text-white text-sm font-medium mb-1">Enterprise Demo Track:</p>
-                          <p className="text-[#888] text-sm">"Start with ROI discussion, then showcase security features. Next: address integration concerns."</p>
-                        </div>
-
-                        {/* Previous playbook suggestion */}
-                        <div className="bg-black/70 backdrop-blur rounded-lg border border-[#333] p-4 opacity-60">
-                          <div className="flex items-center space-x-2 mb-2">
-                            <div className="h-2 w-2 rounded-full bg-green-500" />
-                            <span className="text-green-500 text-sm font-medium">Discovery Track</span>
-                          </div>
-                          <p className="text-white text-sm font-medium mb-1">Goal Achieved:</p>
-                          <p className="text-[#888] text-sm">"Pain points identified. Ready to switch to solution presentation playbook."</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Meeting controls bar */}
-                    <div className="absolute bottom-0 inset-x-0 h-16 bg-black/90 backdrop-blur border-t border-[#333]">
-                      <div className="h-full px-6 flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center space-x-2">
-                            <div className="h-8 w-8 rounded-full bg-[#222] border border-[#444] flex items-center justify-center">
-                              <div className="h-3 w-3 rounded-full bg-green-500" />
-                            </div>
-                            <span className="text-sm text-[#888]">AI Assistant</span>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-2 text-sm text-[#888]">
-                          <span>Meeting Duration:</span>
-                          <span className="font-mono">00:15:23</span>
-                        </div>
-                      </div>
-                    </div>
+              <div className="relative order-2 lg:order-1">
+                {/* Active Playbook Card */}
+                <div className="bg-black/95 backdrop-blur rounded-lg border border-[#0070F3] p-3 sm:p-4 shadow-lg shadow-[#0070F3]/20 animate-pulse mb-0">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="h-2 w-2 rounded-full bg-[#0070F3] animate-pulse" />
+                    <span className="text-[#0070F3] text-sm font-medium">Active Playbook</span>
                   </div>
+                  <p className="text-white text-sm font-medium mb-1">Enterprise Demo Track:</p>
+                  <p className="text-[#888] text-sm">"Start with ROI discussion, then showcase security features. Next: address integration concerns."</p>
                 </div>
+
+                {/* Simple Image */}
+                <iframe 
+                  loading="lazy" 
+                  className="w-full h-96 border-none block mt-0 pointer-events-none"
+                  style={{ margin: 0, padding: 0, display: 'block' }}
+                  src="https://www.canva.com/design/DAGq42i25wk/pYnEoK4m2bbyPkJFPWuJKw/view?embed" 
+                  allow="">
+                </iframe>
               </div>
               
               {/* Right: Content */}
-              <div className="space-y-8">
-                <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-4 py-1.5">
-                  <span className="text-sm font-medium text-[#888]">Realtime Playbook</span>
+              <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
+                <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-3 sm:px-4 py-1.5">
+                  <span className="text-xs sm:text-sm font-medium text-[#888]">Realtime Playbook</span>
                 </div>
-                <h2 className="text-4xl font-bold tracking-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
                   Never miss a selling opportunity
                 </h2>
-                <p className="text-xl text-[#888] leading-relaxed">
+                <p className="text-base sm:text-lg lg:text-xl text-[#888] leading-relaxed">
                   Transform your meetings into guided experiences with intelligent playbooks. 
                   Switch between custom talk tracks tailored to each prospect and meeting goal.
                 </p>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {/* Feature points */}
                   {[
                     'Custom playbooks for each company & team',
@@ -185,14 +145,14 @@ export default function Component() {
                     'Post-meeting conversation analysis & deepdive'
                   ].map((point, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="h-6 w-6 rounded-full bg-[#111] border border-[#333] flex items-center justify-center">
-                        <CheckCircle2 className="h-4 w-4 text-[#0070F3]" />
+                      <div className="h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#111] border border-[#333] flex items-center justify-center flex-shrink-0">
+                        <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-[#0070F3]" />
                       </div>
-                      <span className="text-[#888]">{point}</span>
+                      <span className="text-sm sm:text-base text-[#888]">{point}</span>
                     </div>
                   ))}
                 </div>
-                <div className="pt-4">
+                <div className="pt-2 sm:pt-4">
                   <Link href="/products">
                     <Button variant="outline" className="bg-white text-black hover:bg-gray-200">
                       Learn more
@@ -204,33 +164,33 @@ export default function Component() {
             </div>
 
             {/* Feature 2 - Image on right */}
-            <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
               {/* Left: Content */}
-              <div className="space-y-8">
-                <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-4 py-1.5">
-                  <span className="text-sm font-medium text-[#888]">Talk Track Creation</span>
+              <div className="space-y-6 sm:space-y-8">
+                <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-3 sm:px-4 py-1.5">
+                  <span className="text-xs sm:text-sm font-medium text-[#888]">Talk Track Creation</span>
                 </div>
-                <h2 className="text-4xl font-bold tracking-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
                   Build winning sales pipelines
                 </h2>
-                <p className="text-xl text-[#888] leading-relaxed">
+                <p className="text-base sm:text-lg lg:text-xl text-[#888] leading-relaxed">
                   Create dynamic playbooks that adapt to every prospect. Design custom talk tracks 
                   for different companies, teams, and meeting objectives with intelligent guidance.
                 </p>
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   {/* Stats */}
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="rounded-lg bg-[#111] border border-[#333] p-4">
-                      <div className="text-3xl font-bold">12+</div>
-                      <div className="text-sm text-[#888]">Custom Playbooks</div>
+                  <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                    <div className="rounded-lg bg-[#111] border border-[#333] p-3 sm:p-4">
+                      <div className="text-2xl sm:text-3xl font-bold">12+</div>
+                      <div className="text-xs sm:text-sm text-[#888]">Custom Playbooks</div>
                     </div>
-                    <div className="rounded-lg bg-[#111] border border-[#333] p-4">
-                      <div className="text-3xl font-bold">85%</div>
-                      <div className="text-sm text-[#888]">Meeting Goals Achieved</div>
+                    <div className="rounded-lg bg-[#111] border border-[#333] p-3 sm:p-4">
+                      <div className="text-2xl sm:text-3xl font-bold">85%</div>
+                      <div className="text-xs sm:text-sm text-[#888]">Meeting Goals Achieved</div>
                     </div>
                   </div>
                 </div>
-                <div className="pt-4">
+                <div className="pt-2 sm:pt-4">
                   <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
                     <Button className="group relative bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300">
                       <span className="relative z-10 flex items-center">
@@ -249,56 +209,110 @@ export default function Component() {
                 </div>
               </div>
               
-              {/* Right: Image/Demo */}
+              {/* Right: Pipeline Management Dashboard */}
               <div className="relative">
                 <div className="aspect-square rounded-xl overflow-hidden bg-[#111] border border-[#333] relative">
-                  {/* Video call main frame */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] to-[#111]">
-                    {/* Main speaker video frame */}
-                    <div className="absolute inset-4 rounded-lg bg-[#222] overflow-hidden">
-                      {/* Speaker silhouette */}
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[90%] bg-[#333] rounded-t-full" />
-                      
-                      {/* Playbook selector floating panel */}
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 w-72 bg-black/90 backdrop-blur rounded-lg border border-[#0070F3] p-4 animate-pulse">
-                        <div className="flex items-center space-x-2 mb-3">
-                          <div className="h-2 w-2 rounded-full bg-[#0070F3] animate-pulse" />
-                          <span className="text-xs text-[#888]">Playbook Switch</span>
-                        </div>
-                        
-                        <div className="space-y-2 text-sm">
-                          <p className="text-white font-medium">Switching to: Technical Deep Dive</p>
-                          <p className="text-[#888]">"CTO joined the call. Activating technical discussion playbook with architecture focus."</p>
-                        </div>
+                  {/* Pipeline Management Interface */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] to-[#111] p-4 sm:p-6">
+                    
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-4 sm:mb-6">
+                      <div>
+                        <h3 className="text-white font-semibold text-sm sm:text-base">Q4 Sales Pipeline</h3>
+                        <p className="text-[#888] text-xs sm:text-sm">Target: $2.5M</p>
                       </div>
+                      <div className="bg-green-500/20 rounded-full px-2 sm:px-3 py-1">
+                        <span className="text-green-500 text-xs sm:text-sm font-medium">On Track</span>
+                      </div>
+                    </div>
 
-                      {/* Previous playbook */}
-                      <div className="absolute right-4 top-[20%] w-72 bg-black/50 backdrop-blur rounded-lg border border-[#333] p-4 opacity-40">
-                        <div className="flex items-center space-x-2 mb-3">
-                          <div className="h-2 w-2 rounded-full bg-green-500" />
-                          <span className="text-xs text-[#888]">Previous Playbook</span>
+                    {/* Pipeline Stages with Progress */}
+                    <div className="space-y-3 sm:space-y-4">
+                      {[
+                        { stage: 'Prospecting', target: 50, current: 48, status: 'completed', color: '#22C55E' },
+                        { stage: 'Qualification', target: 35, current: 32, status: 'completed', color: '#22C55E' },
+                        { stage: 'Proposal', target: 20, current: 18, status: 'active', color: '#0070F3' },
+                        { stage: 'Negotiation', target: 12, current: 8, status: 'pending', color: '#F59E0B' },
+                        { stage: 'Closing', target: 8, current: 3, status: 'pending', color: '#6B7280' }
+                      ].map((item, index) => (
+                        <div key={item.stage} className="space-y-2">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2 sm:gap-3">
+                              {/* Status Icon */}
+                              <div className={`h-5 w-5 sm:h-6 sm:w-6 rounded-full border-2 flex items-center justify-center ${
+                                item.status === 'completed' 
+                                  ? 'bg-green-500 border-green-500' 
+                                  : item.status === 'active'
+                                  ? 'bg-[#0070F3] border-[#0070F3] animate-pulse'
+                                  : 'border-[#444] bg-transparent'
+                              }`}>
+                                {item.status === 'completed' && (
+                                  <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
+                                )}
+                                {item.status === 'active' && (
+                                  <div className="h-2 w-2 sm:h-3 sm:w-3 bg-white rounded-full" />
+                                )}
+                              </div>
+                              
+                              <div>
+                                <div className="text-white text-xs sm:text-sm font-medium">{item.stage}</div>
+                                <div className="text-[#888] text-xs">{item.current}/{item.target} deals</div>
+                              </div>
+                            </div>
+                            
+                            <div className="text-right">
+                              <div className="text-xs sm:text-sm font-medium" style={{ color: item.color }}>
+                                {Math.round((item.current / item.target) * 100)}%
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Progress Bar */}
+                          <div className="h-2 bg-[#222] rounded-full overflow-hidden">
+                            <div 
+                              className="h-full rounded-full transition-all duration-1000 ease-out"
+                              style={{ 
+                                width: `${(item.current / item.target) * 100}%`,
+                                backgroundColor: item.color,
+                                boxShadow: `0 0 10px ${item.color}40`
+                              }}
+                            />
+                          </div>
                         </div>
-                        
-                        <div className="space-y-2 text-sm">
-                          <p className="text-white font-medium">Business Value Complete:</p>
-                          <p className="text-[#888]">"ROI discussion finished successfully. Ready for technical validation."</p>
+                      ))}
+                    </div>
+
+                    {/* Recent Activity */}
+                    <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-black/40 rounded-lg border border-[#333]">
+                      <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                        <div className="h-2 w-2 bg-[#0070F3] rounded-full animate-pulse" />
+                        <span className="text-[#888] text-xs sm:text-sm">Recent Activity</span>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 flex-shrink-0" />
+                          <span className="text-white text-xs sm:text-sm">Enterprise Corp moved to Negotiation</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="h-3 w-3 sm:h-4 sm:w-4 bg-[#0070F3] rounded-full flex-shrink-0" />
+                          <span className="text-white text-xs sm:text-sm">TechStart Inc proposal sent</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="h-3 w-3 sm:h-4 sm:w-4 bg-yellow-500 rounded-full flex-shrink-0" />
+                          <span className="text-white text-xs sm:text-sm">DataCorp demo scheduled</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Bottom control bar */}
-                    <div className="absolute bottom-0 inset-x-0 h-16 bg-black/50 backdrop-blur border-t border-[#333] flex items-center justify-between px-6">
-                      <div className="flex items-center space-x-4">
-                        <div className="h-8 w-8 rounded-full bg-[#333] flex items-center justify-center">
-                          <div className="h-4 w-4 rounded-full bg-green-500" />
-                        </div>
-                        <span className="text-sm text-[#888]">AI Assistant Active</span>
+                    {/* AI Insights Panel */}
+                    <div className="absolute bottom-4 right-4 bg-black/90 backdrop-blur border border-[#0070F3] rounded-lg p-3 w-40 sm:w-48">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="h-2 w-2 bg-[#0070F3] rounded-full animate-pulse" />
+                        <span className="text-[#0070F3] text-xs font-medium">AI Insight</span>
                       </div>
-                      
-                      <div className="flex items-center space-x-2 text-xs text-[#888]">
-                        <span>Meeting Duration:</span>
-                        <span className="font-mono">00:15:23</span>
-                      </div>
+                      <p className="text-white text-xs mb-1">Pipeline Health:</p>
+                      <p className="text-[#888] text-xs">"Focus on qualification stage. 3 high-value prospects ready for acceleration."</p>
                     </div>
                   </div>
                 </div>
@@ -310,125 +324,313 @@ export default function Component() {
 
 
         
-        {/* v1 Section */}
+        {/* Interactive Funnel Section - Mobile Optimized */}
        
-        <section className="py-24 relative border-t border-[#333]">
-          <div className="container mx-auto max-w-7xl px-4">
-            <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
-              {/* Left Column - Pipeline Visualization */}
-              <div className="space-y-8">
-                <h2 className="text-4xl font-bold">Transform Your Sales Pipeline</h2>
-                <p className="text-2xl text-[#888]">AI-powered insights driving predictable revenue growth.</p>
+        <section className="py-16 sm:py-20 lg:py-24 relative border-t border-[#333]">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 overflow-visible">
+              {/* Left Column - Interactive Funnel */}
+              <div className="space-y-6 sm:space-y-8">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Transform Your Sales Pipeline</h2>
+                <p className="text-base sm:text-lg lg:text-2xl text-[#888]">AI-powered playbooks guiding every deal to close.</p>
                 
-                {/* Modern Pipeline Visualization */}
-                <div className="relative h-[600px] bg-[#111] rounded-xl border border-[#333] p-8 overflow-hidden">
-                  {/* Animated Background Grid */}
+                {/* Interactive Sales Funnel - Mobile Optimized */}
+                <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] bg-[#111] rounded-xl border border-[#333] p-4 sm:p-6 lg:p-8 overflow-visible">
+                  {/* Animated Background Grid - Reduced on mobile */}
                   <div className="absolute inset-0 opacity-10">
-                    {[...Array(20)].map((_, i) => (
+                    {[...Array(10)].map((_, i) => (
                       <div
                         key={i}
                         className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0070F3] to-transparent"
-                        style={{ top: `${(i + 1) * 5}%`, opacity: 0.5 }}
+                        style={{ top: `${(i + 1) * 10}%`, opacity: 0.5 }}
                       />
                     ))}
                   </div>
 
-                  {/* Pipeline Flow Visualization */}
-                  <div className="relative h-full py-8">
+                  {/* Sales Funnel */}
+                  <div className="relative h-full flex flex-col justify-center items-center space-y-2 sm:space-y-3">
                     {[
-                      { stage: 'Pipeline Created', count: '180', value: '$15.2M', growth: '+45%', color: '#0070F3', icon: 'GitBranch' },
-                      { stage: 'Meetings Booked', count: '125', value: '$12.8M', growth: '+38%', color: '#4ADE80', icon: 'Calendar' },
-                      { stage: 'Proposals Sent', count: '85', value: '$8.5M', growth: '+52%', color: '#F9CB28', icon: 'FileText' },
-                      { stage: 'Deals Won', count: '42', value: '$4.2M', growth: '+65%', color: '#22C55E', icon: 'CheckCircle' }
+                      { 
+                        stage: 'Leads', 
+                        count: '180', 
+                        value: '$15.2M', 
+                        color: '#0070F3',
+                        width: '100%',
+                        playbook: {
+                          title: 'Lead Qualification Playbook',
+                          items: ['BANT qualification framework', 'Competitor landscape mapping', 'Initial pain point discovery', 'Budget range validation']
+                        }
+                      },
+                      { 
+                        stage: 'Discovery', 
+                        count: '125', 
+                        value: '$12.8M', 
+                        color: '#4ADE80',
+                        width: '95%',
+                        playbook: {
+                          title: 'Discovery Deep Dive Playbook',
+                          items: ['Technical requirements gathering', 'Stakeholder mapping workshop', 'Current solution audit', 'Decision timeline establishment']
+                        }
+                      },
+                      { 
+                        stage: 'Demo', 
+                        count: '85', 
+                        value: '$8.5M', 
+                        color: '#F9CB28',
+                        width: '65%',
+                        playbook: {
+                          title: 'Demo Excellence Playbook',
+                          items: ['Personalized demo script', 'Technical objection handling', 'ROI calculator walkthrough', 'Next steps commitment']
+                        }
+                      },
+                      { 
+                        stage: 'Proposal', 
+                        count: '65', 
+                        value: '$6.2M', 
+                        color: '#FF6B6B',
+                        width: '45%',
+                        playbook: {
+                          title: 'Proposal Winning Playbook',
+                          items: ['Competitive differentiation strategy', 'Pricing justification framework', 'Risk mitigation plan', 'Implementation timeline']
+                        }
+                      },
+                      { 
+                        stage: 'Closed Won', 
+                        count: '42', 
+                        value: '$4.2M', 
+                        color: '#22C55E',
+                        width: '30%',
+                        playbook: {
+                          title: 'Closing Mastery Playbook',
+                          items: ['Urgency creation techniques', 'Final objection resolution', 'Contract negotiation tactics', 'Onboarding kickoff']
+                        }
+                      }
                     ].map((stage, index) => (
-                      <div
-                        key={stage.stage}
-                        className="absolute left-0 right-0 bg-black/40 backdrop-blur rounded-lg border border-[#333] p-6 transform transition-all duration-500 hover:scale-105 hover:border-[#0070F3] hover:shadow-lg hover:shadow-[#0070F3]/10"
-                        style={{
-                          top: `${index * 130}px`,
-                          background: `linear-gradient(90deg, ${stage.color}10, transparent)`
-                        }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="space-y-1">
-                            <div className="text-sm text-[#888]">{stage.stage}</div>
-                            <div className="text-2xl font-bold">{stage.value}</div>
-                            <div className="flex items-center space-x-2">
-                              <div className="text-sm">{stage.count} opportunities</div>
-                              <div className="text-sm text-green-500">{stage.growth}</div>
-                            </div>
-                          </div>
+                      <div key={stage.stage} className="group relative w-full flex justify-center">
+                        {/* Funnel Stage - Mobile Optimized */}
+                        <div 
+                          className="relative transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:scale-105 hover:z-20 lg:group-hover:-translate-y-4 lg:group-hover:scale-110"
+                          style={{ width: stage.width }}
+                          onClick={() => setActiveStage(activeStage === index ? null : index)}
+                        >
+                          {/* Trapezoid shape */}
                           <div 
-                            className={`h-16 w-16 rounded-full flex items-center justify-center transition-all duration-300 ${
-                              stage.stage === 'Deals Won' ? 'bg-green-500/10 backdrop-blur' : ''
+                            className={`h-12 sm:h-16 lg:h-20 border-2 transition-all duration-500 relative overflow-hidden shadow-lg ${
+                              activeStage === index 
+                                ? 'border-[#0070F3] shadow-[#0070F3]/30' 
+                                : 'border-[#333] hover:border-[#0070F3] hover:shadow-[#0070F3]/30'
                             }`}
-                            style={{ 
-                              background: stage.stage === 'Deals Won' 
-                                ? 'none'
-                                : `linear-gradient(45deg, ${stage.color}20, transparent)`,
-                              border: stage.stage === 'Deals Won' ? `1px solid ${stage.color}` : 'none'
+                            style={{
+                              background: `linear-gradient(135deg, ${stage.color}25, ${stage.color}15, ${stage.color}05)`,
+                              clipPath: index === 0 
+                                ? 'polygon(5% 0, 95% 0, 85% 100%, 15% 100%)'
+                                : index === 4
+                                ? 'polygon(15% 0, 85% 0, 95% 100%, 5% 100%)'
+                                : 'polygon(15% 0, 85% 0, 75% 100%, 25% 100%)'
                             }}
                           >
+                            {/* Content */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className={`text-center transform transition-transform duration-300 ${
+                                activeStage === index ? 'scale-105' : ''
+                              }`}>
+                                <div className={`text-sm sm:text-lg lg:text-xl font-bold transition-colors duration-300 ${
+                                  activeStage === index ? 'text-[#0070F3]' : 'text-white hover:text-[#0070F3]'
+                                }`}>
+                                  {stage.stage}
+                                </div>
+                                <div className={`text-xs sm:text-sm transition-colors duration-300 ${
+                                  activeStage === index ? 'text-white' : 'text-[#888] hover:text-white'
+                                }`}>
+                                  {stage.count} deals • {stage.value}
+                                </div>
+                              </div>
+                            </div>
+                            
+                            {/* Hover glow effect */}
                             <div 
-                              className={`h-10 w-10 rounded-full flex items-center justify-center ${
-                                stage.stage === 'Deals Won' ? 'bg-green-500' : ''
+                              className={`absolute inset-0 transition-all duration-500 ${
+                                activeStage === index ? 'opacity-40' : 'opacity-0 hover:opacity-40'
                               }`}
                               style={{ 
-                                background: stage.stage === 'Deals Won' 
-                                  ? '#22C55E' 
-                                  : `linear-gradient(45deg, ${stage.color}, transparent)`
+                                background: `radial-gradient(circle at center, ${stage.color}80, ${stage.color}40, transparent)`,
+                                filter: 'blur(1px)'
                               }}
-                            >
-                              {stage.stage === 'Deals Won' && (
-                                <CheckCircle2 className="h-6 w-6 text-white" />
-                              )}
-                            </div>
+                            />
                           </div>
                         </div>
+
+                        {/* Desktop Playbook Popup - Hover */}
+                        <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-full ml-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto z-50">
+                          <div className="bg-black/95 backdrop-blur-xl border-2 border-[#0070F3] rounded-xl p-6 w-96 shadow-2xl shadow-[#0070F3]/20">
+                            <div className="flex items-center space-x-3 mb-4">
+                              <div 
+                                className="h-4 w-4 rounded-full animate-pulse shadow-lg"
+                                style={{ 
+                                  backgroundColor: stage.color,
+                                  boxShadow: `0 0 10px ${stage.color}80`
+                                }}
+                              />
+                              <span className="text-[#0070F3] text-sm font-semibold bg-gradient-to-r from-[#0070F3] to-[#4ADE80] bg-clip-text text-transparent">
+                                AI Playbook Active
+                              </span>
+                            </div>
+                            <h4 className="text-white font-bold text-lg mb-4 group-hover:text-[#0070F3] transition-colors duration-300">
+                              {stage.playbook.title}
+                            </h4>
+                            <ul className="space-y-3">
+                              {stage.playbook.items.map((item, i) => (
+                                <li key={i} className="flex items-start gap-3 text-sm text-[#888] hover:text-white transition-colors duration-200">
+                                  <CheckCircle2 className="h-5 w-5 text-[#0070F3] mt-0.5 flex-shrink-0 animate-pulse" />
+                                  <span className="leading-relaxed">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                            
+                            {/* Progress indicator */}
+                            <div className="mt-4 pt-4 border-t border-[#333]">
+                              <div className="flex items-center justify-between text-xs text-[#666]">
+                                <span>Stage Progress</span>
+                                <span>{Math.round((5 - index) / 5 * 100)}% Complete</span>
+                              </div>
+                              <div className="mt-2 h-1 bg-[#222] rounded-full overflow-hidden">
+                                <div 
+                                  className="h-full rounded-full transition-all duration-1000 ease-out"
+                                  style={{ 
+                                    width: `${(5 - index) / 5 * 100}%`,
+                                    background: `linear-gradient(90deg, ${stage.color}, #0070F3)`
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Arrow pointing to funnel */}
+                          <div 
+                            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-4 h-4 bg-[#0070F3] transform rotate-45 border border-[#0070F3]"
+                          />
+                        </div>
+
+                        {/* Stage connection lines */}
+                        {index < 4 && (
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-px h-2 sm:h-3 bg-gradient-to-b from-[#333] to-transparent opacity-50 hover:opacity-100 transition-opacity duration-300" />
+                        )}
                       </div>
                     ))}
                   </div>
                 </div>
+
+                {/* Mobile Playbook Display - Below Funnel */}
+                {activeStage !== null && (
+                  <div className="lg:hidden bg-black/95 backdrop-blur-xl border-2 border-[#0070F3] rounded-xl p-4 sm:p-6 shadow-2xl shadow-[#0070F3]/20 animate-in slide-in-from-bottom duration-300">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <div 
+                        className="h-4 w-4 rounded-full animate-pulse shadow-lg"
+                        style={{ 
+                          backgroundColor: [
+                            { stage: 'Leads', color: '#0070F3' },
+                            { stage: 'Discovery', color: '#4ADE80' },
+                            { stage: 'Demo', color: '#F9CB28' },
+                            { stage: 'Proposal', color: '#FF6B6B' },
+                            { stage: 'Closed Won', color: '#22C55E' }
+                          ][activeStage].color,
+                          boxShadow: `0 0 10px ${[
+                            { stage: 'Leads', color: '#0070F3' },
+                            { stage: 'Discovery', color: '#4ADE80' },
+                            { stage: 'Demo', color: '#F9CB28' },
+                            { stage: 'Proposal', color: '#FF6B6B' },
+                            { stage: 'Closed Won', color: '#22C55E' }
+                          ][activeStage].color}80`
+                        }}
+                      />
+                      <span className="text-[#0070F3] text-sm font-semibold">
+                        AI Playbook Active
+                      </span>
+                    </div>
+                    <h4 className="text-white font-bold text-lg mb-4">
+                      {[
+                        { stage: 'Leads', playbook: { title: 'Lead Qualification Playbook', items: ['BANT qualification framework', 'Competitor landscape mapping', 'Initial pain point discovery', 'Budget range validation'] } },
+                        { stage: 'Discovery', playbook: { title: 'Discovery Deep Dive Playbook', items: ['Technical requirements gathering', 'Stakeholder mapping workshop', 'Current solution audit', 'Decision timeline establishment'] } },
+                        { stage: 'Demo', playbook: { title: 'Demo Excellence Playbook', items: ['Personalized demo script', 'Technical objection handling', 'ROI calculator walkthrough', 'Next steps commitment'] } },
+                        { stage: 'Proposal', playbook: { title: 'Proposal Winning Playbook', items: ['Competitive differentiation strategy', 'Pricing justification framework', 'Risk mitigation plan', 'Implementation timeline'] } },
+                        { stage: 'Closed Won', playbook: { title: 'Closing Mastery Playbook', items: ['Urgency creation techniques', 'Final objection resolution', 'Contract negotiation tactics', 'Onboarding kickoff'] } }
+                      ][activeStage].playbook.title}
+                    </h4>
+                    <ul className="space-y-3">
+                      {[
+                        { stage: 'Leads', playbook: { title: 'Lead Qualification Playbook', items: ['BANT qualification framework', 'Competitor landscape mapping', 'Initial pain point discovery', 'Budget range validation'] } },
+                        { stage: 'Discovery', playbook: { title: 'Discovery Deep Dive Playbook', items: ['Technical requirements gathering', 'Stakeholder mapping workshop', 'Current solution audit', 'Decision timeline establishment'] } },
+                        { stage: 'Demo', playbook: { title: 'Demo Excellence Playbook', items: ['Personalized demo script', 'Technical objection handling', 'ROI calculator walkthrough', 'Next steps commitment'] } },
+                        { stage: 'Proposal', playbook: { title: 'Proposal Winning Playbook', items: ['Competitive differentiation strategy', 'Pricing justification framework', 'Risk mitigation plan', 'Implementation timeline'] } },
+                        { stage: 'Closed Won', playbook: { title: 'Closing Mastery Playbook', items: ['Urgency creation techniques', 'Final objection resolution', 'Contract negotiation tactics', 'Onboarding kickoff'] } }
+                      ][activeStage].playbook.items.map((item, i) => (
+                        <li key={i} className="flex items-start gap-3 text-sm text-[#888]">
+                          <CheckCircle2 className="h-5 w-5 text-[#0070F3] mt-0.5 flex-shrink-0" />
+                          <span className="leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    {/* Progress indicator */}
+                    <div className="mt-4 pt-4 border-t border-[#333]">
+                      <div className="flex items-center justify-between text-xs text-[#666]">
+                        <span>Stage Progress</span>
+                        <span>{Math.round((5 - activeStage) / 5 * 100)}% Complete</span>
+                      </div>
+                      <div className="mt-2 h-1 bg-[#222] rounded-full overflow-hidden">
+                        <div 
+                          className="h-full rounded-full transition-all duration-1000 ease-out"
+                          style={{ 
+                            width: `${(5 - activeStage) / 5 * 100}%`,
+                            background: `linear-gradient(90deg, ${[
+                              '#0070F3', '#4ADE80', '#F9CB28', '#FF6B6B', '#22C55E'
+                            ][activeStage]}, #0070F3)`
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Right Column - Performance Metrics */}
-              <div className="space-y-8">
-                <h2 className="text-4xl font-bold">AI-Powered Growth</h2>
-                <p className="text-2xl text-[#888]">Real-time insights driving exceptional results.</p>
+              <div className="space-y-6 sm:space-y-8">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">AI-Powered Growth</h2>
+                <p className="text-base sm:text-lg lg:text-2xl text-[#888]">Real-time insights driving exceptional results.</p>
                 
                 {/* Performance Dashboard */}
                 <div className="space-y-6">
                   {/* Key Metrics Cards */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-[#111] rounded-xl p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="text-sm text-[#888]">Revenue Impact</div>
-                        <div className="h-8 w-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                          <ArrowRight className="h-5 w-5 text-green-500 rotate-45" />
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div className="bg-[#111] rounded-xl p-4 sm:p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
+                                              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                          <div className="text-xs sm:text-sm text-[#888]">Revenue Impact</div>
+                          <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-green-500/20 flex items-center justify-center">
+                            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 rotate-45" />
+                          </div>
                         </div>
-                      </div>
-                      <div className="text-3xl font-bold mb-2">$4.2M</div>
-                      <div className="text-sm text-green-500">+65% with Graycommit AI</div>
+                        <div className="text-2xl sm:text-3xl font-bold mb-2">$4.2M</div>
+                        <div className="text-xs sm:text-sm text-green-500">+65% with Graycommit AI</div>
                     </div>
-                    <div className="bg-[#111] rounded-xl p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="text-sm text-[#888]">Win Rate</div>
-                        <div className="h-8 w-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                          <CheckCircle2 className="h-5 w-5 text-blue-500" />
+                    <div className="bg-[#111] rounded-xl p-4 sm:p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
+                        <div className="text-xs sm:text-sm text-[#888]">Win Rate</div>
+                        <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                          <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-blue-500" />
                         </div>
                       </div>
-                      <div className="text-3xl font-bold mb-2">42%</div>
-                      <div className="text-sm text-green-500">+15% improvement</div>
+                      <div className="text-2xl sm:text-3xl font-bold mb-2">42%</div>
+                      <div className="text-xs sm:text-sm text-green-500">+15% improvement</div>
                     </div>
                   </div>
 
                   {/* AI Impact Metrics */}
-                  <div className="bg-[#111] rounded-xl p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="text-lg font-medium">AI Performance Impact</div>
-                      <div className="text-sm text-[#888]">Last 30 days</div>
+                  <div className="bg-[#111] rounded-xl p-4 sm:p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
+                    <div className="flex items-center justify-between mb-4 sm:mb-6">
+                      <div className="text-base sm:text-lg font-medium">AI Performance Impact</div>
+                      <div className="text-xs sm:text-sm text-[#888]">Last 30 days</div>
                     </div>
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       {[
                         { label: 'Deal Size Increase', value: '32%', progress: '75%' },
                         { label: 'Sales Cycle Reduction', value: '40%', progress: '85%' },
@@ -436,8 +638,8 @@ export default function Component() {
                       ].map((metric, index) => (
                         <div key={index} className="space-y-2">
                           <div className="flex items-center justify-between">
-                            <div className="text-sm">{metric.label}</div>
-                            <div className="text-sm text-green-500">+{metric.value}</div>
+                            <div className="text-xs sm:text-sm">{metric.label}</div>
+                            <div className="text-xs sm:text-sm text-green-500">+{metric.value}</div>
                           </div>
                           <div className="h-2 bg-[#222] rounded-full overflow-hidden">
                             <div 
@@ -789,7 +991,7 @@ export default function Component() {
             <div className="grid grid-cols-3 gap-12 md:gap-24">
               {/* Row 1 */}
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">groq</div>
+                <div className="text-2xl font-bold">Replicate</div>
               </div>
               <div className="flex items-center justify-center">
                 <div className="text-2xl font-bold">Chroma</div>
@@ -806,7 +1008,7 @@ export default function Component() {
                 <div className="text-2xl font-bold">LangChain</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Modal</div>
+                <div className="text-2xl font-bold">Rippling</div>
               </div>
               
               {/* Row 3 */}
@@ -817,18 +1019,18 @@ export default function Component() {
                 <div className="text-2xl font-bold">Pinecone</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">replicate</div>
+                <div className="text-2xl font-bold">Unilever</div>
               </div>
               
               {/* Row 4 */}
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">runway</div>
+                <div className="text-2xl font-bold">Digital Ocean</div>
               </div>
               <div className="flex items-center justify-center">
                 <div className="text-2xl font-bold">stability.ai</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">OpenAI</div>
+                <div className="text-2xl font-bold">Hugging Face</div>
               </div>
             </div>
           </div>

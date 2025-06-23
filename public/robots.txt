@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Allow all crawlers and LLMs to index the site
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Sitemap location
+Sitemap: https://graycommit.com/sitemap.xml
+
+# Crawl delay (optional - helps with server load)
+Crawl-delay: 1 

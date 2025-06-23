@@ -63,6 +63,10 @@
         "Improved API security with rate limiting",
         "Updated security headers and CORS policies"
       ]
+    },
+    {
+      "type": "text",
+      "content": "For comprehensive details about our security architecture, compliance certifications, and security practices, visit our dedicated <a href=\"/security\" class=\"text-green-400 hover:text-green-300 underline\">Security Center</a>."
     }
   ],
   "author": {

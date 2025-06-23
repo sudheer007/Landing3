@@ -6,16 +6,11 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle2, Zap, Shield, ArrowRight } from 'lucide-react'
 
 export default function PricingPage() {
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('annual')
-
   const tiers = [
     {
       name: "Free",
       description: "Perfect for trying out the platform",
-      price: {
-        monthly: "$0",
-        annual: "$0",
-      },
+      price: "$0",
       features: [
         "3 meetings per month",
         "Multiple tabs for LLMs",
@@ -30,10 +25,7 @@ export default function PricingPage() {
     {
       name: "Starter",
       description: "Ideal for individuals and small teams",
-      price: {
-        monthly: "$5",
-        annual: "$42",
-      },
+      price: "$5",
       features: [
         "30 meetings per month",
         "10GB recording storage (6 months)",
@@ -48,10 +40,7 @@ export default function PricingPage() {
     {
       name: "Pro",
       description: "Professional teams and businesses",
-      price: {
-        monthly: "$20",
-        annual: "$168",
-      },
+      price: "$20",
       features: [
         "Unlimited meetings",
         "100GB recording storage",
@@ -103,31 +92,6 @@ export default function PricingPage() {
               <p className="max-w-2xl text-xl text-[#888]">
                 Choose the perfect plan for your team. All plans include a 14-day free trial.
               </p>
-
-              {/* Billing Toggle */}
-              <div className="flex items-center gap-4 bg-[#111] p-1 rounded-full">
-                <button
-                  onClick={() => setBillingPeriod('monthly')}
-                  className={`px-4 py-2 rounded-full text-sm transition-all ${
-                    billingPeriod === 'monthly' 
-                      ? 'bg-[#0f81fb] text-white' 
-                      : 'text-[#888] hover:text-white'
-                  }`}
-                >
-                  Monthly
-                </button>
-                <button
-                  onClick={() => setBillingPeriod('annual')}
-                  className={`px-4 py-2 rounded-full text-sm transition-all ${
-                    billingPeriod === 'annual' 
-                      ? 'bg-[#0f81fb] text-white' 
-                      : 'text-[#888] hover:text-white'
-                  }`}
-                >
-                  Annual
-                  <span className="ml-1 text-xs text-[#0f81fb]">Save 30%</span>
-                </button>
-              </div>
             </div>
           </div>
         </section>
@@ -159,11 +123,11 @@ export default function PricingPage() {
 
                     <div className="space-y-1">
                       <div className="text-4xl font-bold">
-                        {tier.price[billingPeriod]}
+                        {tier.price}
                       </div>
-                      {tier.name !== "Enterprise" && (
+                      {tier.name !== "Enterprise" && tier.price !== "$0" && (
                         <div className="text-sm text-[#888]">
-                          per user/{billingPeriod === 'monthly' ? 'mo' : 'yr'}
+                          per user/mo
                         </div>
                       )}
                     </div>
@@ -225,7 +189,7 @@ export default function PricingPage() {
                 },
                 {
                   q: "Is there a free trial?",
-                  a: "All paid plans come with a 14-day free trial. No credit card required to get started."
+                  a: "You can use your free tier for completely free. No strings attached and We don't require a credit card to get started."
                 },
                 {
                   q: "What happens if I exceed my plan limits?",
@@ -233,7 +197,7 @@ export default function PricingPage() {
                 },
                 {
                   q: "Do you offer refunds?",
-                  a: "Yes, we offer a 30-day money-back guarantee for all annual plans. Monthly plans can be cancelled anytime."
+                  a: "Yes, we offer a 30-day money-back guarantee. You can cancel anytime."
                 }
               ].map((faq, i) => (
                 <div key={i} className="border border-[#333] rounded-lg p-6 hover:border-[#444] transition-colors">
