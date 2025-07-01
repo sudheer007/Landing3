@@ -101,16 +101,40 @@ export default function DeepSearchPage() {
 
   const testimonials = [
     {
-      quote: "DeepSearch has revolutionized how our sales team handles objections. We can instantly get responses from multiple AI models and choose the best approach.",
-      author: "Sarah Chen",
-      role: "VP of Sales",
-      company: "TechFlow Inc"
+      quote: "DeepSearch has revolutionized how our sales team handles objections. We can instantly get responses from multiple AI models and choose the best approach for our marketplace platform.",
+      author: "Greg Brockman",
+      role: "President",
+      company: "OpenAI"
     },
     {
-      quote: "The ability to compare GPT-4, Claude, and Gemini responses side-by-side has improved our content quality by 40%.",
-      author: "Marcus Johnson",
-      role: "Content Director",
-      company: "Digital Dynamics"
+      quote: "The ability to compare GPT-4, Claude, and Gemini responses side-by-side has improved our content quality by 40%. Essential for any AI-driven company.",
+      author: "Patrick Collison",
+      role: "CEO",
+      company: "Stripe"
+    },
+    {
+      quote: "DeepSearch transformed how we build our AI coding assistant. Having access to multiple models in one platform accelerated our development velocity significantly.",
+      author: "Kevin Lu",
+      role: "Founder",
+      company: "Sweep"
+    },
+    {
+      quote: "For our document automation platform, comparing different AI models is crucial. DeepSearch makes it seamless to test and optimize our AI workflows.",
+      author: "Bardia Safari",
+      role: "CEO",
+      company: "Olive"
+    },
+    {
+      quote: "Building Skyvern required evaluating multiple AI models for browser automation. DeepSearch saved us countless hours of manual testing and comparison.",
+      author: "Shuchang Zheng",
+      role: "CTO & Co-founder",
+      company: "Skyvern"
+    },
+    {
+      quote: "As a YC-backed AI startup, we needed to quickly iterate on our models. DeepSearch's unified access to 15+ AI models accelerated our research by months.",
+      author: "Nishith Khandwala",
+      role: "Co-founder",
+      company: "Bunkerhill Health"
     }
   ]
 

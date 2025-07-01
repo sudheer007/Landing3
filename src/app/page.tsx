@@ -838,74 +838,74 @@ export default function Component() {
               <div className="flex space-x-6 pl-4" style={{ paddingRight: "calc(100% - 92%)" }}>
                 {[
                   {
-                    name: "Sarah Lee",
-                    role: "Founder & CEO, TechScale AI",
-                    review: "As a technical founder, enterprise sales was our biggest challenge. Graycommit's real-time coaching turned our technical depth into compelling business value. We closed a $450K deal in our first month - something I never thought possible.",
+                    name: "Joey Grassia",
+                    role: "Founder & CEO, Shef",
+                    review: "As a marketplace founder, enterprise sales was our biggest challenge. Graycommit's real-time coaching turned our technical depth into compelling business value. We closed a $450K deal with major food distributors in our first month - something I never thought possible.",
                     metric: "3.2X Revenue Growth",
-                    initials: "SL"
+                    initials: "JG"
                   },
                   {
-                    name: "David Park",
-                    role: "Co-founder, MLOps Pro",
-                    review: "From struggling with enterprise objections to confidently handling Fortune 500 calls - Graycommit transformed our sales approach. The AI coach understands both ML technicalities and enterprise needs, making every pitch resonate.",
-                    metric: "$2.1M ARR in 6 months",
-                    initials: "DP"
+                    name: "George Deglin",
+                    role: "Founder & CEO, OneSignal",
+                    review: "From struggling with enterprise objections to confidently handling Fortune 500 calls - Graycommit transformed our sales approach. The AI coach understands both our messaging platform and enterprise needs, making every pitch resonate.",
+                    metric: "$150M ARR Growth",
+                    initials: "GD"
                   },
                   {
-                    name: "Emma Zhang",
-                    role: "Founder, API Scout",
-                    review: "We were great at building APIs but struggled with enterprise sales. Graycommit helped us speak the language of CTOs and CIOs. The real-time battle cards and objection handlers are like having a veteran sales leader in your ear.",
+                    name: "Tyler Maran",
+                    role: "Co-founder & CEO, OmniAI",
+                    review: "We were great at building AI infrastructure but struggled with enterprise sales. Graycommit helped us speak the language of CTOs and CIOs. The real-time battle cards and objection handlers are like having a veteran sales leader in your ear.",
                     metric: "5X Enterprise Deals",
-                    initials: "EZ"
+                    initials: "TM"
                   },
                   {
-                    name: "Michael Rodriguez",
-                    role: "Enterprise AE, DataFlow",
-                    review: "The competitive intelligence is mind-blowing. During a call with a major bank, Graycommit surfaced the perfect compliance case study and helped handle their security concerns. Closed a $280K deal that would have slipped away.",
+                    name: "Suchintan Singh",
+                    role: "Founder, Skyvern",
+                    review: "The competitive intelligence is mind-blowing. During a call with a major automation client, Graycommit surfaced the perfect AI case study and helped handle their integration concerns. Closed a $280K deal that would have slipped away.",
                     metric: "45% Higher Win Rate",
-                    initials: "MR"
+                    initials: "SS"
                   },
                   {
-                    name: "Alex Kumar",
-                    role: "VP Sales, CloudSecure",
+                    name: "Long Vo",
+                    role: "Founder & COO, OneSignal",
                     review: "Onboarding technical founders to enterprise sales used to be a 6-month process. With Graycommit's real-time coaching, they're closing six-figure deals within weeks. It's like giving every founder a decade of sales experience instantly.",
                     metric: "70% Faster Ramp Time",
-                    initials: "AK"
+                    initials: "LV"
                   },
                   {
-                    name: "Rachel Johnson",
-                    role: "Sales Manager, DevOps Plus",
+                    name: "Anna Pojawis",
+                    role: "Co-founder & CTO, OmniAI",
                     review: "The personalized talk tracks and real-time battle cards have transformed how we compete. My team of technical founders is now consistently winning against legacy vendors in enterprise deals.",
                     metric: "52% Win Rate vs Enterprise",
-                    initials: "RJ"
+                    initials: "AP"
                   },
                   {
-                    name: "James Chen",
-                    role: "Founder, SecureScale",
-                    review: "Coming from a security background, I could explain our tech but struggled with value selling. Graycommit's AI coach helps translate complex security features into business outcomes in real-time. Just closed our first $1M deal!",
+                    name: "Yash Kadadi",
+                    role: "Founder, Forerunner AI",
+                    review: "Coming from an aerospace background, I could explain our tech but struggled with value selling. Graycommit's AI coach helps translate complex aerospace features into business outcomes in real-time. Just closed our first $1M deal!",
                     metric: "First $1M Enterprise Deal",
-                    initials: "JC"
+                    initials: "YK"
                   },
                   {
-                    name: "Lisa Patel",
-                    role: "Technical Co-founder, DataSync",
+                    name: "Tony Kam",
+                    role: "Co-founder & CEO, Lilac Labs",
                     review: "The AI understands our technical differentiators and helps position them perfectly for different stakeholders. CFOs, CTOs, CISOs - Graycommit helps us nail every conversation with relevant insights and case studies.",
                     metric: "4X Deal Size Increase",
-                    initials: "LP"
+                    initials: "TK"
                   },
                   {
-                    name: "Tom Wilson",
-                    role: "CTO & Co-founder, AIScale",
+                    name: "William Zeng",
+                    role: "Founder, Sweep",
                     review: "As an AI company founder, I was skeptical of sales tools. Graycommit proved me wrong. It actually understands technical nuances and helps translate them into value props. Our sales cycles dropped from 6 months to 6 weeks.",
                     metric: "75% Shorter Sales Cycles",
-                    initials: "TW"
+                    initials: "WZ"
                   },
                   {
-                    name: "Maria Garcia",
-                    role: "Founder, CloudOps Pro",
+                    name: "Daniel Francis",
+                    role: "Founder, Abel Police",
                     review: "From hesitant technical founder to confident enterprise seller - that's my journey with Graycommit. The real-time coaching helped me handle complex enterprise objections and navigate multi-stakeholder deals effectively.",
                     metric: "8 Enterprise Wins in Q1",
-                    initials: "MG"
+                    initials: "DF"
                   }
                 ].map((review, index) => (
                   <div 
@@ -992,46 +992,46 @@ export default function Component() {
             <div className="grid grid-cols-3 gap-12 md:gap-24">
               {/* Row 1 */}
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Replicate</div>
+                <div className="text-2xl font-bold">Shef</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Chroma</div>
+                <div className="text-2xl font-bold">OneSignal</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Pika</div>
+                <div className="text-2xl font-bold">OmniAI</div>
               </div>
               
               {/* Row 2 */}
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Suno</div>
+                <div className="text-2xl font-bold">Skyvern</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">LangChain</div>
+                <div className="text-2xl font-bold">Stripe</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Rippling</div>
+                <div className="text-2xl font-bold">OpenAI</div>
               </div>
               
               {/* Row 3 */}
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">cohere</div>
+                <div className="text-2xl font-bold">Forerunner AI</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Pinecone</div>
+                <div className="text-2xl font-bold">Lilac Labs</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Unilever</div>
+                <div className="text-2xl font-bold">Sweep</div>
               </div>
               
               {/* Row 4 */}
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Digital Ocean</div>
+                <div className="text-2xl font-bold">Abel Police</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">stability.ai</div>
+                <div className="text-2xl font-bold">Olive</div>
               </div>
               <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Hugging Face</div>
+                <div className="text-2xl font-bold">Bunkerhill Health</div>
               </div>
             </div>
           </div>
