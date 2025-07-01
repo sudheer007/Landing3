@@ -980,8 +980,8 @@ export default function Component() {
                 className="absolute left-0 right-0 h-px"
                 style={{ 
                   top: `${(i + 1) * 2.5}%`,
-                  background: 'linear-gradient(to right, transparent, rgba(51, 51, 51, 0.5) 50%, transparent)',
-                  opacity: '0.5'
+                  background: 'linear-gradient(to right, transparent, rgba(51, 51, 51, 0.2) 50%, transparent)',
+                  opacity: '0.25'
                 }}
               />
             ))}
@@ -989,50 +989,17 @@ export default function Component() {
 
           <div className="container relative max-w-full px-4">
             <h2 className="text-3xl font-bold text-center mb-16">Trusted by</h2>
-            <div className="grid grid-cols-3 gap-12 md:gap-24">
-              {/* Row 1 */}
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Shef</div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">OneSignal</div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">OmniAI</div>
-              </div>
-              
-              {/* Row 2 */}
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Skyvern</div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Stripe</div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">OpenAI</div>
-              </div>
-              
-              {/* Row 3 */}
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Forerunner AI</div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Lilac Labs</div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Sweep</div>
-              </div>
-              
-              {/* Row 4 */}
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Abel Police</div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Olive</div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="text-2xl font-bold">Bunkerhill Health</div>
-              </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-12 gap-x-8 md:gap-24">
+              {/* Company Names */}
+              {[
+                "Shef", "OneSignal", "OmniAI", "Skyvern",
+                "Stripe", "OpenAI", "Forerunner AI", "Lilac Labs",
+                "Sweep", "Abel Police", "Olive", "Bunkerhill Health"
+              ].map((name) => (
+                <div key={name} className="flex items-center justify-center text-center">
+                  <div className="text-xl sm:text-2xl font-bold text-muted-foreground">{name}</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
