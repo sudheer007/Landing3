@@ -11,26 +11,26 @@ export default function Component() {
   const [activeStage, setActiveStage] = useState<number | null>(null)
 
   return (
-    <div className="flex min-h-screen flex-col bg-black text-white">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       
 
       <main className="flex-grow">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#3D3D3D,_transparent_40%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#3D3D3D,_transparent_40%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#3D3D3D,_transparent_40%)] dark:bg-[radial-gradient(circle_at_bottom_left,_#3D3D3D,_transparent_40%)] light:bg-[radial-gradient(circle_at_bottom_left,_#E5E5E5,_transparent_40%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#3D3D3D,_transparent_40%)] dark:bg-[radial-gradient(circle_at_top_right,_#3D3D3D,_transparent_40%)] light:bg-[radial-gradient(circle_at_top_right,_#E5E5E5,_transparent_40%)]" />
             <div className="absolute inset-0">
               {[...Array(20)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#333] to-transparent"
+                  className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
                   style={{ top: `${(i + 1) * 5}%` }}
                 />
               ))}
               {[...Array(20)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#333] to-transparent"
+                  className="absolute top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent"
                   style={{ left: `${(i + 1) * 5}%` }}
                 />
               ))}
@@ -39,11 +39,11 @@ export default function Component() {
 
           <div className="container relative max-w-full px-4 sm:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 py-16 sm:py-20 text-center md:py-32">
-              <div className="rounded-full bg-[#333] px-3 sm:px-4 py-1.5 text-xs sm:text-sm">
+              <div className="rounded-full bg-card border border-border px-3 sm:px-4 py-1.5 text-xs sm:text-sm">
                 <span className="text-[#0070F3] font-medium">New</span>
                 <span className="hidden sm:inline">{" Real-time AI Sales Coach - Your competitive edge "}</span>
                 <span className="sm:hidden">{" AI Sales Coach "}</span>
-                <Link href="https://app.graycommit.com" className="inline-flex items-center font-medium text-white hover:text-[#0070F3]">
+                <Link href="https://app.graycommit.com" className="inline-flex items-center font-medium text-foreground hover:text-[#0070F3]">
                   See it in action
                   <ArrowRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
                 </Link>
@@ -51,13 +51,13 @@ export default function Component() {
               <h1 className="max-w-4xl text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl xl:text-7xl">
                 Close more deals with AI-powered sales intelligence.
               </h1>
-              <p className="max-w-[700px] text-base sm:text-lg md:text-xl text-[#888] px-4">
+              <p className="max-w-[700px] text-base sm:text-lg md:text-xl text-muted-foreground px-4">
                 Graycommit's real-time playbook engine empowers your sales team with the right playbook for every deal, 
                 create talk tracks and analyze every sales conversation.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-md sm:max-w-none justify-center">
                 <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                  <Button size="lg" className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 bg-white text-black hover:bg-gray-200">
+                  <Button size="lg" className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 bg-primary text-primary-foreground hover:bg-primary/90">
                     Book a Demo
                   </Button>
                 </Link>
@@ -84,7 +84,7 @@ export default function Component() {
 
             <div className="relative mx-auto aspect-video w-full max-w-6xl mb-8 sm:mb-0">
               <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D4D] via-[#F9CB28] to-[#4ADE80] opacity-20 blur-3xl" />
-              <div className="relative w-full h-full rounded-lg sm:rounded-xl overflow-hidden border border-[#333] bg-black">
+              <div className="relative w-full h-full rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card">
                 <iframe
                   src="https://www.youtube.com/embed/kn8zgAbxa94?si=ol0ZpqbaVExXz6Wm&rel=0&modestbranding=1&showinfo=0"
                   title="Graycommit Demo Video"
@@ -98,20 +98,20 @@ export default function Component() {
           </div>
         </section>
 
-        <section className="py-16 sm:py-20 lg:py-24 relative border-t border-[#333]">
+        <section className="py-16 sm:py-20 lg:py-24 relative border-t border-border">
           <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Feature 1 - Image on left */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-24 items-center mb-20 sm:mb-24 lg:mb-32">
               {/* Left: Image/Demo */}
               <div className="relative order-2 lg:order-1">
                 {/* Active Playbook Card */}
-                <div className="bg-black/95 backdrop-blur rounded-lg border border-[#0070F3] p-3 sm:p-4 shadow-lg shadow-[#0070F3]/20 animate-pulse mb-0">
+                <div className="bg-card/95 backdrop-blur rounded-lg border border-[#0070F3] p-3 sm:p-4 shadow-lg shadow-[#0070F3]/20 animate-pulse mb-0">
                   <div className="flex items-center space-x-2 mb-2">
                     <div className="h-2 w-2 rounded-full bg-[#0070F3] animate-pulse" />
                     <span className="text-[#0070F3] text-sm font-medium">Active Playbook</span>
                   </div>
-                  <p className="text-white text-sm font-medium mb-1">Enterprise Demo Track:</p>
-                  <p className="text-[#888] text-sm">"Start with ROI discussion, then showcase security features. Next: address integration concerns."</p>
+                  <p className="text-foreground text-sm font-medium mb-1">Enterprise Demo Track:</p>
+                  <p className="text-muted-foreground text-sm">"Start with ROI discussion, then showcase security features. Next: address integration concerns."</p>
                 </div>
 
                 {/* Simple Image */}
@@ -126,13 +126,13 @@ export default function Component() {
               
               {/* Right: Content */}
               <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
-                <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-3 sm:px-4 py-1.5">
-                  <span className="text-xs sm:text-sm font-medium text-[#888]">Realtime Playbook</span>
+                <div className="inline-flex items-center rounded-full bg-card border border-border px-3 sm:px-4 py-1.5">
+                  <span className="text-xs sm:text-sm font-medium text-muted-foreground">Realtime Playbook</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
                   Never miss a selling opportunity
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl text-[#888] leading-relaxed">
+                <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
                   Transform your meetings into guided experiences with intelligent playbooks. 
                   Switch between custom talk tracks tailored to each prospect and meeting goal.
                 </p>
@@ -145,16 +145,16 @@ export default function Component() {
                     'Post-meeting conversation analysis & deepdive'
                   ].map((point, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#111] border border-[#333] flex items-center justify-center flex-shrink-0">
+                      <div className="h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-card border border-border flex items-center justify-center flex-shrink-0">
                         <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-[#0070F3]" />
                       </div>
-                      <span className="text-sm sm:text-base text-[#888]">{point}</span>
+                      <span className="text-sm sm:text-base text-muted-foreground">{point}</span>
                     </div>
                   ))}
                 </div>
                 <div className="pt-2 sm:pt-4">
                   <Link href="/products">
-                    <Button variant="outline" className="bg-white text-black hover:bg-gray-200">
+                    <Button variant="outline" className="border-border text-foreground hover:bg-accent hover:text-foreground">
                       Learn more
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -167,26 +167,26 @@ export default function Component() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
               {/* Left: Content */}
               <div className="space-y-6 sm:space-y-8">
-                <div className="inline-flex items-center rounded-full bg-[#111] border border-[#333] px-3 sm:px-4 py-1.5">
-                  <span className="text-xs sm:text-sm font-medium text-[#888]">Talk Track Creation</span>
+                <div className="inline-flex items-center rounded-full bg-card border border-border px-3 sm:px-4 py-1.5">
+                  <span className="text-xs sm:text-sm font-medium text-muted-foreground">Talk Track Creation</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
                   Build winning sales pipelines
                 </h2>
-                <p className="text-base sm:text-lg lg:text-xl text-[#888] leading-relaxed">
+                <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
                   Create dynamic playbooks that adapt to every prospect. Design custom talk tracks 
                   for different companies, teams, and meeting objectives with intelligent guidance.
                 </p>
                 <div className="space-y-4 sm:space-y-6">
                   {/* Stats */}
                   <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                    <div className="rounded-lg bg-[#111] border border-[#333] p-3 sm:p-4">
+                    <div className="rounded-lg bg-card border border-border p-3 sm:p-4">
                       <div className="text-2xl sm:text-3xl font-bold">12+</div>
-                      <div className="text-xs sm:text-sm text-[#888]">Custom Playbooks</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Custom Playbooks</div>
                     </div>
-                    <div className="rounded-lg bg-[#111] border border-[#333] p-3 sm:p-4">
+                    <div className="rounded-lg bg-card border border-border p-3 sm:p-4">
                       <div className="text-2xl sm:text-3xl font-bold">85%</div>
-                      <div className="text-xs sm:text-sm text-[#888]">Meeting Goals Achieved</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Meeting Goals Achieved</div>
                     </div>
                   </div>
                 </div>
@@ -211,9 +211,9 @@ export default function Component() {
               
               {/* Right: Pipeline Management Dashboard */}
               <div className="relative">
-                <div className="aspect-square rounded-xl overflow-hidden bg-[#111] border border-[#333] relative">
+                <div className="aspect-square rounded-xl overflow-hidden bg-card border border-border relative">
                   {/* Pipeline Management Interface */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] to-[#111] p-4 sm:p-6">
+                  <div className="absolute inset-0 bg-gradient-to-b from-card to-background p-4 sm:p-6">
                     
                     {/* Header */}
                     <div className="flex items-center justify-between mb-4 sm:mb-6">
@@ -326,16 +326,16 @@ export default function Component() {
         
         {/* Interactive Funnel Section - Mobile Optimized */}
        
-        <section className="py-16 sm:py-20 lg:py-24 relative border-t border-[#333]">
+        <section className="py-16 sm:py-20 lg:py-24 relative border-t border-border">
           <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 overflow-visible">
               {/* Left Column - Interactive Funnel */}
               <div className="space-y-6 sm:space-y-8">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Transform Your Sales Pipeline</h2>
-                <p className="text-base sm:text-lg lg:text-2xl text-[#888]">AI-powered playbooks guiding every deal to close.</p>
+                <p className="text-base sm:text-lg lg:text-2xl text-muted-foreground">AI-powered playbooks guiding every deal to close.</p>
                 
                 {/* Interactive Sales Funnel - Mobile Optimized */}
-                <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] bg-[#111] rounded-xl border border-[#333] p-4 sm:p-6 lg:p-8 overflow-visible">
+                <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] bg-card rounded-xl border border-border p-4 sm:p-6 lg:p-8 overflow-visible">
                   {/* Animated Background Grid - Reduced on mobile */}
                   <div className="absolute inset-0 opacity-10">
                     {[...Array(10)].map((_, i) => (
@@ -418,7 +418,7 @@ export default function Component() {
                             className={`h-12 sm:h-16 lg:h-20 border-2 transition-all duration-500 relative overflow-hidden shadow-lg ${
                               activeStage === index 
                                 ? 'border-[#0070F3] shadow-[#0070F3]/30' 
-                                : 'border-[#333] hover:border-[#0070F3] hover:shadow-[#0070F3]/30'
+                                : 'border-border hover:border-[#0070F3] hover:shadow-[#0070F3]/30'
                             }`}
                             style={{
                               background: `linear-gradient(135deg, ${stage.color}25, ${stage.color}15, ${stage.color}05)`,
@@ -435,12 +435,12 @@ export default function Component() {
                                 activeStage === index ? 'scale-105' : ''
                               }`}>
                                 <div className={`text-sm sm:text-lg lg:text-xl font-bold transition-colors duration-300 ${
-                                  activeStage === index ? 'text-[#0070F3]' : 'text-white hover:text-[#0070F3]'
+                                  activeStage === index ? 'text-[#0070F3]' : 'text-foreground hover:text-[#0070F3]'
                                 }`}>
                                   {stage.stage}
                                 </div>
                                 <div className={`text-xs sm:text-sm transition-colors duration-300 ${
-                                  activeStage === index ? 'text-white' : 'text-[#888] hover:text-white'
+                                  activeStage === index ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
                                 }`}>
                                   {stage.count} deals • {stage.value}
                                 </div>
@@ -462,7 +462,7 @@ export default function Component() {
 
                         {/* Desktop Playbook Popup - Hover */}
                         <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-full ml-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto z-50">
-                          <div className="bg-black/95 backdrop-blur-xl border-2 border-[#0070F3] rounded-xl p-6 w-96 shadow-2xl shadow-[#0070F3]/20">
+                          <div className="bg-card/95 backdrop-blur-xl border-2 border-[#0070F3] rounded-xl p-6 w-96 shadow-2xl shadow-[#0070F3]/20">
                             <div className="flex items-center space-x-3 mb-4">
                               <div 
                                 className="h-4 w-4 rounded-full animate-pulse shadow-lg"
@@ -475,12 +475,12 @@ export default function Component() {
                                 AI Playbook Active
                               </span>
                             </div>
-                            <h4 className="text-white font-bold text-lg mb-4 group-hover:text-[#0070F3] transition-colors duration-300">
+                            <h4 className="text-foreground font-bold text-lg mb-4 group-hover:text-[#0070F3] transition-colors duration-300">
                               {stage.playbook.title}
                             </h4>
                             <ul className="space-y-3">
                               {stage.playbook.items.map((item, i) => (
-                                <li key={i} className="flex items-start gap-3 text-sm text-[#888] hover:text-white transition-colors duration-200">
+                                <li key={i} className="flex items-start gap-3 text-sm text-foreground hover:text-foreground transition-colors duration-200">
                                   <CheckCircle2 className="h-5 w-5 text-[#0070F3] mt-0.5 flex-shrink-0 animate-pulse" />
                                   <span className="leading-relaxed">{item}</span>
                                 </li>
@@ -488,12 +488,12 @@ export default function Component() {
                             </ul>
                             
                             {/* Progress indicator */}
-                            <div className="mt-4 pt-4 border-t border-[#333]">
-                              <div className="flex items-center justify-between text-xs text-[#666]">
+                            <div className="mt-4 pt-4 border-t border-border">
+                              <div className="flex items-center justify-between text-xs text-muted-foreground">
                                 <span>Stage Progress</span>
                                 <span>{Math.round((5 - index) / 5 * 100)}% Complete</span>
                               </div>
-                              <div className="mt-2 h-1 bg-[#222] rounded-full overflow-hidden">
+                              <div className="mt-2 h-1 bg-muted rounded-full overflow-hidden">
                                 <div 
                                   className="h-full rounded-full transition-all duration-1000 ease-out"
                                   style={{ 
@@ -513,7 +513,7 @@ export default function Component() {
 
                         {/* Stage connection lines */}
                         {index < 4 && (
-                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-px h-2 sm:h-3 bg-gradient-to-b from-[#333] to-transparent opacity-50 hover:opacity-100 transition-opacity duration-300" />
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-px h-2 sm:h-3 bg-gradient-to-b from-border to-transparent opacity-50 hover:opacity-100 transition-opacity duration-300" />
                         )}
                       </div>
                     ))}
@@ -522,7 +522,7 @@ export default function Component() {
 
                 {/* Mobile Playbook Display - Below Funnel */}
                 {activeStage !== null && (
-                  <div className="lg:hidden bg-black/95 backdrop-blur-xl border-2 border-[#0070F3] rounded-xl p-4 sm:p-6 shadow-2xl shadow-[#0070F3]/20 animate-in slide-in-from-bottom duration-300">
+                  <div className="lg:hidden bg-card/95 backdrop-blur-xl border-2 border-[#0070F3] rounded-xl p-4 sm:p-6 shadow-2xl shadow-[#0070F3]/20 animate-in slide-in-from-bottom duration-300">
                     <div className="flex items-center space-x-3 mb-4">
                       <div 
                         className="h-4 w-4 rounded-full animate-pulse shadow-lg"
@@ -547,7 +547,7 @@ export default function Component() {
                         AI Playbook Active
                       </span>
                     </div>
-                    <h4 className="text-white font-bold text-lg mb-4">
+                    <h4 className="text-foreground font-bold text-lg mb-4">
                       {[
                         { stage: 'Leads', playbook: { title: 'Lead Qualification Playbook', items: ['BANT qualification framework', 'Competitor landscape mapping', 'Initial pain point discovery', 'Budget range validation'] } },
                         { stage: 'Discovery', playbook: { title: 'Discovery Deep Dive Playbook', items: ['Technical requirements gathering', 'Stakeholder mapping workshop', 'Current solution audit', 'Decision timeline establishment'] } },
@@ -564,7 +564,7 @@ export default function Component() {
                         { stage: 'Proposal', playbook: { title: 'Proposal Winning Playbook', items: ['Competitive differentiation strategy', 'Pricing justification framework', 'Risk mitigation plan', 'Implementation timeline'] } },
                         { stage: 'Closed Won', playbook: { title: 'Closing Mastery Playbook', items: ['Urgency creation techniques', 'Final objection resolution', 'Contract negotiation tactics', 'Onboarding kickoff'] } }
                       ][activeStage].playbook.items.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3 text-sm text-[#888]">
+                        <li key={i} className="flex items-start gap-3 text-sm text-foreground">
                           <CheckCircle2 className="h-5 w-5 text-[#0070F3] mt-0.5 flex-shrink-0" />
                           <span className="leading-relaxed">{item}</span>
                         </li>
@@ -572,12 +572,12 @@ export default function Component() {
                     </ul>
                     
                     {/* Progress indicator */}
-                    <div className="mt-4 pt-4 border-t border-[#333]">
-                      <div className="flex items-center justify-between text-xs text-[#666]">
+                    <div className="mt-4 pt-4 border-t border-border">
+                      <div className="flex items-center justify-between text-xs text-muted-foreground">
                         <span>Stage Progress</span>
                         <span>{Math.round((5 - activeStage) / 5 * 100)}% Complete</span>
                       </div>
-                      <div className="mt-2 h-1 bg-[#222] rounded-full overflow-hidden">
+                      <div className="mt-2 h-1 bg-muted rounded-full overflow-hidden">
                         <div 
                           className="h-full rounded-full transition-all duration-1000 ease-out"
                           style={{ 
@@ -596,15 +596,15 @@ export default function Component() {
               {/* Right Column - Performance Metrics */}
               <div className="space-y-6 sm:space-y-8">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">AI-Powered Growth</h2>
-                <p className="text-base sm:text-lg lg:text-2xl text-[#888]">Real-time insights driving exceptional results.</p>
+                <p className="text-base sm:text-lg lg:text-2xl text-muted-foreground">Real-time insights driving exceptional results.</p>
                 
                 {/* Performance Dashboard */}
                 <div className="space-y-6">
                   {/* Key Metrics Cards */}
                   <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                    <div className="bg-[#111] rounded-xl p-4 sm:p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
+                    <div className="bg-card rounded-xl p-4 sm:p-6 border border-border hover:border-[#0070F3] transition-all duration-300">
                                               <div className="flex items-center justify-between mb-3 sm:mb-4">
-                          <div className="text-xs sm:text-sm text-[#888]">Revenue Impact</div>
+                          <div className="text-xs sm:text-sm text-muted-foreground">Revenue Impact</div>
                           <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-green-500/20 flex items-center justify-center">
                             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 rotate-45" />
                           </div>
@@ -612,9 +612,9 @@ export default function Component() {
                         <div className="text-2xl sm:text-3xl font-bold mb-2">$4.2M</div>
                         <div className="text-xs sm:text-sm text-green-500">+65% with Graycommit AI</div>
                     </div>
-                    <div className="bg-[#111] rounded-xl p-4 sm:p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
+                    <div className="bg-card rounded-xl p-4 sm:p-6 border border-border hover:border-[#0070F3] transition-all duration-300">
                       <div className="flex items-center justify-between mb-3 sm:mb-4">
-                        <div className="text-xs sm:text-sm text-[#888]">Win Rate</div>
+                        <div className="text-xs sm:text-sm text-muted-foreground">Win Rate</div>
                         <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-blue-500/20 flex items-center justify-center">
                           <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-blue-500" />
                         </div>
@@ -625,10 +625,10 @@ export default function Component() {
                   </div>
 
                   {/* AI Impact Metrics */}
-                  <div className="bg-[#111] rounded-xl p-4 sm:p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
+                  <div className="bg-card rounded-xl p-4 sm:p-6 border border-border hover:border-[#0070F3] transition-all duration-300">
                     <div className="flex items-center justify-between mb-4 sm:mb-6">
                       <div className="text-base sm:text-lg font-medium">AI Performance Impact</div>
-                      <div className="text-xs sm:text-sm text-[#888]">Last 30 days</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground">Last 30 days</div>
                     </div>
                     <div className="space-y-4 sm:space-y-6">
                       {[
@@ -656,10 +656,10 @@ export default function Component() {
                   </div>
 
                   {/* Recent Wins */}
-                  <div className="bg-[#111] rounded-xl p-6 border border-[#333] hover:border-[#0070F3] transition-all duration-300">
+                  <div className="bg-card rounded-xl p-6 border border-border hover:border-[#0070F3] transition-all duration-300">
                     <div className="flex items-center justify-between mb-4">
                       <div className="text-lg font-medium">Recent Wins</div>
-                      <div className="text-sm text-[#888]">Today</div>
+                      <div className="text-sm text-muted-foreground">Today</div>
                     </div>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between p-3 bg-green-500/10 rounded-lg">
@@ -667,7 +667,7 @@ export default function Component() {
                           <CheckCircle2 className="h-5 w-5 text-green-500" />
                           <div>
                             <div className="text-sm font-medium">Enterprise Deal</div>
-                            <div className="text-xs text-[#888]">AI-suggested value props</div>
+                            <div className="text-xs text-muted-foreground">AI-suggested value props</div>
                           </div>
                         </div>
                         <div className="text-lg font-bold text-green-500">$850K</div>
@@ -681,40 +681,41 @@ export default function Component() {
         </section>
 
 
+
         {/* Sales Performance Section */}
-        <section className="py-24 relative border-t border-[#333]">
+        <section className="py-24 relative border-t border-border">
             <div className="container mx-auto max-w-7xl px-4">
               <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
                 <div className="space-y-8">
                   <h2 className="text-4xl font-bold">Turn every rep into a top performer.</h2>
-                  <p className="text-2xl text-[#888]">Real-time coaching that drives consistent success.</p>
+                  <p className="text-2xl text-muted-foreground">Real-time coaching that drives consistent success.</p>
                   <div className="space-y-4">
-                    <div className="rounded-lg bg-[#111] p-4 border border-[#333]">
+                    <div className="rounded-lg bg-card p-4 border border-border">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
                           <CheckCircle2 className="h-5 w-5 text-green-500" />
                           <div>
                             <div className="text-sm">Deal Won - Enterprise</div>
-                            <div className="text-xs text-[#888]">Used AI-suggested value props</div>
+                            <div className="text-xs text-muted-foreground">Used AI-suggested value props</div>
                           </div>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <div className="text-sm text-[#888]">2h ago</div>
+                          <div className="text-sm text-muted-foreground">2h ago</div>
                           <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium text-xs">$85K</div>
                         </div>
                       </div>
                     </div>
-                    <div className="rounded-lg bg-[#111] p-4 border border-[#333]">
+                    <div className="rounded-lg bg-card p-4 border border-border">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
                           <CheckCircle2 className="h-5 w-5 text-blue-500" />
                           <div>
                             <div className="text-sm">Objection Handled</div>
-                            <div className="text-xs text-[#888]">AI coach suggested perfect response</div>
+                            <div className="text-xs text-muted-foreground">AI coach suggested perfect response</div>
                           </div>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <div className="text-sm text-[#888]">5m ago</div>
+                          <div className="text-sm text-muted-foreground">5m ago</div>
                           <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-black font-medium">
                             <ArrowRight className="h-5 w-5" />
                           </div>
@@ -725,22 +726,22 @@ export default function Component() {
                 </div>
                 <div className="space-y-8">
                   <h2 className="text-4xl font-bold">Accelerate ramp time by 70%</h2>
-                  <p className="text-2xl text-[#888]">Live coaching turns new hires into closers faster.</p>
-                  <div className="rounded-lg bg-[#111] p-6 space-y-6 border border-[#333]">
+                  <p className="text-2xl text-muted-foreground">Live coaching turns new hires into closers faster.</p>
+                  <div className="rounded-lg bg-card p-6 space-y-6 border border-border">
                     <div className="flex items-center justify-between">
                       <div className="text-lg">Rep Performance</div>
                       <div className="flex items-center space-x-2">
-                        <div className="text-[#888]">Outstanding</div>
+                        <div className="text-muted-foreground">Outstanding</div>
                         <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">9.2</div>
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <div className="text-sm text-[#888]">Meetings Booked</div>
+                        <div className="text-sm text-muted-foreground">Meetings Booked</div>
                         <div className="text-2xl font-bold">28</div>
                       </div>
                       <div className="space-y-2">
-                        <div className="text-sm text-[#888]">Close Rate</div>
+                        <div className="text-sm text-muted-foreground">Close Rate</div>
                         <div className="text-2xl font-bold">42%</div>
                       </div>
                     </div>
@@ -749,7 +750,7 @@ export default function Component() {
                         <div className="text-sm">Top Performing Talk Tracks</div>
                         <div className="flex -space-x-2">
                           {[1, 2, 3].map((i) => (
-                            <div key={i} className="h-8 w-8 rounded-full bg-[#333] border-2 border-black flex items-center justify-center text-xs">
+                            <div key={i} className="h-8 w-8 rounded-full bg-card border-2 border-black flex items-center justify-center text-xs">
                               #{i}
                             </div>
                           ))}
@@ -763,24 +764,24 @@ export default function Component() {
         </section>
 
         {/* Real-time Coaching Section */}
-        <section className="py-24 relative border-t border-[#333]">
+        <section className="py-24 relative border-t border-border">
             <div className="container mx-auto max-w-7xl px-4">
               <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
               <div className="space-y-8">
                 <h2 className="text-4xl font-bold">Never miss a selling moment.</h2>
-                <p className="text-2xl text-[#888]">AI-powered suggestions exactly when you need them.</p>
+                <p className="text-2xl text-muted-foreground">AI-powered suggestions exactly when you need them.</p>
                 <div className="space-y-4">
-                  <div className="rounded-lg bg-[#111] p-4 border border-[#333]">
+                  <div className="rounded-lg bg-card p-4 border border-border">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
                         <Eye className="h-5 w-5 text-blue-500" />
                         <div>
                           <div className="text-sm">Live Intelligence</div>
-                          <div className="text-xs text-[#888]">Competitor mentioned: Outreach</div>
+                          <div className="text-xs text-muted-foreground">Competitor mentioned: Outreach</div>
                         </div>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <div className="text-sm text-[#888]">Now</div>
+                        <div className="text-sm text-muted-foreground">Now</div>
                         <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-black font-medium">
                           <CheckCircle2 className="h-5 w-5" />
                         </div>
@@ -791,12 +792,12 @@ export default function Component() {
               </div>
               <div className="space-y-8">
                 <h2 className="text-4xl font-bold">Close with confidence.</h2>
-                <p className="text-2xl text-[#888]">Battle-tested talk tracks and objection handlers.</p>
-                <div className="rounded-lg bg-[#111] p-6 space-y-6 border border-[#333]">
+                <p className="text-2xl text-muted-foreground">Battle-tested talk tracks and objection handlers.</p>
+                <div className="rounded-lg bg-card p-6 space-y-6 border border-border">
                   <div className="flex items-center justify-between">
                     <div className="text-lg">Call Intelligence</div>
                     <div className="flex items-center space-x-2">
-                      <div className="text-[#888]">Active</div>
+                      <div className="text-muted-foreground">Active</div>
                       <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">
                         <CheckCircle2 className="h-5 w-5" />
                       </div>
@@ -805,11 +806,11 @@ export default function Component() {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="text-sm">Talk Time Ratio</div>
-                      <div className="text-sm text-[#888]">45:55</div>
+                      <div className="text-sm text-muted-foreground">45:55</div>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="text-sm">Questions Asked</div>
-                      <div className="text-sm text-[#888]">8</div>
+                      <div className="text-sm text-muted-foreground">8</div>
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="text-sm">Next Best Action</div>
@@ -823,11 +824,11 @@ export default function Component() {
         </section>
         
         {/* Reviews Section */}
-        <section className="py-24 relative border-t border-[#333] overflow-hidden">
+        <section className="py-24 relative border-t border-border overflow-hidden">
           <div className="container mx-auto max-w-7xl">
             <div className="text-center space-y-4 mb-16">
               <h2 className="text-4xl font-bold">Loved by Technical Founders & Sales Teams</h2>
-              <p className="text-xl text-[#888] max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 See how founders are transforming technical expertise into enterprise sales success with Graycommit.
               </p>
             </div>
@@ -909,7 +910,7 @@ export default function Component() {
                 ].map((review, index) => (
                   <div 
                     key={index}
-                    className="bg-[#111] rounded-xl p-8 border border-[#333] hover:border-[#0070F3] transition-all duration-300 flex-none w-[350px] group hover:shadow-2xl hover:shadow-[#0070F3]/10 hover:-translate-y-1"
+                    className="bg-card rounded-xl p-8 border border-border hover:border-[#0070F3] transition-all duration-300 flex-none w-[350px] group hover:shadow-2xl hover:shadow-[#0070F3]/10 hover:-translate-y-1"
                     style={{ marginTop: '2px', marginBottom: '2px' }}
                   >
                     <div className="space-y-6">
@@ -920,13 +921,13 @@ export default function Component() {
                           </span>
                         </div>
                         <div>
-                          <div className="font-medium text-white group-hover:text-[#0070F3] transition-colors">
+                          <div className="font-medium text-foreground group-hover:text-[#0070F3] transition-colors">
                             {review.name}
                           </div>
-                          <div className="text-sm text-[#888]">{review.role}</div>
+                          <div className="text-sm text-muted-foreground">{review.role}</div>
                         </div>
                       </div>
-                      <p className="text-[#888] leading-relaxed">
+                      <p className="text-muted-foreground leading-relaxed">
                         "{review.review}"
                       </p>
                       <div className="flex items-center space-x-2 text-[#0070F3]">
@@ -958,7 +959,7 @@ export default function Component() {
 
 
 
-        <section className="relative py-24 border-t border-[#333]">
+        <section className="relative py-24 border-t border-border">
           <div className="absolute inset-0">
             {/* Vertical lines */}
             {[...Array(40)].map((_, i) => (
@@ -1037,7 +1038,7 @@ export default function Component() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-32 relative border-t border-[#333] overflow-hidden">
+        <section className="py-32 relative border-t border-border overflow-hidden">
           {/* Theme gradient background */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0f81fb_0%,_transparent_35%)] opacity-20" />
@@ -1074,12 +1075,12 @@ export default function Component() {
                 <span className="text-sm font-semibold text-[#0f81fb]">✨ The Future of Sales is Here</span>
               </div>
               
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter max-w-3xl text-white">
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter max-w-3xl text-foreground">
                 Transform Your Sales Game with AI Magic
               </h2>
               
-              <p className="max-w-[600px] text-xl text-[#888] leading-relaxed">
-                Join the elite group of founders who've unlocked <span className="text-white">3.5x revenue growth</span> with 
+              <p className="max-w-[600px] text-xl text-muted-foreground leading-relaxed">
+                Join the elite group of founders who've unlocked <span className="text-foreground">3.5x revenue growth</span> with 
                 our AI sales intelligence. Your success story begins here.
               </p>
 
@@ -1103,13 +1104,13 @@ export default function Component() {
                   </Button>
                 </Link>
 
-                <div className="flex items-center text-sm text-[#888]">
+                <div className="flex items-center text-sm text-muted-foreground">
                   
                   <span>Join 100+ startups</span>
                 </div>
               </div>
 
-              <div className="pt-8 flex items-center gap-8 text-sm text-[#666]">
+              <div className="pt-8 flex items-center gap-8 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-green-500" />
                   No credit card required

@@ -114,10 +114,8 @@ export default function DeepSearchPage() {
     }
   ]
 
-
-
   return (
-    <div className="flex min-h-screen flex-col bg-black text-white">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative py-24 overflow-hidden">
         {/* Background Effects */}
@@ -126,6 +124,16 @@ export default function DeepSearchPage() {
           <div className="absolute top-20 left-20 w-2 h-2 bg-[#0f81fb] rounded-full animate-pulse" />
           <div className="absolute top-40 right-32 w-1 h-1 bg-purple-400 rounded-full animate-pulse delay-1000" />
           <div className="absolute bottom-32 left-32 w-1.5 h-1.5 bg-[#0f81fb] rounded-full animate-pulse delay-2000" />
+        </div>
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px),
+              linear-gradient(180deg, hsl(var(--border)) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }} />
         </div>
         
         <div className="container max-w-6xl mx-auto px-8 relative">
@@ -140,7 +148,7 @@ export default function DeepSearchPage() {
               Ask Any Question to
               <span className="bg-gradient-to-r from-[#0f81fb] to-purple-400 bg-clip-text text-transparent"> Any AI Model</span>
             </h1>
-            <p className="text-xl text-[#888] leading-relaxed mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
               Access 15+ leading AI models including GPT-4, Claude, Gemini, and more in one unified platform. 
               Compare responses, get better answers, and accelerate your workflow. Available as part of Graycommit.
             </p>
@@ -164,18 +172,20 @@ export default function DeepSearchPage() {
       </section>
 
       {/* LLM Providers */}
-      <section className="py-16 border-t border-[#333] bg-[#0A0A0A]">
-        <div className="container max-w-6xl mx-auto px-8">
+      <section className="py-16 border-t border-border relative">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/50 to-background" />
+        <div className="container max-w-6xl mx-auto px-8 relative">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Access All Leading AI Models</h2>
-            <p className="text-lg text-[#888]">Compare responses from the world's most advanced AI systems</p>
+            <p className="text-lg text-muted-foreground">Compare responses from the world's most advanced AI systems</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {llmProviders.map((provider, index) => (
-              <div key={index} className="bg-[#111] rounded-lg p-4 border border-[#333] text-center hover:border-[#0f81fb]/50 transition-all">
+              <div key={index} className="bg-card rounded-lg p-4 border border-border text-center hover:border-[#0f81fb]/50 transition-all hover:shadow-lg hover:shadow-[#0f81fb]/10">
                 <div className="text-3xl mb-3">{provider.logo}</div>
-                <div className="font-medium text-white text-sm mb-2">{provider.name}</div>
-                <div className="text-xs text-green-400">{provider.status}</div>
+                <div className="font-medium text-foreground text-sm mb-2">{provider.name}</div>
+                <div className="text-xs text-green-500">{provider.status}</div>
               </div>
             ))}
           </div>
@@ -183,22 +193,24 @@ export default function DeepSearchPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
-        <div className="container max-w-6xl mx-auto px-8">
+      <section className="py-20 relative">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0f81fb]/5 to-transparent" />
+        <div className="container max-w-6xl mx-auto px-8 relative">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Supercharge Your AI Workflow</h2>
-            <p className="text-lg text-[#888] max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Everything you need to harness the power of multiple AI models in one platform.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="bg-[#111] rounded-2xl p-6 border border-[#333] hover:border-[#0f81fb]/30 transition-all group">
-                <div className="bg-[#0f81fb]/10 rounded-lg p-3 w-fit mb-4 group-hover:bg-[#0f81fb]/20 transition-colors">
+              <div key={index} className="bg-card rounded-2xl p-6 border border-border hover:border-[#0f81fb]/30 transition-all group hover:shadow-xl hover:shadow-[#0f81fb]/10">
+                <div className="bg-gradient-to-br from-[#0f81fb]/10 to-[#0f81fb]/5 rounded-lg p-3 w-fit mb-4 group-hover:from-[#0f81fb]/20 group-hover:to-[#0f81fb]/10 transition-colors">
                   <feature.icon className="h-6 w-6 text-[#0f81fb]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-[#888] mb-3">{feature.description}</p>
+                <p className="text-muted-foreground mb-3">{feature.description}</p>
                 <p className="text-sm text-[#0f81fb] font-medium">{feature.benefit}</p>
               </div>
             ))}
@@ -207,25 +219,28 @@ export default function DeepSearchPage() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-20 bg-[#0A0A0A]">
-        <div className="container max-w-6xl mx-auto px-8">
+      <section className="py-20 relative border-t border-border">
+        {/* Radial gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/30 via-background to-accent/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,_rgba(15,129,251,0.1),_transparent_50%)]" />
+        <div className="container max-w-6xl mx-auto px-8 relative">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Endless Possibilities</h2>
-            <p className="text-lg text-[#888] max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               From content creation to code analysis, DeepSearch handles it all.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {useCases.map((useCase, index) => (
-              <div key={index} className="bg-[#111] rounded-2xl p-6 border border-[#333]">
-                <div className="bg-[#0f81fb]/10 rounded-lg p-3 w-fit mb-4">
+              <div key={index} className="bg-card rounded-2xl p-6 border border-border hover:shadow-lg hover:shadow-[#0f81fb]/5 transition-all hover:border-[#0f81fb]/20">
+                <div className="bg-gradient-to-br from-[#0f81fb]/10 to-[#0f81fb]/5 rounded-lg p-3 w-fit mb-4">
                   <useCase.icon className="h-6 w-6 text-[#0f81fb]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
-                <p className="text-[#888] mb-4">{useCase.description}</p>
+                <p className="text-muted-foreground mb-4">{useCase.description}</p>
                 <ul className="space-y-2">
                   {useCase.examples.map((example, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-[#888]">
+                    <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle className="h-4 w-4 text-[#0f81fb] flex-shrink-0" />
                       {example}
                     </li>
@@ -238,29 +253,31 @@ export default function DeepSearchPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20">
-        <div className="container max-w-6xl mx-auto px-8">
+      <section className="py-20 relative">
+        {/* Diagonal gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#0f81fb]/5 to-transparent" />
+        <div className="container max-w-6xl mx-auto px-8 relative">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Trusted by Leading Teams</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-[#111] rounded-2xl p-8 border border-[#333]">
+              <div key={index} className="bg-card rounded-2xl p-8 border border-border hover:shadow-xl hover:shadow-[#0f81fb]/10 transition-all">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <blockquote className="text-lg text-white mb-6">
+                <blockquote className="text-lg text-foreground mb-6">
                   "{testimonial.quote}"
                 </blockquote>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[#0f81fb]/20 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#0f81fb]/20 to-[#0f81fb]/10 rounded-full flex items-center justify-center">
                     <Users className="h-6 w-6 text-[#0f81fb]" />
                   </div>
                   <div>
-                    <div className="font-medium text-white">{testimonial.author}</div>
-                    <div className="text-sm text-[#888]">{testimonial.role}, {testimonial.company}</div>
+                    <div className="font-medium text-foreground">{testimonial.author}</div>
+                    <div className="text-sm text-muted-foreground">{testimonial.role}, {testimonial.company}</div>
                   </div>
                 </div>
               </div>
@@ -270,37 +287,40 @@ export default function DeepSearchPage() {
       </section>
 
       {/* Integration with Graycommit */}
-      <section className="py-20 bg-[#0A0A0A]">
-        <div className="container max-w-6xl mx-auto px-8">
+      <section className="py-20 relative border-t border-border">
+        {/* Multi-layer gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-accent/40 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,_rgba(15,129,251,0.1),_transparent_50%)]" />
+        <div className="container max-w-6xl mx-auto px-8 relative">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Part of the Graycommit Platform</h2>
-            <p className="text-lg text-[#888] max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               DeepSearch is included with your Graycommit subscription. Access it alongside our other powerful sales tools.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#111] rounded-2xl p-8 border border-[#333] text-center">
-              <div className="bg-[#0f81fb]/10 rounded-lg p-4 w-fit mx-auto mb-4">
+            <div className="bg-card rounded-2xl p-8 border border-border text-center hover:shadow-lg hover:shadow-[#0f81fb]/5 transition-all">
+              <div className="bg-gradient-to-br from-[#0f81fb]/10 to-[#0f81fb]/5 rounded-lg p-4 w-fit mx-auto mb-4">
                 <MessageSquare className="h-8 w-8 text-[#0f81fb]" />
               </div>
               <h3 className="text-xl font-semibold mb-3">DeepSearch</h3>
-              <p className="text-[#888] mb-4">Ask questions to any LLM and get intelligent responses</p>
+              <p className="text-muted-foreground mb-4">Ask questions to any LLM and get intelligent responses</p>
               <div className="text-sm text-[#0f81fb]">Available in all plans</div>
             </div>
-            <div className="bg-[#111] rounded-2xl p-8 border border-[#333] text-center">
-              <div className="bg-[#0f81fb]/10 rounded-lg p-4 w-fit mx-auto mb-4">
+            <div className="bg-card rounded-2xl p-8 border border-border text-center hover:shadow-lg hover:shadow-[#0f81fb]/5 transition-all">
+              <div className="bg-gradient-to-br from-[#0f81fb]/10 to-[#0f81fb]/5 rounded-lg p-4 w-fit mx-auto mb-4">
                 <Brain className="h-8 w-8 text-[#0f81fb]" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Realtime Playbook</h3>
-              <p className="text-[#888] mb-4">Live deal guidance and coaching during meetings</p>
+              <p className="text-muted-foreground mb-4">Live deal guidance and coaching during meetings</p>
               <div className="text-sm text-[#0f81fb]">Available in all plans</div>
             </div>
-            <div className="bg-[#111] rounded-2xl p-8 border border-[#333] text-center">
-              <div className="bg-[#0f81fb]/10 rounded-lg p-4 w-fit mx-auto mb-4">
+            <div className="bg-card rounded-2xl p-8 border border-border text-center hover:shadow-lg hover:shadow-[#0f81fb]/5 transition-all">
+              <div className="bg-gradient-to-br from-[#0f81fb]/10 to-[#0f81fb]/5 rounded-lg p-4 w-fit mx-auto mb-4">
                 <BarChart className="h-8 w-8 text-[#0f81fb]" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Deal Intelligence</h3>
-              <p className="text-[#888] mb-4">AI-powered insights and competitive intelligence</p>
+              <p className="text-muted-foreground mb-4">AI-powered insights and competitive intelligence</p>
               <div className="text-sm text-[#0f81fb]">Available in all plans</div>
             </div>
           </div>
@@ -315,12 +335,14 @@ export default function DeepSearchPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 border-t border-[#333]">
-        <div className="container max-w-4xl mx-auto px-8 text-center">
-          <div className="bg-gradient-to-r from-[#111] to-[#0A0A0A] rounded-3xl p-12 border border-[#333]">
+      <section className="py-20 border-t border-border relative">
+        {/* Radial gradient for final CTA */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(15,129,251,0.1),_transparent_70%)]" />
+        <div className="container max-w-4xl mx-auto px-8 text-center relative">
+          <div className="bg-gradient-to-br from-card via-card to-accent/20 rounded-3xl p-12 border border-border shadow-2xl">
             <Sparkles className="h-16 w-16 text-[#0f81fb] mx-auto mb-6" />
             <h2 className="text-4xl font-bold mb-6">Ready to Unlock AI's Full Potential?</h2>
-            <p className="text-lg text-[#888] mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join thousands of sales professionals using Graycommit to get better answers, faster insights, 
               and superior results from AI - including our powerful DeepSearch feature.
             </p>

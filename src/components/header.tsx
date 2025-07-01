@@ -21,7 +21,7 @@ export function Header() {
   const [activeNav, setActiveNav] = useState<string | null>(null)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#333] bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between max-w-full px-4">
         <div className="flex items-center space-x-4 sm:space-x-8">
           <Link className="flex items-center space-x-2" href="/">
@@ -33,14 +33,14 @@ export function Header() {
               className="h-5 w-auto"
               priority
             />
-            <span className={`${telgraf.className} text-xl font-semibold`}>Graycommit</span>
+            <span className={`${telgraf.className} text-xl font-semibold text-foreground`}>Graycommit</span>
           </Link>
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger 
-                  className={`bg-transparent text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex ${
-                    activeNav === 'products' ? 'bg-[#333] text-white' : ''
+                  className={`bg-transparent text-muted-foreground hover:text-foreground hover:bg-accent hidden sm:inline-flex ${
+                    activeNav === 'products' ? 'bg-accent text-foreground' : ''
                   }`}
                   onClick={() => setActiveNav(activeNav === 'products' ? null : 'products')}
                 >
@@ -48,20 +48,20 @@ export function Header() {
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   {/* Desktop View (md and above) */}
-                  <div className="hidden md:block w-[750px] p-6 bg-black border border-[#333]">
+                  <div className="hidden md:block w-[750px] p-6 bg-card border border-border">
                     <div className="grid grid-cols-2 gap-6">
                       {/* Revenue Intelligence */}
                       <div className="space-y-4">
-                        <h3 className="text-sm font-medium text-[#888]">Revenue Intelligence</h3>
+                        <h3 className="text-sm font-medium text-muted-foreground">Revenue Intelligence</h3>
                         <div className="space-y-4">
                           <NavigationMenuLink asChild>
-                            <Link href="/products" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                            <Link href="/products" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-muted text-foreground hover:text-foreground">
                               <div className="mt-1">
                                 <Activity className="h-5 w-5 text-[#0f81fb]" />
                               </div>
                               <div>
                                 <div className="font-medium">Realtime Playbook for meetings</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">
+                                <div className="text-sm text-muted-foreground group-hover:text-foreground">
                                   Create Playbooks for each company and for any stage of the sales process, Load your research onto Playbooks and use it during meetings.
                                 </div>
                               </div>
@@ -72,16 +72,16 @@ export function Header() {
 
                       {/* Sales Excellence */}
                       <div className="space-y-4">
-                        <h3 className="text-sm font-medium text-[#888]">Sales Excellence</h3>
+                        <h3 className="text-sm font-medium text-muted-foreground">Sales Excellence</h3>
                         <div className="space-y-4">
                           <NavigationMenuLink asChild>
-                            <Link href="/products/deepsearch" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-[#111] text-white hover:text-white">
+                            <Link href="/products/deepsearch" className="group flex items-start gap-4 rounded-lg p-3 hover:bg-muted text-foreground hover:text-foreground">
                               <div className="mt-1">
                                 <Layout className="h-5 w-5 text-[#0f81fb]" />
                               </div>
                               <div>
                                 <div className="font-medium">DeepSearch</div>
-                                <div className="text-sm text-[#888] group-hover:text-[#ccc]">
+                                <div className="text-sm text-muted-foreground group-hover:text-foreground">
                                   Ask questions to any LLM and get intelligent responses
                                 </div>
                               </div>
@@ -92,17 +92,17 @@ export function Header() {
                     </div>
 
                     {/* Bottom Banner */}
-                    <div className="mt-6 p-4 bg-[#111] rounded-lg border border-[#333]">
+                    <div className="mt-6 p-4 bg-muted rounded-lg border border-border">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                           <Shield className="h-5 w-5 text-[#0f81fb]" />
                           <div>
-                            <div className="font-medium text-white">Enterprise Ready</div>
-                            <div className="text-sm text-[#888]">SOC 2 Type II, GDPR, and HIPAA compliant</div>
+                            <div className="font-medium text-foreground">Enterprise Ready</div>
+                            <div className="text-sm text-muted-foreground">SOC 2 Type II, GDPR, and HIPAA compliant</div>
                           </div>
                         </div>
                         <Link href="/products">
-                          <Button variant="ghost" className="text-[#0f81fb] hover:text-white hover:bg-[#333]">
+                          <Button variant="ghost" className="text-[#0f81fb] hover:text-foreground hover:bg-accent">
                             Learn More →
                           </Button>
                         </Link>
@@ -111,17 +111,17 @@ export function Header() {
                   </div>
 
                   {/* Mobile View (smaller than md) */}
-                  <div className="md:hidden w-screen bg-black border border-[#333] p-4">
+                  <div className="md:hidden w-screen bg-card border border-border p-4">
                     <div className="space-y-6">
                       {/* Revenue Intelligence */}
                       <div className="space-y-3">
-                        <h3 className="text-sm font-medium text-[#888]">Revenue Intelligence</h3>
+                        <h3 className="text-sm font-medium text-muted-foreground">Revenue Intelligence</h3>
                         <NavigationMenuLink asChild>
-                          <Link href="/products" className="group flex items-start gap-3 rounded-lg p-3 hover:bg-[#111] text-white">
+                          <Link href="/products" className="group flex items-start gap-3 rounded-lg p-3 hover:bg-muted text-foreground">
                             <Activity className="h-5 w-5 text-[#0f81fb] shrink-0 mt-0.5" />
                             <div>
                               <div className="font-medium">Realtime Playbook for meetings</div>
-                              <div className="text-sm text-[#888] group-hover:text-[#ccc] line-clamp-2">
+                              <div className="text-sm text-muted-foreground group-hover:text-foreground line-clamp-2">
                                 Live deal guidance and coaching
                               </div>
                             </div>
@@ -131,13 +131,13 @@ export function Header() {
 
                       {/* Sales Excellence */}
                       <div className="space-y-3">
-                        <h3 className="text-sm font-medium text-[#888]">Sales Excellence</h3>
+                        <h3 className="text-sm font-medium text-muted-foreground">Sales Excellence</h3>
                         <NavigationMenuLink asChild>
-                          <Link href="/products/deepsearch" className="group flex items-start gap-3 rounded-lg p-3 hover:bg-[#111] text-white">
+                          <Link href="/products/deepsearch" className="group flex items-start gap-3 rounded-lg p-3 hover:bg-muted text-foreground">
                             <Layout className="h-5 w-5 text-[#0f81fb] shrink-0 mt-0.5" />
                             <div>
                               <div className="font-medium">DeepSearch</div>
-                              <div className="text-sm text-[#888] group-hover:text-[#ccc] line-clamp-2">
+                              <div className="text-sm text-muted-foreground group-hover:text-foreground line-clamp-2">
                                 Ask questions to any LLM
                               </div>
                             </div>
@@ -146,17 +146,17 @@ export function Header() {
                       </div>
 
                       {/* Mobile Bottom Banner */}
-                      <div className="mt-4 p-3 bg-[#111] rounded-lg border border-[#333]">
+                      <div className="mt-4 p-3 bg-muted rounded-lg border border-border">
                         <div className="flex flex-col gap-3">
                           <div className="flex items-center gap-3">
                             <Shield className="h-5 w-5 text-[#0f81fb] shrink-0" />
                             <div>
-                              <div className="font-medium text-white">Enterprise Ready</div>
-                              <div className="text-sm text-[#888]">SOC 2 Type II Certified</div>
+                              <div className="font-medium text-foreground">Enterprise Ready</div>
+                              <div className="text-sm text-muted-foreground">SOC 2 Type II Certified</div>
                             </div>
                           </div>
                           <Link href="/products">
-                            <Button variant="ghost" className="w-full text-[#0f81fb] hover:text-white hover:bg-[#333]">
+                            <Button variant="ghost" className="w-full text-[#0f81fb] hover:text-foreground hover:bg-accent">
                               Learn More →
                             </Button>
                           </Link>
@@ -172,27 +172,27 @@ export function Header() {
         </div>
         <div className="flex items-center space-x-2 sm:space-x-4">
           <Link href="/blog">
-            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
+            <Button variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-accent hidden sm:inline-flex">
               Blog
             </Button>
           </Link>
           <Link href="/pricing">
-            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
+            <Button variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-accent hidden sm:inline-flex">
               Pricing
             </Button>
           </Link>
           <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
+            <Button variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-accent hidden sm:inline-flex">
               Contact
             </Button>
           </Link>
           <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" className="text-black bg-white hover:bg-gray-200">
+            <Button variant="outline" className="text-foreground bg-background hover:bg-accent border-border">
               Log In
             </Button>
           </Link>
           <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
-            <Button className="text-black bg-white hover:bg-gray-200 hidden sm:inline-flex">
+            <Button className="text-background bg-foreground hover:bg-foreground/90 hidden sm:inline-flex">
               Sign Up
             </Button>
           </Link>
@@ -200,7 +200,7 @@ export function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-[#888] hover:text-white"
+          className="md:hidden p-2 text-muted-foreground hover:text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
@@ -213,14 +213,14 @@ export function Header() {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-[#333] bg-black">
+        <div className="md:hidden border-t border-border bg-background">
           <div className="container py-4 px-4 space-y-4">
             <div className="space-y-4">
-              <div className="font-medium text-[#888]">Products</div>
+              <div className="font-medium text-muted-foreground">Products</div>
               <div className="pl-4 space-y-3">
                 <Link 
                   href="/products"
-                  className="flex items-center gap-3 p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+                  className="flex items-center gap-3 p-2 text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Activity className="h-5 w-5 text-[#0f81fb]" />
@@ -228,7 +228,7 @@ export function Header() {
                 </Link>
                 <Link 
                   href="/products/sales-enablement"
-                  className="flex items-center gap-3 p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+                  className="flex items-center gap-3 p-2 text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Layout className="h-5 w-5 text-[#0f81fb]" />
@@ -239,7 +239,7 @@ export function Header() {
             
             <Link 
               href="/blog"
-              className="block p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+              className="block p-2 text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Blog
@@ -247,7 +247,7 @@ export function Header() {
             
             <Link 
               href="/pricing"
-              className="block p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+              className="block p-2 text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Pricing
@@ -255,32 +255,20 @@ export function Header() {
             
             <Link 
               href="https://tidycal.com/sudheer.sandu/problemoverview"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+              className="block p-2 text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
             </Link>
-
-            <div className="pt-4 space-y-4">
-              <Link 
-                href="https://app.graycommit.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <Button variant="outline" className="w-full text-black bg-white hover:bg-gray-200">
+            
+            <div className="pt-4 space-y-3">
+              <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="w-full text-foreground bg-background hover:bg-accent border-border">
                   Log In
                 </Button>
               </Link>
-              <Link 
-                href="https://app.graycommit.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <Button className="w-full text-black bg-white hover:bg-gray-200 mt-2">
+              <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                <Button className="w-full text-background bg-foreground hover:bg-foreground/90">
                   Sign Up
                 </Button>
               </Link>

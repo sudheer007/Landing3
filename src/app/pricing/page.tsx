@@ -58,7 +58,7 @@ export default function PricingPage() {
   ]
 
   return (
-    <div className="flex min-h-screen flex-col bg-black text-white">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative overflow-hidden py-20 md:py-32">
@@ -80,16 +80,16 @@ export default function PricingPage() {
 
           <div className="container mx-auto px-4 relative">
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
-              <div className="inline-flex items-center space-x-2 rounded-full bg-[#111] px-4 py-1.5">
+              <div className="inline-flex items-center space-x-2 rounded-full bg-card border border-border px-4 py-1.5">
                 <span className="text-[#0f81fb]">Simple Pricing</span>
-                <span className="text-[#888]">No hidden fees</span>
+                <span className="text-muted-foreground">No hidden fees</span>
               </div>
               
               <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                 Scale your sales with confidence
               </h1>
               
-              <p className="max-w-2xl text-xl text-[#888]">
+              <p className="max-w-2xl text-xl text-muted-foreground">
                 Choose the perfect plan for your team. All plans include a 14-day free trial.
               </p>
             </div>
@@ -106,11 +106,11 @@ export default function PricingPage() {
                   className={`relative rounded-xl border ${
                     tier.popular 
                       ? 'border-[#0f81fb] bg-[#0f81fb]/5' 
-                      : 'border-[#333] bg-black hover:border-[#444]'
+                      : 'border-border bg-card hover:border-muted-foreground'
                   } p-8 transition-all duration-300`}
                 >
                   {tier.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0f81fb] rounded-full text-sm font-medium">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0f81fb] rounded-full text-sm font-medium text-white">
                       Most Popular
                     </div>
                   )}
@@ -118,7 +118,7 @@ export default function PricingPage() {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-2xl font-bold">{tier.name}</h3>
-                      <p className="mt-2 text-[#888]">{tier.description}</p>
+                      <p className="mt-2 text-muted-foreground">{tier.description}</p>
                     </div>
 
                     <div className="space-y-1">
@@ -126,7 +126,7 @@ export default function PricingPage() {
                         {tier.price}
                       </div>
                       {tier.name !== "Enterprise" && tier.price !== "$0" && (
-                        <div className="text-sm text-[#888]">
+                        <div className="text-sm text-muted-foreground">
                           per user/mo
                         </div>
                       )}
@@ -137,7 +137,7 @@ export default function PricingPage() {
                         className={`group relative w-full h-12 transition-all duration-300 ${
                           tier.popular
                             ? 'bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90'
-                            : 'bg-white text-black hover:bg-gray-200'
+                            : 'bg-primary text-primary-foreground hover:bg-primary/90'
                         }`}
                       >
                         <span className="relative z-10 flex items-center justify-center">
@@ -160,7 +160,7 @@ export default function PricingPage() {
                           <CheckCircle2 className={`h-5 w-5 ${
                             tier.popular ? 'text-[#0f81fb]' : 'text-green-500'
                           }`} />
-                          <span className="text-[#888]">{feature}</span>
+                          <span className="text-muted-foreground">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -172,11 +172,11 @@ export default function PricingPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-24 border-t border-[#333]">
+        <section className="py-24 border-t border-border">
           <div className="container mx-auto px-4">
             <div className="text-center space-y-4 mb-16">
               <h2 className="text-4xl font-bold">Frequently Asked Questions</h2>
-              <p className="text-xl text-[#888] max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Everything you need to know about our pricing and plans.
               </p>
             </div>
@@ -198,11 +198,15 @@ export default function PricingPage() {
                 {
                   q: "Do you offer refunds?",
                   a: "Yes, we offer a 30-day money-back guarantee. You can cancel anytime."
+                },
+                {
+                  q: "What about enterprise pricing?",
+                  a: "We offer custom enterprise plans with volume discounts, dedicated support, and additional security features. Contact our sales team for a quote."
                 }
               ].map((faq, i) => (
-                <div key={i} className="border border-[#333] rounded-lg p-6 hover:border-[#444] transition-colors">
-                  <h3 className="text-xl font-semibold mb-3">{faq.q}</h3>
-                  <p className="text-[#888]">{faq.a}</p>
+                <div key={i} className="bg-card border border-border rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-2">{faq.q}</h3>
+                  <p className="text-muted-foreground">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -210,17 +214,23 @@ export default function PricingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 border-t border-[#333]">
+        <section className="py-32 relative">
           <div className="container mx-auto px-4">
-            <div className="text-center space-y-8">
-              <div className="space-y-4">
-                <h2 className="text-4xl font-bold">Ready to close more deals?</h2>
-                <p className="text-xl text-[#888] max-w-2xl mx-auto">
-                  Join thousands of sales teams already using Graycommit to boost their conversion rates.
-                </p>
+            <div className="flex flex-col items-center text-center space-y-8">
+              <div className="inline-flex items-center space-x-2 rounded-full bg-card border border-border px-4 py-1.5">
+                <Zap className="h-5 w-5 text-[#0f81fb]" />
+                <span className="text-sm font-medium">Ready to get started?</span>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <h2 className="text-4xl font-bold tracking-tight md:text-5xl max-w-3xl">
+                Start closing more deals today
+              </h2>
+              
+              <p className="text-xl text-muted-foreground max-w-2xl">
+                Join thousands of sales teams who've increased their win rates with Graycommit's AI-powered platform.
+              </p>
+
+              <div className="flex flex-col gap-4 min-[400px]:flex-row">
                 <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
                   <Button 
                     size="lg" 
@@ -240,10 +250,25 @@ export default function PricingPage() {
                   </Button>
                 </Link>
                 <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" variant="outline" className="h-12 px-8 border-[#0f81fb] text-[#0f81fb] hover:bg-[#0f81fb] hover:text-white">
-                    Schedule Demo
+                  <Button size="lg" variant="outline" className="h-12 px-8 border-border text-foreground hover:bg-accent">
+                    Book a Demo
                   </Button>
                 </Link>
+              </div>
+
+              <div className="pt-8 flex items-center gap-8 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4 text-green-500" />
+                  14-day free trial
+                </div>
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4 text-green-500" />
+                  No credit card required
+                </div>
+                <div className="flex items-center gap-2">
+                  <Shield className="h-4 w-4 text-green-500" />
+                  Cancel anytime
+                </div>
               </div>
             </div>
           </div>

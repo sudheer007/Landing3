@@ -71,4 +71,144 @@ body {
   }
 }
 
+/* Custom Graycommit Theme Styles */
+@layer utilities {
+  /* Light Theme Overrides */
+  .light {
+    --graycommit-blue: 215 100% 50%;
+    --graycommit-blue-hover: 215 100% 45%;
+    --graycommit-gray: 240 5% 64.9%;
+    --graycommit-gray-light: 240 5% 96%;
+    --graycommit-border: 240 5.9% 90%;
+    --graycommit-surface: 0 0% 98%;
+    --graycommit-surface-elevated: 0 0% 95%;
+  }
+  
+  /* Dark Theme Overrides */
+  .dark {
+    --graycommit-blue: 215 100% 60%;
+    --graycommit-blue-hover: 215 100% 55%;
+    --graycommit-gray: 240 5% 64.9%;
+    --graycommit-gray-light: 240 3.7% 15.9%;
+    --graycommit-border: 240 3.7% 15.9%;
+    --graycommit-surface: 240 10% 3.9%;
+    --graycommit-surface-elevated: 240 3.7% 15.9%;
+  }
+  
+  /* Aggressive override for hardcoded colors */
+  .bg-black {
+    @apply bg-background !important;
+  }
+  
+  .bg-white {
+    @apply bg-background !important;
+  }
+  
+  .text-white {
+    @apply text-foreground !important;
+  }
+  
+  .text-black {
+    @apply text-foreground !important;
+  }
+  
+  .border-\[\#333\] {
+    @apply border-border !important;
+  }
+  
+  .bg-\[\#111\] {
+    @apply bg-card !important;
+  }
+  
+  .bg-\[\#222\] {
+    @apply bg-muted !important;
+  }
+  
+  .text-\[\#888\] {
+    @apply text-muted-foreground !important;
+  }
+  
+  .bg-\[\#0A0A0A\] {
+    @apply bg-accent !important;
+  }
+  
+  .border-\[\#444\] {
+    @apply border-muted-foreground !important;
+  }
+  
+  .bg-\[\#1A1A1A\] {
+    @apply bg-card !important;
+  }
+  
+  .text-\[\#ccc\] {
+    @apply text-muted-foreground !important;
+  }
+  
+  .hover\:bg-\[\#111\]:hover {
+    @apply hover:bg-muted !important;
+  }
+  
+  .hover\:bg-\[\#333\]:hover {
+    @apply hover:bg-accent !important;
+  }
+  
+  .hover\:text-white:hover {
+    @apply hover:text-foreground !important;
+  }
+  
+  .group-hover\:text-\[\#ccc\]:hover {
+    @apply group-hover:text-foreground !important;
+  }
+  
+  /* Special overrides for backgrounds that need gradient fixes */
+  .bg-gradient-to-b {
+    background-image: linear-gradient(to bottom, hsl(var(--card)), hsl(var(--background))) !important;
+  }
+  
+  .bg-black\/40 {
+    @apply bg-accent/40 !important;
+  }
+  
+  .bg-black\/90 {
+    @apply bg-card/90 !important;
+  }
+  
+  /* Theme-aware classes for better compatibility */
+  .graycommit-bg {
+    @apply bg-background;
+  }
+  
+  .graycommit-text {
+    @apply text-foreground;
+  }
+  
+  .graycommit-text-muted {
+    @apply text-muted-foreground;
+  }
+  
+  .graycommit-border {
+    @apply border-border;
+  }
+  
+  .graycommit-blue {
+    color: hsl(var(--graycommit-blue));
+  }
+  
+  .graycommit-blue-bg {
+    background-color: hsl(var(--graycommit-blue));
+  }
+  
+  .graycommit-blue-hover:hover {
+    background-color: hsl(var(--graycommit-blue-hover));
+  }
+  
+  .graycommit-surface {
+    background-color: hsl(var(--graycommit-surface));
+  }
+  
+  .graycommit-surface-elevated {
+    background-color: hsl(var(--graycommit-surface-elevated));
+  }
+}
+
 
