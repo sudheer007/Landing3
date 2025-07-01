@@ -62,7 +62,7 @@ export default function BlogPostPage() {
             <div className="text-6xl mb-4">📄</div>
             <h1 className="text-2xl font-bold mb-4">Post Not Found</h1>
             <p className="text-[#888] mb-6">The blog post you're looking for doesn't exist.</p>
-            <Link href="/changelog">
+            <Link href="/blog">
               <Button variant="outline" className="border-[#333] text-[#888] hover:text-white">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to All Posts
@@ -82,7 +82,7 @@ export default function BlogPostPage() {
         {/* Header */}
         <div className="border-b border-[#333] bg-black">
           <div className="container max-w-4xl mx-auto px-8 py-6">
-            <Link href="/changelog" className="inline-flex items-center text-[#888] hover:text-white mb-8">
+            <Link href="/blog" className="inline-flex items-center text-[#888] hover:text-white mb-8">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to All Posts
             </Link>

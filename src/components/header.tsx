@@ -171,6 +171,11 @@ export function Header() {
           </NavigationMenu>
         </div>
         <div className="flex items-center space-x-2 sm:space-x-4">
+          <Link href="/blog">
+            <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
+              Blog
+            </Button>
+          </Link>
           <Link href="/pricing">
             <Button variant="ghost" className="text-[#888] hover:text-white hover:bg-[#333] hidden sm:inline-flex">
               Pricing
@@ -231,6 +236,14 @@ export function Header() {
                 </Link>
               </div>
             </div>
+            
+            <Link 
+              href="/blog"
+              className="block p-2 text-[#888] hover:text-white rounded-lg hover:bg-[#111]"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Blog
+            </Link>
             
             <Link 
               href="/pricing"

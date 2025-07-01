@@ -109,7 +109,7 @@ export default function AboutPage() {
                   </span>
                 </Button>
               </Link>
-              <Link href="/changelog">
+              <Link href="/blog">
                 <Button variant="outline" className="border-[#333] text-[#888] hover:text-white hover:border-[#0f81fb]">
                   View Latest Updates
                 </Button>

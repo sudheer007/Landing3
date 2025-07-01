@@ -208,7 +208,7 @@ export default function SecurityPage() {
                   </span>
                 </Button>
               </Link>
-              <Link href="/changelog">
+              <Link href="/blog">
                 <Button variant="outline" className="border-[#333] text-[#888] hover:text-white hover:border-green-400">
                   Security Updates
                 </Button>
@@ -401,7 +401,7 @@ export default function SecurityPage() {
                 </span>
               </Button>
             </Link>
-            <Link href="/changelog">
+            <Link href="/blog">
               <Button variant="outline" className="border-[#333] text-[#888] hover:text-white hover:border-green-400">
                 View Security Updates
               </Button>

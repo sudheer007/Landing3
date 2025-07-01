@@ -28,7 +28,7 @@ export function Footer() {
               <h4 className="font-semibold text-white">Company</h4>
               <ul className="space-y-2 text-sm text-[#888]">
                 <li><Link href="/about" className="hover:text-white">About</Link></li>
-                <li><Link href="/changelog" className="hover:text-white">Blog</Link></li>
+                <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
                 <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
                 <li><Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer" className="hover:text-white">Contact Sales</Link></li>
               </ul>
@@ -79,7 +79,7 @@ export function Footer() {
               <Link href="/status" className="text-sm text-[#888] hover:text-white">
                 Status
               </Link>
-              <Link href="/changelog" className="text-sm text-[#888] hover:text-white">
+              <Link href="/blog" className="text-sm text-[#888] hover:text-white">
                 Changelog
               </Link>
             </div>
