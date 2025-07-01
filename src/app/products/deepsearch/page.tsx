@@ -195,6 +195,274 @@ export default function DeepSearchPage() {
         </div>
       </section>
 
+      {/* Animated Infographic Section */}
+      <section className="py-24 relative border-t border-border overflow-hidden">
+        {/* Background with subtle animation */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0f81fb]/5 via-background to-purple-500/5" />
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-[#0f81fb] rounded-full animate-pulse opacity-60" />
+          <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse opacity-40" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-[#0f81fb] rounded-full animate-pulse opacity-50" style={{ animationDelay: '2s' }} />
+        </div>
+
+        <div className="container max-w-7xl mx-auto px-8 relative">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              The Unified Interface for 
+              <span className="bg-gradient-to-r from-[#0f81fb] to-purple-400 bg-clip-text text-transparent"> AI Models</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              One query, multiple AI models. Compare responses instantly and get the best answer for any task.
+            </p>
+          </div>
+
+          {/* Central Hub Visualization - Clean Connected Layout */}
+          <div className="relative w-full max-w-7xl mx-auto min-h-[600px] flex flex-col lg:flex-row items-center justify-between px-4 gap-8">
+            
+            {/* Message Card - Left Side */}
+            <div className="flex-shrink-0 z-30 relative w-full lg:w-auto">
+              <div className="relative">
+                {/* Pulsing background effect */}
+                <div className="absolute inset-0 bg-[#0f81fb]/20 rounded-2xl blur-xl animate-pulse" />
+                <div className="relative bg-card border-2 border-[#0f81fb]/30 rounded-2xl p-6 shadow-2xl w-full lg:w-[400px] h-[200px] flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <Search className="h-6 w-6 text-[#0f81fb]" />
+                      <span className="text-lg font-semibold">Your Message</span>
+                    </div>
+                    <div className="bg-muted rounded-lg p-4">
+                      <div className="text-sm text-muted-foreground mb-2">Example:</div>
+                      <div className="text-foreground font-medium text-sm">
+                        "Write a marketing email for our new AI product launch"
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <span>Sending to 3 models...</span>
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-[#0f81fb] rounded-full animate-bounce" />
+                      <div className="w-2 h-2 bg-[#0f81fb] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                      <div className="w-2 h-2 bg-[#0f81fb] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Connection Lines and Animation */}
+            <div className="hidden lg:block flex-1 relative h-[400px] mx-4">
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 300 400" preserveAspectRatio="none">
+                {/* Line to GPT-4 (top) - Double-curved L-shape */}
+                <path
+                  d="M0 198 L40 198 Q60 198 60 178 L60 100 Q60 80 80 80 L300 80"
+                  stroke="#10b981"
+                  strokeWidth="1"
+                  fill="none"
+                  className="opacity-60"
+                />
+                
+                {/* Line to Claude (middle) - straight */}
+                <path
+                  d="M0 200 L300 200"
+                  stroke="#f59e0b"
+                  strokeWidth="1"
+                  fill="none"
+                  className="opacity-60"
+                />
+                
+                {/* Line to Gemini (bottom) - Double-curved L-shape */}
+                <path
+                  d="M0 202 L40 202 Q60 202 60 222 L60 300 Q60 320 80 320 L300 320"
+                  stroke="#8b5cf6"
+                  strokeWidth="1"
+                  fill="none"
+                  className="opacity-60"
+                />
+
+                {/* Animated dots flowing along lines */}
+                <circle r="1.5" fill="#10b981" className="opacity-80">
+                  <animateMotion dur="4s" repeatCount="indefinite" path="M0 198 L40 198 Q60 198 60 178 L60 100 Q60 80 80 80 L300 80" />
+                </circle>
+                <circle r="1.5" fill="#f59e0b" className="opacity-80">
+                  <animateMotion dur="4s" repeatCount="indefinite" begin="1.3s" path="M0 200 L300 200" />
+                </circle>
+                <circle r="1.5" fill="#8b5cf6" className="opacity-80">
+                  <animateMotion dur="4s" repeatCount="indefinite" begin="2.6s" path="M0 202 L40 202 Q60 202 60 222 L60 300 Q60 320 80 320 L300 320" />
+                </circle>
+              </svg>
+            </div>
+
+            {/* Mobile Connection Lines */}
+            <div className="lg:hidden w-full relative h-[200px] my-4">
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 200" preserveAspectRatio="none">
+                {/* Mobile: Double-curved L-shapes */}
+                <path
+                  d="M200 0 L200 20 Q200 40 180 40 L120 40 Q100 40 100 60 L100 80"
+                  stroke="#10b981"
+                  strokeWidth="1"
+                  fill="none"
+                  className="opacity-60"
+                />
+                <path
+                  d="M200 0 L200 100"
+                  stroke="#f59e0b"
+                  strokeWidth="1"
+                  fill="none"
+                  className="opacity-60"
+                />
+                <path
+                  d="M200 0 L200 20 Q200 40 220 40 L280 40 Q300 40 300 60 L300 80"
+                  stroke="#8b5cf6"
+                  strokeWidth="1"
+                  fill="none"
+                  className="opacity-60"
+                />
+
+                {/* Mobile animated dots */}
+                <circle r="1.5" fill="#10b981" className="opacity-80">
+                  <animateMotion dur="3s" repeatCount="indefinite" path="M200 0 L200 20 Q200 40 180 40 L120 40 Q100 40 100 60 L100 80" />
+                </circle>
+                <circle r="1.5" fill="#f59e0b" className="opacity-80">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="1s" path="M200 0 L200 100" />
+                </circle>
+                <circle r="1.5" fill="#8b5cf6" className="opacity-80">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="2s" path="M200 0 L200 20 Q200 40 220 40 L280 40 Q300 40 300 60 L300 80" />
+                </circle>
+              </svg>
+            </div>
+
+            {/* AI Model Cards - Right Side */}
+            <div className="flex-shrink-0 space-y-4 lg:space-y-6 z-30 relative w-full lg:w-auto">
+              {/* GPT-4 Card */}
+              <div className="relative bg-card border border-border rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-green-500/50 w-full lg:w-[280px] group">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">4</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">GPT-4</div>
+                      <div className="text-xs text-muted-foreground">by OpenAI</div>
+                    </div>
+                  </div>
+                  <div className="text-green-500 text-sm font-medium flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    Active
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-3 text-sm">
+                  <div>
+                    <div className="text-green-500 font-bold">32K</div>
+                    <div className="text-muted-foreground text-xs">Context</div>
+                  </div>
+                  <div>
+                    <div className="text-foreground font-bold">850ms</div>
+                    <div className="text-muted-foreground text-xs">Latency</div>
+                  </div>
+                  <div>
+                    <div className="text-[#0f81fb] font-bold">+2.1%</div>
+                    <div className="text-muted-foreground text-xs">Growth</div>
+                  </div>
+                </div>
+                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-green-500 to-[#0f81fb] rounded-full group-hover:animate-pulse" style={{ width: '85%' }} />
+                </div>
+              </div>
+
+              {/* Claude Card */}
+              <div className="relative bg-card border border-border rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-orange-500/50 w-full lg:w-[280px] group">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">C</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Claude 3.5</div>
+                      <div className="text-xs text-muted-foreground">by Anthropic</div>
+                    </div>
+                  </div>
+                  <div className="text-orange-500 text-sm font-medium flex items-center gap-2">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
+                    Active
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-3 text-sm">
+                  <div>
+                    <div className="text-orange-500 font-bold">200K</div>
+                    <div className="text-muted-foreground text-xs">Context</div>
+                  </div>
+                  <div>
+                    <div className="text-foreground font-bold">1.2s</div>
+                    <div className="text-muted-foreground text-xs">Latency</div>
+                  </div>
+                  <div>
+                    <div className="text-[#0f81fb] font-bold">+5.7%</div>
+                    <div className="text-muted-foreground text-xs">Growth</div>
+                  </div>
+                </div>
+                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-orange-500 to-[#0f81fb] rounded-full group-hover:animate-pulse" style={{ width: '92%' }} />
+                </div>
+              </div>
+
+              {/* Gemini Card */}
+              <div className="relative bg-card border border-border rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-purple-500/50 w-full lg:w-[280px] group">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">G</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">Gemini Pro</div>
+                      <div className="text-xs text-muted-foreground">by Google</div>
+                    </div>
+                  </div>
+                  <div className="text-purple-500 text-sm font-medium flex items-center gap-2">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
+                    Active
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-3 text-sm">
+                  <div>
+                    <div className="text-purple-500 font-bold">1M</div>
+                    <div className="text-muted-foreground text-xs">Context</div>
+                  </div>
+                  <div>
+                    <div className="text-foreground font-bold">650ms</div>
+                    <div className="text-muted-foreground text-xs">Latency</div>
+                  </div>
+                  <div>
+                    <div className="text-[#0f81fb] font-bold">+8.3%</div>
+                    <div className="text-muted-foreground text-xs">Growth</div>
+                  </div>
+                </div>
+                <div className="mt-3 h-1 bg-muted rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-purple-500 to-[#0f81fb] rounded-full group-hover:animate-pulse" style={{ width: '78%' }} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Stats */}
+          <div className="text-center mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-[#0f81fb] mb-2">15+</div>
+                <div className="text-muted-foreground">AI Models Available</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-[#0f81fb] mb-2">&lt; 2s</div>
+                <div className="text-muted-foreground">Average Response Time</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-[#0f81fb] mb-2">99.9%</div>
+                <div className="text-muted-foreground">Uptime Guarantee</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* LLM Providers */}
       <section className="py-16 border-t border-border relative">
         {/* Gradient background */}
