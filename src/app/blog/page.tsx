@@ -23,6 +23,7 @@ export default function BlogPage() {
 
   const categories = [
     { name: 'All Posts', icon: BookOpen },
+    { name: 'Product', icon: Tag },
     { name: 'Engineering', icon: Code },
     { name: 'Community', icon: User }, 
     { name: 'Company News', icon: Building },

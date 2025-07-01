@@ -2,6 +2,11 @@
 import engineeringPost from '@/content/posts/engineering-post-1.json'
 import communityPost from '@/content/posts/community-post-1.json'
 import companyPost from '@/content/posts/company-news-1.json'
+import aiSalesRevolution from '@/content/posts/ai-sales-revolution.json'
+import playbookAutomation from '@/content/posts/playbook-automation.json'
+import competitorIntelligence from '@/content/posts/competitor-intelligence.json'
+import salesAnalyticsAI from '@/content/posts/sales-analytics-ai.json'
+import aiCoachingV2 from '@/content/posts/ai-coaching-v2.json'
 import aiCoachingChangelog from '@/content/changelog/2024-01-15-ai-coaching-v2.json'
 import playbookChangelog from '@/content/changelog/2024-01-10-playbook-automation.json'
 import securityChangelog from '@/content/changelog/2024-01-05-security-update.json'
@@ -47,6 +52,11 @@ export interface ContentBlock {
 
 // Static content data
 const allContentData: ContentItem[] = [
+  aiCoachingV2 as ContentItem,
+  aiSalesRevolution as ContentItem,
+  playbookAutomation as ContentItem,
+  competitorIntelligence as ContentItem,
+  salesAnalyticsAI as ContentItem,
   engineeringPost as ContentItem,
   communityPost as ContentItem,
   companyPost as ContentItem,
