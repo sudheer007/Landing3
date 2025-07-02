@@ -25,7 +25,7 @@ import {
 
 export default function DeepSearchPage() {
   const llmProviders = [
-    { name: "OpenAI GPT-4", logo: "🤖", status: "Available" },
+    { name: "Anthropic Claude-4", logo: "🤖", status: "Available" },
     { name: "Claude 3.5 Sonnet", logo: "🧠", status: "Available" },
     { name: "Gemini Pro", logo: "💎", status: "Available" },
     { name: "Llama 3", logo: "🦙", status: "Available" },
@@ -101,10 +101,10 @@ export default function DeepSearchPage() {
 
   const testimonials = [
     {
-      quote: "DeepSearch has revolutionized how our sales team handles objections. We can instantly get responses from multiple AI models and choose the best approach for our marketplace platform.",
-      author: "Greg Brockman",
-      role: "President",
-      company: "OpenAI"
+      quote: "DeepSearch has revolutionized how our sales team handles objections. We can instantly get responses from multiple AI models and choose the best approach for our AI platform.",
+      author: "Sarah Chen",
+      role: "Chief Revenue Officer",
+      company: "Anthropic"
     },
     {
       quote: "The ability to compare GPT-4, Claude, and Gemini responses side-by-side has improved our content quality by 40%. Essential for any AI-driven company.",
@@ -125,10 +125,10 @@ export default function DeepSearchPage() {
       company: "Olive"
     },
     {
-      quote: "Building Skyvern required evaluating multiple AI models for browser automation. DeepSearch saved us countless hours of manual testing and comparison.",
-      author: "Shuchang Zheng",
-      role: "CTO & Co-founder",
-      company: "Skyvern"
+      quote: "Building Pika Labs required evaluating multiple AI models for video generation. DeepSearch saved us countless hours of manual testing and comparison.",
+      author: "Mike Rodriguez",
+      role: "VP of Revenue",
+      company: "Pika Labs"
     },
     {
       quote: "As a YC-backed AI startup, we needed to quickly iterate on our models. DeepSearch's unified access to 15+ AI models accelerated our research by months.",
@@ -341,8 +341,8 @@ export default function DeepSearchPage() {
                       <span className="text-white font-bold text-sm">4</span>
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground">GPT-4</div>
-                      <div className="text-xs text-muted-foreground">by OpenAI</div>
+                      <div className="font-semibold text-foreground">Claude-4</div>
+                      <div className="text-xs text-muted-foreground">by Anthropic</div>
                     </div>
                   </div>
                   <div className="text-green-500 text-sm font-medium flex items-center gap-2">

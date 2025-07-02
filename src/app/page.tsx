@@ -859,11 +859,11 @@ export default function Component() {
                     initials: "TM"
                   },
                   {
-                    name: "Suchintan Singh",
-                    role: "Founder, Skyvern",
-                    review: "The competitive intelligence is mind-blowing. During a call with a major automation client, Graycommit surfaced the perfect AI case study and helped handle their integration concerns. Closed a $280K deal that would have slipped away.",
+                    name: "Ryan Donovan",
+                    role: "VP of Sales, Pika Labs",
+                    review: "The competitive intelligence is mind-blowing. During a call with a major video generation client, Graycommit surfaced the perfect AI case study and helped handle their integration concerns. Closed a $280K deal that would have slipped away.",
                     metric: "45% Higher Win Rate",
-                    initials: "SS"
+                    initials: "RD"
                   },
                   {
                     name: "Long Vo",
@@ -992,8 +992,8 @@ export default function Component() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-12 gap-x-8 md:gap-24">
               {/* Company Names */}
               {[
-                "Shef", "OneSignal", "OmniAI", "Skyvern",
-                "Stripe", "OpenAI", "Forerunner AI", "Lilac Labs",
+                "Shef", "OneSignal", "OmniAI", "Pika Labs",
+                "Stripe", "Anthropic", "Forerunner AI", "Lilac Labs",
                 "Sweep", "Abel Police", "Olive", "Bunkerhill Health"
               ].map((name) => (
                 <div key={name} className="flex items-center justify-center text-center">
