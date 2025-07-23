@@ -119,20 +119,29 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* About Section */}
       <section className="py-20 border-t border-[#333]">
         <div className="container max-w-6xl mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">About Graycommit</h2>
+            <p className="text-lg text-[#888] max-w-4xl mx-auto leading-relaxed">
+              We're Graycommit, the team behind the AI-powered sales workflow engine.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Our Mission</h2>
+              <h3 className="text-2xl font-bold mb-6">Our Mission</h3>
               <p className="text-lg text-[#888] leading-relaxed mb-6">
+                Our mission is to transform how sales teams operate. We're building the definitive tool for sales professionals that helps salespeople stay focused, overcome objections, and engage in impactful conversations.
+              </p>
+              <p className="text-lg text-[#888] leading-relaxed mb-6">
+                By significantly reducing ramp-up time, Graycommit enables new sales reps to quickly master coached knowledge, addressing the high churn rate seen in many sales teams. Our technology streamlines training, boosts productivity, and equips teams with the confidence to close more deals.
+              </p>
+              <p className="text-lg text-[#888] leading-relaxed mb-8">
                 Every year, $2 trillion in B2B sales opportunities are lost due to poor execution, missed signals, 
                 and inadequate coaching. We believe every sales professional deserves access to world-class guidance 
                 in real-time.
-              </p>
-              <p className="text-lg text-[#888] leading-relaxed mb-8">
-                Graycommit democratizes sales excellence by putting an AI sales coach in every conversation, 
-                helping teams close more deals, faster, while building authentic relationships with their customers.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
@@ -145,31 +154,43 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-            <div className="relative">
+            
+            <div className="space-y-8">
               <div className="bg-gradient-to-br from-[#111] to-[#000] rounded-2xl p-8 border border-[#333]">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-[#0f81fb]/10 rounded-lg p-4 text-center">
-                    <Zap className="h-8 w-8 text-[#0f81fb] mx-auto mb-2" />
-                    <div className="text-sm font-medium">Real-time AI</div>
-                  </div>
-                  <div className="bg-[#0f81fb]/10 rounded-lg p-4 text-center">
-                    <Globe className="h-8 w-8 text-[#0f81fb] mx-auto mb-2" />
-                    <div className="text-sm font-medium">Global Scale</div>
-                  </div>
-                  <div className="bg-[#0f81fb]/10 rounded-lg p-4 text-center">
-                    <Shield className="h-8 w-8 text-[#0f81fb] mx-auto mb-2" />
-                    <div className="text-sm font-medium">Enterprise Security</div>
-                  </div>
-                  <div className="bg-[#0f81fb]/10 rounded-lg p-4 text-center">
-                    <Award className="h-8 w-8 text-[#0f81fb] mx-auto mb-2" />
-                    <div className="text-sm font-medium">Industry Leading</div>
-                  </div>
-                </div>
+                <h4 className="text-xl font-semibold mb-4">Our Team</h4>
+                <p className="text-[#888] leading-relaxed mb-4">
+                  We're a group of engineers, sales veterans, and AI researchers who've scaled revenue teams, built enterprise software, led successful exits, and developed cutting-edge machine learning systems.
+                </p>
+                <p className="text-[#888] leading-relaxed">
+                  We understand both the technical complexity of AI and the real-world challenges of quota-carrying sales reps.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-[#111] to-[#000] rounded-2xl p-8 border border-[#333]">
+                <h4 className="text-xl font-semibold mb-4">Our Values</h4>
+                <p className="text-[#888] leading-relaxed mb-4">
+                  Our organization values speed and execution. Our team is small, focused, and results-driven. We particularly value people who are customer-obsessed, data-driven, and relentlessly focused on impact.
+                </p>
+                <p className="text-[#888] leading-relaxed">
+                  We thrive on solving hard problems, testing bold hypotheses, and shipping solutions that move the needle.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-[#111] to-[#000] rounded-2xl p-8 border border-[#333]">
+                <h4 className="text-xl font-semibold mb-4">Our Approach</h4>
+                <p className="text-[#888] leading-relaxed mb-4">
+                  We're building remotely with periodic gatherings, bringing together diverse perspectives from across the sales and tech ecosystems.
+                </p>
+                <p className="text-[#888] leading-relaxed">
+                  Our supporters include experienced sales leaders, enterprise software veterans, and investors who've built category-defining companies in the revenue operations space.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      
 
       {/* Values Section */}
       <section className="py-20 bg-[#0A0A0A]">
