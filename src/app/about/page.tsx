@@ -10,26 +10,8 @@ export default function AboutPage() {
     {
       name: "Sudheer Sandu",
       role: "CEO & Co-founder",
-      bio: "Former Sales VP at Salesforce. Led enterprise sales teams to $100M+ ARR. Passionate about democratizing sales excellence through AI.",
+      bio: "Led enterprise sales teams to $100M+ ARR. Passionate about democratizing sales excellence through AI.",
       image: "/team/sudheer-sandu.jpg"
-    },
-    {
-      name: "Alex Chen",
-      role: "VP of Engineering",
-      bio: "Ex-Google AI researcher. Built machine learning systems at scale. Expert in real-time AI and distributed systems.",
-      image: "/team/alex-chen.jpg"
-    },
-    {
-      name: "Sarah Kim",
-      role: "VP of Product",
-      bio: "Former Product Lead at HubSpot. Designed sales tools used by 50,000+ sales professionals. UX evangelist.",
-      image: "/team/sarah-kim.jpg"
-    },
-    {
-      name: "Marcus Rodriguez",
-      role: "VP of Security",
-      bio: "Former Security Architect at Stripe. Expert in enterprise security, compliance, and data protection at scale.",
-      image: "/team/marcus-rodriguez.jpg"
     }
   ]
 

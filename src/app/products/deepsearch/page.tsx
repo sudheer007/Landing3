@@ -102,39 +102,39 @@ export default function DeepSearchPage() {
   const testimonials = [
     {
       quote: "DeepSearch has revolutionized how our sales team handles objections. We can instantly get responses from multiple AI models and choose the best approach for our AI platform.",
-      author: "Sarah Chen",
-      role: "Chief Revenue Officer",
-      company: "Anthropic"
+      author: "VP of Sales",
+      role: "YOY 300% ARR Developer Platform",
+      company: "Developer Platform"
     },
     {
       quote: "The ability to compare GPT-4, Claude, and Gemini responses side-by-side has improved our content quality by 40%. Essential for any AI-driven company.",
-      author: "Patrick Collison",
-      role: "CEO",
-      company: "Stripe"
+      author: "Director of Sales",
+      role: "500% Revenue Growth Fintech",
+      company: "Fintech"
     },
     {
       quote: "DeepSearch transformed how we build our AI coding assistant. Having access to multiple models in one platform accelerated our development velocity significantly.",
-      author: "Kevin Lu",
-      role: "Founder",
-      company: "Sweep"
+      author: "Account Executive",
+      role: "4X Deal Size Enterprise SaaS",
+      company: "Enterprise SaaS"
     },
     {
       quote: "For our document automation platform, comparing different AI models is crucial. DeepSearch makes it seamless to test and optimize our AI workflows.",
-      author: "Bardia Safari",
-      role: "CEO",
-      company: "Olive"
+      author: "VP of Sales",
+      role: "85% Win Rate Healthcare AI",
+      company: "Healthcare AI"
     },
     {
-      quote: "Building Pika Labs required evaluating multiple AI models for video generation. DeepSearch saved us countless hours of manual testing and comparison.",
-      author: "Mike Rodriguez",
-      role: "VP of Revenue",
-      company: "Pika Labs"
+      quote: "Building our video generation platform required evaluating multiple AI models. DeepSearch saved us countless hours of manual testing and comparison.",
+      author: "Director of Sales",
+      role: "70% Faster Sales Cycles Video Tech",
+      company: "Video Tech"
     },
     {
-      quote: "As a YC-backed AI startup, we needed to quickly iterate on our models. DeepSearch's unified access to 15+ AI models accelerated our research by months.",
-      author: "Nishith Khandwala",
-      role: "Co-founder",
-      company: "Bunkerhill Health"
+      quote: "As a consulting firm, we needed to quickly iterate on our models. DeepSearch's unified access to 15+ AI models accelerated our research by months.",
+      author: "Account Executive",
+      role: "2.5X Pipeline Growth Consulting",
+      company: "Consulting"
     }
   ]
 

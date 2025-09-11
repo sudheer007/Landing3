@@ -838,74 +838,74 @@ export default function Component() {
               <div className="flex space-x-6 pl-4" style={{ paddingRight: "calc(100% - 92%)" }}>
                 {[
                   {
-                    name: "Joey Grassia",
-                    role: "Founder & CEO, Shef",
+                    name: "Founder & CEO",
+                    role: "Marketplace Platform",
                     review: "As a marketplace founder, enterprise sales was our biggest challenge. Graycommit's real-time coaching turned our technical depth into compelling business value. We closed a $450K deal with major food distributors in our first month - something I never thought possible.",
                     metric: "3.2X Revenue Growth",
-                    initials: "JG"
+                    initials: "FC"
                   },
                   {
-                    name: "George Deglin",
-                    role: "Founder & CEO, OneSignal",
+                    name: "Founder & CEO",
+                    role: "Developer Platform",
                     review: "From struggling with enterprise objections to confidently handling Fortune 500 calls - Graycommit transformed our sales approach. The AI coach understands both our messaging platform and enterprise needs, making every pitch resonate.",
                     metric: "$150M ARR Growth",
-                    initials: "GD"
+                    initials: "FC"
                   },
                   {
-                    name: "Tyler Maran",
-                    role: "Co-founder & CEO, OmniAI",
+                    name: "Co-founder & CEO",
+                    role: "AI Infrastructure Company",
                     review: "We were great at building AI infrastructure but struggled with enterprise sales. Graycommit helped us speak the language of CTOs and CIOs. The real-time battle cards and objection handlers are like having a veteran sales leader in your ear.",
                     metric: "5X Enterprise Deals",
-                    initials: "TM"
+                    initials: "CF"
                   },
                   {
-                    name: "Ryan Donovan",
-                    role: "VP of Sales, Pika Labs",
+                    name: "VP of Sales",
+                    role: "AI Video Platform",
                     review: "The competitive intelligence is mind-blowing. During a call with a major video generation client, Graycommit surfaced the perfect AI case study and helped handle their integration concerns. Closed a $280K deal that would have slipped away.",
                     metric: "45% Higher Win Rate",
-                    initials: "RD"
+                    initials: "VS"
                   },
                   {
-                    name: "Long Vo",
-                    role: "Founder & COO, OneSignal",
+                    name: "Founder & COO",
+                    role: "Developer Platform",
                     review: "Onboarding technical founders to enterprise sales used to be a 6-month process. With Graycommit's real-time coaching, they're closing six-figure deals within weeks. It's like giving every founder a decade of sales experience instantly.",
                     metric: "70% Faster Ramp Time",
-                    initials: "LV"
+                    initials: "FC"
                   },
                   {
-                    name: "Anna Pojawis",
-                    role: "Co-founder & CTO, OmniAI",
+                    name: "Co-founder & CTO",
+                    role: "AI Infrastructure Company",
                     review: "The personalized talk tracks and real-time battle cards have transformed how we compete. My team of technical founders is now consistently winning against legacy vendors in enterprise deals.",
                     metric: "52% Win Rate vs Enterprise",
-                    initials: "AP"
+                    initials: "CT"
                   },
                   {
-                    name: "Yash Kadadi",
-                    role: "Founder, Forerunner AI",
+                    name: "Founder",
+                    role: "Aerospace AI Company",
                     review: "Coming from an aerospace background, I could explain our tech but struggled with value selling. Graycommit's AI coach helps translate complex aerospace features into business outcomes in real-time. Just closed our first $1M deal!",
                     metric: "First $1M Enterprise Deal",
-                    initials: "YK"
+                    initials: "FA"
                   },
                   {
-                    name: "Tony Kam",
-                    role: "Co-founder & CEO, Lilac Labs",
+                    name: "Co-founder & CEO",
+                    role: "AI Research Lab",
                     review: "The AI understands our technical differentiators and helps position them perfectly for different stakeholders. CFOs, CTOs, CISOs - Graycommit helps us nail every conversation with relevant insights and case studies.",
                     metric: "4X Deal Size Increase",
-                    initials: "TK"
+                    initials: "CF"
                   },
                   {
-                    name: "William Zeng",
-                    role: "Founder, Sweep",
+                    name: "Founder",
+                    role: "AI Automation Platform",
                     review: "As an AI company founder, I was skeptical of sales tools. Graycommit proved me wrong. It actually understands technical nuances and helps translate them into value props. Our sales cycles dropped from 6 months to 6 weeks.",
                     metric: "75% Shorter Sales Cycles",
-                    initials: "WZ"
+                    initials: "FA"
                   },
                   {
-                    name: "Daniel Francis",
-                    role: "Founder, Abel Police",
+                    name: "Founder",
+                    role: "AI Security Platform",
                     review: "From hesitant technical founder to confident enterprise seller - that's my journey with Graycommit. The real-time coaching helped me handle complex enterprise objections and navigate multi-stakeholder deals effectively.",
                     metric: "8 Enterprise Wins in Q1",
-                    initials: "DF"
+                    initials: "FS"
                   }
                 ].map((review, index) => (
                   <div 
@@ -989,15 +989,16 @@ export default function Component() {
 
           <div className="container relative max-w-full px-4">
             <h2 className="text-3xl font-bold text-center mb-16">Trusted by</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-y-12 gap-x-8 md:gap-24">
-              {/* Company Names */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-12 gap-x-8 md:gap-16 lg:gap-20">
+              {/* Trusted Companies */}
               {[
-                "Shef", "OneSignal", "OmniAI", "Pika Labs",
-                "Stripe", "Anthropic", "Forerunner AI", "Lilac Labs",
-                "Sweep", "Abel Police", "Olive", "Bunkerhill Health"
-              ].map((name) => (
-                <div key={name} className="flex items-center justify-center text-center">
-                  <div className="text-xl sm:text-2xl font-bold text-muted-foreground">{name}</div>
+                "Threev.ai", "High Radius", "Amazon", "Citi Bank", "Google",
+                "Tata", "Accenture", "Zebra.ai", "Deloitte"
+              ].map((company) => (
+                <div key={company} className="flex items-center justify-center text-center">
+                  <div className="text-xl sm:text-2xl font-bold text-muted-foreground hover:text-foreground transition-colors duration-300">
+                    {company}
+                  </div>
                 </div>
               ))}
             </div>
