@@ -959,51 +959,6 @@ export default function Component() {
 
 
 
-        <section className="relative py-24 border-t border-border">
-          <div className="absolute inset-0">
-            {/* Vertical lines */}
-            {[...Array(40)].map((_, i) => (
-              <div
-                key={`v-${i}`}
-                className="absolute top-0 bottom-0 w-[1px]"
-                style={{ 
-                  left: `${(i + 1) * 2.5}%`,
-                  background: 'linear-gradient(to bottom, transparent, rgba(51, 51, 51, 0.5) 80%, transparent)',
-                  opacity: '1'
-                }}
-              />
-            ))}
-            {/* Horizontal lines */}
-            {[...Array(40)].map((_, i) => (
-              <div
-                key={`h-${i}`}
-                className="absolute left-0 right-0 h-px"
-                style={{ 
-                  top: `${(i + 1) * 2.5}%`,
-                  background: 'linear-gradient(to right, transparent, rgba(51, 51, 51, 0.2) 50%, transparent)',
-                  opacity: '0.25'
-                }}
-              />
-            ))}
-          </div>
-
-          <div className="container relative max-w-full px-4">
-            <h2 className="text-3xl font-bold text-center mb-16">Trusted by teams at</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-12 gap-x-8 md:gap-16 lg:gap-20">
-              {/* Trusted Companies */}
-              {[
-                "Threev.ai", "High Radius", "Amazon", "Citi Bank", "Google",
-                "Tata", "Accenture", "Zebra.ai", "Deloitte", "Whatfix"
-              ].map((company) => (
-                <div key={company} className="flex items-center justify-center text-center">
-                  <div className="text-xl sm:text-2xl font-bold text-muted-foreground hover:text-foreground transition-colors duration-300">
-                    {company}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* CTA Section */}
         <section className="py-32 relative border-t border-border overflow-hidden">
