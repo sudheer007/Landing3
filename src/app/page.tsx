@@ -988,12 +988,12 @@ export default function Component() {
           </div>
 
           <div className="container relative max-w-full px-4">
-            <h2 className="text-3xl font-bold text-center mb-16">Trusted by</h2>
+            <h2 className="text-3xl font-bold text-center mb-16">Trusted by teams at</h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-12 gap-x-8 md:gap-16 lg:gap-20">
               {/* Trusted Companies */}
               {[
                 "Threev.ai", "High Radius", "Amazon", "Citi Bank", "Google",
-                "Tata", "Accenture", "Zebra.ai", "Deloitte"
+                "Tata", "Accenture", "Zebra.ai", "Deloitte", "Whatfix"
               ].map((company) => (
                 <div key={company} className="flex items-center justify-center text-center">
                   <div className="text-xl sm:text-2xl font-bold text-muted-foreground hover:text-foreground transition-colors duration-300">
