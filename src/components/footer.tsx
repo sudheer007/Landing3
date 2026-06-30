@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ThemeToggle } from "./theme-toggle"
 import { EmailCapture } from "./email-capture"
 
 
@@ -93,7 +92,6 @@ export function Footer() {
               <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground">
                 Changelog
               </Link>
-              <ThemeToggle />
             </div>
           </div>
         </div>

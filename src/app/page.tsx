@@ -4,6 +4,12 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { EmailCapture } from "@/components/email-capture"
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import {
   Activity,
   ArrowRight,
   BarChart3,
@@ -13,13 +19,16 @@ import {
   CheckCircle2,
   Gauge,
   LineChart,
+  Link2,
   LockKeyhole,
+  Quote,
   Radar,
   ScanLine,
   ShieldCheck,
   Sparkles,
   TrendingDown,
   TrendingUp,
+  Wand2,
   Zap
 } from 'lucide-react'
 
@@ -83,6 +92,72 @@ const sectors = [
   { name: 'Consumer Tech', score: 38, color: 'bg-red-300' }
 ]
 
+const steps = [
+  {
+    icon: Link2,
+    title: 'Connect your universe',
+    description: 'Point GSR 1 at the tickers, sectors, or watchlists you already care about. No setup project required.'
+  },
+  {
+    icon: Wand2,
+    title: 'AI ranks the noise away',
+    description: 'Every name gets scored on momentum, volume, sector strength, and risk so you see what actually matters first.'
+  },
+  {
+    icon: Radar,
+    title: 'You act with conviction',
+    description: 'Get a ranked shortlist, a plain-English thesis, and clear risk levels before the market moves without you.'
+  }
+]
+
+const trustStats = [
+  ['18K+', 'Stocks scanned daily'],
+  ['42ms', 'Median signal latency'],
+  ['6', 'Market regimes modeled'],
+  ['24/7', 'Always-on market watch']
+]
+
+const testimonials = [
+  {
+    quote: 'I used to spend my mornings flipping between six tabs just to find a starting point. Now GSR 1 hands me a ranked shortlist before coffee.',
+    name: 'Early access trader',
+    role: 'Swing trading, semiconductors focus'
+  },
+  {
+    quote: 'The risk console alone changed how I size positions. Seeing invalidation levels next to the setup keeps me honest.',
+    name: 'Early access trader',
+    role: 'Part-time investor, tech sector'
+  },
+  {
+    quote: 'It feels like having a research analyst who never sleeps and never gets excited about the wrong stock.',
+    name: 'Early access trader',
+    role: 'Active trader, momentum strategies'
+  }
+]
+
+const faqs = [
+  {
+    q: 'Is GSR 1 free to try?',
+    a: 'Yes. Early access spots come with a free trial period so you can see how the radar, signals, and risk console fit your process before committing to anything.'
+  },
+  {
+    q: 'Do I need trading experience to use it?',
+    a: 'No. GSR 1 is built to make sense whether you are scanning your first watchlist or you have been trading for years — the AI readout explains setups in plain language alongside the raw data.'
+  },
+  {
+    q: 'What markets and tickers are covered?',
+    a: 'GSR 1 currently scans US equities across major sectors, with thousands of tickers updated continuously throughout the trading day.'
+  },
+  {
+    q: 'How is this different from a normal stock screener?',
+    a: 'Traditional screeners filter on static rules. GSR 1 ranks results using AI that weighs momentum, volume, sector context, and risk together, then explains the reasoning behind each pick.'
+  },
+  {
+    q: 'When do I get access after signing up?',
+    a: 'We are rolling out early access in waves. Drop your email above and you will be notified the moment a spot opens up for your account.'
+  }
+]
+
 export default function StockRadarLanding() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#05070b] text-white">
@@ -123,18 +198,14 @@ export default function StockRadarLanding() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="h-12 w-full bg-emerald-400 px-7 text-black shadow-[0_0_30px_rgba(52,211,153,0.25)] transition hover:scale-[1.03] hover:bg-emerald-300 hover:shadow-[0_0_45px_rgba(52,211,153,0.4)] sm:w-auto">
-                  Launch Radar
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="#radar">
-                <Button size="lg" variant="outline" className="h-12 w-full border-cyan-300/50 bg-white/5 px-7 text-cyan-100 transition hover:scale-[1.03] hover:bg-cyan-300/10 hover:text-white sm:w-auto">
-                  View Screener
-                </Button>
-              </Link>
+            <div id="get-access" className="scroll-mt-24 space-y-3">
+              <EmailCapture variant="hero" source="hero_primary" />
+              <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+                <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-emerald-300" /> No credit card required</span>
+                <Link href="#radar" className="text-cyan-200 underline-offset-4 hover:text-white hover:underline">
+                  See the screener in action &rarr;
+                </Link>
+              </div>
             </div>
 
             <div className="grid max-w-2xl grid-cols-3 gap-3">
@@ -251,6 +322,40 @@ export default function StockRadarLanding() {
       <section className="border-b border-white/10 bg-[#070a10] py-20">
         <div className="container mx-auto max-w-7xl px-4 lg:px-8">
           <div className="mb-12 max-w-3xl">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-sm text-emerald-100">
+              <Radar className="h-4 w-4" />
+              How it works
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">From zero to a ranked watchlist in three steps.</h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {steps.map((step, index) => (
+              <div key={step.title} className="relative rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-emerald-300/[0.04]">
+                <div className="mb-5 flex items-center justify-between">
+                  <step.icon className="h-7 w-7 text-emerald-300" />
+                  <span className="text-3xl font-bold text-white/10">{String(index + 1).padStart(2, '0')}</span>
+                </div>
+                <h3 className="mb-3 text-lg font-semibold text-white">{step.title}</h3>
+                <p className="text-sm leading-6 text-slate-400">{step.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-4">
+            {trustStats.map(([value, label]) => (
+              <div key={label} className="text-center sm:text-left">
+                <div className="bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-3xl font-bold text-transparent">{value}</div>
+                <div className="mt-1 text-sm text-slate-400">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10 bg-[#05070b] py-20">
+        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="mb-12 max-w-3xl">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-sm text-cyan-100">
               <Sparkles className="h-4 w-4" />
               Built for fast market decisions
@@ -270,6 +375,33 @@ export default function StockRadarLanding() {
         </div>
       </section>
 
+      <section className="border-b border-white/10 bg-[#070a10] py-20">
+        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="mb-12 max-w-3xl">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-sm text-amber-100">
+              <Quote className="h-4 w-4" />
+              From the early access cohort
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">Traders are already moving faster with GSR 1.</h2>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <div key={t.quote} className="flex flex-col justify-between rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-amber-300/30">
+                <div>
+                  <Quote className="mb-4 h-6 w-6 text-amber-300/70" />
+                  <p className="text-sm leading-6 text-slate-200">{t.quote}</p>
+                </div>
+                <div className="mt-6 border-t border-white/10 pt-4">
+                  <div className="text-sm font-semibold text-white">{t.name}</div>
+                  <div className="text-xs text-slate-400">{t.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="relative border-b border-white/10 bg-[#05070b] py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(34,211,238,0.12),transparent_30%)]" />
         <div className="container relative mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-2 lg:px-8">
@@ -282,8 +414,8 @@ export default function StockRadarLanding() {
             <p className="text-lg leading-8 text-slate-400">
               GSR 1 combines technical conditions, news catalysts, sector movement, and AI ranking so every scan returns a usable shortlist.
             </p>
-            <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-cyan-300 text-slate-950 hover:bg-cyan-200">
+            <Link href="#get-access">
+              <Button className="bg-cyan-300 text-slate-950 transition hover:scale-[1.03] hover:bg-cyan-200">
                 Build My Radar
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -333,6 +465,34 @@ export default function StockRadarLanding() {
         </div>
       </section>
 
+      <section className="bg-[#070a10] py-20">
+        <div className="container mx-auto max-w-4xl px-4 lg:px-8">
+          <div className="mb-10 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-sm text-slate-200">
+              Frequently asked
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">Questions traders ask before joining.</h2>
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-3">
+            {faqs.map((item, index) => (
+              <AccordionItem
+                key={item.q}
+                value={`item-${index}`}
+                className="rounded-lg border border-white/10 bg-white/[0.035] px-5 data-[state=open]:border-emerald-300/30"
+              >
+                <AccordionTrigger className="text-left text-base font-medium text-white hover:no-underline [&[data-state=open]>svg]:text-emerald-300">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm leading-6 text-slate-400">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
       <section className="relative overflow-hidden border-t border-white/10 bg-[#05070b] py-20 text-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.2),transparent_34%)]" />
         <div className="absolute left-1/4 top-0 h-72 w-72 animate-float rounded-full bg-emerald-400/10 blur-[120px]" />
@@ -343,7 +503,7 @@ export default function StockRadarLanding() {
             Graycommit Stock Radar - GSR 1 is built for traders who want a sharper, faster, AI-assisted read on opportunity.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3">
-            <EmailCapture variant="hero" source="hero_cta" />
+            <EmailCapture variant="hero" source="closing_cta" />
             <Link href="/products" className="text-sm text-slate-400 underline-offset-4 hover:text-white hover:underline">
               or explore products instead
             </Link>

@@ -348,7 +348,7 @@ function ProductsPage() {
                           <Circle className="h-4 w-4 text-green-500 fill-green-500" />
                           <span className="text-sm text-muted-foreground">14-Day Free Trial</span>
                         </div>
-                        <Link href="https://app.graycommit.com/signup" className="text-[#0f81fb] hover:text-[#0f81fb]/90 font-medium text-sm flex items-center gap-1">
+                        <Link href="/#get-access" className="text-[#0f81fb] hover:text-[#0f81fb]/90 font-medium text-sm flex items-center gap-1">
                           Get Started Free
                           <ArrowRight className="h-4 w-4" />
                         </Link>
@@ -440,7 +440,7 @@ function ProductsPage() {
                           <Circle className="h-4 w-4 text-green-500 fill-green-500" />
                           <span className="text-sm text-muted-foreground">14-Day Free Trial</span>
                         </div>
-                        <Link href="https://app.graycommit.com/signup" className="text-[#0f81fb] hover:text-[#0f81fb]/90 font-medium text-sm flex items-center gap-1">
+                        <Link href="/#get-access" className="text-[#0f81fb] hover:text-[#0f81fb]/90 font-medium text-sm flex items-center gap-1">
                           Get Started Free
                           <ArrowRight className="h-4 w-4" />
                         </Link>
