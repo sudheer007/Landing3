@@ -11,7 +11,8 @@ export function Footer() {
             <div className="space-y-4">
               <h4 className="font-semibold text-foreground">Products</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/products" className="hover:text-foreground">Realtime Playbook</Link></li>
+                <li><Link href="/" className="hover:text-foreground">Stock Radar - GSR 1</Link></li>
+                <li><Link href="/products" className="hover:text-foreground">Sales Intelligence</Link></li>
                 <li><Link href="/products/deepsearch" className="hover:text-foreground">Deepsearch  (Chat with any AI) </Link></li>
                 
               </ul>

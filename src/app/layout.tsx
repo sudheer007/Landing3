@@ -17,19 +17,19 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Graycommit",
-  description: "Realtime Sales Conversation Engine",
+  title: "Graycommit Stock Radar - GSR 1",
+  description: "AI stock screener and market signal radar for faster watchlists, cleaner setups, and risk-aware trading decisions.",
   openGraph: {
-    title: "Graycommit",
-    description: "Realtime Sales Conversation Engine",
+    title: "Graycommit Stock Radar - GSR 1",
+    description: "AI stock screener and market signal radar for faster watchlists, cleaner setups, and risk-aware trading decisions.",
     url: "https://graycommit.com",
     siteName: "Graycommit",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Graycommit",
-    description: "Realtime Sales Conversation Engine",
+    title: "Graycommit Stock Radar - GSR 1",
+    description: "AI stock screener and market signal radar for faster watchlists, cleaner setups, and risk-aware trading decisions.",
   },
 };
 
@@ -53,8 +53,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              "name": "Graycommit",
-              "description": "Realtime Sales Conversation Engine - AI-powered sales intelligence that empowers your sales team with contextual insights, competitive advantages, and personalized talking points during live calls.",
+              "name": "Graycommit Stock Radar - GSR 1",
+              "description": "AI stock screener and market signal radar that helps traders and investors scan momentum, sector rotation, volume shocks, and risk-aware setups.",
               "url": "https://graycommit.com",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "Web",
@@ -69,7 +69,7 @@ export default function RootLayout({
                 "name": "Graycommit",
                 "url": "https://graycommit.com"
               },
-              "keywords": "sales intelligence, AI sales coach, conversation analysis, playbooks, sales automation, real-time coaching"
+              "keywords": "stock screener, AI stock scanner, trading radar, market signals, watchlist, sector rotation, technical analysis, risk management"
             })
           }}
         />

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Activity, Layout, Shield, Book, DollarSign, Phone } from 'lucide-react'
+import { Menu, X, Activity, Layout, Shield, Book, DollarSign, Phone, Radar } from 'lucide-react'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -44,18 +44,27 @@ export function Header() {
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+                <NavigationMenuTrigger>Products</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="grid w-[600px] grid-cols-2 gap-x-8 gap-y-4 p-6">
                     <div className="col-span-2">
-                      <h3 className="font-semibold text-lg text-foreground">Discover Our Platform</h3>
-                      <p className="text-sm text-muted-foreground">AI-powered sales intelligence to close more deals.</p>
+                      <h3 className="font-semibold text-lg text-foreground">Graycommit Products</h3>
+                      <p className="text-sm text-muted-foreground">AI command centers for markets, sales, and research.</p>
                     </div>
+                    <NavigationMenuLink asChild>
+                      <Link href="/" className="group flex flex-col justify-center rounded-lg p-4 hover:bg-accent">
+                        <div className="flex items-center gap-3 mb-2">
+                          <Radar className="h-5 w-5 text-emerald-500" />
+                          <p className="font-medium text-foreground">Stock Radar - GSR 1</p>
+                        </div>
+                        <p className="text-sm text-muted-foreground">AI stock screener and signal radar.</p>
+                      </Link>
+                    </NavigationMenuLink>
                     <NavigationMenuLink asChild>
                       <Link href="/products" className="group flex flex-col justify-center rounded-lg p-4 hover:bg-accent">
                         <div className="flex items-center gap-3 mb-2">
                           <Activity className="h-5 w-5 text-[#0f81fb]" />
-                          <p className="font-medium text-foreground">Real-time Playbooks</p>
+                          <p className="font-medium text-foreground">Sales Intelligence</p>
                         </div>
                         <p className="text-sm text-muted-foreground">Live meeting guidance and talk tracks.</p>
                       </Link>
@@ -131,10 +140,21 @@ export function Header() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-sm">
           <div className="container py-4 px-4 space-y-4">
-            {/* Features Section */}
+            {/* Products Section */}
             <div className="space-y-4">
-              <div className="font-semibold text-lg text-foreground">Features</div>
+              <div className="font-semibold text-lg text-foreground">Products</div>
               <div className="space-y-2">
+                <Link 
+                  href="/"
+                  className="group flex items-start gap-4 rounded-lg p-3 hover:bg-accent"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Radar className="h-5 w-5 text-emerald-500 mt-1" />
+                  <div>
+                    <p className="font-medium text-foreground">Stock Radar - GSR 1</p>
+                    <p className="text-sm text-muted-foreground">AI stock screener and signal radar.</p>
+                  </div>
+                </Link>
                 <Link 
                   href="/products"
                   className="group flex items-start gap-4 rounded-lg p-3 hover:bg-accent"
@@ -142,7 +162,7 @@ export function Header() {
                 >
                   <Activity className="h-5 w-5 text-[#0f81fb] mt-1" />
                   <div>
-                    <p className="font-medium text-foreground">Real-time Playbooks</p>
+                    <p className="font-medium text-foreground">Sales Intelligence</p>
                     <p className="text-sm text-muted-foreground">Live meeting guidance and talk tracks.</p>
                   </div>
                 </Link>

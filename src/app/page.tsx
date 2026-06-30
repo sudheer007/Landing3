@@ -1,1059 +1,335 @@
 'use client'
 
 import Link from "next/link"
-import { useState } from 'react'
-
 import { Button } from "@/components/ui/button"
+import {
+  Activity,
+  ArrowRight,
+  BarChart3,
+  BellRing,
+  BrainCircuit,
+  CandlestickChart,
+  CheckCircle2,
+  Gauge,
+  LineChart,
+  LockKeyhole,
+  Radar,
+  ScanLine,
+  ShieldCheck,
+  Sparkles,
+  Zap
+} from 'lucide-react'
 
-import { ArrowRight, CheckCircle2,  Eye } from 'lucide-react'
+const watchlist = [
+  { ticker: 'NVDA', name: 'Nvidia', price: '$142.80', change: '+4.8%', signal: 'Breakout', tone: 'text-emerald-400' },
+  { ticker: 'MSFT', name: 'Microsoft', price: '$498.12', change: '+1.6%', signal: 'Accumulation', tone: 'text-cyan-300' },
+  { ticker: 'TSLA', name: 'Tesla', price: '$211.44', change: '-2.1%', signal: 'Risk', tone: 'text-red-300' },
+  { ticker: 'AMD', name: 'Advanced Micro Devices', price: '$176.09', change: '+3.2%', signal: 'Momentum', tone: 'text-amber-300' }
+]
 
-export default function Component() {
-  const [activeStage, setActiveStage] = useState<number | null>(null)
+const features = [
+  {
+    icon: Radar,
+    title: 'Market Radar',
+    description: 'Scan momentum, volume shocks, sector rotation, and unusual price behavior across your universe.'
+  },
+  {
+    icon: BrainCircuit,
+    title: 'AI Thesis Builder',
+    description: 'Turn noisy chart action, news, filings, and technical structure into a clean trading thesis.'
+  },
+  {
+    icon: BellRing,
+    title: 'Signal Alerts',
+    description: 'Get notified when a stock moves from watchlist noise into a high-conviction setup.'
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Risk Console',
+    description: 'See support, invalidation zones, volatility pressure, and portfolio exposure before entering.'
+  }
+]
 
+const scans = [
+  'Gap-up with institutional volume',
+  'Relative strength versus sector',
+  'Earnings drift continuation',
+  'Base breakout near 52-week high',
+  'Option flow confirmation',
+  'Mean-reversion exhaustion'
+]
+
+const sectors = [
+  { name: 'AI Chips', score: 94, color: 'bg-emerald-400' },
+  { name: 'Cybersecurity', score: 87, color: 'bg-cyan-300' },
+  { name: 'Cloud Infra', score: 79, color: 'bg-blue-400' },
+  { name: 'EV Supply', score: 52, color: 'bg-amber-300' },
+  { name: 'Consumer Tech', score: 38, color: 'bg-red-300' }
+]
+
+export default function StockRadarLanding() {
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
-      
+    <main className="min-h-screen overflow-hidden bg-[#05070b] text-white">
+      <section className="relative min-h-[calc(100vh-4rem)] border-b border-white/10">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[length:48px_48px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(16,185,129,0.22),transparent_28%),radial-gradient(circle_at_82%_12%,rgba(34,211,238,0.2),transparent_26%),radial-gradient(circle_at_50%_85%,rgba(245,158,11,0.12),transparent_34%)]" />
+        <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
 
-      <main className="flex-grow">
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#3D3D3D,_transparent_40%)] dark:bg-[radial-gradient(circle_at_bottom_left,_#3D3D3D,_transparent_40%)] light:bg-[radial-gradient(circle_at_bottom_left,_#E5E5E5,_transparent_40%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#3D3D3D,_transparent_40%)] dark:bg-[radial-gradient(circle_at_top_right,_#3D3D3D,_transparent_40%)] light:bg-[radial-gradient(circle_at_top_right,_#E5E5E5,_transparent_40%)]" />
-            <div className="absolute inset-0">
-              {[...Array(20)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
-                  style={{ top: `${(i + 1) * 5}%` }}
-                />
-              ))}
-              {[...Array(20)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent"
-                  style={{ left: `${(i + 1) * 5}%` }}
-                />
-              ))}
+        <div className="container relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl grid-cols-1 items-center gap-12 px-4 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-4 py-2 text-sm text-emerald-100 shadow-[0_0_40px_rgba(16,185,129,0.18)]">
+              <ScanLine className="h-4 w-4" />
+              Graycommit Stock Radar - GSR 1
             </div>
-          </div>
 
-          <div className="container relative max-w-full px-4 sm:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 py-16 sm:py-20 text-center md:py-32">
-              <div className="rounded-full bg-card border border-border px-3 sm:px-4 py-1.5 text-xs sm:text-sm">
-                <span className="text-[#0070F3] font-medium">New</span>
-                <span className="hidden sm:inline">{" Real-time AI Sales Coach - Your competitive edge "}</span>
-                <span className="sm:hidden">{" AI Sales Coach "}</span>
-                <Link href="https://app.graycommit.com" className="inline-flex items-center font-medium text-foreground hover:text-[#0070F3]">
-                  See it in action
-                  <ArrowRight className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
-                </Link>
-              </div>
-              <h1 className="max-w-4xl text-3xl sm:text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl xl:text-7xl">
-                Close more deals with AI-powered sales intelligence.
+            <div className="space-y-5">
+              <h1 className="max-w-5xl text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+                See the market before the market sees itself.
               </h1>
-              <p className="max-w-[700px] text-base sm:text-lg md:text-xl text-muted-foreground px-4">
-                Graycommit's real-time playbook engine empowers your sales team with the right playbook for every deal, 
-                create talk tracks and analyze every sales conversation.
+              <p className="max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+                GSR 1 is a futuristic AI stock screener for traders and investors who want signal, context, and risk in one command center.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-md sm:max-w-none justify-center">
-                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                  <Button size="lg" className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 bg-primary text-primary-foreground hover:bg-primary/90">
-                    Book a Demo
-                  </Button>
-                </Link>
-                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                  <Button 
-                    size="lg" 
-                    className="group relative w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
-                  >
-                    <span className="relative z-10 flex items-center justify-center">
-                      Get Started Free
-                      <svg 
-                        className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </span>
-                  </Button>
-                </Link>
-              </div>
             </div>
 
-            <div className="relative mx-auto aspect-video w-full max-w-6xl mb-8 sm:mb-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D4D] via-[#F9CB28] to-[#4ADE80] opacity-20 blur-3xl" />
-              <div className="relative w-full h-full rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card">
-                <iframe
-                  src="https://www.youtube.com/embed/kn8zgAbxa94?si=ol0ZpqbaVExXz6Wm&rel=0&modestbranding=1&showinfo=0"
-                  title="Graycommit Demo Video"
-                  className="w-full h-full"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="h-12 w-full bg-emerald-400 px-7 text-black hover:bg-emerald-300 sm:w-auto">
+                  Launch Radar
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="#radar">
+                <Button size="lg" variant="outline" className="h-12 w-full border-cyan-300/50 bg-white/5 px-7 text-cyan-100 hover:bg-cyan-300/10 hover:text-white sm:w-auto">
+                  View Screener
+                </Button>
+              </Link>
+            </div>
+
+            <div className="grid max-w-2xl grid-cols-3 gap-3">
+              {[
+                ['18K+', 'Stocks scanned'],
+                ['42ms', 'Signal latency'],
+                ['24/7', 'Market watch']
+              ].map(([value, label]) => (
+                <div key={label} className="border-l border-white/15 pl-4">
+                  <div className="text-2xl font-bold text-white">{value}</div>
+                  <div className="text-sm text-slate-400">{label}</div>
+                </div>
+              ))}
             </div>
           </div>
-        </section>
 
-        <section className="py-16 sm:py-20 lg:py-24 relative border-t border-border">
-          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            {/* Feature 1 - Image on left */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-24 items-center mb-20 sm:mb-24 lg:mb-32">
-              {/* Left: Image/Demo */}
-              <div className="relative order-2 lg:order-1">
-                {/* Active Playbook Card */}
-                <div className="bg-card/95 backdrop-blur rounded-lg border border-[#0070F3] p-3 sm:p-4 shadow-lg shadow-[#0070F3]/20 animate-pulse mb-0">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <div className="h-2 w-2 rounded-full bg-[#0070F3] animate-pulse" />
-                    <span className="text-[#0070F3] text-sm font-medium">Active Playbook</span>
+          <div id="radar" className="relative">
+            <div className="absolute -inset-8 bg-[conic-gradient(from_180deg,rgba(16,185,129,0.18),rgba(34,211,238,0.2),rgba(245,158,11,0.12),rgba(16,185,129,0.18))] blur-3xl" />
+            <div className="relative overflow-hidden rounded-lg border border-white/15 bg-[#071017]/95 shadow-2xl shadow-cyan-950/40">
+              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-md bg-emerald-400 text-black">
+                    <Radar className="h-5 w-5" />
                   </div>
-                  <p className="text-foreground text-sm font-medium mb-1">Enterprise Demo Track:</p>
-                  <p className="text-muted-foreground text-sm">"Start with ROI discussion, then showcase security features. Next: address integration concerns."</p>
-                </div>
-
-                {/* Simple Image */}
-                <iframe 
-                  loading="lazy" 
-                  className="w-full h-96 border-none block mt-0 pointer-events-none"
-                  style={{ margin: 0, padding: 0, display: 'block' }}
-                  src="https://www.canva.com/design/DAGq42i25wk/pYnEoK4m2bbyPkJFPWuJKw/view?embed" 
-                  allow="">
-                </iframe>
-              </div>
-              
-              {/* Right: Content */}
-              <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
-                <div className="inline-flex items-center rounded-full bg-card border border-border px-3 sm:px-4 py-1.5">
-                  <span className="text-xs sm:text-sm font-medium text-muted-foreground">Realtime Playbook</span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
-                  Never miss a selling opportunity
-                </h2>
-                <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                  Transform your meetings into guided experiences with intelligent playbooks. 
-                  Switch between custom talk tracks tailored to each prospect and meeting goal.
-                </p>
-                <div className="space-y-3 sm:space-y-4">
-                  {/* Feature points */}
-                  {[
-                    'Custom playbooks for each company & team',
-                    'Intelligent talk track switching during calls',
-                    'Goal-oriented meeting guidance',
-                    'Post-meeting conversation analysis & deepdive'
-                  ].map((point, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-card border border-border flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-[#0070F3]" />
-                      </div>
-                      <span className="text-sm sm:text-base text-muted-foreground">{point}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="pt-2 sm:pt-4">
-                  <Link href="/products">
-                    <Button variant="outline" className="border-border text-foreground hover:bg-accent hover:text-foreground">
-                      Learn more
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Feature 2 - Image on right */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-              {/* Left: Content */}
-              <div className="space-y-6 sm:space-y-8">
-                <div className="inline-flex items-center rounded-full bg-card border border-border px-3 sm:px-4 py-1.5">
-                  <span className="text-xs sm:text-sm font-medium text-muted-foreground">Talk Track Creation</span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
-                  Build winning sales pipelines
-                </h2>
-                <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                  Create dynamic playbooks that adapt to every prospect. Design custom talk tracks 
-                  for different companies, teams, and meeting objectives with intelligent guidance.
-                </p>
-                <div className="space-y-4 sm:space-y-6">
-                  {/* Stats */}
-                  <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                    <div className="rounded-lg bg-card border border-border p-3 sm:p-4">
-                      <div className="text-2xl sm:text-3xl font-bold">12+</div>
-                      <div className="text-xs sm:text-sm text-muted-foreground">Custom Playbooks</div>
-                    </div>
-                    <div className="rounded-lg bg-card border border-border p-3 sm:p-4">
-                      <div className="text-2xl sm:text-3xl font-bold">85%</div>
-                      <div className="text-xs sm:text-sm text-muted-foreground">Meeting Goals Achieved</div>
-                    </div>
+                  <div>
+                    <div className="text-sm font-semibold">GSR 1 Live Console</div>
+                    <div className="text-xs text-slate-400">US equities / pre-market intelligence</div>
                   </div>
                 </div>
-                <div className="pt-2 sm:pt-4">
-                  <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
-                    <Button className="group relative bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300">
-                      <span className="relative z-10 flex items-center">
-                        Get Started Free
-                        <svg 
-                          className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </span>
-                    </Button>
-                  </Link>
+                <div className="flex items-center gap-2 text-xs text-emerald-300">
+                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(110,231,183,0.9)]" />
+                  Online
                 </div>
               </div>
-              
-              {/* Right: Pipeline Management Dashboard */}
-              <div className="relative">
-                <div className="aspect-square rounded-xl overflow-hidden bg-card border border-border relative">
-                  {/* Pipeline Management Interface */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-card to-background p-4 sm:p-6">
-                    
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-4 sm:mb-6">
-                      <div>
-                        <h3 className="text-white font-semibold text-sm sm:text-base">Q4 Sales Pipeline</h3>
-                        <p className="text-[#888] text-xs sm:text-sm">Target: $2.5M</p>
-                      </div>
-                      <div className="bg-green-500/20 rounded-full px-2 sm:px-3 py-1">
-                        <span className="text-green-500 text-xs sm:text-sm font-medium">On Track</span>
-                      </div>
+
+              <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
+                <div className="border-b border-white/10 p-5 lg:border-b-0 lg:border-r">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div>
+                      <div className="text-xs uppercase tracking-[0.3em] text-cyan-200/70">Signal Matrix</div>
+                      <div className="mt-1 text-2xl font-semibold">High conviction watchlist</div>
                     </div>
-
-                    {/* Pipeline Stages with Progress */}
-                    <div className="space-y-3 sm:space-y-4">
-                      {[
-                        { stage: 'Prospecting', target: 50, current: 48, status: 'completed', color: '#22C55E' },
-                        { stage: 'Qualification', target: 35, current: 32, status: 'completed', color: '#22C55E' },
-                        { stage: 'Proposal', target: 20, current: 18, status: 'active', color: '#0070F3' },
-                        { stage: 'Negotiation', target: 12, current: 8, status: 'pending', color: '#F59E0B' },
-                        { stage: 'Closing', target: 8, current: 3, status: 'pending', color: '#6B7280' }
-                      ].map((item, index) => (
-                        <div key={item.stage} className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 sm:gap-3">
-                              {/* Status Icon */}
-                              <div className={`h-5 w-5 sm:h-6 sm:w-6 rounded-full border-2 flex items-center justify-center ${
-                                item.status === 'completed' 
-                                  ? 'bg-green-500 border-green-500' 
-                                  : item.status === 'active'
-                                  ? 'bg-[#0070F3] border-[#0070F3] animate-pulse'
-                                  : 'border-[#444] bg-transparent'
-                              }`}>
-                                {item.status === 'completed' && (
-                                  <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
-                                )}
-                                {item.status === 'active' && (
-                                  <div className="h-2 w-2 sm:h-3 sm:w-3 bg-white rounded-full" />
-                                )}
-                              </div>
-                              
-                              <div>
-                                <div className="text-white text-xs sm:text-sm font-medium">{item.stage}</div>
-                                <div className="text-[#888] text-xs">{item.current}/{item.target} deals</div>
-                              </div>
-                            </div>
-                            
-                            <div className="text-right">
-                              <div className="text-xs sm:text-sm font-medium" style={{ color: item.color }}>
-                                {Math.round((item.current / item.target) * 100)}%
-                              </div>
-                            </div>
-                          </div>
-                          
-                          {/* Progress Bar */}
-                          <div className="h-2 bg-[#222] rounded-full overflow-hidden">
-                            <div 
-                              className="h-full rounded-full transition-all duration-1000 ease-out"
-                              style={{ 
-                                width: `${(item.current / item.target) * 100}%`,
-                                backgroundColor: item.color,
-                                boxShadow: `0 0 10px ${item.color}40`
-                              }}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Recent Activity */}
-                    <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-black/40 rounded-lg border border-[#333]">
-                      <div className="flex items-center gap-2 mb-2 sm:mb-3">
-                        <div className="h-2 w-2 bg-[#0070F3] rounded-full animate-pulse" />
-                        <span className="text-[#888] text-xs sm:text-sm">Recent Activity</span>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 flex-shrink-0" />
-                          <span className="text-white text-xs sm:text-sm">Enterprise Corp moved to Negotiation</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="h-3 w-3 sm:h-4 sm:w-4 bg-[#0070F3] rounded-full flex-shrink-0" />
-                          <span className="text-white text-xs sm:text-sm">TechStart Inc proposal sent</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="h-3 w-3 sm:h-4 sm:w-4 bg-yellow-500 rounded-full flex-shrink-0" />
-                          <span className="text-white text-xs sm:text-sm">DataCorp demo scheduled</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* AI Insights Panel */}
-                    <div className="absolute bottom-4 right-4 bg-black/90 backdrop-blur border border-[#0070F3] rounded-lg p-3 w-40 sm:w-48">
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="h-2 w-2 bg-[#0070F3] rounded-full animate-pulse" />
-                        <span className="text-[#0070F3] text-xs font-medium">AI Insight</span>
-                      </div>
-                      <p className="text-white text-xs mb-1">Pipeline Health:</p>
-                      <p className="text-[#888] text-xs">"Focus on qualification stage. 3 high-value prospects ready for acceleration."</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-
-        
-        {/* Interactive Funnel Section - Mobile Optimized */}
-       
-        <section className="py-16 sm:py-20 lg:py-24 relative border-t border-border">
-          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 overflow-visible">
-              {/* Left Column - Interactive Funnel */}
-              <div className="space-y-6 sm:space-y-8">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Transform Your Sales Pipeline</h2>
-                <p className="text-base sm:text-lg lg:text-2xl text-muted-foreground">AI-powered playbooks guiding every deal to close.</p>
-                
-                {/* Interactive Sales Funnel - Mobile Optimized */}
-                <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] bg-card rounded-xl border border-border p-4 sm:p-6 lg:p-8 overflow-visible">
-                  {/* Animated Background Grid - Reduced on mobile */}
-                  <div className="absolute inset-0 opacity-10">
-                    {[...Array(10)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0070F3] to-transparent"
-                        style={{ top: `${(i + 1) * 10}%`, opacity: 0.5 }}
-                      />
-                    ))}
+                    <CandlestickChart className="h-7 w-7 text-cyan-300" />
                   </div>
 
-                  {/* Sales Funnel */}
-                  <div className="relative h-full flex flex-col justify-center items-center space-y-2 sm:space-y-3">
-                    {[
-                      { 
-                        stage: 'Leads', 
-                        count: '180', 
-                        value: '$15.2M', 
-                        color: '#0070F3',
-                        width: '100%',
-                        playbook: {
-                          title: 'Lead Qualification Playbook',
-                          items: ['BANT qualification framework', 'Competitor landscape mapping', 'Initial pain point discovery', 'Budget range validation']
-                        }
-                      },
-                      { 
-                        stage: 'Discovery', 
-                        count: '125', 
-                        value: '$12.8M', 
-                        color: '#4ADE80',
-                        width: '95%',
-                        playbook: {
-                          title: 'Discovery Deep Dive Playbook',
-                          items: ['Technical requirements gathering', 'Stakeholder mapping workshop', 'Current solution audit', 'Decision timeline establishment']
-                        }
-                      },
-                      { 
-                        stage: 'Demo', 
-                        count: '85', 
-                        value: '$8.5M', 
-                        color: '#F9CB28',
-                        width: '65%',
-                        playbook: {
-                          title: 'Demo Excellence Playbook',
-                          items: ['Personalized demo script', 'Technical objection handling', 'ROI calculator walkthrough', 'Next steps commitment']
-                        }
-                      },
-                      { 
-                        stage: 'Proposal', 
-                        count: '65', 
-                        value: '$6.2M', 
-                        color: '#FF6B6B',
-                        width: '45%',
-                        playbook: {
-                          title: 'Proposal Winning Playbook',
-                          items: ['Competitive differentiation strategy', 'Pricing justification framework', 'Risk mitigation plan', 'Implementation timeline']
-                        }
-                      },
-                      { 
-                        stage: 'Closed Won', 
-                        count: '42', 
-                        value: '$4.2M', 
-                        color: '#22C55E',
-                        width: '30%',
-                        playbook: {
-                          title: 'Closing Mastery Playbook',
-                          items: ['Urgency creation techniques', 'Final objection resolution', 'Contract negotiation tactics', 'Onboarding kickoff']
-                        }
-                      }
-                    ].map((stage, index) => (
-                      <div key={stage.stage} className="group relative w-full flex justify-center">
-                        {/* Funnel Stage - Mobile Optimized */}
-                        <div 
-                          className="relative transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:scale-105 hover:z-20 lg:group-hover:-translate-y-4 lg:group-hover:scale-110"
-                          style={{ width: stage.width }}
-                          onClick={() => setActiveStage(activeStage === index ? null : index)}
-                        >
-                          {/* Trapezoid shape */}
-                          <div 
-                            className={`h-12 sm:h-16 lg:h-20 border-2 transition-all duration-500 relative overflow-hidden shadow-lg ${
-                              activeStage === index 
-                                ? 'border-[#0070F3] shadow-[#0070F3]/30' 
-                                : 'border-border hover:border-[#0070F3] hover:shadow-[#0070F3]/30'
-                            }`}
-                            style={{
-                              background: `linear-gradient(135deg, ${stage.color}25, ${stage.color}15, ${stage.color}05)`,
-                              clipPath: index === 0 
-                                ? 'polygon(5% 0, 95% 0, 85% 100%, 15% 100%)'
-                                : index === 4
-                                ? 'polygon(15% 0, 85% 0, 95% 100%, 5% 100%)'
-                                : 'polygon(15% 0, 85% 0, 75% 100%, 25% 100%)'
-                            }}
-                          >
-                            {/* Content */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className={`text-center transform transition-transform duration-300 ${
-                                activeStage === index ? 'scale-105' : ''
-                              }`}>
-                                <div className={`text-sm sm:text-lg lg:text-xl font-bold transition-colors duration-300 ${
-                                  activeStage === index ? 'text-[#0070F3]' : 'text-foreground hover:text-[#0070F3]'
-                                }`}>
-                                  {stage.stage}
-                                </div>
-                                <div className={`text-xs sm:text-sm transition-colors duration-300 ${
-                                  activeStage === index ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
-                                }`}>
-                                  {stage.count} deals • {stage.value}
-                                </div>
-                              </div>
-                            </div>
-                            
-                            {/* Hover glow effect */}
-                            <div 
-                              className={`absolute inset-0 transition-all duration-500 ${
-                                activeStage === index ? 'opacity-40' : 'opacity-0 hover:opacity-40'
-                              }`}
-                              style={{ 
-                                background: `radial-gradient(circle at center, ${stage.color}80, ${stage.color}40, transparent)`,
-                                filter: 'blur(1px)'
-                              }}
-                            />
-                          </div>
+                  <div className="space-y-3">
+                    {watchlist.map((stock) => (
+                      <div key={stock.ticker} className="grid grid-cols-[0.65fr_1fr_0.75fr_0.75fr] items-center gap-3 rounded-md border border-white/10 bg-white/[0.035] px-4 py-3">
+                        <div>
+                          <div className="font-semibold">{stock.ticker}</div>
+                          <div className="text-xs text-slate-500">{stock.name}</div>
                         </div>
-
-                        {/* Desktop Playbook Popup - Hover */}
-                        <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-full ml-4 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto z-50">
-                          <div className="bg-card/95 backdrop-blur-xl border-2 border-[#0070F3] rounded-xl p-6 w-96 shadow-2xl shadow-[#0070F3]/20">
-                            <div className="flex items-center space-x-3 mb-4">
-                              <div 
-                                className="h-4 w-4 rounded-full animate-pulse shadow-lg"
-                                style={{ 
-                                  backgroundColor: stage.color,
-                                  boxShadow: `0 0 10px ${stage.color}80`
-                                }}
+                        <div className="h-10 overflow-hidden">
+                          <div className="flex h-full items-end gap-1">
+                            {[28, 38, 34, 52, 47, 68, 62, 74, 88, 80].map((height, index) => (
+                              <span
+                                key={`${stock.ticker}-${index}`}
+                                className="w-full rounded-t-sm bg-gradient-to-t from-cyan-500/25 to-emerald-300/80"
+                                style={{ height: `${height}%` }}
                               />
-                              <span className="text-[#0070F3] text-sm font-semibold bg-gradient-to-r from-[#0070F3] to-[#4ADE80] bg-clip-text text-transparent">
-                                AI Playbook Active
-                              </span>
-                            </div>
-                            <h4 className="text-foreground font-bold text-lg mb-4 group-hover:text-[#0070F3] transition-colors duration-300">
-                              {stage.playbook.title}
-                            </h4>
-                            <ul className="space-y-3">
-                              {stage.playbook.items.map((item, i) => (
-                                <li key={i} className="flex items-start gap-3 text-sm text-foreground hover:text-foreground transition-colors duration-200">
-                                  <CheckCircle2 className="h-5 w-5 text-[#0070F3] mt-0.5 flex-shrink-0 animate-pulse" />
-                                  <span className="leading-relaxed">{item}</span>
-                                </li>
-                              ))}
-                            </ul>
-                            
-                            {/* Progress indicator */}
-                            <div className="mt-4 pt-4 border-t border-border">
-                              <div className="flex items-center justify-between text-xs text-muted-foreground">
-                                <span>Stage Progress</span>
-                                <span>{Math.round((5 - index) / 5 * 100)}% Complete</span>
-                              </div>
-                              <div className="mt-2 h-1 bg-muted rounded-full overflow-hidden">
-                                <div 
-                                  className="h-full rounded-full transition-all duration-1000 ease-out"
-                                  style={{ 
-                                    width: `${(5 - index) / 5 * 100}%`,
-                                    background: `linear-gradient(90deg, ${stage.color}, #0070F3)`
-                                  }}
-                                />
-                              </div>
-                            </div>
+                            ))}
                           </div>
-                          
-                          {/* Arrow pointing to funnel */}
-                          <div 
-                            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-4 h-4 bg-[#0070F3] transform rotate-45 border border-[#0070F3]"
-                          />
                         </div>
-
-                        {/* Stage connection lines */}
-                        {index < 4 && (
-                          <div className="absolute top-full left-1/2 -translate-x-1/2 w-px h-2 sm:h-3 bg-gradient-to-b from-border to-transparent opacity-50 hover:opacity-100 transition-opacity duration-300" />
-                        )}
+                        <div>
+                          <div className="text-sm text-slate-400">Price</div>
+                          <div className="font-medium">{stock.price}</div>
+                        </div>
+                        <div className="text-right">
+                          <div className={`font-semibold ${stock.tone}`}>{stock.change}</div>
+                          <div className="text-xs text-slate-500">{stock.signal}</div>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Mobile Playbook Display - Below Funnel */}
-                {activeStage !== null && (
-                  <div className="lg:hidden bg-card/95 backdrop-blur-xl border-2 border-[#0070F3] rounded-xl p-4 sm:p-6 shadow-2xl shadow-[#0070F3]/20 animate-in slide-in-from-bottom duration-300">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div 
-                        className="h-4 w-4 rounded-full animate-pulse shadow-lg"
-                        style={{ 
-                          backgroundColor: [
-                            { stage: 'Leads', color: '#0070F3' },
-                            { stage: 'Discovery', color: '#4ADE80' },
-                            { stage: 'Demo', color: '#F9CB28' },
-                            { stage: 'Proposal', color: '#FF6B6B' },
-                            { stage: 'Closed Won', color: '#22C55E' }
-                          ][activeStage].color,
-                          boxShadow: `0 0 10px ${[
-                            { stage: 'Leads', color: '#0070F3' },
-                            { stage: 'Discovery', color: '#4ADE80' },
-                            { stage: 'Demo', color: '#F9CB28' },
-                            { stage: 'Proposal', color: '#FF6B6B' },
-                            { stage: 'Closed Won', color: '#22C55E' }
-                          ][activeStage].color}80`
-                        }}
-                      />
-                      <span className="text-[#0070F3] text-sm font-semibold">
-                        AI Playbook Active
-                      </span>
+                <div className="space-y-5 p-5">
+                  <div>
+                    <div className="mb-3 flex items-center justify-between">
+                      <div className="text-sm font-medium text-slate-200">Sector Heat</div>
+                      <Gauge className="h-5 w-5 text-amber-300" />
                     </div>
-                    <h4 className="text-foreground font-bold text-lg mb-4">
-                      {[
-                        { stage: 'Leads', playbook: { title: 'Lead Qualification Playbook', items: ['BANT qualification framework', 'Competitor landscape mapping', 'Initial pain point discovery', 'Budget range validation'] } },
-                        { stage: 'Discovery', playbook: { title: 'Discovery Deep Dive Playbook', items: ['Technical requirements gathering', 'Stakeholder mapping workshop', 'Current solution audit', 'Decision timeline establishment'] } },
-                        { stage: 'Demo', playbook: { title: 'Demo Excellence Playbook', items: ['Personalized demo script', 'Technical objection handling', 'ROI calculator walkthrough', 'Next steps commitment'] } },
-                        { stage: 'Proposal', playbook: { title: 'Proposal Winning Playbook', items: ['Competitive differentiation strategy', 'Pricing justification framework', 'Risk mitigation plan', 'Implementation timeline'] } },
-                        { stage: 'Closed Won', playbook: { title: 'Closing Mastery Playbook', items: ['Urgency creation techniques', 'Final objection resolution', 'Contract negotiation tactics', 'Onboarding kickoff'] } }
-                      ][activeStage].playbook.title}
-                    </h4>
-                    <ul className="space-y-3">
-                      {[
-                        { stage: 'Leads', playbook: { title: 'Lead Qualification Playbook', items: ['BANT qualification framework', 'Competitor landscape mapping', 'Initial pain point discovery', 'Budget range validation'] } },
-                        { stage: 'Discovery', playbook: { title: 'Discovery Deep Dive Playbook', items: ['Technical requirements gathering', 'Stakeholder mapping workshop', 'Current solution audit', 'Decision timeline establishment'] } },
-                        { stage: 'Demo', playbook: { title: 'Demo Excellence Playbook', items: ['Personalized demo script', 'Technical objection handling', 'ROI calculator walkthrough', 'Next steps commitment'] } },
-                        { stage: 'Proposal', playbook: { title: 'Proposal Winning Playbook', items: ['Competitive differentiation strategy', 'Pricing justification framework', 'Risk mitigation plan', 'Implementation timeline'] } },
-                        { stage: 'Closed Won', playbook: { title: 'Closing Mastery Playbook', items: ['Urgency creation techniques', 'Final objection resolution', 'Contract negotiation tactics', 'Onboarding kickoff'] } }
-                      ][activeStage].playbook.items.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3 text-sm text-foreground">
-                          <CheckCircle2 className="h-5 w-5 text-[#0070F3] mt-0.5 flex-shrink-0" />
-                          <span className="leading-relaxed">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    {/* Progress indicator */}
-                    <div className="mt-4 pt-4 border-t border-border">
-                      <div className="flex items-center justify-between text-xs text-muted-foreground">
-                        <span>Stage Progress</span>
-                        <span>{Math.round((5 - activeStage) / 5 * 100)}% Complete</span>
-                      </div>
-                      <div className="mt-2 h-1 bg-muted rounded-full overflow-hidden">
-                        <div 
-                          className="h-full rounded-full transition-all duration-1000 ease-out"
-                          style={{ 
-                            width: `${(5 - activeStage) / 5 * 100}%`,
-                            background: `linear-gradient(90deg, ${[
-                              '#0070F3', '#4ADE80', '#F9CB28', '#FF6B6B', '#22C55E'
-                            ][activeStage]}, #0070F3)`
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Right Column - Performance Metrics */}
-              <div className="space-y-6 sm:space-y-8">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">AI-Powered Growth</h2>
-                <p className="text-base sm:text-lg lg:text-2xl text-muted-foreground">Real-time insights driving exceptional results.</p>
-                
-                {/* Performance Dashboard */}
-                <div className="space-y-6">
-                  {/* Key Metrics Cards */}
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                    <div className="bg-card rounded-xl p-4 sm:p-6 border border-border hover:border-[#0070F3] transition-all duration-300">
-                                              <div className="flex items-center justify-between mb-3 sm:mb-4">
-                          <div className="text-xs sm:text-sm text-muted-foreground">Revenue Impact</div>
-                          <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 rotate-45" />
+                    <div className="space-y-3">
+                      {sectors.map((sector) => (
+                        <div key={sector.name}>
+                          <div className="mb-1 flex justify-between text-xs text-slate-400">
+                            <span>{sector.name}</span>
+                            <span>{sector.score}</span>
                           </div>
-                        </div>
-                        <div className="text-2xl sm:text-3xl font-bold mb-2">$4.2M</div>
-                        <div className="text-xs sm:text-sm text-green-500">+65% with Graycommit AI</div>
-                    </div>
-                    <div className="bg-card rounded-xl p-4 sm:p-6 border border-border hover:border-[#0070F3] transition-all duration-300">
-                      <div className="flex items-center justify-between mb-3 sm:mb-4">
-                        <div className="text-xs sm:text-sm text-muted-foreground">Win Rate</div>
-                        <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                          <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-blue-500" />
-                        </div>
-                      </div>
-                      <div className="text-2xl sm:text-3xl font-bold mb-2">42%</div>
-                      <div className="text-xs sm:text-sm text-green-500">+15% improvement</div>
-                    </div>
-                  </div>
-
-                  {/* AI Impact Metrics */}
-                  <div className="bg-card rounded-xl p-4 sm:p-6 border border-border hover:border-[#0070F3] transition-all duration-300">
-                    <div className="flex items-center justify-between mb-4 sm:mb-6">
-                      <div className="text-base sm:text-lg font-medium">AI Performance Impact</div>
-                      <div className="text-xs sm:text-sm text-muted-foreground">Last 30 days</div>
-                    </div>
-                    <div className="space-y-4 sm:space-y-6">
-                      {[
-                        { label: 'Deal Size Increase', value: '32%', progress: '75%' },
-                        { label: 'Sales Cycle Reduction', value: '40%', progress: '85%' },
-                        { label: 'Competitive Win Rate', value: '45%', progress: '90%' }
-                      ].map((metric, index) => (
-                        <div key={index} className="space-y-2">
-                          <div className="flex items-center justify-between">
-                            <div className="text-xs sm:text-sm">{metric.label}</div>
-                            <div className="text-xs sm:text-sm text-green-500">+{metric.value}</div>
-                          </div>
-                          <div className="h-2 bg-[#222] rounded-full overflow-hidden">
-                            <div 
-                              className="h-full rounded-full transition-all duration-500"
-                              style={{ 
-                                width: metric.progress,
-                                backgroundColor: '#0f81fb'
-                              }}
-                            />
+                          <div className="h-2 overflow-hidden rounded-full bg-white/10">
+                            <div className={`h-full ${sector.color}`} style={{ width: `${sector.score}%` }} />
                           </div>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Recent Wins */}
-                  <div className="bg-card rounded-xl p-6 border border-border hover:border-[#0070F3] transition-all duration-300">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="text-lg font-medium">Recent Wins</div>
-                      <div className="text-sm text-muted-foreground">Today</div>
+                  <div className="rounded-md border border-cyan-300/20 bg-cyan-300/5 p-4">
+                    <div className="mb-2 flex items-center gap-2 text-cyan-200">
+                      <BrainCircuit className="h-4 w-4" />
+                      <span className="text-sm font-semibold">AI Readout</span>
                     </div>
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between p-3 bg-green-500/10 rounded-lg">
-                        <div className="flex items-center space-x-3">
-                          <CheckCircle2 className="h-5 w-5 text-green-500" />
-                          <div>
-                            <div className="text-sm font-medium">Enterprise Deal</div>
-                            <div className="text-xs text-muted-foreground">AI-suggested value props</div>
-                          </div>
-                        </div>
-                        <div className="text-lg font-bold text-green-500">$850K</div>
-                      </div>
-                    </div>
+                    <p className="text-sm leading-6 text-slate-300">
+                      Semiconductor momentum is broadening. Watch NVDA confirmation above resistance while AMD shows catch-up strength.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-
-
-        {/* Sales Performance Section */}
-        <section className="py-24 relative border-t border-border">
-            <div className="container mx-auto max-w-7xl px-4">
-              <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
-                <div className="space-y-8">
-                  <h2 className="text-4xl font-bold">Turn every rep into a top performer.</h2>
-                  <p className="text-2xl text-muted-foreground">Real-time coaching that drives consistent success.</p>
-                  <div className="space-y-4">
-                    <div className="rounded-lg bg-card p-4 border border-border">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
-                          <CheckCircle2 className="h-5 w-5 text-green-500" />
-                          <div>
-                            <div className="text-sm">Deal Won - Enterprise</div>
-                            <div className="text-xs text-muted-foreground">Used AI-suggested value props</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <div className="text-sm text-muted-foreground">2h ago</div>
-                          <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium text-xs">$85K</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="rounded-lg bg-card p-4 border border-border">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
-                          <CheckCircle2 className="h-5 w-5 text-blue-500" />
-                          <div>
-                            <div className="text-sm">Objection Handled</div>
-                            <div className="text-xs text-muted-foreground">AI coach suggested perfect response</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <div className="text-sm text-muted-foreground">5m ago</div>
-                          <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-black font-medium">
-                            <ArrowRight className="h-5 w-5" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-8">
-                  <h2 className="text-4xl font-bold">Accelerate ramp time by 70%</h2>
-                  <p className="text-2xl text-muted-foreground">Live coaching turns new hires into closers faster.</p>
-                  <div className="rounded-lg bg-card p-6 space-y-6 border border-border">
-                    <div className="flex items-center justify-between">
-                      <div className="text-lg">Rep Performance</div>
-                      <div className="flex items-center space-x-2">
-                        <div className="text-muted-foreground">Outstanding</div>
-                        <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">9.2</div>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <div className="text-sm text-muted-foreground">Meetings Booked</div>
-                        <div className="text-2xl font-bold">28</div>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="text-sm text-muted-foreground">Close Rate</div>
-                        <div className="text-2xl font-bold">42%</div>
-                      </div>
-                    </div>
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <div className="text-sm">Top Performing Talk Tracks</div>
-                        <div className="flex -space-x-2">
-                          {[1, 2, 3].map((i) => (
-                            <div key={i} className="h-8 w-8 rounded-full bg-card border-2 border-black flex items-center justify-center text-xs">
-                              #{i}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <section className="border-b border-white/10 bg-[#070a10] py-20">
+        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="mb-12 max-w-3xl">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-sm text-cyan-100">
+              <Sparkles className="h-4 w-4" />
+              Built for fast market decisions
             </div>
-        </section>
-
-        {/* Real-time Coaching Section */}
-        <section className="py-24 relative border-t border-border">
-            <div className="container mx-auto max-w-7xl px-4">
-              <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
-              <div className="space-y-8">
-                <h2 className="text-4xl font-bold">Never miss a selling moment.</h2>
-                <p className="text-2xl text-muted-foreground">AI-powered suggestions exactly when you need them.</p>
-                <div className="space-y-4">
-                  <div className="rounded-lg bg-card p-4 border border-border">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <Eye className="h-5 w-5 text-blue-500" />
-                        <div>
-                          <div className="text-sm">Live Intelligence</div>
-                          <div className="text-xs text-muted-foreground">Competitor mentioned: Outreach</div>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="text-sm text-muted-foreground">Now</div>
-                        <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-black font-medium">
-                          <CheckCircle2 className="h-5 w-5" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-8">
-                <h2 className="text-4xl font-bold">Close with confidence.</h2>
-                <p className="text-2xl text-muted-foreground">Battle-tested talk tracks and objection handlers.</p>
-                <div className="rounded-lg bg-card p-6 space-y-6 border border-border">
-                  <div className="flex items-center justify-between">
-                    <div className="text-lg">Call Intelligence</div>
-                    <div className="flex items-center space-x-2">
-                      <div className="text-muted-foreground">Active</div>
-                      <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center text-black font-medium">
-                        <CheckCircle2 className="h-5 w-5" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm">Talk Time Ratio</div>
-                      <div className="text-sm text-muted-foreground">45:55</div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm">Questions Asked</div>
-                      <div className="text-sm text-muted-foreground">8</div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm">Next Best Action</div>
-                      <div className="text-sm text-green-500">ROI Discussion</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">From raw market chaos to ranked opportunities.</h2>
           </div>
-        </section>
-        
-        {/* Reviews Section */}
-        <section className="py-24 relative border-t border-border overflow-hidden">
-          <div className="container mx-auto max-w-7xl">
-            <div className="text-center space-y-4 mb-16">
-              <h2 className="text-4xl font-bold">Loved by Technical Founders & Sales Teams</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                See how founders are transforming technical expertise into enterprise sales success with Graycommit.
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature) => (
+              <div key={feature.title} className="rounded-lg border border-white/10 bg-white/[0.035] p-6 transition hover:border-emerald-300/40 hover:bg-emerald-300/[0.04]">
+                <feature.icon className="mb-5 h-7 w-7 text-emerald-300" />
+                <h3 className="mb-3 text-lg font-semibold">{feature.title}</h3>
+                <p className="text-sm leading-6 text-slate-400">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative border-b border-white/10 bg-[#05070b] py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(34,211,238,0.12),transparent_30%)]" />
+        <div className="container relative mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-2 lg:px-8">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/25 bg-amber-300/10 px-3 py-1 text-sm text-amber-100">
+              <Zap className="h-4 w-4" />
+              Scanner presets
+            </div>
+            <h2 className="text-3xl font-bold sm:text-5xl">Start with proven scans, then tune your own edge.</h2>
+            <p className="text-lg leading-8 text-slate-400">
+              GSR 1 combines technical conditions, news catalysts, sector movement, and AI ranking so every scan returns a usable shortlist.
+            </p>
+            <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-cyan-300 text-slate-950 hover:bg-cyan-200">
+                Build My Radar
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {scans.map((scan, index) => (
+              <div key={scan} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] p-4">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-white/10 text-cyan-200">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <div className="text-sm font-medium text-slate-200">{scan}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#070a10] py-20">
+        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="grid gap-10 rounded-lg border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.025] p-6 sm:p-10 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="space-y-5">
+              <div className="flex h-12 w-12 items-center justify-center rounded-md bg-emerald-300 text-black">
+                <LockKeyhole className="h-6 w-6" />
+              </div>
+              <h2 className="text-3xl font-bold sm:text-4xl">A cleaner command center for serious market work.</h2>
+              <p className="text-slate-400">
+                Track watchlists, score setups, compare sectors, and pressure-test entries without jumping between ten different tabs.
               </p>
             </div>
 
-            {/* Added pt-2 for top hover effect and pb-2 for bottom shadow */}
-            <div className="relative overflow-x-auto pt-2 pb-2 no-scrollbar">
-              <div className="flex space-x-6 pl-4" style={{ paddingRight: "calc(100% - 92%)" }}>
-                {[
-                  {
-                    name: "Founder & CEO",
-                    role: "Marketplace Platform",
-                    review: "As a marketplace founder, enterprise sales was our biggest challenge. Graycommit's real-time coaching turned our technical depth into compelling business value. We closed a $450K deal with major food distributors in our first month - something I never thought possible.",
-                    metric: "3.2X Revenue Growth",
-                    initials: "FC"
-                  },
-                  {
-                    name: "Founder & CEO",
-                    role: "Developer Platform",
-                    review: "From struggling with enterprise objections to confidently handling Fortune 500 calls - Graycommit transformed our sales approach. The AI coach understands both our messaging platform and enterprise needs, making every pitch resonate.",
-                    metric: "$150M ARR Growth",
-                    initials: "FC"
-                  },
-                  {
-                    name: "Co-founder & CEO",
-                    role: "AI Infrastructure Company",
-                    review: "We were great at building AI infrastructure but struggled with enterprise sales. Graycommit helped us speak the language of CTOs and CIOs. The real-time battle cards and objection handlers are like having a veteran sales leader in your ear.",
-                    metric: "5X Enterprise Deals",
-                    initials: "CF"
-                  },
-                  {
-                    name: "VP of Sales",
-                    role: "AI Video Platform",
-                    review: "The competitive intelligence is mind-blowing. During a call with a major video generation client, Graycommit surfaced the perfect AI case study and helped handle their integration concerns. Closed a $280K deal that would have slipped away.",
-                    metric: "45% Higher Win Rate",
-                    initials: "VS"
-                  },
-                  {
-                    name: "Founder & COO",
-                    role: "Developer Platform",
-                    review: "Onboarding technical founders to enterprise sales used to be a 6-month process. With Graycommit's real-time coaching, they're closing six-figure deals within weeks. It's like giving every founder a decade of sales experience instantly.",
-                    metric: "70% Faster Ramp Time",
-                    initials: "FC"
-                  },
-                  {
-                    name: "Co-founder & CTO",
-                    role: "AI Infrastructure Company",
-                    review: "The personalized talk tracks and real-time battle cards have transformed how we compete. My team of technical founders is now consistently winning against legacy vendors in enterprise deals.",
-                    metric: "52% Win Rate vs Enterprise",
-                    initials: "CT"
-                  },
-                  {
-                    name: "Founder",
-                    role: "Aerospace AI Company",
-                    review: "Coming from an aerospace background, I could explain our tech but struggled with value selling. Graycommit's AI coach helps translate complex aerospace features into business outcomes in real-time. Just closed our first $1M deal!",
-                    metric: "First $1M Enterprise Deal",
-                    initials: "FA"
-                  },
-                  {
-                    name: "Co-founder & CEO",
-                    role: "AI Research Lab",
-                    review: "The AI understands our technical differentiators and helps position them perfectly for different stakeholders. CFOs, CTOs, CISOs - Graycommit helps us nail every conversation with relevant insights and case studies.",
-                    metric: "4X Deal Size Increase",
-                    initials: "CF"
-                  },
-                  {
-                    name: "Founder",
-                    role: "AI Automation Platform",
-                    review: "As an AI company founder, I was skeptical of sales tools. Graycommit proved me wrong. It actually understands technical nuances and helps translate them into value props. Our sales cycles dropped from 6 months to 6 weeks.",
-                    metric: "75% Shorter Sales Cycles",
-                    initials: "FA"
-                  },
-                  {
-                    name: "Founder",
-                    role: "AI Security Platform",
-                    review: "From hesitant technical founder to confident enterprise seller - that's my journey with Graycommit. The real-time coaching helped me handle complex enterprise objections and navigate multi-stakeholder deals effectively.",
-                    metric: "8 Enterprise Wins in Q1",
-                    initials: "FS"
-                  }
-                ].map((review, index) => (
-                  <div 
-                    key={index}
-                    className="bg-card rounded-xl p-8 border border-border hover:border-[#0070F3] transition-all duration-300 flex-none w-[350px] group hover:shadow-2xl hover:shadow-[#0070F3]/10 hover:-translate-y-1"
-                    style={{ marginTop: '2px', marginBottom: '2px' }}
-                  >
-                    <div className="space-y-6">
-                      <div className="flex items-center space-x-4">
-                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#222] to-[#333] border border-[#444] flex items-center justify-center shadow-lg group-hover:border-[#0070F3]/50">
-                          <span className="text-lg font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                            {review.initials}
-                          </span>
-                        </div>
-                        <div>
-                          <div className="font-medium text-foreground group-hover:text-[#0070F3] transition-colors">
-                            {review.name}
-                          </div>
-                          <div className="text-sm text-muted-foreground">{review.role}</div>
-                        </div>
-                      </div>
-                      <p className="text-muted-foreground leading-relaxed">
-                        "{review.review}"
-                      </p>
-                      <div className="flex items-center space-x-2 text-[#0070F3]">
-                        <span className="text-sm font-medium bg-[#0070F3]/10 px-3 py-1 rounded-full">
-                          {review.metric}
-                        </span>
-                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Gradient fade on right edge */}
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent pointer-events-none" />
-
-            <style jsx global>{`
-              .no-scrollbar {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-              }
-              .no-scrollbar::-webkit-scrollbar {
-                display: none;
-              }
-            `}</style>
-          </div>
-        </section>
-
-
-
-
-        {/* CTA Section */}
-        <section className="py-32 relative border-t border-border overflow-hidden">
-          {/* Theme gradient background */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#0f81fb_0%,_transparent_35%)] opacity-20" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_#0f81fb_0%,_transparent_40%)] opacity-10" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_#0f81fb_0%,_transparent_40%)] opacity-10" />
-            {/* Grid overlay for consistency with other sections */}
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={`v-${i}`}
-                className="absolute top-0 bottom-0 w-[1px]"
-                style={{ 
-                  left: `${(i + 1) * 5}%`,
-                  background: 'linear-gradient(to bottom, transparent, rgba(15, 129, 251, 0.1) 50%, transparent)',
-                  opacity: '0.3'
-                }}
-              />
-            ))}
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={`h-${i}`}
-                className="absolute left-0 right-0 h-px"
-                style={{ 
-                  top: `${(i + 1) * 6.67}%`,
-                  background: 'linear-gradient(to right, transparent, rgba(15, 129, 251, 0.1) 50%, transparent)',
-                  opacity: '0.2'
-                }}
-              />
-            ))}
-          </div>
-
-          <div className="container max-w-full px-4 relative">
-            <div className="flex flex-col items-center text-center space-y-8">
-              <div className="inline-flex items-center space-x-2">
-                <span className="text-sm font-semibold text-[#0f81fb]">✨ The Future of Sales is Here</span>
-              </div>
-              
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter max-w-3xl text-foreground">
-                Transform Your Sales Game with AI Magic
-              </h2>
-              
-              <p className="max-w-[600px] text-xl text-muted-foreground leading-relaxed">
-                Join the elite group of founders who've unlocked <span className="text-foreground">3.5x revenue growth</span> with 
-                our AI sales intelligence. Your success story begins here.
-              </p>
-
-              <div className="flex flex-col gap-6 min-[400px]:flex-row items-center">
-                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
-                  <Button 
-                    size="lg" 
-                    className="group relative h-14 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
-                  >
-                    <span className="relative z-10 flex items-center">
-                      Get Started Free
-                      <svg 
-                        className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </span>
-                  </Button>
-                </Link>
-
-                <div className="flex items-center text-sm text-muted-foreground">
-                  
-                  <span>Join 100+ startups</span>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {[
+                { icon: LineChart, title: 'Trend', text: 'Detect continuation and reversal structure.' },
+                { icon: BarChart3, title: 'Volume', text: 'Spot abnormal participation before breakouts.' },
+                { icon: Activity, title: 'Risk', text: 'Map volatility and invalidation in context.' }
+              ].map((item) => (
+                <div key={item.title} className="rounded-lg border border-white/10 bg-[#05070b]/70 p-5">
+                  <item.icon className="mb-4 h-6 w-6 text-amber-300" />
+                  <div className="mb-2 font-semibold">{item.title}</div>
+                  <p className="text-sm leading-6 text-slate-400">{item.text}</p>
                 </div>
-              </div>
-
-              <div className="pt-8 flex items-center gap-8 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-green-500" />
-                  No credit card required
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-green-500" />
-                  Free 14-day trial
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-green-500" />
-                  Cancel anytime
-                </div>
-              </div>
+              ))}
             </div>
           </div>
+        </div>
+      </section>
 
-        </section>
-      </main>
-
-      
-    </div>
+      <section className="relative overflow-hidden border-t border-white/10 bg-[#05070b] py-20 text-center">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.2),transparent_34%)]" />
+        <div className="container relative mx-auto max-w-4xl px-4">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">Turn market noise into your next watchlist.</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+            Graycommit Stock Radar - GSR 1 is built for traders who want a sharper, faster, AI-assisted read on opportunity.
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="h-12 bg-emerald-400 px-8 text-black hover:bg-emerald-300">
+                Get Early Access
+              </Button>
+            </Link>
+            <Link href="/products">
+              <Button size="lg" variant="outline" className="h-12 border-white/20 bg-white/5 px-8 text-white hover:bg-white/10">
+                Explore Products
+              </Button>
+            </Link>
+          </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-5 text-sm text-slate-400">
+            {['No credit card required', 'AI-ranked signals', 'Built for daily scans'].map((item) => (
+              <span key={item} className="inline-flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-emerald-300" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   )
 }
