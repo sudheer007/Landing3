@@ -199,7 +199,7 @@ export default function StockRadarLanding() {
             </div>
 
             <div id="get-access" className="scroll-mt-24 space-y-3">
-              <EmailCapture variant="hero" source="hero_primary" />
+              <EmailCapture variant="embedded" source="hero_primary" />
               <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
                 <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-emerald-300" /> No credit card required</span>
                 <Link href="#radar" className="text-cyan-200 underline-offset-4 hover:text-white hover:underline">
@@ -503,7 +503,7 @@ export default function StockRadarLanding() {
             Graycommit Stock Radar - GSR 1 is built for traders who want a sharper, faster, AI-assisted read on opportunity.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3">
-            <EmailCapture variant="hero" source="closing_cta" />
+            <EmailCapture variant="trigger" source="closing_cta" />
             <Link href="/products" className="text-sm text-slate-400 underline-offset-4 hover:text-white hover:underline">
               or explore products instead
             </Link>

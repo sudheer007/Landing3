@@ -12,7 +12,7 @@ export function Footer() {
               <h3 className="text-lg font-semibold text-foreground">Get early access to GSR 1</h3>
               <p className="mt-1 text-sm text-muted-foreground">Drop your email, we&apos;ll let you know the moment a spot opens up.</p>
             </div>
-            <EmailCapture variant="footer" source="footer" />
+            <EmailCapture variant="trigger" source="footer" />
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-5"> {/* Changed to 5 columns */}

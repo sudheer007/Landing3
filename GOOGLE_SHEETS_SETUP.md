@@ -5,11 +5,15 @@ The "Get Early Access" form on the landing page and footer posts to `/api/subscr
 The script appends a row to a Google Sheet. No Google API keys or service accounts
 are needed.
 
+> The form now collects **email + mobile number** (and, on the pricing page, which
+> plan the visitor was looking at). The setup below already accounts for those
+> extra columns — update your sheet/Apps Script when you wire it up.
+
 ## 1. Create the sheet
 
 1. Create a new Google Sheet (or use an existing one).
 2. Rename the first tab to `Signups` (or update `SHEET_NAME` in the script below).
-3. Add a header row: `Timestamp | Email | Source | User Agent`
+3. Add a header row: `Timestamp | Email | Phone | Plan | Source | User Agent`
 
 ## 2. Add the Apps Script
 
@@ -24,15 +28,17 @@ function doPost(e) {
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
     const data = JSON.parse(e.postData.contents);
 
-    if (!data.email) {
+    if (!data.email || !data.phone) {
       return ContentService
-        .createTextOutput(JSON.stringify({ ok: false, error: "Missing email" }))
+        .createTextOutput(JSON.stringify({ ok: false, error: "Missing email or phone" }))
         .setMimeType(ContentService.MimeType.JSON);
     }
 
     sheet.appendRow([
       data.submittedAt || new Date().toISOString(),
       data.email,
+      data.phone || "",
+      data.plan || "",
       data.source || "",
       data.userAgent || ""
     ]);

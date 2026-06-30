@@ -1,279 +1,271 @@
 'use client'
 
-import { useState } from 'react'
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { CheckCircle2, Zap, Shield, ArrowRight } from 'lucide-react'
+import { EmailCapture } from "@/components/email-capture"
+import {
+  ArrowRight,
+  BellRing,
+  BrainCircuit,
+  Check,
+  Gauge,
+  LineChart,
+  MessageSquare,
+  Minus,
+  Radar,
+  ShieldCheck,
+  Sparkles,
+  Zap
+} from 'lucide-react'
+
+const tiers = [
+  {
+    name: "Free",
+    price: "$0",
+    period: "forever",
+    description: "Get a feel for the radar before you commit.",
+    icon: Radar,
+    accent: "text-slate-300",
+    cta: "Start Free",
+    popular: false,
+    features: [
+      "Daily market scan (delayed 15 min)",
+      "Watchlist of up to 5 tickers",
+      "Core technical signals",
+      "Sector heat overview",
+      "Community support",
+    ],
+  },
+  {
+    name: "Pro",
+    price: "$9",
+    period: "/ month",
+    description: "Real-time signal and full scanner access for active traders.",
+    icon: Zap,
+    accent: "text-emerald-300",
+    cta: "Get Pro Access",
+    popular: true,
+    features: [
+      "Everything in Free, plus:",
+      "Real-time signal updates",
+      "Unlimited watchlist",
+      "AI Thesis Builder",
+      "Risk console (support, invalidation, volatility)",
+      "All scanner presets unlocked",
+      "Priority email support",
+    ],
+  },
+  {
+    name: "Pro+",
+    price: "$19",
+    period: "/ month",
+    description: "Maximum coverage for traders running multiple strategies.",
+    icon: Sparkles,
+    accent: "text-cyan-300",
+    cta: "Get Pro+ Access",
+    popular: false,
+    features: [
+      "Everything in Pro, plus:",
+      "Multiple watchlists / portfolios",
+      "Advanced sector rotation analytics",
+      "SMS + mobile push signal alerts",
+      "Early access to new scanner presets",
+      "1:1 onboarding session",
+      "Priority support with faster response time",
+    ],
+  },
+]
+
+const comparisonRows = [
+  { label: "Daily market scan", free: "Delayed 15 min", pro: "Real-time", proplus: "Real-time" },
+  { label: "Watchlist size", free: "Up to 5 tickers", pro: "Unlimited", proplus: "Unlimited, multi-portfolio" },
+  { label: "AI Thesis Builder", free: false, pro: true, proplus: true },
+  { label: "Risk console", free: false, pro: true, proplus: true },
+  { label: "Scanner presets", free: "Limited", pro: "All presets", proplus: "All presets + early access" },
+  { label: "Sector rotation analytics", free: "Basic", pro: "Standard", proplus: "Advanced" },
+  { label: "Signal alerts", free: false, pro: "Email", proplus: "Email + SMS + push" },
+  { label: "Support", free: "Community", pro: "Priority email", proplus: "Priority + onboarding call" },
+]
+
+const faqs = [
+  {
+    q: "Can I switch plans later?",
+    a: "Yes. You can move between Free, Pro, and Pro+ at any time once your account is active — pricing simply adjusts from your next billing cycle.",
+  },
+  {
+    q: "Is there a free trial on Pro or Pro+?",
+    a: "Early access invites typically include a trial window on the paid tiers so you can test real-time signals and the AI Thesis Builder before paying.",
+  },
+  {
+    q: "What counts as a 'signal'?",
+    a: "A signal is GSR 1 flagging a ticker for momentum, volume, sector strength, or risk conditions that match one of your active scans.",
+  },
+  {
+    q: "Do you offer annual billing?",
+    a: "Monthly pricing is what's available during early access. Annual plans with a discount are planned for general availability.",
+  },
+]
 
 export default function PricingPage() {
-  const tiers = [
-    {
-      name: "Free",
-      description: "Perfect for trying out the platform",
-      price: "$0",
-      features: [
-        "3 meetings per month",
-        "Multiple tabs for LLMs",
-        "Basic LLM access",
-        "LLM switching",
-        "3 pre-built meeting playbooks",
-        "Email support",
-      ],
-      cta: "Get Started",
-      popular: false,
-    },
-    {
-      name: "Starter",
-      description: "Ideal for individuals and small teams",
-      price: "$5",
-      features: [
-        "30 meetings per month",
-        "10GB recording storage (6 months)",
-        "All Premium LLM access",
-        "10 playbook templates + custom creation",
-        "Basic transcription & meeting notes",
-        "24/7 support",
-      ],
-      cta: "Get Started",
-      popular: false,
-    },
-    {
-      name: "Pro",
-      description: "Professional teams and businesses",
-      price: "$20",
-      features: [
-        "Unlimited meetings",
-        "100GB recording storage",
-        "All premium LLMs (GPT-4, Claude Sonnet)",
-        "Advanced playbook builder with AI",
-        "Real-time transcription + speaker ID",
-        "AI meeting insights & action items",
-        "Meeting analytics dashboard",
-        "Priority support (chat + email)",
-        "Team collaboration features",
-      ],
-      cta: "Get Started",
-      popular: true,
-    },
-  ]
-
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-20 md:py-32">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#0f81fb,_transparent_40%)] opacity-20" />
-            {/* Grid lines */}
-            {[...Array(40)].map((_, i) => (
+    <main className="min-h-screen bg-[#05070b] text-white">
+      <section className="relative overflow-hidden border-b border-white/10 py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(16,185,129,0.16),transparent_30%),radial-gradient(circle_at_80%_15%,rgba(34,211,238,0.14),transparent_28%)]" />
+        <div className="container relative mx-auto max-w-4xl px-4 text-center lg:px-8">
+          <div className="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-4 py-2 text-sm text-emerald-100">
+            <Radar className="h-4 w-4" />
+            Graycommit Stock Radar &mdash; GSR 1 pricing
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">Simple pricing for sharper signal.</h1>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+            Start free, scan smarter as you grow. Every plan is built around one product: the GSR 1 AI stock radar.
+          </p>
+        </div>
+      </section>
+
+      <section className="border-b border-white/10 py-16">
+        <div className="container mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="grid gap-6 lg:grid-cols-3">
+            {tiers.map((tier) => (
               <div
-                key={`v-${i}`}
-                className="absolute top-0 bottom-0 w-[1px]"
-                style={{ 
-                  left: `${(i + 1) * 2.5}%`,
-                  background: 'linear-gradient(to bottom, transparent, rgba(15, 129, 251, 0.1) 50%, transparent)',
-                  opacity: '0.5'
-                }}
-              />
+                key={tier.name}
+                className={`relative flex flex-col rounded-2xl border p-7 transition duration-300 hover:-translate-y-1 ${
+                  tier.popular
+                    ? "border-emerald-300/50 bg-gradient-to-b from-emerald-300/[0.08] to-white/[0.02] shadow-[0_0_45px_rgba(16,185,129,0.15)]"
+                    : "border-white/10 bg-white/[0.03] hover:border-white/20"
+                }`}
+              >
+                {tier.popular && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-emerald-400 px-3 py-1 text-xs font-semibold text-black">
+                    Most popular
+                  </div>
+                )}
+
+                <tier.icon className={`mb-5 h-7 w-7 ${tier.accent}`} />
+                <h2 className="text-xl font-semibold text-white">{tier.name}</h2>
+                <p className="mt-1 text-sm text-slate-400">{tier.description}</p>
+
+                <div className="mt-6 flex items-baseline gap-1.5">
+                  <span className="text-4xl font-bold text-white">{tier.price}</span>
+                  <span className="text-sm text-slate-400">{tier.period}</span>
+                </div>
+
+                <ul className="mt-7 flex-1 space-y-3">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2.5 text-sm text-slate-300">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <EmailCapture
+                  variant="trigger"
+                  source={`pricing_${tier.name.toLowerCase().replace('+', 'plus')}`}
+                  plan={tier.name}
+                  triggerLabel={tier.cta}
+                  className="mt-8 [&>button]:w-full [&>button]:justify-center"
+                />
+              </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="container mx-auto px-4 relative">
-            <div className="flex flex-col items-center justify-center space-y-8 text-center">
-              <div className="inline-flex items-center space-x-2 rounded-full bg-card border border-border px-4 py-1.5">
-                <span className="text-[#0f81fb]">Simple Pricing</span>
-                <span className="text-muted-foreground">No hidden fees</span>
-              </div>
-              
-              <h1 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                Scale your sales with confidence
-              </h1>
-              
-              <p className="max-w-2xl text-xl text-muted-foreground">
-                Choose the perfect plan for your team. All plans include a 14-day free trial.
-              </p>
-            </div>
+      <section className="border-b border-white/10 bg-[#070a10] py-20">
+        <div className="container mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="mb-10 max-w-2xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Compare plans in detail.</h2>
+            <p className="mt-2 text-slate-400">Every plan runs on the same GSR 1 engine &mdash; what changes is depth and speed.</p>
           </div>
-        </section>
 
-        {/* Pricing Cards */}
-        <section className="py-16 relative">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-3 gap-8">
-              {tiers.map((tier) => (
-                <div
-                  key={tier.name}
-                  className={`relative rounded-xl border ${
-                    tier.popular 
-                      ? 'border-[#0f81fb] bg-[#0f81fb]/5' 
-                      : 'border-border bg-card hover:border-muted-foreground'
-                  } p-8 transition-all duration-300`}
-                >
-                  {tier.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#0f81fb] rounded-full text-sm font-medium text-white">
-                      Most Popular
-                    </div>
-                  )}
-
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-2xl font-bold">{tier.name}</h3>
-                      <p className="mt-2 text-muted-foreground">{tier.description}</p>
-                    </div>
-
-                    <div className="space-y-1">
-                      <div className="text-4xl font-bold">
-                        {tier.price}
-                      </div>
-                      {tier.name !== "Enterprise" && tier.price !== "$0" && (
-                        <div className="text-sm text-muted-foreground">
-                          per user/mo
-                        </div>
-                      )}
-                    </div>
-
-                    <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer" className="w-full">
-                      <Button 
-                        className={`group relative w-full h-12 transition-all duration-300 ${
-                          tier.popular
-                            ? 'bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90'
-                            : 'bg-primary text-primary-foreground hover:bg-primary/90'
-                        }`}
-                      >
-                        <span className="relative z-10 flex items-center justify-center">
-                          Get Started Free
-                          <svg 
-                            className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                          </svg>
-                        </span>
-                      </Button>
-                    </Link>
-
-                    <div className="space-y-4 pt-6">
-                      {tier.features.map((feature, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <CheckCircle2 className={`h-5 w-5 ${
-                            tier.popular ? 'text-[#0f81fb]' : 'text-green-500'
-                          }`} />
-                          <span className="text-muted-foreground">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="overflow-x-auto rounded-xl border border-white/10">
+            <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/[0.03]">
+                  <th className="px-5 py-4 font-medium text-slate-400">Feature</th>
+                  <th className="px-5 py-4 font-semibold text-white">Free</th>
+                  <th className="px-5 py-4 font-semibold text-emerald-300">Pro</th>
+                  <th className="px-5 py-4 font-semibold text-cyan-300">Pro+</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row, i) => (
+                  <tr key={row.label} className={i % 2 === 0 ? "bg-white/[0.015]" : ""}>
+                    <td className="border-t border-white/10 px-5 py-4 text-slate-300">{row.label}</td>
+                    {[row.free, row.pro, row.proplus].map((val, j) => (
+                      <td key={j} className="border-t border-white/10 px-5 py-4">
+                        {typeof val === "boolean" ? (
+                          val ? (
+                            <Check className="h-4 w-4 text-emerald-300" />
+                          ) : (
+                            <Minus className="h-4 w-4 text-slate-600" />
+                          )
+                        ) : (
+                          <span className="text-slate-300">{val}</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* FAQ Section */}
-        <section className="py-24 border-t border-border">
-          <div className="container mx-auto px-4">
-            <div className="text-center space-y-4 mb-16">
-              <h2 className="text-4xl font-bold">Frequently Asked Questions</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Everything you need to know about our pricing and plans.
-              </p>
+      <section className="border-b border-white/10 py-20">
+        <div className="container mx-auto grid max-w-6xl gap-4 px-4 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
+          {[
+            { icon: BrainCircuit, title: "AI Thesis Builder", text: "Turn raw price action into a plain-English trading thesis." },
+            { icon: BellRing, title: "Signal Alerts", text: "Know the moment a setup moves from watchlist to high-conviction." },
+            { icon: ShieldCheck, title: "Risk Console", text: "See invalidation levels and volatility before you size a position." },
+            { icon: Gauge, title: "Sector Heat", text: "Track which sectors are leading or lagging in real time." },
+          ].map((f) => (
+            <div key={f.title} className="rounded-lg border border-white/10 bg-white/[0.03] p-6 transition hover:-translate-y-1 hover:border-emerald-300/30">
+              <f.icon className="mb-4 h-6 w-6 text-emerald-300" />
+              <div className="mb-1.5 font-semibold text-white">{f.title}</div>
+              <p className="text-sm leading-6 text-slate-400">{f.text}</p>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div className="max-w-3xl mx-auto space-y-8">
-              {[
-                {
-                  q: "Can I switch plans anytime?",
-                  a: "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately for upgrades and at the end of your billing cycle for downgrades."
-                },
-                {
-                  q: "Is there a free trial?",
-                  a: "You can use your free tier for completely free. No strings attached and We don't require a credit card to get started."
-                },
-                {
-                  q: "What happens if I exceed my plan limits?",
-                  a: "We'll notify you when you're approaching your limits. You can upgrade your plan or purchase additional capacity as needed."
-                },
-                {
-                  q: "Do you offer refunds?",
-                  a: "Yes, we offer a 30-day money-back guarantee. You can cancel anytime."
-                },
-                {
-                  q: "What about enterprise pricing?",
-                  a: "We offer custom enterprise plans with volume discounts, dedicated support, and additional security features. Contact our sales team for a quote."
-                }
-              ].map((faq, i) => (
-                <div key={i} className="bg-card border border-border rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-2">{faq.q}</h3>
-                  <p className="text-muted-foreground">{faq.a}</p>
-                </div>
-              ))}
-            </div>
+      <section className="bg-[#070a10] py-20">
+        <div className="container mx-auto max-w-3xl px-4 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Pricing questions</h2>
           </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-32 relative">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col items-center text-center space-y-8">
-              <div className="inline-flex items-center space-x-2 rounded-full bg-card border border-border px-4 py-1.5">
-                <Zap className="h-5 w-5 text-[#0f81fb]" />
-                <span className="text-sm font-medium">Ready to get started?</span>
-              </div>
-              
-              <h2 className="text-4xl font-bold tracking-tight md:text-5xl max-w-3xl">
-                Start closing more deals today
-              </h2>
-              
-              <p className="text-xl text-muted-foreground max-w-2xl">
-                Join thousands of sales teams who've increased their win rates with Graycommit's AI-powered platform.
-              </p>
-
-              <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
-                  <Button 
-                    size="lg" 
-                    className="group relative h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
-                  >
-                    <span className="relative z-10 flex items-center">
-                      Get Started Free
-                      <svg 
-                        className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </span>
-                  </Button>
-                </Link>
-                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
-                  <Button size="lg" variant="outline" className="h-12 px-8 border-border text-foreground hover:bg-accent">
-                    Book a Demo
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="pt-8 flex items-center gap-8 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-green-500" />
-                  14-day free trial
+          <div className="space-y-4">
+            {faqs.map((item) => (
+              <div key={item.q} className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
+                <div className="flex items-start gap-2.5 font-medium text-white">
+                  <MessageSquare className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
+                  {item.q}
                 </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-green-500" />
-                  No credit card required
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-green-500" />
-                  Cancel anytime
-                </div>
+                <p className="mt-2 pl-6 text-sm leading-6 text-slate-400">{item.a}</p>
               </div>
-            </div>
+            ))}
           </div>
-        </section>
-      </main>
-    </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden border-t border-white/10 py-20 text-center">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.18),transparent_34%)]" />
+        <div className="container relative mx-auto max-w-2xl px-4">
+          <LineChart className="mx-auto mb-5 h-10 w-10 text-emerald-300" />
+          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">Pick a plan, get your invite.</h2>
+          <p className="mx-auto mt-4 max-w-xl text-slate-300">
+            Early access is rolling out in waves &mdash; grab a spot now and we&apos;ll notify you the moment yours opens up.
+          </p>
+          <div className="mt-7 flex flex-col items-center gap-3">
+            <EmailCapture variant="trigger" source="pricing_footer_cta" />
+            <Link href="/" className="text-sm text-slate-400 underline-offset-4 hover:text-white hover:underline">
+              <ArrowRight className="mr-1 inline h-3.5 w-3.5 rotate-180" />
+              Back to GSR 1 overview
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
   )
 }

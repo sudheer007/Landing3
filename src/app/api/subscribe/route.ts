@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const PHONE_REGEX = /^[+\d][\d\s\-()]{6,18}$/
 
 export async function POST(req: NextRequest) {
-  let body: { email?: string; source?: string }
+  let body: { email?: string; phone?: string; source?: string; plan?: string }
 
   try {
     body = await req.json()
@@ -12,10 +13,16 @@ export async function POST(req: NextRequest) {
   }
 
   const email = body?.email?.trim().toLowerCase()
+  const phone = body?.phone?.trim()
   const source = body?.source || "landing_page"
+  const plan = body?.plan || ""
 
   if (!email || !EMAIL_REGEX.test(email)) {
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 })
+  }
+
+  if (!phone || !PHONE_REGEX.test(phone)) {
+    return NextResponse.json({ error: "Please enter a valid mobile number." }, { status: 400 })
   }
 
   const scriptUrl = process.env.GOOGLE_SCRIPT_URL
@@ -34,7 +41,9 @@ export async function POST(req: NextRequest) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email,
+        phone,
         source,
+        plan,
         userAgent: req.headers.get("user-agent") || "",
         submittedAt: new Date().toISOString(),
       }),
