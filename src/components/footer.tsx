@@ -1,12 +1,21 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ThemeToggle } from "./theme-toggle"
+import { EmailCapture } from "./email-capture"
 
 
 export function Footer() {
   return (
     <footer className="border-t border-border py-12 bg-background">
         <div className="container max-w-full px-4 mx-auto pl-28 pr-24">
+          <div className="mb-12 flex flex-col gap-5 rounded-xl border border-emerald-300/20 bg-gradient-to-r from-emerald-300/[0.07] via-cyan-300/[0.05] to-transparent p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Get early access to GSR 1</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Drop your email, we&apos;ll let you know the moment a spot opens up.</p>
+            </div>
+            <EmailCapture variant="footer" source="footer" />
+          </div>
+
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-5"> {/* Changed to 5 columns */}
             <div className="space-y-4">
               <h4 className="font-semibold text-foreground">Products</h4>

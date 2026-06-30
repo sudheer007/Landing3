@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { EmailCapture } from "@/components/email-capture"
 import {
   Activity,
   ArrowRight,
@@ -17,8 +18,23 @@ import {
   ScanLine,
   ShieldCheck,
   Sparkles,
+  TrendingDown,
+  TrendingUp,
   Zap
 } from 'lucide-react'
+
+const tickerTape = [
+  { ticker: 'NVDA', change: '+4.8%', up: true },
+  { ticker: 'MSFT', change: '+1.6%', up: true },
+  { ticker: 'TSLA', change: '-2.1%', up: false },
+  { ticker: 'AMD', change: '+3.2%', up: true },
+  { ticker: 'AAPL', change: '+0.7%', up: true },
+  { ticker: 'GOOGL', change: '+2.3%', up: true },
+  { ticker: 'META', change: '-1.2%', up: false },
+  { ticker: 'AVGO', change: '+5.1%', up: true },
+  { ticker: 'CRWD', change: '+2.9%', up: true },
+  { ticker: 'PLTR', change: '-0.8%', up: false }
+]
 
 const watchlist = [
   { ticker: 'NVDA', name: 'Nvidia', price: '$142.80', change: '+4.8%', signal: 'Breakout', tone: 'text-emerald-400' },
@@ -70,20 +86,36 @@ const sectors = [
 export default function StockRadarLanding() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#05070b] text-white">
+      <div className="relative overflow-hidden border-b border-white/10 bg-[#070a10] py-2.5">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...tickerTape, ...tickerTape].map((item, i) => (
+            <div key={`${item.ticker}-${i}`} className="mx-6 flex items-center gap-2 text-sm font-medium">
+              <span className="text-slate-300">{item.ticker}</span>
+              <span className={`flex items-center gap-1 ${item.up ? 'text-emerald-400' : 'text-red-400'}`}>
+                {item.up ? <TrendingUp className="h-3.5 w-3.5" /> : <TrendingDown className="h-3.5 w-3.5" />}
+                {item.change}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <section className="relative min-h-[calc(100vh-4rem)] border-b border-white/10">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[length:48px_48px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(16,185,129,0.22),transparent_28%),radial-gradient(circle_at_82%_12%,rgba(34,211,238,0.2),transparent_26%),radial-gradient(circle_at_50%_85%,rgba(245,158,11,0.12),transparent_34%)]" />
+        <div className="absolute -left-24 top-10 h-72 w-72 animate-float rounded-full bg-emerald-400/20 blur-[100px]" style={{ animationDelay: '0s' }} />
+        <div className="absolute -right-16 top-1/3 h-80 w-80 animate-float rounded-full bg-cyan-400/20 blur-[110px]" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute bottom-0 left-1/3 h-64 w-64 animate-float rounded-full bg-amber-400/10 blur-[100px]" style={{ animationDelay: '3s' }} />
         <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
 
         <div className="container relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl grid-cols-1 items-center gap-12 px-4 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-4 py-2 text-sm text-emerald-100 shadow-[0_0_40px_rgba(16,185,129,0.18)]">
-              <ScanLine className="h-4 w-4" />
+              <ScanLine className="h-4 w-4 animate-glow-pulse" />
               Graycommit Stock Radar - GSR 1
             </div>
 
             <div className="space-y-5">
-              <h1 className="max-w-5xl text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 className="max-w-5xl bg-[length:200%_auto] bg-gradient-to-r from-white via-emerald-200 to-cyan-200 bg-clip-text text-5xl font-bold leading-[0.95] tracking-tight text-transparent sm:text-6xl lg:text-7xl animate-gradient-x">
                 See the market before the market sees itself.
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
@@ -93,13 +125,13 @@ export default function StockRadarLanding() {
 
             <div className="flex flex-col gap-3 sm:flex-row">
               <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="h-12 w-full bg-emerald-400 px-7 text-black hover:bg-emerald-300 sm:w-auto">
+                <Button size="lg" className="h-12 w-full bg-emerald-400 px-7 text-black shadow-[0_0_30px_rgba(52,211,153,0.25)] transition hover:scale-[1.03] hover:bg-emerald-300 hover:shadow-[0_0_45px_rgba(52,211,153,0.4)] sm:w-auto">
                   Launch Radar
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link href="#radar">
-                <Button size="lg" variant="outline" className="h-12 w-full border-cyan-300/50 bg-white/5 px-7 text-cyan-100 hover:bg-cyan-300/10 hover:text-white sm:w-auto">
+                <Button size="lg" variant="outline" className="h-12 w-full border-cyan-300/50 bg-white/5 px-7 text-cyan-100 transition hover:scale-[1.03] hover:bg-cyan-300/10 hover:text-white sm:w-auto">
                   View Screener
                 </Button>
               </Link>
@@ -228,8 +260,8 @@ export default function StockRadarLanding() {
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {features.map((feature) => (
-              <div key={feature.title} className="rounded-lg border border-white/10 bg-white/[0.035] p-6 transition hover:border-emerald-300/40 hover:bg-emerald-300/[0.04]">
-                <feature.icon className="mb-5 h-7 w-7 text-emerald-300" />
+              <div key={feature.title} className="group rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-emerald-300/[0.04] hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]">
+                <feature.icon className="mb-5 h-7 w-7 text-emerald-300 transition group-hover:scale-110" />
                 <h3 className="mb-3 text-lg font-semibold">{feature.title}</h3>
                 <p className="text-sm leading-6 text-slate-400">{feature.description}</p>
               </div>
@@ -260,7 +292,7 @@ export default function StockRadarLanding() {
 
           <div className="grid gap-3 sm:grid-cols-2">
             {scans.map((scan, index) => (
-              <div key={scan} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] p-4">
+              <div key={scan} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] p-4 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300/[0.04]">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-white/10 text-cyan-200">
                   {String(index + 1).padStart(2, '0')}
                 </div>
@@ -303,21 +335,17 @@ export default function StockRadarLanding() {
 
       <section className="relative overflow-hidden border-t border-white/10 bg-[#05070b] py-20 text-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.2),transparent_34%)]" />
+        <div className="absolute left-1/4 top-0 h-72 w-72 animate-float rounded-full bg-emerald-400/10 blur-[120px]" />
+        <div className="absolute right-1/4 bottom-0 h-72 w-72 animate-float rounded-full bg-cyan-400/10 blur-[120px]" style={{ animationDelay: '2s' }} />
         <div className="container relative mx-auto max-w-4xl px-4">
           <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">Turn market noise into your next watchlist.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
             Graycommit Stock Radar - GSR 1 is built for traders who want a sharper, faster, AI-assisted read on opportunity.
           </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="h-12 bg-emerald-400 px-8 text-black hover:bg-emerald-300">
-                Get Early Access
-              </Button>
-            </Link>
-            <Link href="/products">
-              <Button size="lg" variant="outline" className="h-12 border-white/20 bg-white/5 px-8 text-white hover:bg-white/10">
-                Explore Products
-              </Button>
+          <div className="mt-8 flex flex-col items-center gap-3">
+            <EmailCapture variant="hero" source="hero_cta" />
+            <Link href="/products" className="text-sm text-slate-400 underline-offset-4 hover:text-white hover:underline">
+              or explore products instead
             </Link>
           </div>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-5 text-sm text-slate-400">
