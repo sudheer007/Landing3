@@ -10,7 +10,7 @@ export default function AboutPage() {
     {
       name: "Sudheer Sandu",
       role: "CEO & Co-founder",
-      bio: "Led enterprise sales teams to $100M+ ARR. Passionate about democratizing sales excellence through AI.",
+      bio: "Led teams to $100M+ ARR. Passionate about democratizing market intelligence through AI.",
       image: "/team/sudheer-sandu.jpg"
     }
   ]
