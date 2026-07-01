@@ -1,463 +1,529 @@
 'use client'
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { EmailCapture } from "@/components/email-capture"
+import { useState } from 'react'
+import Link from 'next/link'
+import { EmailCapture } from '@/components/email-capture'
+import { telgraf } from '@/app/fonts/fonts'
+import { cn } from '@/lib/utils'
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import {
-  Activity,
-  ArrowRight,
-  BarChart3,
-  BellRing,
-  BrainCircuit,
-  CandlestickChart,
-  CheckCircle2,
-  Gauge,
-  LineChart,
-  Link2,
-  LockKeyhole,
-  Quote,
-  Radar,
-  ScanLine,
-  ShieldCheck,
-  Sparkles,
-  TrendingDown,
-  TrendingUp,
-  Wand2,
-  Zap
+  ArrowUpRight, BarChart3, BellRing, BookOpen,
+  Brain, FileText, Gauge, LineChart,
+  Radar, Shield, TrendingDown, TrendingUp,
 } from 'lucide-react'
 
-const tickerTape = [
-  { ticker: 'NVDA', change: '+4.8%', up: true },
-  { ticker: 'MSFT', change: '+1.6%', up: true },
-  { ticker: 'TSLA', change: '-2.1%', up: false },
-  { ticker: 'AMD', change: '+3.2%', up: true },
-  { ticker: 'AAPL', change: '+0.7%', up: true },
-  { ticker: 'GOOGL', change: '+2.3%', up: true },
-  { ticker: 'META', change: '-1.2%', up: false },
-  { ticker: 'AVGO', change: '+5.1%', up: true },
-  { ticker: 'CRWD', change: '+2.9%', up: true },
-  { ticker: 'PLTR', change: '-0.8%', up: false }
-]
+/* ─── DATA ─────────────────────────────────────── */
 
-const watchlist = [
-  { ticker: 'NVDA', name: 'Nvidia', price: '$142.80', change: '+4.8%', signal: 'Breakout', tone: 'text-emerald-400' },
-  { ticker: 'MSFT', name: 'Microsoft', price: '$498.12', change: '+1.6%', signal: 'Accumulation', tone: 'text-cyan-300' },
-  { ticker: 'TSLA', name: 'Tesla', price: '$211.44', change: '-2.1%', signal: 'Risk', tone: 'text-red-300' },
-  { ticker: 'AMD', name: 'Advanced Micro Devices', price: '$176.09', change: '+3.2%', signal: 'Momentum', tone: 'text-amber-300' }
+const opportunities = [
+  { ticker: 'NVDA', name: 'Nvidia Corporation',    price: '$142.80', change: '+4.8%', up: true,  signal: 'Breakout',     score: 94 },
+  { ticker: 'AVGO', name: 'Broadcom Inc.',         price: '$218.40', change: '+3.2%', up: true,  signal: 'Momentum',     score: 87 },
+  { ticker: 'MSFT', name: 'Microsoft Corporation', price: '$498.12', change: '+1.6%', up: true,  signal: 'Accumulation', score: 78 },
+  { ticker: 'META', name: 'Meta Platforms',        price: '$612.05', change: '-1.2%', up: false, signal: 'Watch',        score: 52 },
 ]
 
 const features = [
-  {
-    icon: Radar,
-    title: 'Market Radar',
-    description: 'Scan momentum, volume shocks, sector rotation, and unusual price behavior across your universe.'
-  },
-  {
-    icon: BrainCircuit,
-    title: 'AI Thesis Builder',
-    description: 'Turn noisy chart action, news, filings, and technical structure into a clean trading thesis.'
-  },
-  {
-    icon: BellRing,
-    title: 'Signal Alerts',
-    description: 'Get notified when a stock moves from watchlist noise into a high-conviction setup.'
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Risk Console',
-    description: 'See support, invalidation zones, volatility pressure, and portfolio exposure before entering.'
-  }
+  { icon: Radar,    title: 'AI Stock Radar',         desc: 'Continuously scans market data to surface high-conviction setups.' },
+  { icon: Gauge,    title: 'Conviction Score',        desc: 'Proprietary 0–100 ranking weighing momentum, fundamentals, and risk.' },
+  { icon: Brain,    title: 'AI Market Analyst',       desc: 'Ask anything about a stock. Get institutional-grade research instantly.' },
+  { icon: BarChart3,title: 'Portfolio Intelligence',  desc: 'Real-time health scoring, concentration risk, and rebalancing signals.' },
+  { icon: Shield,   title: 'Risk Radar',              desc: 'Identifies tail risks, earnings exposure, and sentiment shifts early.' },
+  { icon: FileText, title: 'Daily AI Brief',          desc: 'A concise morning brief covering the signals that matter for your portfolio.' },
 ]
 
-const scans = [
-  'Gap-up with institutional volume',
-  'Relative strength versus sector',
-  'Earnings drift continuation',
-  'Base breakout near 52-week high',
-  'Option flow confirmation',
-  'Mean-reversion exhaustion'
+const showcaseTabs = ['Dashboard', 'AI Analysis', 'Opportunity Feed', 'Portfolio']
+
+const heatCells = [
+  { label: 'Tech',    v: 91, up: true  }, { label: 'Energy', v: 76, up: true  },
+  { label: 'Health',  v: 68, up: true  }, { label: 'Fin',    v: 62, up: true  },
+  { label: 'Indust',  v: 54, up: false }, { label: 'Cons',   v: 41, up: false },
+  { label: 'Util',    v: 38, up: false }, { label: 'RE',      v: 29, up: false },
 ]
 
-const sectors = [
-  { name: 'AI Chips', score: 94, color: 'bg-emerald-400' },
-  { name: 'Cybersecurity', score: 87, color: 'bg-cyan-300' },
-  { name: 'Cloud Infra', score: 79, color: 'bg-blue-400' },
-  { name: 'EV Supply', score: 52, color: 'bg-amber-300' },
-  { name: 'Consumer Tech', score: 38, color: 'bg-red-300' }
+const portfolioAlloc = [
+  { label: 'Technology',  pct: 42, color: 'bg-emerald-400' },
+  { label: 'Financials',  pct: 18, color: 'bg-cyan-400'    },
+  { label: 'Healthcare',  pct: 14, color: 'bg-blue-400'    },
+  { label: 'Energy',      pct: 9,  color: 'bg-amber-400'   },
+  { label: 'Other',       pct: 17, color: 'bg-zinc-600'    },
 ]
 
-const steps = [
-  {
-    icon: Link2,
-    title: 'Connect your universe',
-    description: 'Point GSR 1 at the tickers, sectors, or watchlists you already care about. No setup project required.'
-  },
-  {
-    icon: Wand2,
-    title: 'AI ranks the noise away',
-    description: 'Every name gets scored on momentum, volume, sector strength, and risk so you see what actually matters first.'
-  },
-  {
-    icon: Radar,
-    title: 'You act with conviction',
-    description: 'Get a ranked shortlist, a plain-English thesis, and clear risk levels before the market moves without you.'
-  }
-]
+/* ─── HERO APP MOCKUP ───────────────────────────── */
 
-const trustStats = [
-  ['18K+', 'Stocks scanned daily'],
-  ['42ms', 'Median signal latency'],
-  ['6', 'Market regimes modeled'],
-  ['24/7', 'Always-on market watch']
-]
-
-const testimonials = [
-  {
-    quote: 'I used to spend my mornings flipping between six tabs just to find a starting point. Now GSR 1 hands me a ranked shortlist before coffee.',
-    name: 'Early access trader',
-    role: 'Swing trading, semiconductors focus'
-  },
-  {
-    quote: 'The risk console alone changed how I size positions. Seeing invalidation levels next to the setup keeps me honest.',
-    name: 'Early access trader',
-    role: 'Part-time investor, tech sector'
-  },
-  {
-    quote: 'It feels like having a research analyst who never sleeps and never gets excited about the wrong stock.',
-    name: 'Early access trader',
-    role: 'Active trader, momentum strategies'
-  }
-]
-
-const faqs = [
-  {
-    q: 'Is GSR 1 free to try?',
-    a: 'Yes. Early access spots come with a free trial period so you can see how the radar, signals, and risk console fit your process before committing to anything.'
-  },
-  {
-    q: 'Do I need trading experience to use it?',
-    a: 'No. GSR 1 is built to make sense whether you are scanning your first watchlist or you have been trading for years — the AI readout explains setups in plain language alongside the raw data.'
-  },
-  {
-    q: 'What markets and tickers are covered?',
-    a: 'GSR 1 currently scans US equities across major sectors, with thousands of tickers updated continuously throughout the trading day.'
-  },
-  {
-    q: 'How is this different from a normal stock screener?',
-    a: 'Traditional screeners filter on static rules. GSR 1 ranks results using AI that weighs momentum, volume, sector context, and risk together, then explains the reasoning behind each pick.'
-  },
-  {
-    q: 'When do I get access after signing up?',
-    a: 'We are rolling out early access in waves. Drop your email above and you will be notified the moment a spot opens up for your account.'
-  }
-]
-
-export default function StockRadarLanding() {
+function AppMockup() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#05070b] text-white">
-      <div className="relative overflow-hidden border-b border-white/10 bg-[#070a10] py-2.5">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...tickerTape, ...tickerTape].map((item, i) => (
-            <div key={`${item.ticker}-${i}`} className="mx-6 flex items-center gap-2 text-sm font-medium">
-              <span className="text-slate-300">{item.ticker}</span>
-              <span className={`flex items-center gap-1 ${item.up ? 'text-emerald-400' : 'text-red-400'}`}>
-                {item.up ? <TrendingUp className="h-3.5 w-3.5" /> : <TrendingDown className="h-3.5 w-3.5" />}
-                {item.change}
-              </span>
+    <div className="relative w-full">
+      {/* Glow */}
+      <div className="absolute -inset-12 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute -inset-8 rounded-full bg-cyan-500/5 blur-2xl pointer-events-none" />
+
+      {/* Window */}
+      <div className="relative rounded-2xl border border-white/[0.1] bg-[#090b0f] shadow-[0_40px_120px_rgba(0,0,0,0.9)] overflow-hidden">
+        {/* Window chrome */}
+        <div className="flex items-center justify-between border-b border-white/[0.06] bg-[#0c0e13] px-4 h-9">
+          <div className="flex gap-1.5">
+            <div className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+            <div className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+          </div>
+          <span className="font-mono text-[10px] text-zinc-600 tracking-widest">GRAYCOMMIT STOCK RADAR</span>
+          <div className="flex items-center gap-1.5">
+            <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" style={{ animation: 'pulse-dot 2s ease-in-out infinite' }} />
+            <span className="font-mono text-[10px] text-emerald-400">LIVE</span>
+          </div>
+        </div>
+
+        {/* App layout */}
+        <div className="flex" style={{ height: 420 }}>
+
+          {/* Sidebar */}
+          <div className="flex w-10 flex-col items-center gap-3 border-r border-white/[0.06] py-3">
+            {[Radar, BarChart3, Shield, BellRing, BookOpen].map((Icon, i) => (
+              <button key={i} className={cn('flex h-7 w-7 items-center justify-center rounded-md transition', i === 0 ? 'bg-white/[0.08] text-white' : 'text-zinc-600 hover:text-zinc-400')}>
+                <Icon className="h-3.5 w-3.5" />
+              </button>
+            ))}
+          </div>
+
+          {/* AI Opportunity Feed */}
+          <div className="flex flex-1 flex-col border-r border-white/[0.06]">
+            <div className="border-b border-white/[0.06] px-3 py-2">
+              <span className="font-mono text-[9px] tracking-[0.15em] text-zinc-600 uppercase">AI Opportunity Feed</span>
+            </div>
+            <div className="flex-1 overflow-hidden space-y-1 p-2">
+              {opportunities.map((o) => (
+                <div key={o.ticker} className="rounded-lg border border-white/[0.06] bg-white/[0.025] p-2.5 transition hover:bg-white/[0.04]">
+                  <div className="flex items-start justify-between mb-1.5">
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-mono text-[11px] font-semibold text-white">{o.ticker}</span>
+                        <span className={cn('rounded px-1 py-0.5 text-[8px] font-medium', o.signal === 'Breakout' ? 'bg-emerald-400/15 text-emerald-300' : o.signal === 'Momentum' ? 'bg-amber-400/15 text-amber-300' : o.signal === 'Accumulation' ? 'bg-cyan-400/15 text-cyan-300' : 'bg-zinc-700 text-zinc-400')}>
+                          {o.signal}
+                        </span>
+                      </div>
+                      <div className="text-[9px] text-zinc-600 mt-0.5">{o.name}</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-mono text-[10px] text-white">{o.price}</div>
+                      <div className={cn('font-mono text-[9px]', o.up ? 'text-emerald-400' : 'text-red-400')}>
+                        {o.up ? <TrendingUp className="inline h-2.5 w-2.5 mr-0.5" /> : <TrendingDown className="inline h-2.5 w-2.5 mr-0.5" />}
+                        {o.change}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="h-1 flex-1 rounded-full bg-white/[0.06]">
+                      <div className={cn('h-full rounded-full', o.score >= 80 ? 'bg-emerald-400' : o.score >= 60 ? 'bg-amber-400' : 'bg-zinc-500')} style={{ width: `${o.score}%` }} />
+                    </div>
+                    <span className="font-mono text-[9px] text-zinc-400 w-5 text-right">{o.score}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right panels */}
+          <div className="flex w-44 flex-col">
+            {/* Conviction Score */}
+            <div className="border-b border-white/[0.06] p-3">
+              <div className="font-mono text-[8px] tracking-widest text-zinc-600 uppercase mb-2">Conviction Score</div>
+              <svg viewBox="0 0 100 62" className="w-full">
+                <path d="M12,58 A38,38 0 0,1 88,58" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="5" strokeLinecap="round"/>
+                <path d="M12,58 A38,38 0 0,1 88,58" fill="none" stroke="#22c55e" strokeWidth="5" strokeLinecap="round" strokeDasharray="120" strokeDashoffset="7.2" />
+                <text x="50" y="54" textAnchor="middle" fill="white" fontSize="18" fontWeight="700" fontFamily="monospace">94</text>
+                <text x="50" y="64" textAnchor="middle" fill="#52525b" fontSize="6" fontFamily="monospace">/ 100</text>
+              </svg>
+              <div className="mt-1.5 text-center font-mono text-[8px] text-emerald-400">Strong Buy</div>
+            </div>
+
+            {/* Portfolio Health */}
+            <div className="border-b border-white/[0.06] p-3">
+              <div className="font-mono text-[8px] tracking-widest text-zinc-600 uppercase mb-2">Portfolio Health</div>
+              <div className="flex items-end justify-between mb-1.5">
+                <span className="font-mono text-[17px] font-bold text-white leading-none">87</span>
+                <span className="font-mono text-[8px] text-zinc-500">/ 100</span>
+              </div>
+              <div className="space-y-1">
+                {[['Momentum','bg-emerald-400',88],['Diversif.','bg-cyan-400',82],['Risk Adj.','bg-blue-400',91]].map(([l,c,v]) => (
+                  <div key={String(l)} className="flex items-center gap-1.5">
+                    <div className="h-1 w-full rounded-full bg-white/[0.05]">
+                      <div className={cn('h-full rounded-full', String(c))} style={{ width: `${v}%` }} />
+                    </div>
+                    <span className="font-mono text-[8px] text-zinc-600 w-10 shrink-0">{l}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* AI Chat */}
+            <div className="flex-1 p-3 flex flex-col">
+              <div className="font-mono text-[8px] tracking-widest text-zinc-600 uppercase mb-2">AI Analyst</div>
+              <div className="flex-1 space-y-1.5 overflow-hidden">
+                <div className="rounded-lg bg-white/[0.04] p-2">
+                  <p className="text-[8px] text-zinc-300 leading-relaxed">NVDA is in a textbook breakout from a 6-week base. Volume confirmation is strong at 2.4× the 50-day average.</p>
+                </div>
+                <div className="rounded-lg bg-white/[0.04] p-2">
+                  <p className="text-[8px] text-zinc-300 leading-relaxed">Price target: $168. Invalidation below $134. Risk/reward: 3.2×.</p>
+                </div>
+              </div>
+              <div className="mt-2 flex items-center gap-1.5 rounded-md border border-white/[0.08] bg-white/[0.03] px-2 py-1.5">
+                <span className="text-[8px] text-zinc-600 flex-1">Ask about any stock…</span>
+                <ArrowUpRight className="h-2.5 w-2.5 text-zinc-700" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ─── SHOWCASE SCREENS ─────────────────────────── */
+
+function ShowcaseDashboard() {
+  return (
+    <div className="rounded-xl border border-white/[0.08] bg-[#090b0f] overflow-hidden">
+      <div className="border-b border-white/[0.06] bg-[#0c0e13] px-5 py-3 flex items-center justify-between">
+        <span className="font-mono text-[10px] tracking-widest text-zinc-500 uppercase">Dashboard</span>
+        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"/><span className="font-mono text-[10px] text-emerald-400">LIVE</span></div>
+      </div>
+      <div className="p-5 space-y-5">
+        <div className="grid grid-cols-3 gap-3">
+          {[['Portfolio Value','$284,750','+2.4%', true],["Today's P&L",'$4,130','+1.47%',true],['Active Signals','23','↑ 7 new', true]].map(([l,v,s,up]) => (
+            <div key={String(l)} className="rounded-lg border border-white/[0.06] bg-white/[0.03] p-3">
+              <div className="text-[10px] text-zinc-600 mb-1">{l}</div>
+              <div className="font-mono text-lg font-semibold text-white">{v}</div>
+              <div className={cn('font-mono text-[10px]', up ? 'text-emerald-400' : 'text-red-400')}>{s}</div>
+            </div>
+          ))}
+        </div>
+        <div>
+          <div className="text-[10px] text-zinc-600 mb-2">Conviction Trend — 30d</div>
+          <svg viewBox="0 0 400 60" className="w-full h-12" preserveAspectRatio="none">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#22c55e" stopOpacity="0.25"/><stop offset="100%" stopColor="#22c55e" stopOpacity="0"/></linearGradient></defs>
+            <path d="M0,50 L40,42 L80,38 L120,40 L160,30 L200,22 L240,18 L280,12 L320,8 L360,5 L400,4 L400,60 L0,60 Z" fill="url(#g1)"/>
+            <path d="M0,50 L40,42 L80,38 L120,40 L160,30 L200,22 L240,18 L280,12 L320,8 L360,5 L400,4" fill="none" stroke="#22c55e" strokeWidth="1.5"/>
+          </svg>
+        </div>
+        <div className="space-y-2">
+          <div className="text-[10px] text-zinc-600 mb-1">Top Signals Today</div>
+          {opportunities.slice(0,3).map(o => (
+            <div key={o.ticker} className="flex items-center gap-3">
+              <span className="font-mono text-xs font-semibold text-white w-12">{o.ticker}</span>
+              <span className="text-[10px] text-zinc-500 w-20">{o.signal}</span>
+              <div className="flex-1 h-1 rounded-full bg-white/[0.05]">
+                <div className="h-full rounded-full bg-emerald-400" style={{width:`${o.score}%`}} />
+              </div>
+              <span className="font-mono text-[10px] text-zinc-400 w-6">{o.score}</span>
             </div>
           ))}
         </div>
       </div>
+    </div>
+  )
+}
 
-      <section className="relative min-h-[calc(100vh-4rem)] border-b border-white/10">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[length:48px_48px]" />
-        <div className="absolute -left-24 top-10 h-72 w-72 animate-float rounded-full bg-emerald-400/20 blur-[100px]" style={{ animationDelay: '0s' }} />
-        <div className="absolute -right-16 top-1/3 h-80 w-80 animate-float rounded-full bg-cyan-400/20 blur-[110px]" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute bottom-0 left-1/3 h-64 w-64 animate-float rounded-full bg-amber-400/10 blur-[100px]" style={{ animationDelay: '3s' }} />
-        <div className="absolute left-0 right-0 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
+function ShowcaseAnalysis() {
+  return (
+    <div className="rounded-xl border border-white/[0.08] bg-[#090b0f] overflow-hidden">
+      <div className="border-b border-white/[0.06] bg-[#0c0e13] px-5 py-3">
+        <span className="font-mono text-[10px] tracking-widest text-zinc-500 uppercase">AI Stock Analysis</span>
+      </div>
+      <div className="p-5 space-y-5">
+        <div className="flex items-start justify-between">
+          <div>
+            <div className="flex items-center gap-2"><span className="text-2xl font-bold text-white font-mono">NVDA</span><span className="rounded-full bg-emerald-400/15 px-2 py-0.5 text-[10px] text-emerald-300 font-medium">Breakout</span></div>
+            <div className="text-sm text-zinc-500 mt-0.5">Nvidia Corporation</div>
+          </div>
+          <div className="text-right">
+            <div className="font-mono text-xl font-semibold text-white">$142.80</div>
+            <div className="font-mono text-sm text-emerald-400">+4.8% today</div>
+          </div>
+        </div>
+        <div className="flex items-center gap-6">
+          <svg viewBox="0 0 100 64" className="w-28 shrink-0">
+            <path d="M10,58 A40,40 0 0,1 90,58" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="6" strokeLinecap="round"/>
+            <path d="M10,58 A40,40 0 0,1 90,58" fill="none" stroke="#22c55e" strokeWidth="6" strokeLinecap="round" strokeDasharray="126" strokeDashoffset="7.5"/>
+            <text x="50" y="55" textAnchor="middle" fill="white" fontSize="20" fontWeight="700" fontFamily="monospace">94</text>
+          </svg>
+          <div className="flex-1 space-y-2">
+            {[['Momentum','bg-emerald-400',96],['Technical','bg-cyan-400',91],['Fundamental','bg-blue-400',88],['Risk-Adj.','bg-amber-400',92]].map(([l,c,v]) => (
+              <div key={String(l)} className="flex items-center gap-2">
+                <span className="text-[10px] text-zinc-500 w-20">{l}</span>
+                <div className="flex-1 h-1 rounded-full bg-white/[0.05]"><div className={cn('h-full rounded-full',String(c))} style={{width:`${v}%`}}/></div>
+                <span className="font-mono text-[10px] text-zinc-400">{v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4">
+          <div className="text-[10px] text-zinc-600 mb-2 uppercase tracking-widest font-mono">AI Analysis</div>
+          <p className="text-sm text-zinc-300 leading-relaxed">"NVDA is in a textbook breakout from a 6-week consolidation base with above-average volume at 2.4× the 50-day average. Institutional activity is accelerating. Price target: $168. Invalidation below $134."</p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
-        <div className="container relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl grid-cols-1 items-center gap-12 px-4 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-4 py-2 text-sm text-emerald-100 shadow-[0_0_40px_rgba(16,185,129,0.18)]">
-              <ScanLine className="h-4 w-4 animate-glow-pulse" />
-              Graycommit Stock Radar - GSR 1
+function ShowcaseFeed() {
+  return (
+    <div className="rounded-xl border border-white/[0.08] bg-[#090b0f] overflow-hidden">
+      <div className="border-b border-white/[0.06] bg-[#0c0e13] px-5 py-3 flex items-center justify-between">
+        <span className="font-mono text-[10px] tracking-widest text-zinc-500 uppercase">Opportunity Feed</span>
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] text-zinc-600">Sort: Conviction</span>
+          <span className="text-[10px] text-emerald-400 font-mono">24 signals</span>
+        </div>
+      </div>
+      <div className="divide-y divide-white/[0.04]">
+        {[
+          {ticker:'NVDA',name:'Nvidia',change:'+4.8%',up:true,signal:'Breakout',score:94,action:'Buy Zone'},
+          {ticker:'AVGO',name:'Broadcom',change:'+3.2%',up:true,signal:'Momentum',score:87,action:'Entry'},
+          {ticker:'MSFT',name:'Microsoft',change:'+1.6%',up:true,signal:'Accumulation',score:78,action:'Watch'},
+          {ticker:'CRWD',name:'CrowdStrike',change:'+2.1%',up:true,signal:'Volume',score:71,action:'Alert'},
+          {ticker:'META',name:'Meta',change:'-1.2%',up:false,signal:'Hold',score:52,action:'Monitor'},
+          {ticker:'TSLA',name:'Tesla',change:'-2.1%',up:false,signal:'Risk',score:38,action:'Caution'},
+        ].map(o => (
+          <div key={o.ticker} className="flex items-center gap-4 px-5 py-3 hover:bg-white/[0.02] transition">
+            <div className="flex h-7 w-7 items-center justify-center rounded-md border border-white/[0.08] bg-white/[0.03]">
+              <div className={cn('h-1.5 w-1.5 rounded-full', o.score >= 70 ? 'bg-emerald-400' : 'bg-zinc-500')} />
             </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-sm font-semibold text-white">{o.ticker}</span>
+                <span className="text-[10px] text-zinc-600">{o.name}</span>
+              </div>
+            </div>
+            <span className={cn('rounded px-1.5 py-0.5 text-[9px] font-medium',
+              o.signal==='Breakout'?'bg-emerald-400/10 text-emerald-300':
+              o.signal==='Momentum'||o.signal==='Volume'?'bg-amber-400/10 text-amber-300':
+              o.signal==='Accumulation'?'bg-cyan-400/10 text-cyan-300':'bg-zinc-800 text-zinc-500'
+            )}>{o.signal}</span>
+            <div className="w-16 text-right">
+              <div className={cn('font-mono text-xs', o.up ? 'text-emerald-400' : 'text-red-400')}>{o.change}</div>
+              <div className="font-mono text-[9px] text-zinc-600">{o.action}</div>
+            </div>
+            <div className="font-mono text-sm font-semibold text-white w-8 text-right">{o.score}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
-            <div className="space-y-5">
-              <h1 className="max-w-5xl bg-[length:200%_auto] bg-gradient-to-r from-white via-emerald-200 to-cyan-200 bg-clip-text text-5xl font-bold leading-[0.95] tracking-tight text-transparent sm:text-6xl lg:text-7xl animate-gradient-x">
-                See the market before the market sees itself.
+function ShowcasePortfolio() {
+  return (
+    <div className="rounded-xl border border-white/[0.08] bg-[#090b0f] overflow-hidden">
+      <div className="border-b border-white/[0.06] bg-[#0c0e13] px-5 py-3 flex items-center justify-between">
+        <span className="font-mono text-[10px] tracking-widest text-zinc-500 uppercase">Portfolio Insights</span>
+        <div className="flex items-center gap-1.5"><span className="font-mono text-[10px] text-zinc-500">Health</span><span className="font-mono text-[10px] text-emerald-400 font-semibold">87/100</span></div>
+      </div>
+      <div className="p-5 space-y-5">
+        <div className="grid grid-cols-3 gap-3">
+          {[['Total Value','$284,750'],['Annualized','+18.4%'],['Sharpe Ratio','1.87']].map(([l,v]) => (
+            <div key={String(l)} className="rounded-lg border border-white/[0.06] bg-white/[0.03] p-3">
+              <div className="text-[10px] text-zinc-600">{l}</div>
+              <div className="font-mono text-base font-semibold text-white mt-0.5">{v}</div>
+            </div>
+          ))}
+        </div>
+        <div>
+          <div className="text-[10px] text-zinc-600 mb-3 font-mono uppercase tracking-widest">Allocation</div>
+          <div className="space-y-2">
+            {portfolioAlloc.map(a => (
+              <div key={a.label} className="flex items-center gap-3">
+                <span className="text-xs text-zinc-400 w-20">{a.label}</span>
+                <div className="flex-1 h-1.5 rounded-full bg-white/[0.05]">
+                  <div className={cn('h-full rounded-full', a.color)} style={{width:`${a.pct}%`}}/>
+                </div>
+                <span className="font-mono text-[10px] text-zinc-500 w-8 text-right">{a.pct}%</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="rounded-lg border border-white/[0.06] bg-white/[0.02] p-4">
+          <div className="text-[10px] text-zinc-600 mb-3 font-mono uppercase tracking-widest">Risk Metrics</div>
+          <div className="grid grid-cols-3 gap-3">
+            {[['Beta','1.24'],['Max DD','-12.3%'],['VaR (95%)','$3,420']].map(([l,v]) => (
+              <div key={String(l)}>
+                <div className="text-[9px] text-zinc-600">{l}</div>
+                <div className="font-mono text-sm text-white font-medium">{v}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div className="text-[10px] text-zinc-600 mb-2 font-mono uppercase tracking-widest">Sector Heatmap</div>
+          <div className="grid grid-cols-4 gap-1">
+            {heatCells.map(c => (
+              <div key={c.label} className={cn('rounded p-2 text-center', c.up ? 'bg-emerald-500/20' : 'bg-red-500/10')}>
+                <div className={cn('font-mono text-[9px] font-semibold', c.up ? 'text-emerald-300' : 'text-red-400')}>{c.v}</div>
+                <div className="font-mono text-[8px] text-zinc-600 mt-0.5">{c.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const showcaseComponents = [ShowcaseDashboard, ShowcaseAnalysis, ShowcaseFeed, ShowcasePortfolio]
+
+/* ─── PAGE ─────────────────────────────────────── */
+
+export default function HomePage() {
+  const [activeTab, setActiveTab] = useState(0)
+  const ActiveScreen = showcaseComponents[activeTab]
+
+  return (
+    <main className="min-h-screen bg-[#030507] text-white selection:bg-emerald-400/20">
+
+      {/* ── HERO ───────────────────────────────── */}
+      <section className="relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32">
+        {/* Background grid */}
+        <div className="pointer-events-none absolute inset-0"
+          style={{backgroundImage:'linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)',backgroundSize:'64px 64px'}} />
+        {/* Radial glow */}
+        <div className="pointer-events-none absolute inset-0"
+          style={{background:'radial-gradient(ellipse 80% 50% at 50% -10%,rgba(16,185,129,0.12),transparent)'}} />
+
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-12 items-center">
+
+            {/* Left */}
+            <div>
+              {/* Badge */}
+              <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.04] px-4 py-2 backdrop-blur-sm">
+                <div className="h-1.5 w-1.5 rounded-full bg-emerald-400" style={{animation:'pulse-dot 2s ease-in-out infinite'}} />
+                <span className="font-mono text-xs tracking-widest text-zinc-300 uppercase">Introducing Graycommit Stock Radar</span>
+              </div>
+
+              {/* Headline */}
+              <h1 className={cn(telgraf.className, 'text-[clamp(42px,6vw,78px)] font-black leading-[0.93] tracking-[-0.04em] text-white mb-6')}>
+                Institutional-grade<br />
+                market intelligence.<br />
+                <span className="text-transparent" style={{WebkitTextStroke:'1px rgba(255,255,255,0.3)'}}>Powered by AI.</span>
               </h1>
-              <p className="max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-                GSR 1 is a futuristic AI stock screener for traders and investors who want signal, context, and risk in one command center.
-              </p>
-            </div>
 
-            <div id="get-access" className="scroll-mt-24 space-y-3">
-              <EmailCapture variant="embedded" source="hero_primary" />
-              <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
-                <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-emerald-300" /> No credit card required</span>
-                <Link href="#radar" className="text-cyan-200 underline-offset-4 hover:text-white hover:underline">
-                  See the screener in action &rarr;
+              {/* Subheadline */}
+              <p className="max-w-lg text-lg leading-8 text-zinc-400 mb-10">
+                Graycommit Stock Radar continuously scans market data, earnings, news, technical indicators and institutional activity to surface high-conviction investment opportunities before they become obvious.
+              </p>
+
+              {/* CTAs */}
+              <div id="waitlist" className="scroll-mt-24 flex flex-col sm:flex-row gap-3 mb-10">
+                <EmailCapture variant="trigger" source="hero_primary" triggerLabel="Join Waitlist" className="[&>button]:rounded-full [&>button]:px-6 [&>button]:h-12 [&>button]:text-sm [&>button]:font-medium" />
+                <Link href="#showcase"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.04] px-6 text-sm font-medium text-zinc-300 transition hover:bg-white/[0.08] hover:text-white">
+                  View Demo
+                  <ArrowUpRight className="h-4 w-4" />
                 </Link>
               </div>
+
+              {/* Stats */}
+              <div className="flex gap-8 border-t border-white/[0.06] pt-8">
+                {[['18K+','Stocks scanned daily'],['42ms','Signal latency'],['24/7','Market watch']].map(([v,l]) => (
+                  <div key={String(l)}>
+                    <div className="font-mono text-xl font-bold text-white">{v}</div>
+                    <div className="text-xs text-zinc-600 mt-0.5">{l}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="grid max-w-2xl grid-cols-3 gap-3">
-              {[
-                ['18K+', 'Stocks scanned'],
-                ['42ms', 'Signal latency'],
-                ['24/7', 'Market watch']
-              ].map(([value, label]) => (
-                <div key={label} className="border-l border-white/15 pl-4">
-                  <div className="text-2xl font-bold text-white">{value}</div>
-                  <div className="text-sm text-slate-400">{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div id="radar" className="relative">
-            <div className="absolute -inset-8 bg-[conic-gradient(from_180deg,rgba(16,185,129,0.18),rgba(34,211,238,0.2),rgba(245,158,11,0.12),rgba(16,185,129,0.18))] blur-3xl" />
-            <div className="relative overflow-hidden rounded-lg border border-white/15 bg-[#071017]/95 shadow-2xl shadow-cyan-950/40">
-              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-md bg-emerald-400 text-black">
-                    <Radar className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold">GSR 1 Live Console</div>
-                    <div className="text-xs text-slate-400">US equities / pre-market intelligence</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-emerald-300">
-                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(110,231,183,0.9)]" />
-                  Online
-                </div>
-              </div>
-
-              <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
-                <div className="border-b border-white/10 p-5 lg:border-b-0 lg:border-r">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div>
-                      <div className="text-xs uppercase tracking-[0.3em] text-cyan-200/70">Signal Matrix</div>
-                      <div className="mt-1 text-2xl font-semibold">High conviction watchlist</div>
-                    </div>
-                    <CandlestickChart className="h-7 w-7 text-cyan-300" />
-                  </div>
-
-                  <div className="space-y-3">
-                    {watchlist.map((stock) => (
-                      <div key={stock.ticker} className="grid grid-cols-[0.65fr_1fr_0.75fr_0.75fr] items-center gap-3 rounded-md border border-white/10 bg-white/[0.035] px-4 py-3">
-                        <div>
-                          <div className="font-semibold">{stock.ticker}</div>
-                          <div className="text-xs text-slate-500">{stock.name}</div>
-                        </div>
-                        <div className="h-10 overflow-hidden">
-                          <div className="flex h-full items-end gap-1">
-                            {[28, 38, 34, 52, 47, 68, 62, 74, 88, 80].map((height, index) => (
-                              <span
-                                key={`${stock.ticker}-${index}`}
-                                className="w-full rounded-t-sm bg-gradient-to-t from-cyan-500/25 to-emerald-300/80"
-                                style={{ height: `${height}%` }}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                        <div>
-                          <div className="text-sm text-slate-400">Price</div>
-                          <div className="font-medium">{stock.price}</div>
-                        </div>
-                        <div className="text-right">
-                          <div className={`font-semibold ${stock.tone}`}>{stock.change}</div>
-                          <div className="text-xs text-slate-500">{stock.signal}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-5 p-5">
-                  <div>
-                    <div className="mb-3 flex items-center justify-between">
-                      <div className="text-sm font-medium text-slate-200">Sector Heat</div>
-                      <Gauge className="h-5 w-5 text-amber-300" />
-                    </div>
-                    <div className="space-y-3">
-                      {sectors.map((sector) => (
-                        <div key={sector.name}>
-                          <div className="mb-1 flex justify-between text-xs text-slate-400">
-                            <span>{sector.name}</span>
-                            <span>{sector.score}</span>
-                          </div>
-                          <div className="h-2 overflow-hidden rounded-full bg-white/10">
-                            <div className={`h-full ${sector.color}`} style={{ width: `${sector.score}%` }} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="rounded-md border border-cyan-300/20 bg-cyan-300/5 p-4">
-                    <div className="mb-2 flex items-center gap-2 text-cyan-200">
-                      <BrainCircuit className="h-4 w-4" />
-                      <span className="text-sm font-semibold">AI Readout</span>
-                    </div>
-                    <p className="text-sm leading-6 text-slate-300">
-                      Semiconductor momentum is broadening. Watch NVDA confirmation above resistance while AMD shows catch-up strength.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            {/* Right — App UI */}
+            <div className="hidden lg:block">
+              <AppMockup />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-[#070a10] py-20">
-        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="mb-12 max-w-3xl">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-sm text-emerald-100">
-              <Radar className="h-4 w-4" />
-              How it works
-            </div>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">From zero to a ranked watchlist in three steps.</h2>
+      {/* ── FEATURES ───────────────────────────── */}
+      <section className="border-t border-white/[0.06] py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mb-16">
+            <p className="font-mono text-[11px] tracking-[0.2em] text-zinc-600 uppercase mb-4">Capabilities</p>
+            <h2 className={cn(telgraf.className, 'text-[clamp(32px,4vw,52px)] font-black tracking-[-0.03em] text-white max-w-xl leading-tight')}>
+              Every tool a serious investor needs.
+            </h2>
           </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {steps.map((step, index) => (
-              <div key={step.title} className="relative rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-emerald-300/[0.04]">
-                <div className="mb-5 flex items-center justify-between">
-                  <step.icon className="h-7 w-7 text-emerald-300" />
-                  <span className="text-3xl font-bold text-white/10">{String(index + 1).padStart(2, '0')}</span>
+          <div className="grid gap-px grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-white/[0.06] rounded-2xl overflow-hidden">
+            {features.map((f, i) => (
+              <div key={f.title}
+                className={cn('group p-8 bg-[#030507] transition hover:bg-white/[0.025]', i < 3 ? 'border-b border-white/[0.06] lg:border-b' : '')}>
+                <div className="mb-5 flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] transition group-hover:border-emerald-300/30 group-hover:bg-emerald-300/[0.05]">
+                  <f.icon className="h-4 w-4 text-zinc-500 transition group-hover:text-emerald-300" />
                 </div>
-                <h3 className="mb-3 text-lg font-semibold text-white">{step.title}</h3>
-                <p className="text-sm leading-6 text-slate-400">{step.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-4">
-            {trustStats.map(([value, label]) => (
-              <div key={label} className="text-center sm:text-left">
-                <div className="bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-3xl font-bold text-transparent">{value}</div>
-                <div className="mt-1 text-sm text-slate-400">{label}</div>
+                <h3 className="text-base font-semibold text-white mb-2">{f.title}</h3>
+                <p className="text-sm leading-6 text-zinc-500">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-[#05070b] py-20">
-        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="mb-12 max-w-3xl">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-sm text-cyan-100">
-              <Sparkles className="h-4 w-4" />
-              Built for fast market decisions
-            </div>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">From raw market chaos to ranked opportunities.</h2>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature) => (
-              <div key={feature.title} className="group rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-300/40 hover:bg-emerald-300/[0.04] hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]">
-                <feature.icon className="mb-5 h-7 w-7 text-emerald-300 transition group-hover:scale-110" />
-                <h3 className="mb-3 text-lg font-semibold">{feature.title}</h3>
-                <p className="text-sm leading-6 text-slate-400">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-white/10 bg-[#070a10] py-20">
-        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="mb-12 max-w-3xl">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-sm text-amber-100">
-              <Quote className="h-4 w-4" />
-              From the early access cohort
-            </div>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">Traders are already moving faster with GSR 1.</h2>
-          </div>
-
-          <div className="grid gap-5 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <div key={t.quote} className="flex flex-col justify-between rounded-lg border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-amber-300/30">
-                <div>
-                  <Quote className="mb-4 h-6 w-6 text-amber-300/70" />
-                  <p className="text-sm leading-6 text-slate-200">{t.quote}</p>
-                </div>
-                <div className="mt-6 border-t border-white/10 pt-4">
-                  <div className="text-sm font-semibold text-white">{t.name}</div>
-                  <div className="text-xs text-slate-400">{t.role}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative border-b border-white/10 bg-[#05070b] py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(34,211,238,0.12),transparent_30%)]" />
-        <div className="container relative mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-2 lg:px-8">
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/25 bg-amber-300/10 px-3 py-1 text-sm text-amber-100">
-              <Zap className="h-4 w-4" />
-              Scanner presets
-            </div>
-            <h2 className="text-3xl font-bold sm:text-5xl">Start with proven scans, then tune your own edge.</h2>
-            <p className="text-lg leading-8 text-slate-400">
-              GSR 1 combines technical conditions, news catalysts, sector movement, and AI ranking so every scan returns a usable shortlist.
+      {/* ── PRODUCT SHOWCASE ───────────────────── */}
+      <section id="showcase" className="border-t border-white/[0.06] py-28 scroll-mt-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mb-12">
+            <p className="font-mono text-[11px] tracking-[0.2em] text-zinc-600 uppercase mb-4">The Product</p>
+            <h2 className={cn(telgraf.className, 'text-[clamp(32px,4vw,52px)] font-black tracking-[-0.03em] text-white max-w-2xl leading-tight')}>
+              Built for the way professionals actually work.
+            </h2>
+            <p className="mt-4 max-w-xl text-zinc-400 leading-7">
+              Every screen is designed for speed and signal clarity. No dashboards buried in settings. No learning curve.
             </p>
-            <Link href="#get-access">
-              <Button className="bg-cyan-300 text-slate-950 transition hover:scale-[1.03] hover:bg-cyan-200">
-                Build My Radar
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
-            {scans.map((scan, index) => (
-              <div key={scan} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.035] p-4 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300/[0.04]">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-white/10 text-cyan-200">
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-                <div className="text-sm font-medium text-slate-200">{scan}</div>
-              </div>
+          {/* Tab selector */}
+          <div className="mb-6 flex gap-1 rounded-xl border border-white/[0.06] bg-white/[0.02] p-1 w-fit">
+            {showcaseTabs.map((tab, i) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(i)}
+                className={cn('rounded-lg px-4 py-2 text-sm font-medium transition', activeTab === i ? 'bg-white/[0.08] text-white' : 'text-zinc-500 hover:text-zinc-300')}
+              >
+                {tab}
+              </button>
             ))}
+          </div>
+
+          {/* Active screen */}
+          <div className="relative">
+            <div className="absolute -inset-8 rounded-3xl bg-emerald-500/[0.04] blur-2xl pointer-events-none" />
+            <div className="relative">
+              <ActiveScreen />
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#070a10] py-20">
-        <div className="container mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="grid gap-10 rounded-lg border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.025] p-6 sm:p-10 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="space-y-5">
-              <div className="flex h-12 w-12 items-center justify-center rounded-md bg-emerald-300 text-black">
-                <LockKeyhole className="h-6 w-6" />
-              </div>
-              <h2 className="text-3xl font-bold sm:text-4xl">A cleaner command center for serious market work.</h2>
-              <p className="text-slate-400">
-                Track watchlists, score setups, compare sectors, and pressure-test entries without jumping between ten different tabs.
+      {/* ── ABOUT ──────────────────────────────── */}
+      <section className="border-t border-white/[0.06] py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.2em] text-zinc-600 uppercase mb-6">About Graycommit</p>
+              <h2 className={cn(telgraf.className, 'text-[clamp(32px,4vw,52px)] font-black tracking-[-0.03em] text-white leading-tight mb-6')}>
+                Built by Graycommit.
+              </h2>
+              <p className="text-lg leading-8 text-zinc-400 mb-4">
+                Graycommit builds AI-powered intelligence products that help professionals make better decisions.
+              </p>
+              <p className="text-lg leading-8 text-zinc-400">
+                Our first flagship product is Graycommit Stock Radar, an AI-first platform designed to bring institutional-quality market research to every investor.
               </p>
             </div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: LineChart, title: 'Trend', text: 'Detect continuation and reversal structure.' },
-                { icon: BarChart3, title: 'Volume', text: 'Spot abnormal participation before breakouts.' },
-                { icon: Activity, title: 'Risk', text: 'Map volatility and invalidation in context.' }
-              ].map((item) => (
-                <div key={item.title} className="rounded-lg border border-white/10 bg-[#05070b]/70 p-5">
-                  <item.icon className="mb-4 h-6 w-6 text-amber-300" />
-                  <div className="mb-2 font-semibold">{item.title}</div>
-                  <p className="text-sm leading-6 text-slate-400">{item.text}</p>
+                { v: 'AI-First',    l: 'Not a screener with AI bolted on. Built from the ground up for machine intelligence.' },
+                { v: 'Institutional', l: 'The same signals hedge funds use. Now accessible to every investor.' },
+                { v: 'Real-time',   l: '42ms median signal latency. You see the opportunity when it forms.' },
+                { v: 'Transparent', l: 'Every score explained. Understand why, not just what.' },
+              ].map(({ v, l }) => (
+                <div key={v} className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5">
+                  <div className="font-mono text-xs text-emerald-400 mb-2">{v}</div>
+                  <p className="text-sm text-zinc-500 leading-6">{l}</p>
                 </div>
               ))}
             </div>
@@ -465,59 +531,41 @@ export default function StockRadarLanding() {
         </div>
       </section>
 
-      <section className="bg-[#070a10] py-20">
-        <div className="container mx-auto max-w-4xl px-4 lg:px-8">
-          <div className="mb-10 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-sm text-slate-200">
-              Frequently asked
+      {/* ── FINAL CTA ──────────────────────────── */}
+      <section className="border-t border-white/[0.06] py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="relative rounded-3xl border border-white/[0.08] bg-white/[0.02] overflow-hidden px-8 py-20 text-center">
+            {/* Background glow */}
+            <div className="pointer-events-none absolute inset-0"
+              style={{background:'radial-gradient(ellipse 60% 60% at 50% 100%,rgba(16,185,129,0.1),transparent)'}} />
+            <div className="pointer-events-none absolute inset-0"
+              style={{background:'radial-gradient(ellipse 40% 40% at 50% 0%,rgba(6,182,212,0.06),transparent)'}} />
+
+            <div className="relative">
+              <p className="font-mono text-[11px] tracking-[0.2em] text-zinc-600 uppercase mb-6">Early Access</p>
+              <h2 className={cn(telgraf.className, 'text-[clamp(36px,5vw,72px)] font-black tracking-[-0.04em] text-white leading-[0.95] mb-5')}>
+                Invest with intelligence.
+              </h2>
+              <p className="mx-auto max-w-lg text-lg leading-8 text-zinc-400 mb-10">
+                Join the next generation of investors using AI to discover opportunities faster.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <EmailCapture
+                  variant="trigger"
+                  source="final_cta"
+                  triggerLabel="Get Early Access"
+                  className="[&>button]:rounded-full [&>button]:px-8 [&>button]:h-12 [&>button]:text-sm [&>button]:font-medium"
+                />
+                <Link href="/pricing" className="text-sm text-zinc-500 hover:text-zinc-300 transition underline-offset-4 hover:underline">
+                  View pricing
+                </Link>
+              </div>
+              <p className="mt-6 text-xs text-zinc-700">No credit card required · Free tier available</p>
             </div>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">Questions traders ask before joining.</h2>
-          </div>
-
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((item, index) => (
-              <AccordionItem
-                key={item.q}
-                value={`item-${index}`}
-                className="rounded-lg border border-white/10 bg-white/[0.035] px-5 data-[state=open]:border-emerald-300/30"
-              >
-                <AccordionTrigger className="text-left text-base font-medium text-white hover:no-underline [&[data-state=open]>svg]:text-emerald-300">
-                  {item.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm leading-6 text-slate-400">
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden border-t border-white/10 bg-[#05070b] py-20 text-center">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.2),transparent_34%)]" />
-        <div className="absolute left-1/4 top-0 h-72 w-72 animate-float rounded-full bg-emerald-400/10 blur-[120px]" />
-        <div className="absolute right-1/4 bottom-0 h-72 w-72 animate-float rounded-full bg-cyan-400/10 blur-[120px]" style={{ animationDelay: '2s' }} />
-        <div className="container relative mx-auto max-w-4xl px-4">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-6xl">Turn market noise into your next watchlist.</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-            Graycommit Stock Radar - GSR 1 is built for traders who want a sharper, faster, AI-assisted read on opportunity.
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-3">
-            <EmailCapture variant="trigger" source="closing_cta" />
-            <Link href="/products" className="text-sm text-slate-400 underline-offset-4 hover:text-white hover:underline">
-              or explore products instead
-            </Link>
-          </div>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-5 text-sm text-slate-400">
-            {['No credit card required', 'AI-ranked signals', 'Built for daily scans'].map((item) => (
-              <span key={item} className="inline-flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-emerald-300" />
-                {item}
-              </span>
-            ))}
           </div>
         </div>
       </section>
+
     </main>
   )
 }

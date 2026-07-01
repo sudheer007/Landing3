@@ -1,209 +1,171 @@
 'use client'
 
-import { useState } from 'react'
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Menu, X, Activity, Layout, Shield, Book, DollarSign, Phone, Radar, ArrowRight } from 'lucide-react'
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle
-} from "@/components/ui/navigation-menu"
-import { telgraf } from "@/app/fonts/fonts"
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Menu, X, ChevronDown, Radar, Activity, ArrowUpRight } from 'lucide-react'
+import { telgraf } from '@/app/fonts/fonts'
+import { cn } from '@/lib/utils'
+
+const NAV = [
+  {
+    label: 'Products',
+    children: [
+      { label: 'Stock Radar', href: '/', desc: 'AI market intelligence platform', badge: 'New', icon: Radar },
+      { label: 'Sales Intelligence', href: '/products', desc: 'Live meeting guidance & talk tracks', icon: Activity },
+    ],
+  },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'About',   href: '/about'   },
+]
 
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [productOpen, setProductOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
-  const navLinks = [
-    { href: "/blog", text: "Blog", icon: <Book className="h-5 w-5" /> },
-    { href: "/pricing", text: "Pricing", icon: <DollarSign className="h-5 w-5" /> },
-    { href: "https://tidycal.com/sudheer.sandu/problemoverview", text: "Contact", icon: <Phone className="h-5 w-5" /> },
-  ]
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#05070b]/85 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between max-w-full px-4 sm:px-6">
-        <div className="flex items-center space-x-4">
-          <Link className="flex items-center space-x-2" href="/">
-            <Image 
-              src="/logo.png" 
-              alt="Graycommit Logo" 
-              width={32} 
-              height={32}
-              priority
-            />
-            <span className={`${telgraf.className} text-xl font-bold text-white`}>Graycommit</span>
-          </Link>
-          
-          {/* Desktop Navigation */}
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-slate-200 hover:bg-white/10 hover:text-white data-[state=open]:bg-white/10 data-[state=open]:text-white">Products</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid w-[600px] grid-cols-2 gap-x-8 gap-y-4 bg-[#0a0d14] p-6">
-                    <div className="col-span-2">
-                      <h3 className="font-semibold text-lg text-white">Graycommit Products</h3>
-                      <p className="text-sm text-slate-400">AI command centers for markets, sales, and research.</p>
-                    </div>
-                    <NavigationMenuLink asChild>
-                      <Link href="/" className="group flex flex-col justify-center rounded-lg p-4 hover:bg-white/5">
-                        <div className="flex items-center gap-3 mb-2">
-                          <Radar className="h-5 w-5 text-emerald-400" />
-                          <p className="font-medium text-white">Stock Radar - GSR 1</p>
-                        </div>
-                        <p className="text-sm text-slate-400">AI stock screener and signal radar.</p>
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="/products" className="group flex flex-col justify-center rounded-lg p-4 hover:bg-white/5">
-                        <div className="flex items-center gap-3 mb-2">
-                          <Activity className="h-5 w-5 text-cyan-400" />
-                          <p className="font-medium text-white">Sales Intelligence</p>
-                        </div>
-                        <p className="text-sm text-slate-400">Live meeting guidance and talk tracks.</p>
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="/products/deepsearch" className="group flex flex-col justify-center rounded-lg p-4 hover:bg-white/5">
-                        <div className="flex items-center gap-3 mb-2">
-                          <Layout className="h-5 w-5 text-cyan-400" />
-                          <p className="font-medium text-white">DeepSearch AI</p>
-                        </div>
-                        <p className="text-sm text-slate-400">Ask any question to 15+ top AI models.</p>
-                      </Link>
-                    </NavigationMenuLink>
-                    <div className="col-span-2 mt-4 rounded-lg border border-white/10 bg-white/[0.03] p-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                          <Shield className="h-6 w-6 text-cyan-400" />
-                          <div>
-                            <p className="font-semibold text-white">Enterprise Grade Security</p>
-                            <p className="text-sm text-slate-400">SOC 2 Type II Certified and GDPR compliant.</p>
-                          </div>
-                        </div>
-                        <Button asChild variant="ghost" size="sm" className="text-slate-200 hover:bg-white/10 hover:text-white">
-                          <Link href="/security">Learn More &rarr;</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              {navLinks.map((link) => (
-                <NavigationMenuItem key={link.text}>
-                  <Link href={link.href} legacyBehavior passHref>
-                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-transparent text-slate-200 hover:bg-white/10 hover:text-white`}>
-                      {link.text}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
+    <header
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        scrolled
+          ? 'bg-[#030507]/90 backdrop-blur-xl border-b border-white/[0.06]'
+          : 'bg-transparent'
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
 
-        {/* Desktop Button */}
-        <div className="hidden md:flex items-center">
-          <Link href="/#get-access">
-            <Button className="bg-emerald-400 text-black shadow-[0_0_25px_rgba(52,211,153,0.25)] transition hover:scale-[1.03] hover:bg-emerald-300 hover:shadow-[0_0_35px_rgba(52,211,153,0.4)]">
-              Get Early Access
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setOpen(false)}>
+          <Image src="/logo.png" alt="Graycommit" width={28} height={28} priority />
+          <span className={cn(telgraf.className, 'text-[17px] tracking-tight text-white')}>
+            Graycommit
+          </span>
+        </Link>
 
-        {/* Mobile Buttons */}
-        <div className="flex md:hidden items-center space-x-2">
-          <Link href="/#get-access">
-            <Button size="sm" className="bg-emerald-400 text-black hover:bg-emerald-300">
-              Get Access
-            </Button>
-          </Link>
-          <button
-            className="p-2 text-slate-300 hover:text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-1">
+          {/* Products dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setProductOpen(true)}
+            onMouseLeave={() => setProductOpen(false)}
           >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
+            <button className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-zinc-400 transition hover:text-white">
+              Products
+              <ChevronDown className={cn('h-3.5 w-3.5 transition-transform duration-200', productOpen && 'rotate-180')} />
+            </button>
+
+            {productOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
+                <div className="w-72 rounded-xl border border-white/[0.08] bg-[#0a0c10]/95 backdrop-blur-xl p-2 shadow-2xl shadow-black/60">
+                  {NAV[0].children!.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="group flex items-start gap-3 rounded-lg p-3 transition hover:bg-white/[0.05]"
+                      onClick={() => setProductOpen(false)}
+                    >
+                      <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-white/[0.08] bg-white/[0.04]">
+                        <item.icon className="h-3.5 w-3.5 text-zinc-400 transition group-hover:text-emerald-300" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-medium text-white">{item.label}</span>
+                          {'badge' in item && (
+                            <span className="rounded-full bg-emerald-400/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-300">
+                              {item.badge}
+                            </span>
+                          )}
+                        </div>
+                        <p className="mt-0.5 text-xs text-zinc-500 truncate">{item.desc}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             )}
-          </button>
+          </div>
+
+          {NAV.slice(1).map((item) => (
+            <Link
+              key={item.label}
+              href={item.href!}
+              className="rounded-md px-3 py-2 text-sm text-zinc-400 transition hover:text-white"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            href="/#waitlist"
+            className="flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-zinc-100"
+          >
+            Get Early Access
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
+
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden p-2 text-zinc-400 hover:text-white"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-white/10 bg-[#05070b]/95 backdrop-blur-md">
-          <div className="container py-4 px-4 space-y-4">
-            {/* Products Section */}
-            <div className="space-y-4">
-              <div className="font-semibold text-lg text-white">Products</div>
-              <div className="space-y-2">
-                <Link 
-                  href="/"
-                  className="group flex items-start gap-4 rounded-lg p-3 hover:bg-white/5"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <Radar className="h-5 w-5 text-emerald-400 mt-1" />
-                  <div>
-                    <p className="font-medium text-white">Stock Radar - GSR 1</p>
-                    <p className="text-sm text-slate-400">AI stock screener and signal radar.</p>
-                  </div>
-                </Link>
-                <Link 
-                  href="/products"
-                  className="group flex items-start gap-4 rounded-lg p-3 hover:bg-white/5"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <Activity className="h-5 w-5 text-cyan-400 mt-1" />
-                  <div>
-                    <p className="font-medium text-white">Sales Intelligence</p>
-                    <p className="text-sm text-slate-400">Live meeting guidance and talk tracks.</p>
-                  </div>
-                </Link>
-                <Link 
-                  href="/products/deepsearch"
-                  className="group flex items-start gap-4 rounded-lg p-3 hover:bg-white/5"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <Layout className="h-5 w-5 text-cyan-400 mt-1" />
-                  <div>
-                    <p className="font-medium text-white">DeepSearch AI</p>
-                    <p className="text-sm text-slate-400">Ask any question to 15+ top AI models.</p>
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-            {/* Other Navigation Links */}
-            <div className="border-t border-white/10 pt-4 space-y-2">
-              {navLinks.map((link) => (
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden border-t border-white/[0.06] bg-[#030507]/95 backdrop-blur-xl">
+          <div className="mx-auto max-w-7xl px-6 py-4 space-y-1">
+            <p className="px-3 pt-2 pb-1 text-[10px] font-mono tracking-widest text-zinc-600 uppercase">Products</p>
+            {NAV[0].children!.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-300 hover:bg-white/[0.05] hover:text-white"
+                onClick={() => setOpen(false)}
+              >
+                <item.icon className="h-4 w-4 text-zinc-500" />
+                {item.label}
+                {'badge' in item && (
+                  <span className="ml-auto rounded-full bg-emerald-400/15 px-1.5 py-0.5 text-[10px] text-emerald-300">
+                    {item.badge}
+                  </span>
+                )}
+              </Link>
+            ))}
+            <div className="border-t border-white/[0.06] pt-2 mt-2">
+              {NAV.slice(1).map((item) => (
                 <Link
-                  key={link.text}
-                  href={link.href}
-                  className="flex items-center gap-4 p-3 font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  key={item.label}
+                  href={item.href!}
+                  className="block rounded-lg px-3 py-2.5 text-sm text-zinc-300 hover:bg-white/[0.05] hover:text-white"
+                  onClick={() => setOpen(false)}
                 >
-                  {link.icon}
-                  {link.text}
+                  {item.label}
                 </Link>
               ))}
             </div>
-
-            {/* Mobile CTA */}
-            <div className="border-t border-white/10 pt-4">
-              <Link href="/#get-access" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button className="w-full justify-center bg-emerald-400 text-black hover:bg-emerald-300">
-                  Get Early Access
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+            <div className="border-t border-white/[0.06] pt-3 pb-1">
+              <Link
+                href="/#waitlist"
+                className="flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-black"
+                onClick={() => setOpen(false)}
+              >
+                Get Early Access
+                <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
@@ -211,4 +173,4 @@ export function Header() {
       )}
     </header>
   )
-} 
+}
