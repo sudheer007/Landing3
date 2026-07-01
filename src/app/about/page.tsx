@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { EmailCapture } from "@/components/email-capture"
 import { ArrowRight, Users, Target, Lightbulb, Shield, Zap, Globe, Award } from 'lucide-react'
 
 export default function AboutPage() {
@@ -83,7 +84,7 @@ export default function AboutPage() {
               and every sales professional performs at their peak potential.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/products">
+              <Link href="/">
                 <Button className="group bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300">
                   <span className="relative z-10 flex items-center">
                     Explore Our Platform
@@ -268,15 +269,14 @@ export default function AboutPage() {
             Ready to transform your sales process with AI? Join thousands of sales professionals 
             who are already closing more deals with Graycommit.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://app.graycommit.com">
-              <Button className="group bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300">
-                <span className="relative z-10 flex items-center">
-                  Get Started Free
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Button>
-            </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <EmailCapture
+              variant="trigger"
+              source="about_join_mission"
+              plan="Stock Radar"
+              triggerLabel="Get Started Free"
+              className="[&>button]:bg-[#0f81fb] [&>button]:hover:bg-[#0f81fb]/90 [&>button]:text-white [&>button]:rounded-md [&>button]:h-10 [&>button]:px-5 [&>button]:text-sm [&>button]:font-medium [&>button]:shadow-none"
+            />
             <Link href="https://tidycal.com/sudheer.sandu/problemoverview">
               <Button variant="outline" className="border-[#0f81fb] text-[#0f81fb] hover:bg-[#0f81fb] hover:text-white">
                 Book a Demo

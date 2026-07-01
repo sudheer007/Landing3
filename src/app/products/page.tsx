@@ -51,7 +51,7 @@ function ProductsPage() {
               </p>
 
               <div className="flex flex-col gap-4 min-[400px]:flex-row relative z-20">
-                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
                   <Button 
                     size="lg" 
                     className="group relative h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
@@ -596,7 +596,7 @@ function ProductsPage() {
               </p>
 
               <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Link href="https://app.graycommit.com" target="_blank" rel="noopener noreferrer">
+                <Link href="https://tidycal.com/sudheer.sandu/problemoverview" target="_blank" rel="noopener noreferrer">
                   <Button 
                     size="lg" 
                     className="group relative h-12 px-8 bg-[#0f81fb] text-white hover:bg-[#0f81fb]/90 transition-all duration-300"
